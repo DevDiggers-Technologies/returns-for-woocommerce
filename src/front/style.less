@@ -1,0 +1,1379 @@
+// WPReturns customer screens.
+// Apple-inspired DevDiggers look (see Postpaid and Waiting List): quiet surfaces, hairlines, one accent,
+// stroke icons, 12px cards, 8–10px controls. Fonts come from the theme; colors adapt to light and dark themes
+// through currentColor mixes. Everything is scoped under .ddwcwr-ui so theme list, table and button styles
+// cannot shift the layout.
+
+@narrow: ~"(max-width: 560px)";
+
+.ddwcwr-ui {
+	--ddwcwr-accent: #0256ff;
+	--ddwcwr-accent-text: #fff;
+	--ddwcwr-success: #15803d;
+	--ddwcwr-warning: #b45309;
+	--ddwcwr-danger: #dc2626;
+	--ddwcwr-radius: 12px;
+	--ddwcwr-radius-sm: 8px;
+	--ddwcwr-card: #fff; // Override on dark themes, e.g. .ddwcwr-ui { --ddwcwr-card: #1c1c1e; }
+	--ddwcwr-surface: rgba( 127, 127, 127, 0.05 );
+	--ddwcwr-field: transparent;
+	--ddwcwr-line: rgba( 127, 127, 127, 0.22 );
+	--ddwcwr-muted: rgba( 127, 127, 127, 0.95 );
+	--ddwcwr-tint: rgba( 2, 86, 255, 0.08 );
+	--ddwcwr-shadow: 0 1px 2px rgba( 0, 0, 0, 0.04 ), 0 4px 16px -6px rgba( 0, 0, 0, 0.08 );
+	--ddwcwr-ease: cubic-bezier( 0.2, 0.8, 0.2, 1 );
+
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
+	container-type: inline-size;
+	letter-spacing: -0.003em;
+
+	*,
+	*::before,
+	*::after {
+		box-sizing: inherit;
+	}
+
+	h2,
+	h3 {
+		color: inherit;
+		letter-spacing: -0.015em;
+		margin: 0;
+	}
+
+	h2 {
+		font-size: 24px;
+		font-weight: 650;
+		line-height: 1.2;
+	}
+
+	h3 {
+		align-items: center;
+		display: flex;
+		font-size: 17px;
+		font-weight: 600;
+		gap: 8px;
+		line-height: 1.3;
+	}
+
+	p {
+		margin: 0;
+	}
+
+	form {
+		margin: 0;
+	}
+
+	a:not( .ddwcwr-btn ):not( .ddwcwr-list-item ):not( .ddwcwr-nav-item ) {
+		color: var( --ddwcwr-accent );
+		text-decoration: none;
+
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	.woocommerce-Price-amount {
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+	}
+}
+
+@supports ( color: color-mix( in srgb, red 10%, transparent ) ) {
+	.ddwcwr-ui {
+		--ddwcwr-surface: color-mix( in srgb, currentColor 3.5%, transparent );
+		--ddwcwr-line: color-mix( in srgb, currentColor 13%, transparent );
+		--ddwcwr-muted: color-mix( in srgb, currentColor 60%, transparent );
+		--ddwcwr-tint: color-mix( in srgb, var( --ddwcwr-accent ) 9%, transparent );
+		--ddwcwr-shadow: 0 1px 2px color-mix( in srgb, currentColor 4%, transparent ), 0 4px 16px -6px color-mix( in srgb, currentColor 10%, transparent );
+	}
+}
+
+@keyframes ddwcwr-in {
+	from {
+		opacity: 0;
+		transform: translateY( 6px );
+	}
+}
+
+// Page rhythm.
+.ddwcwr-account,
+.ddwcwr-request-view,
+.ddwcwr-request-form-wrap {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	> * {
+		animation: ddwcwr-in 0.32s var( --ddwcwr-ease ) both;
+	}
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+	.ddwcwr-account > *,
+	.ddwcwr-request-view > *,
+	.ddwcwr-request-form-wrap > * {
+		animation: none;
+	}
+}
+
+// Typography helpers.
+.ddwcwr-eyebrow {
+	color: var( --ddwcwr-muted );
+	display: block;
+	font-size: 13px;
+	font-weight: 500;
+	margin-bottom: 4px;
+}
+
+.ddwcwr-meta {
+	color: var( --ddwcwr-muted );
+	display: block;
+	font-size: 13px;
+	line-height: 1.45;
+	margin-top: 2px;
+}
+
+.ddwcwr-muted {
+	color: var( --ddwcwr-muted );
+	font-size: 13px;
+}
+
+.ddwcwr-lead {
+	color: var( --ddwcwr-muted );
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+.ddwcwr-center {
+	text-align: center;
+}
+
+.ddwcwr-hp {
+	height: 1px;
+	inset-inline-start: -9999px;
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+}
+
+// Hero.
+.ddwcwr-hero {
+	p {
+		color: var( --ddwcwr-muted );
+		font-size: 15px;
+		line-height: 1.5;
+		margin-top: 6px;
+		max-width: 60ch;
+	}
+}
+
+// Stat tiles.
+.ddwcwr-ui ul.ddwcwr-stats {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		background: var( --ddwcwr-surface );
+		border-radius: var( --ddwcwr-radius );
+		margin: 0;
+		padding: 14px 16px;
+	}
+
+	strong {
+		display: block;
+		font-size: 24px;
+		font-variant-numeric: tabular-nums;
+		font-weight: 650;
+		letter-spacing: -0.02em;
+		line-height: 1.2;
+	}
+}
+
+@container @{narrow} {
+	.ddwcwr-ui ul.ddwcwr-stats {
+		grid-template-columns: 1fr 1fr;
+
+		li:last-child {
+			grid-column: 1 / -1;
+		}
+	}
+}
+
+// Segmented control.
+.ddwcwr-nav {
+	align-self: flex-start;
+	background: var( --ddwcwr-surface );
+	border-radius: var( --ddwcwr-radius-sm );
+	display: flex;
+	gap: 2px;
+	max-width: 100%;
+	overflow-x: auto;
+	padding: 3px;
+	scrollbar-width: none;
+}
+
+.ddwcwr-ui .ddwcwr-nav-item {
+	align-items: center;
+	border-radius: 8px;
+	color: var( --ddwcwr-muted );
+	display: inline-flex;
+	font-size: 14px;
+	font-weight: 500;
+	gap: 8px;
+	padding: 7px 16px;
+	text-decoration: none;
+	transition: color 0.15s, background-color 0.2s, box-shadow 0.2s;
+	white-space: nowrap;
+
+	&:hover,
+	&:focus {
+		color: inherit;
+		text-decoration: none;
+	}
+
+	&.is-active {
+		background: var( --ddwcwr-card );
+		box-shadow: var( --ddwcwr-shadow );
+		color: inherit;
+		font-weight: 600;
+	}
+}
+
+.ddwcwr-nav-count {
+	background: var( --ddwcwr-accent );
+	border-radius: var( --ddwcwr-radius-sm );
+	color: var( --ddwcwr-accent-text );
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	min-width: 18px;
+	padding: 0 5px;
+	text-align: center;
+}
+
+// Cards.
+.ddwcwr-card {
+	background: var( --ddwcwr-card );
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 22px 24px;
+}
+
+@container @{narrow} {
+	.ddwcwr-card {
+		padding: 18px;
+	}
+}
+
+// List rows (requests, orders).
+.ddwcwr-ui ul.ddwcwr-list {
+	background: var( --ddwcwr-card );
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	list-style: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+
+	> li {
+		margin: 0 !important;
+		padding: 0 !important;
+
+		+ li {
+			border-top: 1px solid var( --ddwcwr-line );
+		}
+
+		&.ddwcwr-list-item {
+			padding: 14px 18px !important;
+		}
+	}
+}
+
+.ddwcwr-ui .ddwcwr-list-item {
+	align-items: center;
+	color: inherit;
+	display: grid;
+	gap: 14px;
+	grid-template-columns: auto minmax( 0, 1fr ) auto;
+	padding: 14px 18px;
+	text-decoration: none;
+	transition: background-color 0.15s;
+
+	&:is( a ):hover {
+		background: var( --ddwcwr-surface );
+		text-decoration: none;
+	}
+
+	strong {
+		display: block;
+		font-size: 15px;
+		font-weight: 600;
+	}
+}
+
+.ddwcwr-list-body {
+	min-width: 0;
+}
+
+.ddwcwr-list-end {
+	align-items: center;
+	color: var( --ddwcwr-muted );
+	display: flex;
+	gap: 8px;
+}
+
+.ddwcwr-date-tile {
+	align-items: center;
+	background: var( --ddwcwr-tint );
+	border-radius: var( --ddwcwr-radius-sm );
+	display: flex;
+	flex-direction: column;
+	height: 44px;
+	justify-content: center;
+	line-height: 1.05;
+	width: 44px;
+
+	small {
+		color: var( --ddwcwr-accent );
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	b {
+		font-size: 17px;
+		font-variant-numeric: tabular-nums;
+		font-weight: 650;
+	}
+}
+
+.ddwcwr-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	justify-content: flex-end;
+}
+
+@container ( max-width: 640px ) {
+	.ddwcwr-ui .ddwcwr-order-row {
+		grid-template-columns: auto minmax( 0, 1fr );
+
+		.ddwcwr-actions {
+			grid-column: 1 / -1;
+			justify-content: flex-start;
+		}
+	}
+}
+
+// Buttons: own classes, themes restyle .button heavily.
+.ddwcwr-ui .ddwcwr-btn {
+	align-items: center;
+	border: 1px solid transparent;
+	border-radius: var( --ddwcwr-radius-sm );
+	cursor: pointer;
+	display: inline-flex;
+	font: inherit;
+	font-size: 14px;
+	font-weight: 600;
+	gap: 6px;
+	justify-content: center;
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	min-height: 40px;
+	padding: 9px 16px;
+	text-decoration: none;
+	transition: transform 0.15s var( --ddwcwr-ease ), filter 0.15s, background-color 0.15s;
+	white-space: nowrap;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:active {
+		transform: scale( 0.98 );
+	}
+
+	&:focus-visible {
+		outline: 2px solid var( --ddwcwr-accent );
+		outline-offset: 2px;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-btn-primary {
+	background: var( --ddwcwr-accent );
+	color: var( --ddwcwr-accent-text );
+
+	&:hover {
+		color: var( --ddwcwr-accent-text );
+		filter: brightness( 1.08 );
+	}
+}
+
+.ddwcwr-ui .ddwcwr-btn-secondary {
+	background: var( --ddwcwr-card );
+	border-color: var( --ddwcwr-line );
+	color: inherit;
+
+	&:hover {
+		background: var( --ddwcwr-surface );
+		color: inherit;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-btn-block {
+	min-height: 48px;
+	width: 100%;
+}
+
+.ddwcwr-ui .ddwcwr-btn.is-busy,
+.ddwcwr-ui .ddwcwr-submit.is-busy {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.ddwcwr-ui .ddwcwr-link-button {
+	background: none;
+	border: 0;
+	color: var( --ddwcwr-danger );
+	cursor: pointer;
+	font: inherit;
+	font-size: 14px;
+	padding: 0;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.ddwcwr-ui a.ddwcwr-back {
+	align-items: center;
+	align-self: flex-start;
+	color: var( --ddwcwr-muted );
+	display: inline-flex;
+	font-size: 14px;
+	font-weight: 500;
+	gap: 2px;
+
+	&:hover {
+		color: inherit;
+		text-decoration: none;
+	}
+}
+
+// Empty state.
+.ddwcwr-empty {
+	align-items: center;
+	border: 1px dashed var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 40px 24px;
+	text-align: center;
+
+	> svg {
+		color: var( --ddwcwr-muted );
+		margin-bottom: 4px;
+	}
+
+	p {
+		color: var( --ddwcwr-muted );
+		max-width: 42ch;
+	}
+
+	ul {
+		color: var( --ddwcwr-muted );
+		font-size: 14px;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.ddwcwr-btn {
+		margin-top: 8px;
+	}
+}
+
+// Status badge: tint of the status color set in the admin. Doubled class beats theme "mark" rules.
+mark.ddwcwr-status.ddwcwr-status {
+	--ddwcwr-status-color: #6b7280;
+	background: rgba( 107, 114, 128, 0.12 );
+	background: color-mix( in srgb, var( --ddwcwr-status-color ) 12%, transparent );
+	border-radius: 6px;
+	color: var( --ddwcwr-status-color );
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 1.5;
+	padding: 2px 10px;
+	white-space: nowrap;
+}
+
+// Request page.
+.ddwcwr-request-heading {
+	align-items: flex-start;
+	display: flex;
+	gap: 12px;
+	justify-content: space-between;
+}
+
+.ddwcwr-ui ol.ddwcwr-progress {
+	counter-reset: none;
+	display: flex;
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0;
+
+	li {
+		color: var( --ddwcwr-muted );
+		flex: 1;
+		font-size: 12px;
+		font-weight: 500;
+		line-height: 1.3;
+		margin: 0;
+		position: relative;
+		text-align: center;
+
+		&::before {
+			background: var( --ddwcwr-line );
+			content: '';
+			height: 2px;
+			left: -50%;
+			position: absolute;
+			right: 50%;
+			top: 10px;
+		}
+
+		&:first-child::before {
+			display: none;
+		}
+
+		&.is-done,
+		&.is-current {
+			color: inherit;
+
+			&::before {
+				background: var( --ddwcwr-accent );
+			}
+		}
+
+		&.is-current {
+			font-weight: 600;
+		}
+	}
+}
+
+.ddwcwr-progress-dot {
+	align-items: center;
+	background: var( --ddwcwr-card );
+	border: 2px solid var( --ddwcwr-line );
+	border-radius: 50%;
+	color: var( --ddwcwr-accent-text );
+	display: flex;
+	height: 22px;
+	justify-content: center;
+	margin: 0 auto 6px;
+	position: relative;
+	width: 22px;
+	z-index: 1;
+
+	.is-done & {
+		background: var( --ddwcwr-accent );
+		border-color: var( --ddwcwr-accent );
+	}
+
+	.is-current & {
+		border-color: var( --ddwcwr-accent );
+		box-shadow: 0 0 0 4px var( --ddwcwr-tint );
+	}
+}
+
+@container @{narrow} {
+	.ddwcwr-progress-label {
+		font-size: 11px;
+	}
+}
+
+// Callout: the one thing the customer should know now.
+.ddwcwr-callout {
+	background: var( --ddwcwr-tint );
+	border-radius: var( --ddwcwr-radius );
+	display: flex;
+	gap: 14px;
+	padding: 18px 20px;
+
+	h3 {
+		margin-bottom: 4px;
+	}
+
+	p {
+		line-height: 1.5;
+
+		+ p {
+			margin-top: 10px;
+		}
+	}
+
+	&.is-success {
+		background: rgba( 21, 128, 61, 0.08 );
+	}
+}
+
+.ddwcwr-callout-icon {
+	align-items: center;
+	background: var( --ddwcwr-accent );
+	border-radius: 50%;
+	color: var( --ddwcwr-accent-text );
+	display: flex;
+	flex-shrink: 0;
+	height: 36px;
+	justify-content: center;
+	width: 36px;
+
+	.is-success & {
+		background: var( --ddwcwr-success );
+	}
+}
+
+// Item rows.
+.ddwcwr-ui ul.ddwcwr-item-rows {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		align-items: center;
+		display: grid;
+		gap: 12px;
+		grid-template-columns: auto minmax( 0, 1fr ) auto;
+		margin: 0;
+		padding: 10px 0;
+
+		+ li {
+			border-top: 1px solid var( --ddwcwr-line );
+		}
+	}
+
+	strong {
+		display: block;
+		font-weight: 600;
+	}
+}
+
+.ddwcwr-thumb {
+	background: var( --ddwcwr-surface );
+	border-radius: var( --ddwcwr-radius-sm );
+	display: block;
+	height: 48px;
+	overflow: hidden;
+	width: 48px;
+
+	img {
+		display: block;
+		height: 100% !important;
+		margin: 0 !important;
+		object-fit: cover;
+		width: 100% !important;
+	}
+}
+
+.ddwcwr-amount {
+	font-variant-numeric: tabular-nums;
+	font-weight: 600;
+}
+
+// Key/value rows.
+.ddwcwr-ui dl.ddwcwr-rows {
+	margin: 0;
+
+	> div {
+		display: flex;
+		gap: 12px;
+		justify-content: space-between;
+		padding: 6px 0;
+	}
+
+	dt {
+		color: var( --ddwcwr-muted );
+		font-weight: 400;
+		margin: 0;
+	}
+
+	dd {
+		margin: 0;
+		text-align: end;
+	}
+
+	.is-total {
+		border-top: 1px solid var( --ddwcwr-line );
+		font-size: 16px;
+		font-weight: 650;
+		margin-top: 4px;
+		padding-top: 12px;
+
+		dt {
+			color: inherit;
+			font-weight: 650;
+		}
+	}
+}
+
+.ddwcwr-totals {
+	border-top: 1px solid var( --ddwcwr-line );
+	padding-top: 8px;
+}
+
+// Messages.
+.ddwcwr-ui ol.ddwcwr-messages {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ddwcwr-ui .ddwcwr-message {
+	background: var( --ddwcwr-surface );
+	border-radius: 14px 14px 14px 4px;
+	margin: 0;
+	max-width: 85%;
+	padding: 10px 14px;
+
+	&-customer {
+		align-self: flex-end;
+		background: var( --ddwcwr-tint );
+		border-radius: 14px 14px 4px 14px;
+	}
+
+	&-meta {
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 12px;
+		gap: 4px 10px;
+
+		time {
+			color: var( --ddwcwr-muted );
+		}
+	}
+
+	&-body p {
+		line-height: 1.5;
+		margin: 4px 0 0;
+	}
+}
+
+.ddwcwr-ui ul.ddwcwr-attachments {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0;
+
+	li {
+		margin: 0;
+	}
+
+	a {
+		background: var( --ddwcwr-card );
+		border: 1px solid var( --ddwcwr-line );
+		border-radius: 6px;
+		display: inline-block;
+		font-size: 12px;
+		padding: 3px 8px;
+	}
+}
+
+// Forms.
+.ddwcwr-ui .ddwcwr-form {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+
+	.form-row {
+		display: flex;
+		flex-direction: column;
+		float: none;
+		gap: 6px;
+		margin: 0;
+		padding: 0;
+		width: auto;
+	}
+
+	label,
+	legend {
+		font-size: 13px;
+		font-weight: 600;
+		line-height: 1.4;
+		margin: 0;
+	}
+
+	.required {
+		border: 0;
+		color: var( --ddwcwr-danger );
+		text-decoration: none;
+	}
+
+	input[type="text"],
+	input[type="email"],
+	input[type="search"],
+	input[type="number"],
+	select,
+	textarea {
+		background: var( --ddwcwr-field );
+		border: 1px solid var( --ddwcwr-line );
+		border-radius: var( --ddwcwr-radius-sm );
+		box-shadow: none;
+		color: inherit;
+		font: inherit;
+		font-size: 15px;
+		margin: 0;
+		max-width: 100%;
+		min-height: 46px;
+		padding: 10px 14px;
+		width: 100%;
+
+		&:focus,
+		&:active {
+			border-color: var( --ddwcwr-accent );
+			box-shadow: none;
+			outline: none;
+		}
+	}
+
+	// Our own background resets the theme's select arrow: draw one.
+	select:not( [multiple] ) {
+		-webkit-appearance: none;
+		appearance: none;
+		background-image: url( "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238e8e93' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E" );
+		background-position: right 14px center;
+		background-repeat: no-repeat;
+		background-size: 16px;
+		cursor: pointer;
+		padding-inline-end: 40px;
+	}
+
+	textarea {
+		line-height: 1.5;
+		min-height: 96px;
+		resize: vertical;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		accent-color: var( --ddwcwr-accent );
+		height: 18px;
+		margin: 0;
+		width: 18px;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-inline-form {
+	align-items: end;
+	display: grid;
+	gap: 12px;
+	grid-template-columns: 1fr 1.4fr auto;
+}
+
+@container @{narrow} {
+	.ddwcwr-ui .ddwcwr-inline-form {
+		grid-template-columns: 1fr;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-check {
+	align-items: flex-start;
+	display: flex;
+	font-weight: 400 !important;
+	gap: 10px;
+	line-height: 1.45;
+
+	&.is-disabled {
+		opacity: 0.55;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-file-input {
+	height: 1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	width: 1px;
+
+	&:focus-visible + label {
+		outline: 2px solid var( --ddwcwr-accent );
+		outline-offset: 2px;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-form .ddwcwr-dropzone {
+	align-items: center;
+	background: var( --ddwcwr-surface );
+	border: 1.5px dashed var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	color: inherit;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 22px 16px;
+	text-align: center;
+	transition: border-color 0.15s, background-color 0.15s;
+
+	svg {
+		color: var( --ddwcwr-accent );
+	}
+
+	&:hover {
+		border-color: var( --ddwcwr-accent );
+	}
+}
+
+.ddwcwr-ui .ddwcwr-form .ddwcwr-attach {
+	align-items: center;
+	align-self: flex-start;
+	color: var( --ddwcwr-accent );
+	cursor: pointer;
+	display: inline-flex;
+	gap: 6px;
+}
+
+.ddwcwr-file-list {
+	color: var( --ddwcwr-muted );
+	font-size: 13px;
+
+	&:empty {
+		display: none;
+	}
+}
+
+.ddwcwr-photo-required {
+	color: var( --ddwcwr-warning );
+	display: block;
+	font-weight: 500;
+	margin-top: 2px;
+}
+
+.ddwcwr-form-error {
+	background: rgba( 220, 38, 38, 0.08 );
+	border-radius: var( --ddwcwr-radius-sm );
+	color: var( --ddwcwr-danger );
+	padding: 12px 14px;
+}
+
+.ddwcwr-note {
+	background: var( --ddwcwr-surface );
+	border-radius: var( --ddwcwr-radius-sm );
+	color: var( --ddwcwr-muted );
+	font-size: 14px;
+	padding: 12px 14px;
+}
+
+// Quantity stepper.
+.ddwcwr-ui .ddwcwr-form .ddwcwr-stepper {
+	align-items: stretch;
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius-sm );
+	display: flex;
+	min-height: 46px;
+	overflow: hidden;
+
+	&:focus-within {
+		border-color: var( --ddwcwr-accent );
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield;
+		border: 0;
+		border-radius: 0;
+		flex: 1;
+		font-variant-numeric: tabular-nums;
+		min-height: 0;
+		min-width: 0;
+		padding: 0 4px;
+		text-align: center;
+
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+
+	button {
+		align-items: center;
+		background: var( --ddwcwr-surface );
+		border: 0;
+		color: inherit;
+		cursor: pointer;
+		display: flex;
+		flex: 0 0 44px;
+		font: inherit;
+		font-size: 20px;
+		justify-content: center;
+		line-height: 1;
+		margin: 0;
+		padding: 0;
+
+		&:hover:not( :disabled ) {
+			color: var( --ddwcwr-accent );
+		}
+
+		&:disabled {
+			cursor: default;
+			opacity: 0.35;
+		}
+	}
+}
+
+// Request form steps.
+.ddwcwr-ui .ddwcwr-step {
+	background: var( --ddwcwr-card );
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	margin: 0;
+	min-width: 0;
+	padding: 20px 22px;
+}
+
+.ddwcwr-ui .ddwcwr-step-title {
+	align-items: center;
+	display: flex;
+	float: left; // Lets the legend sit inside the fieldset padding.
+	font-size: 17px !important;
+	font-weight: 600;
+	gap: 10px;
+	letter-spacing: -0.01em;
+	padding: 0;
+	width: 100%;
+
+	+ * {
+		clear: both;
+	}
+}
+
+.ddwcwr-step-number {
+	align-items: center;
+	background: var( --ddwcwr-accent );
+	border-radius: 50%;
+	color: var( --ddwcwr-accent-text );
+	display: inline-flex;
+	font-size: 13px;
+	font-weight: 600;
+	height: 26px;
+	justify-content: center;
+	width: 26px;
+}
+
+.ddwcwr-ui ul.ddwcwr-items {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ddwcwr-ui .ddwcwr-item {
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	margin: 0;
+	padding: 12px 14px;
+	transition: border-color 0.15s, box-shadow 0.15s;
+
+	&.is-selected {
+		border-color: var( --ddwcwr-accent );
+		box-shadow: 0 0 0 1px var( --ddwcwr-accent );
+	}
+
+	&.is-disabled {
+		background: var( --ddwcwr-surface );
+
+		.ddwcwr-item-label {
+			opacity: 0.6;
+		}
+	}
+}
+
+// Checkbox | image | name over meta.
+.ddwcwr-item-head {
+	align-items: center;
+	display: grid;
+	gap: 2px 12px;
+	grid-template-columns: auto 52px minmax( 0, 1fr );
+
+	> input {
+		grid-row: span 2;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-item-label {
+	cursor: pointer;
+	display: contents;
+	font-size: 15px !important;
+}
+
+.ddwcwr-item-image {
+	background: var( --ddwcwr-surface );
+	grid-row: span 2;
+	border-radius: var( --ddwcwr-radius-sm );
+	flex-shrink: 0;
+	height: 52px;
+	overflow: hidden;
+	width: 52px;
+
+	img {
+		display: block;
+		height: 100% !important;
+		margin: 0 !important;
+		object-fit: cover;
+		width: 100% !important;
+	}
+}
+
+.ddwcwr-item-name {
+	align-self: end;
+	font-weight: 600;
+}
+
+.ddwcwr-item-meta {
+	align-self: start;
+	color: var( --ddwcwr-muted );
+	font-size: 13px;
+	grid-column: 3;
+}
+
+.ddwcwr-item-blocked {
+	color: var( --ddwcwr-warning );
+	display: block;
+}
+
+.ddwcwr-item-details {
+	border-top: 1px solid var( --ddwcwr-line );
+	display: grid;
+	gap: 12px;
+	grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
+	margin-top: 12px;
+	padding-top: 12px;
+
+	&[hidden] {
+		display: none;
+	}
+}
+
+@container @{narrow} {
+	.ddwcwr-item-details {
+		grid-template-columns: 1fr 1fr;
+	}
+
+}
+
+// Guest portal and EU withdrawal: one focused card.
+.ddwcwr-ui .ddwcwr-lookup,
+.ddwcwr-ui .ddwcwr-withdrawal-start,
+.ddwcwr-ui .ddwcwr-withdrawal-form,
+.ddwcwr-ui .ddwcwr-withdrawal-done,
+.ddwcwr-ui .ddwcwr-portal-order {
+	margin: 0 auto;
+	max-width: 560px;
+	width: 100%;
+}
+
+// Annex I(B) model withdrawal form, folded under the withdrawal function.
+.ddwcwr-ui .ddwcwr-model-form {
+	box-sizing: border-box;
+	margin: 0 auto;
+	max-width: 560px;
+	width: 100%;
+
+	summary {
+		cursor: pointer;
+		font-weight: 600;
+	}
+
+	ul {
+		display: grid;
+		gap: 8px;
+		margin: 12px 0;
+		padding-left: 20px;
+	}
+
+	address {
+		font-style: normal;
+		margin-top: 4px;
+	}
+}
+
+.ddwcwr-portal,
+.ddwcwr-withdrawal {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.woocommerce-error,
+	.woocommerce-info,
+	.woocommerce-message {
+		margin: 0 auto;
+		max-width: 560px;
+		width: 100%;
+	}
+}
+
+.ddwcwr-icon-tile {
+	align-items: center;
+	background: var( --ddwcwr-tint );
+	border-radius: 14px;
+	color: var( --ddwcwr-accent );
+	display: flex;
+	height: 48px;
+	justify-content: center;
+	width: 48px;
+
+	&.is-success {
+		background: rgba( 21, 128, 61, 0.1 );
+		color: var( --ddwcwr-success );
+	}
+}
+
+.ddwcwr-ui ol.ddwcwr-how {
+	counter-reset: ddwcwr-how;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	li {
+		align-items: center;
+		counter-increment: ddwcwr-how;
+		display: flex;
+		gap: 12px;
+		margin: 0;
+
+		&::before {
+			align-items: center;
+			background: var( --ddwcwr-surface );
+			border-radius: 50%;
+			content: counter( ddwcwr-how );
+			display: inline-flex;
+			flex-shrink: 0;
+			font-size: 13px;
+			font-weight: 600;
+			height: 26px;
+			justify-content: center;
+			width: 26px;
+		}
+	}
+}
+
+.ddwcwr-ui .ddwcwr-withdraw-items {
+	border: 1px solid var( --ddwcwr-line );
+	border-radius: var( --ddwcwr-radius );
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	padding: 14px 16px;
+
+	legend {
+		padding: 0 4px;
+	}
+}
+
+// Order panel under the order details.
+.ddwcwr-order-panel {
+	margin: 2em 0;
+
+	.ddwcwr-portal & {
+		margin: 0 auto;
+		max-width: 560px;
+		width: 100%;
+	}
+
+	h2 {
+		font-size: 18px;
+	}
+}
+
+.ddwcwr-panel-head {
+	align-items: center;
+	display: flex;
+	gap: 14px;
+
+	.ddwcwr-meta {
+		margin-top: 2px;
+	}
+}
+
+.ddwcwr-ui .ddwcwr-list-item-compact {
+	grid-template-columns: minmax( 0, 1fr ) auto;
+	padding: 12px 16px;
+}
+
+.ddwcwr-order-panel-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+// Product page, checkout and footer (outside .ddwcwr-ui: keep them light).
+.ddwcwr-product-policy {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	list-style: none;
+	margin: 1em 0;
+	padding: 0;
+
+	li {
+		align-items: flex-start;
+		display: flex;
+		font-size: 0.95em;
+		gap: 8px;
+		line-height: 1.45;
+		margin: 0;
+
+		svg {
+			flex-shrink: 0;
+			margin-top: 1px;
+			opacity: 0.75;
+		}
+	}
+
+	&-final {
+		color: #b45309;
+	}
+}
+
+.ddwcwr-checkout-policy {
+	font-size: 0.9em;
+	margin: 0 0 1em;
+}
+
+.ddwcwr-footer-withdrawal {
+	font-size: 0.9em;
+	padding: 1em;
+	text-align: center;
+}
+
+// Label and packing slip side by side.
+.ddwcwr-ui .ddwcwr-shipping-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}

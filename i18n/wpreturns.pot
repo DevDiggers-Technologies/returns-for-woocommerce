@@ -1,0 +1,3579 @@
+# Copyright (C) 2026 DevDiggers
+# This file is distributed under the GPL-2.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WPReturns – Returns, RMA & EU Withdrawal Button for "
+"WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpreturns\n"
+"POT-Creation-Date: 2026-10-31 09:22:04+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-Country: United States\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: "
+"__;_e;_x:1,2c;_ex:1,2c;_n:1,2;_nx:1,2,4c;_n_noop:1,2;_nx_noop:1,2,3c;esc_"
+"attr__;esc_html__;esc_attr_e;esc_html_e;esc_attr_x:1,2c;esc_html_x:1,2c;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-Bookmarks: \n"
+"X-Textdomain-Support: yes\n"
+"X-Generator: grunt-wp-i18n 1.0.4\n"
+
+#: functions.php:97
+#. translators: %1$s: opening link tag, %2$s: closing link tag
+msgid ""
+"WPReturns is activated but not effective. It requires %1$sWooCommerce%2$s "
+"in order to work."
+msgstr ""
+
+#: functions.php:122 includes/admin/setup-wizard.php:81
+#: includes/admin-dashboard.php:107 includes/admin-dashboard.php:127
+#: includes/common/common-functions.php:363
+msgid "WPReturns"
+msgstr ""
+
+#: functions.php:138 includes/admin-dashboard.php:135
+msgid "Dashboard"
+msgstr ""
+
+#: functions.php:139 includes/admin-dashboard.php:160
+msgid "Configuration"
+msgstr ""
+
+#: functions.php:140
+msgid "Setup Wizard"
+msgstr ""
+
+#: functions.php:141
+msgid "Upgrade to Pro"
+msgstr ""
+
+#: functions.php:159
+msgid "Support"
+msgstr ""
+
+#: functions.php:160
+msgid "Documentation"
+msgstr ""
+
+#: functions.php:175
+msgid "Review"
+msgstr ""
+
+#: functions.php:175
+msgid "Review on WordPress.org"
+msgstr ""
+
+#: helper/label/label-helper.php:46 helper/request/request-helper.php:576
+#: helper/resolution/resolution-helper.php:57
+#: helper/resolution/resolution-helper.php:90
+#: includes/admin/admin-functions.php:296
+#: includes/front/front-functions.php:625
+msgid "Request not found."
+msgstr ""
+
+#: helper/label/label-helper.php:63
+msgid "Return label uploaded."
+msgstr ""
+
+#: helper/order/woocommerce-order-adapter.php:182
+msgid "There is nothing left to refund on this order."
+msgstr ""
+
+#: helper/order/woocommerce-order-adapter.php:248
+#. translators: 1: product name, 2: quantity, 3: new stock
+msgid "WPReturns restocked %1$s × %2$d (stock now %3$s)."
+msgstr ""
+
+#: helper/request/request-helper.php:298
+msgid "Already requested or refunded."
+msgstr ""
+
+#: helper/request/request-helper.php:303
+msgid "This item is final sale and cannot be returned."
+msgstr ""
+
+#: helper/request/request-helper.php:312
+#. translators: %s: date the return window closed
+msgid "The return window closed on %s."
+msgstr ""
+
+#: helper/request/request-helper.php:317
+msgid "This item is exempt from the right of withdrawal."
+msgstr ""
+
+#: helper/request/request-helper.php:320
+msgid ""
+"You agreed to the immediate supply of this digital content at checkout, so "
+"the right of withdrawal does not apply."
+msgstr ""
+
+#: helper/request/request-helper.php:328
+#. translators: %s: date the withdrawal period ended
+msgid "The withdrawal period ended on %s."
+msgstr ""
+
+#: helper/request/request-helper.php:365
+msgid "We could not find that order."
+msgstr ""
+
+#: helper/request/request-helper.php:373 includes/front/front-functions.php:735
+msgid "This order cannot get this kind of request right now."
+msgstr ""
+
+#: helper/request/request-helper.php:403
+msgid "One of the selected items is not part of this order."
+msgstr ""
+
+#: helper/request/request-helper.php:410
+#. translators: 1: product name, 2: reason
+msgid "%1$s: %2$s"
+msgstr ""
+
+#: helper/request/request-helper.php:415
+#. translators: 1: product name, 2: quantity
+msgid "You can request up to %2$d of %1$s."
+msgstr ""
+
+#: helper/request/request-helper.php:425
+#. translators: %s: product name
+msgid "Please choose a reason for %s."
+msgstr ""
+
+#: helper/request/request-helper.php:447
+msgid ""
+"Every item of this order is already covered by a request or a refund, or "
+"cannot be withdrawn from. Check your existing requests or contact us."
+msgstr ""
+
+#: helper/request/request-helper.php:450 includes/front/front-functions.php:78
+msgid "Please select at least one item."
+msgstr ""
+
+#: helper/request/request-helper.php:454
+msgid "Please add a short note about your request."
+msgstr ""
+
+#: helper/request/request-helper.php:458
+msgid "Please add a photo of the items."
+msgstr ""
+
+#: helper/request/request-helper.php:490
+msgid "Your request could not be saved. Please try again."
+msgstr ""
+
+#: helper/request/request-helper.php:501
+#. translators: 1: request type, 2: source
+msgid "%1$s request submitted (%2$s)."
+msgstr ""
+
+#: helper/request/request-helper.php:508
+#. translators: 1: request number, 2: request type
+msgid "WPReturns: %1$s (%2$s) was created for this order."
+msgstr ""
+
+#: helper/request/request-helper.php:580
+msgid "Unknown status."
+msgstr ""
+
+#: helper/request/request-helper.php:600
+#. translators: 1: old status, 2: new status
+msgid "Status changed from %1$s to %2$s."
+msgstr ""
+
+#: helper/request/request-helper.php:710
+#. translators: %s: request number
+msgid "return-label-%s"
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:69
+#. translators: 1: product name, 2: quantity
+msgid "Restocked %1$s × %2$d."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:94
+msgid "This request has already been resolved."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:98
+msgid "Rejected or canceled requests cannot be resolved."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:118
+msgid "The order of this request no longer exists."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:136
+#. translators: %s: request number
+msgid "Canceled by customer request %s."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:140
+msgid "The order was canceled. It was not paid, so there was nothing to refund."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:146
+#. translators: %s: request number
+msgid "WPReturns %s"
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:166
+#. translators: 1: amount, 2: how
+msgid "Refunded %1$s %2$s."
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:166
+msgid "to the original payment method"
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:166
+msgid "(recorded in WooCommerce; pay it back manually)"
+msgstr ""
+
+#: helper/resolution/resolution-helper.php:167
+msgid "Resolved without a refund."
+msgstr ""
+
+#: helper/upload/upload-helper.php:125
+#. translators: %d: maximum number of files
+msgid "You can upload up to %d file."
+msgid_plural "You can upload up to %d files."
+msgstr[0] ""
+msgstr[1] ""
+
+#: helper/upload/upload-helper.php:135
+#. translators: %s: file name
+msgid "%s could not be uploaded. Please try again."
+msgstr ""
+
+#: helper/upload/upload-helper.php:140
+#. translators: 1: file name, 2: size limit in MB
+msgid "%1$s is larger than %2$s MB."
+msgstr ""
+
+#: helper/upload/upload-helper.php:147
+#. translators: 1: file name, 2: allowed extensions
+msgid "%1$s is not an allowed file type. Allowed: %2$s."
+msgstr ""
+
+#: helper/upload/upload-helper.php:164
+msgid "The file could not be saved. Please try again."
+msgstr ""
+
+#: helper/upload/upload-helper.php:198
+msgid "Labels must be a PDF or an image."
+msgstr ""
+
+#: helper/upload/upload-helper.php:207
+msgid "The file could not be saved."
+msgstr ""
+
+#: helper/upload/upload-helper.php:261 includes/common/common-functions.php:146
+msgid "File not found."
+msgstr ""
+
+#: includes/admin/admin-functions.php:284
+#: includes/admin/admin-functions.php:405
+#: includes/admin/admin-functions.php:454
+#: includes/admin/admin-functions.php:524
+msgid "The link has expired. Go back and try again."
+msgstr ""
+
+#: includes/admin/admin-functions.php:288
+#: includes/admin/admin-functions.php:409
+msgid "You are not allowed to manage return requests."
+msgstr ""
+
+#: includes/admin/admin-functions.php:315
+msgid "Status updated."
+msgstr ""
+
+#: includes/admin/admin-functions.php:327
+msgid "Write a message first."
+msgstr ""
+
+#: includes/admin/admin-functions.php:333
+msgid "Note added."
+msgstr ""
+
+#: includes/admin/admin-functions.php:333
+msgid "Message sent to the customer."
+msgstr ""
+
+#: includes/admin/admin-functions.php:354
+msgid "Choose a label file to upload."
+msgstr ""
+
+#: includes/admin/admin-functions.php:364
+msgid "Label uploaded and sent to the customer."
+msgstr ""
+
+#: includes/admin/admin-functions.php:379
+#. translators: 1: carrier, 2: tracking
+msgid "Tracking saved: %1$s %2$s"
+msgstr ""
+
+#: includes/admin/admin-functions.php:380
+msgid "Tracking saved."
+msgstr ""
+
+#: includes/admin/admin-functions.php:386
+msgid "Marked as received."
+msgstr ""
+
+#: includes/admin/admin-functions.php:391
+msgid "Request deleted."
+msgstr ""
+
+#: includes/admin/admin-functions.php:395
+msgid "Nothing changed."
+msgstr ""
+
+#: includes/admin/admin-functions.php:444
+msgid "Request created."
+msgstr ""
+
+#: includes/admin/admin-functions.php:458
+msgid "You are not allowed to export requests."
+msgstr ""
+
+#: includes/admin/admin-functions.php:528
+msgid "You are not allowed to do this."
+msgstr ""
+
+#: includes/admin/admin-functions.php:532
+msgid "Unmatched submissions cleared."
+msgstr ""
+
+#: includes/admin/admin-functions.php:549
+msgid "Final sale"
+msgstr ""
+
+#: includes/admin/admin-functions.php:552
+msgid ""
+"Customers cannot request a return for this product. The EU right of "
+"withdrawal is not affected."
+msgstr ""
+
+#: includes/admin/admin-functions.php:559
+msgid "Exempt from withdrawal"
+msgstr ""
+
+#: includes/admin/admin-functions.php:562
+msgid ""
+"Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, "
+"perishable, sealed hygiene goods, etc.)."
+msgstr ""
+
+#: includes/admin/admin-functions.php:605
+#: includes/admin/admin-functions.php:652 includes/admin/setup-wizard.php:90
+#: includes/admin/setup-wizard.php:227 includes/globals-variables.php:26
+#: includes/install.php:254
+#: templates/admin/configuration/configuration-template.php:175
+#: templates/front/account-requests.php:33
+#: templates/front/account-requests.php:46 templates/front/order-panel.php:22
+msgid "Returns"
+msgstr ""
+
+#: includes/admin/admin-functions.php:637
+msgid "No return requests for this order."
+msgstr ""
+
+#: includes/admin/admin-functions.php:641
+#: templates/admin/request/request-create-template.php:159
+msgid "Create request"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:82
+msgid ""
+"Returns, cancellations and the EU withdrawal button for WooCommerce. A few "
+"questions and your store is ready to take returns."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:86
+msgid "Welcome"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:91
+msgid "Your return policy"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:92
+msgid "How long customers have to ask for a return."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:97
+msgid "Refunds"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:98
+msgid "Refunds and cancellations"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:99
+msgid ""
+"How refunds are paid and whether customers can cancel orders that have not "
+"shipped."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:104 includes/global-functions.php:166
+msgid "EU withdrawal"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:105
+msgid "Withdrawal button"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:106
+msgid ""
+"From 19 June 2026, stores selling to EU consumers online must offer a "
+"\"Withdraw from contract here\" function."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:111
+msgid "Ready!"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:112
+msgid "You are ready to take returns."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:113
+msgid ""
+"Customers can now start returns from My Account and the returns page. "
+"Reasons, statuses and emails are under Configuration."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:138
+msgid "Welcome to WPReturns!"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:139
+msgid ""
+"Let's set your return window, how refunds work and the EU withdrawal "
+"button. It takes about two minutes and you can change everything later."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:195
+#: templates/admin/configuration/configuration-template.php:173
+msgid "Customer requests"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:195
+#: templates/admin/configuration/configuration-template.php:173
+msgid "Let customers request returns and cancellations"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:195
+msgid "When off, customers see nothing; you can still create requests yourself."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:199
+#: templates/admin/configuration/configuration-template.php:256
+msgid "Days to request a return"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:200
+msgid ""
+"30 is common. Under EU law consumers get at least 14 days to withdraw "
+"anyway."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:207
+#: templates/admin/configuration/configuration-template.php:260
+msgid "Count days from"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:208
+msgid "\"Completed\" works best when you complete orders on delivery."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:210
+#: templates/admin/configuration/configuration-template.php:263
+msgid "Order completed (delivered)"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:211
+#: templates/admin/configuration/configuration-template.php:264
+msgid "Order placed"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:227
+#: templates/admin/configuration/configuration-template.php:175
+msgid "Let customers return items for a refund"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:227
+msgid ""
+"Money back to the card or method the customer paid with, once you approve "
+"it."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:228
+#: templates/admin/configuration/configuration-template.php:366
+msgid "Gateway refunds"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:228
+msgid "Send refunds through the payment gateway"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:228
+msgid ""
+"When off, refunds are only recorded and you pay them back yourself. You can "
+"still choose per request."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:229
+#: templates/admin/configuration/configuration-template.php:367
+msgid "Restock"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:229
+msgid "Put returned items back in stock when they arrive"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:229
+#: templates/admin/configuration/configuration-template.php:367
+msgid "Damaged and defective items are never restocked."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:230
+msgid "Cancellations"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:230
+#: templates/admin/configuration/configuration-template.php:203
+msgid "Let customers ask to cancel an order before it ships"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:230
+msgid "You approve each one; the order is canceled and refunded."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:243
+#: templates/admin/configuration/configuration-template.php:424
+msgid "Withdrawal function"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:243
+msgid "Show the \"Withdraw from contract here\" button"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:243
+msgid ""
+"Customers confirm in two steps and get an acknowledgement email with the "
+"date and time."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:247
+msgid "Show it for"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:248
+msgid ""
+"Based on the billing country of the order. You can pick individual "
+"countries on the EU Withdrawal tab."
+msgstr ""
+
+#: includes/admin/setup-wizard.php:250
+#: templates/admin/configuration/configuration-template.php:431
+msgid "EU and EEA countries"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:251
+#: templates/admin/configuration/configuration-template.php:432
+msgid "All countries"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:255
+#: templates/admin/configuration/configuration-template.php:460
+msgid "Footer link"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:255
+msgid "Add a \"Withdraw from contract here\" link to every page"
+msgstr ""
+
+#: includes/admin/setup-wizard.php:255
+msgid ""
+"The law asks for the function to be easy to find for the whole withdrawal "
+"period."
+msgstr ""
+
+#: includes/admin-dashboard.php:126
+msgid "WPReturns – Returns & EU Withdrawal"
+msgstr ""
+
+#: includes/admin-dashboard.php:140 includes/admin-dashboard.php:255
+#: templates/admin/dashboard/dashboard-template.php:71
+#: templates/admin/dashboard/dashboard-template.php:126
+#: templates/admin/request/request-create-template.php:41
+#: templates/admin/request/request-view-template.php:286
+msgid "Requests"
+msgstr ""
+
+#: includes/admin-dashboard.php:145
+#: templates/admin/request/request-view-template.php:286
+msgid "Withdrawals"
+msgstr ""
+
+#: includes/admin-dashboard.php:150
+msgid "Rules"
+msgstr ""
+
+#: includes/admin-dashboard.php:155
+msgid "Customers"
+msgstr ""
+
+#: includes/admin-dashboard.php:163
+#: templates/admin/configuration/configuration-template.php:169
+msgid "General"
+msgstr ""
+
+#: includes/admin-dashboard.php:164
+msgid "Return Policy"
+msgstr ""
+
+#: includes/admin-dashboard.php:165
+msgid "Reasons"
+msgstr ""
+
+#: includes/admin-dashboard.php:166
+#: templates/admin/configuration/configuration-template.php:336
+msgid "Statuses"
+msgstr ""
+
+#: includes/admin-dashboard.php:167
+msgid "Resolutions"
+msgstr ""
+
+#: includes/admin-dashboard.php:168
+msgid "EU Withdrawal"
+msgstr ""
+
+#: includes/admin-dashboard.php:169
+#: templates/admin/configuration/configuration-template.php:490
+msgid "Warranty"
+msgstr ""
+
+#: includes/admin-dashboard.php:170
+msgid "Shipping Labels"
+msgstr ""
+
+#: includes/admin-dashboard.php:171
+msgid "Fraud Protection"
+msgstr ""
+
+#: includes/admin-dashboard.php:172
+#: templates/admin/configuration/configuration-template.php:548
+msgid "Automation"
+msgstr ""
+
+#: includes/admin-dashboard.php:173
+#: templates/admin/configuration/configuration-template.php:568
+msgid "Emails"
+msgstr ""
+
+#: includes/admin-dashboard.php:174
+msgid "Appearance"
+msgstr ""
+
+#: includes/admin-dashboard.php:175
+#: templates/admin/configuration/configuration-template.php:597
+msgid "Advanced"
+msgstr ""
+
+#: includes/admin-dashboard.php:195
+msgid "Results per page"
+msgstr ""
+
+#: includes/admin-dashboard.php:255
+msgid "EU Withdrawals"
+msgstr ""
+
+#: includes/admin-dashboard.php:257 includes/admin-dashboard.php:266
+msgid "Export CSV"
+msgstr ""
+
+#: includes/admin-dashboard.php:262
+msgid "Add New"
+msgstr ""
+
+#: includes/admin-dashboard.php:272
+msgid ""
+"Every withdrawal statement submitted through the \"Withdraw from contract "
+"here\" function, with the date and time it was received. Keep these as your "
+"record."
+msgstr ""
+
+#: includes/admin-dashboard.php:290
+msgid "Search"
+msgstr ""
+
+#: includes/admin-dashboard.php:317
+msgid "Set different return rules for different products"
+msgstr ""
+
+#: includes/admin-dashboard.php:318
+msgid ""
+"One return window fits most stores to start with. Rules let you treat sale "
+"items, big-ticket products and loyal customers differently, and decide "
+"simple requests for you."
+msgstr ""
+
+#: includes/admin-dashboard.php:320
+msgid "Return windows per product, category, customer role or country"
+msgstr ""
+
+#: includes/admin-dashboard.php:321
+msgid ""
+"Final-sale rules by item price, order total or customer, with your own "
+"message"
+msgstr ""
+
+#: includes/admin-dashboard.php:322
+msgid "Auto-approve or auto-reject requests by reason, value or customer"
+msgstr ""
+
+#: includes/admin-dashboard.php:323
+msgid "Restocking fees, fixed or a percentage, never on store-fault reasons"
+msgstr ""
+
+#: includes/admin-dashboard.php:324
+msgid "Free return shipping above an order value, and photo rules per item value"
+msgstr ""
+
+#: includes/admin-dashboard.php:325
+msgid "Keep-it refunds: refund cheap items without asking for them back"
+msgstr ""
+
+#: includes/admin-dashboard.php:343
+msgid "Spot serial returners before you refund them"
+msgstr ""
+
+#: includes/admin-dashboard.php:344
+msgid ""
+"See every customer who has asked for a return, with their return rate by "
+"number of orders and by spend, and stop abuse without blocking honest "
+"customers."
+msgstr ""
+
+#: includes/admin-dashboard.php:346
+msgid "Return rate by orders and by value for every customer"
+msgstr ""
+
+#: includes/admin-dashboard.php:347
+#: templates/admin/configuration/configuration-template.php:536
+msgid "Serial returner, very quick return, late-in-window and high-value flags"
+msgstr ""
+
+#: includes/admin-dashboard.php:348
+msgid "Risk score on every request and in the list"
+msgstr ""
+
+#: includes/admin-dashboard.php:349
+msgid ""
+"Flag a customer to hold their requests for review, or block by email and "
+"domain"
+msgstr ""
+
+#: includes/admin-dashboard.php:350
+msgid "EU withdrawals are never refused, only flagged"
+msgstr ""
+
+#: includes/admin-dashboard.php:408
+msgid "Delete this permanently? This cannot be undone."
+msgstr ""
+
+#: includes/admin-dashboard.php:409
+msgid "Refund this request now? Refunds cannot be undone from here."
+msgstr ""
+
+#: includes/admin-dashboard.php:410
+msgid "Choose a label file"
+msgstr ""
+
+#: includes/admin-dashboard.php:411
+msgid "Use this file"
+msgstr ""
+
+#: includes/admin-dashboard.php:412
+#: templates/admin/configuration/configuration-template.php:688
+msgid "Remove"
+msgstr ""
+
+#: includes/admin-dashboard.php:430
+#. translators: %s: five-star link
+msgid ""
+"If you really like our plugin, please leave us a %s rating, we'll really "
+"appreciate it."
+msgstr ""
+
+#: includes/common/common-functions.php:139
+msgid "You are not allowed to view this file."
+msgstr ""
+
+#: includes/common/common-functions.php:160
+#: includes/common/common-functions.php:175
+#: includes/common/common-functions.php:230
+msgid "Return and withdrawal requests"
+msgstr ""
+
+#: includes/common/common-functions.php:234
+#: templates/admin/request/requests-list-template.php:204
+msgid "Request"
+msgstr ""
+
+#: includes/common/common-functions.php:238
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:81
+#: templates/admin/configuration/configuration-template.php:627
+#: templates/admin/request/requests-list-template.php:244
+msgid "Order"
+msgstr ""
+
+#: includes/common/common-functions.php:242
+msgid "Type"
+msgstr ""
+
+#: includes/common/common-functions.php:246
+#: templates/admin/configuration/configuration-template.php:656
+#: templates/admin/request/requests-list-template.php:208
+#: templates/emails/plain/request.php:56 templates/emails/request.php:86
+msgid "Status"
+msgstr ""
+
+#: includes/common/common-functions.php:250
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:79
+#: templates/admin/request/unmatched-withdrawals-template.php:49
+msgid "Name"
+msgstr ""
+
+#: includes/common/common-functions.php:254
+#: templates/admin/configuration/configuration-template.php:697
+msgid "Email"
+msgstr ""
+
+#: includes/common/common-functions.php:258
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:82
+#: templates/front/request-view.php:27
+msgid "Submitted"
+msgstr ""
+
+#: includes/common/common-functions.php:262
+#: templates/admin/request/request-view-template.php:340
+#: templates/admin/request/request-view-template.php:496
+#: templates/admin/request/requests-list-template.php:206
+#: templates/front/request-view.php:158
+msgid "Items"
+msgstr ""
+
+#: includes/common/common-functions.php:274
+#: templates/front/request-view.php:184
+msgid "Messages"
+msgstr ""
+
+#: includes/common/common-functions.php:278
+msgid "Return tracking number"
+msgstr ""
+
+#: includes/common/common-functions.php:347
+msgid ""
+"Return requests were anonymized; their order and refund records are kept "
+"for accounting."
+msgstr ""
+
+#: includes/common/common-functions.php:364
+msgid ""
+"When you request a return or an order cancellation, or withdraw from a "
+"contract, we store your name, email address, order number, the items and "
+"reasons you choose, your messages, any photos or videos you upload, and the "
+"tracking number of your return package. We use this to handle your request "
+"and keep a record of it. Photos and videos are stored privately and are "
+"only visible to you and our staff."
+msgstr ""
+
+#: includes/common/common-functions.php:385
+#: assets/js/blocks.js:12
+msgid "Returns portal"
+msgstr ""
+
+#: includes/common/common-functions.php:398
+#: assets/js/blocks.js:17
+msgid "Withdrawal form"
+msgstr ""
+
+#: includes/common/common-functions.php:439
+msgid ""
+"Please agree to the immediate supply of the digital content to place your "
+"order."
+msgstr ""
+
+#: includes/common/common-functions.php:477
+msgid "Whether checkout asks for consent to supply digital content."
+msgstr ""
+
+#: includes/common/common-functions.php:573
+#. translators: 1: date and time, 2: product names
+msgid ""
+"On %1$s you agreed that we start supplying the digital content (%2$s) "
+"before the withdrawal period ends, and you acknowledged that you lose your "
+"right of withdrawal once the supply has started."
+msgstr ""
+
+#: includes/common/common-functions.php:596
+#. translators: %s: date and time
+msgid "Digital content consent (Art. 16(m)) given on %s."
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:24
+msgid "Customer replied (admin)"
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:25
+msgid "Sent to the store when a customer adds a message to a request."
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:40
+msgid "[{site_title}] {customer_name} replied on {request_number}"
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:49
+msgid "New reply on {request_number}"
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:67
+msgid "The customer wrote:"
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:84
+#: includes/emails/email-admin-new-request.php:84
+msgid "Recipient(s)"
+msgstr ""
+
+#: includes/emails/email-admin-customer-reply.php:87
+#: includes/emails/email-admin-new-request.php:87
+#. translators: %s: admin email
+msgid "Comma separated. Defaults to %s."
+msgstr ""
+
+#: includes/emails/email-admin-new-request.php:24
+msgid "New return request (admin)"
+msgstr ""
+
+#: includes/emails/email-admin-new-request.php:25
+msgid "Sent to the store when a customer submits a request or withdrawal."
+msgstr ""
+
+#: includes/emails/email-admin-new-request.php:40
+msgid "[{site_title}] New request {request_number} for order #{order_number}"
+msgstr ""
+
+#: includes/emails/email-admin-new-request.php:49
+msgid "New request {request_number}"
+msgstr ""
+
+#: includes/emails/email-admin-new-request.php:66
+#. translators: 1: customer name, 2: request type
+msgid "%1$s submitted a new %2$s request."
+msgstr ""
+
+#: includes/emails/email-base.php:111 includes/emails/email-base.php:250
+msgid "Open request"
+msgstr ""
+
+#: includes/emails/email-base.php:114 includes/emails/email-base.php:250
+msgid "View your request"
+msgstr ""
+
+#: includes/emails/email-base.php:183
+#: templates/admin/request/request-view-template.php:458
+msgid "Message"
+msgstr ""
+
+#: includes/emails/email-base.php:186
+msgid ""
+"Leave empty to use the built-in text, which adapts to the request (return, "
+"cancellation, withdrawal)."
+msgstr ""
+
+#: includes/emails/email-base.php:234
+msgid "Sample product"
+msgstr ""
+
+#: includes/emails/email-base.php:249
+msgid ""
+"This is a preview with a sample request. The real email explains the next "
+"step for the customer's request."
+msgstr ""
+
+#: includes/emails/email-base.php:281
+#. translators: %s: list of placeholders
+msgid "Available placeholders: %s"
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:24
+msgid "Return label ready"
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:25
+msgid ""
+"Sent to the customer when a return label is added, and as a reminder when "
+"the label has not been used."
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:38
+msgid "[{site_title}] Your return label for {request_number}"
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:47
+msgid "Your return label is ready"
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:63
+msgid ""
+"Just a reminder: your return label is ready and we have not seen the "
+"package moving yet. Print the label, attach it to the package and drop it "
+"off."
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:63
+msgid "Print the label, attach it to your package and drop it off with the carrier."
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:66
+#: templates/admin/request/request-view-template.php:560
+#: templates/front/request-view.php:144
+msgid "Tracking number"
+msgstr ""
+
+#: includes/emails/email-customer-label-ready.php:70
+#: templates/front/request-view.php:127
+msgid "Download return label"
+msgstr ""
+
+#: includes/emails/email-customer-new-message.php:24
+msgid "Return request message"
+msgstr ""
+
+#: includes/emails/email-customer-new-message.php:25
+msgid "Sent to the customer when your team replies on a request."
+msgstr ""
+
+#: includes/emails/email-customer-new-message.php:38
+msgid "[{site_title}] New message about request {request_number}"
+msgstr ""
+
+#: includes/emails/email-customer-new-message.php:47
+msgid "New message about {request_number}"
+msgstr ""
+
+#: includes/emails/email-customer-new-message.php:65
+msgid "We sent you a message about your request:"
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:24
+msgid "Return request approved"
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:25
+msgid "Sent to the customer when a request is approved."
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:38
+msgid "[{site_title}] Your request {request_number} is approved"
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:47
+msgid "Good news: request {request_number} is approved"
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:67
+msgid ""
+"Your cancellation request is approved. We have stopped the order and any "
+"payment will be refunded."
+msgstr ""
+
+#: includes/emails/email-customer-request-approved.php:69
+msgid ""
+"Your request is approved. Please pack the items below securely; we will "
+"send your return label or instructions shortly if they are not included "
+"here."
+msgstr ""
+
+#: includes/emails/email-customer-request-received.php:24
+msgid "Return request received"
+msgstr ""
+
+#: includes/emails/email-customer-request-received.php:25
+msgid "Sent to the customer when a return or cancellation request is submitted."
+msgstr ""
+
+#: includes/emails/email-customer-request-received.php:38
+msgid "[{site_title}] We received your request {request_number}"
+msgstr ""
+
+#: includes/emails/email-customer-request-received.php:47
+msgid "Request {request_number} received"
+msgstr ""
+
+#: includes/emails/email-customer-request-received.php:62
+msgid ""
+"Thanks, we have your request and will review it shortly. Here is what you "
+"asked for:"
+msgstr ""
+
+#: includes/emails/email-customer-request-rejected.php:24
+msgid "Return request rejected"
+msgstr ""
+
+#: includes/emails/email-customer-request-rejected.php:25
+msgid "Sent to the customer when a request is rejected, with the reason you give."
+msgstr ""
+
+#: includes/emails/email-customer-request-rejected.php:38
+msgid "[{site_title}] Update on your request {request_number}"
+msgstr ""
+
+#: includes/emails/email-customer-request-rejected.php:47
+msgid "Request {request_number} could not be accepted"
+msgstr ""
+
+#: includes/emails/email-customer-request-rejected.php:66
+msgid "We are sorry, we could not accept this request."
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:24
+msgid "Return resolved"
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:25
+msgid "Sent to the customer when the refund or cancellation is done."
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:38
+msgid "[{site_title}] Request {request_number} is resolved"
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:47
+msgid "Your request is resolved"
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:66
+msgid "Your order has been canceled."
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:68
+msgid ""
+"Your refund has been issued. Depending on your bank it can take a few days "
+"to appear."
+msgstr ""
+
+#: includes/emails/email-customer-resolution.php:69
+#: templates/admin/dashboard/dashboard-template.php:87
+msgid "Refunded"
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:24
+msgid "Return status updated"
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:25
+msgid ""
+"Sent to the customer when a request moves to any status marked “Notify "
+"customer” (other than approved and rejected, which have their own emails)."
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:38
+msgid "[{site_title}] Request {request_number} is now {status}"
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:47
+msgid "Request {request_number}: {status}"
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:75
+#. translators: %s: status
+msgid "Your request is now: %s."
+msgstr ""
+
+#: includes/emails/email-customer-status-updated.php:78
+msgid "Your return has arrived and we are checking it now."
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:24
+msgid "Withdrawal acknowledgement"
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:25
+msgid ""
+"Sent to the customer right after an EU withdrawal is submitted: the "
+"acknowledgement of receipt on a durable medium, with the content of the "
+"statement and the date and time it was sent (Article 11a, Directive "
+"2011/83/EU)."
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:38
+msgid "[{site_title}] Confirmation of your withdrawal for order {order_number}"
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:47
+msgid "We received your withdrawal"
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:74
+msgid ""
+"This confirms that we received your statement withdrawing from the contract "
+"below. Please keep this email as your record."
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:76
+#. translators: 1: goods, 2: order number
+msgid ""
+"I hereby give notice that I withdraw from my contract for the sale of the "
+"following goods: %1$s (order #%2$s)."
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:80
+msgid "Email for confirmation"
+msgstr ""
+
+#: includes/emails/email-customer-withdrawal-acknowledgement.php:83
+#: templates/front/withdrawal-done.php:26
+msgid "Reference"
+msgstr ""
+
+#: includes/front/front-functions.php:75
+msgid "You selected too many files."
+msgstr ""
+
+#: includes/front/front-functions.php:77
+#. translators: %s: file name
+msgid "%s is too large."
+msgstr ""
+
+#: includes/front/front-functions.php:79
+msgid "Cancel this request?"
+msgstr ""
+
+#: includes/front/front-functions.php:239
+#: includes/front/front-functions.php:322
+#: includes/front/front-functions.php:360
+#: includes/front/front-functions.php:405
+#: includes/front/front-functions.php:429
+#: includes/front/front-functions.php:463
+msgid "Your session expired. Please try again."
+msgstr ""
+
+#: includes/front/front-functions.php:247
+msgid "You do not have access to this order."
+msgstr ""
+
+#: includes/front/front-functions.php:295
+#. translators: %s: request number
+msgid "Thanks! Your request %s has been submitted. We have emailed you a copy."
+msgstr ""
+
+#: includes/front/front-functions.php:329
+msgid "You do not have access to this request."
+msgstr ""
+
+#: includes/front/front-functions.php:343
+msgid "Please write a message."
+msgstr ""
+
+#: includes/front/front-functions.php:348
+msgid "Message sent."
+msgstr ""
+
+#: includes/front/front-functions.php:367
+msgid "You cannot change this request."
+msgstr ""
+
+#: includes/front/front-functions.php:375
+msgid "Please enter the tracking number."
+msgstr ""
+
+#: includes/front/front-functions.php:387
+#. translators: 1: carrier, 2: tracking number
+msgid "Customer added return tracking: %1$s %2$s"
+msgstr ""
+
+#: includes/front/front-functions.php:393
+msgid "Thanks, we saved your tracking number."
+msgstr ""
+
+#: includes/front/front-functions.php:412
+msgid "Only requests that are still waiting for review can be canceled."
+msgstr ""
+
+#: includes/front/front-functions.php:416
+msgid "Canceled by the customer."
+msgstr ""
+
+#: includes/front/front-functions.php:417
+msgid "Your request was canceled."
+msgstr ""
+
+#: includes/front/front-functions.php:439
+msgid "Too many attempts. Please wait an hour and try again."
+msgstr ""
+
+#: includes/front/front-functions.php:448
+msgid ""
+"We could not find an order with that number and email address. Please check "
+"both and try again."
+msgstr ""
+
+#: includes/front/front-functions.php:477
+msgid "Please fill in your name, the order number and your email address."
+msgstr ""
+
+#: includes/front/front-functions.php:482
+msgid ""
+"Too many attempts. Please wait an hour and try again, or contact us "
+"directly."
+msgstr ""
+
+#: includes/front/front-functions.php:506
+msgid ""
+"We could not match that order number and email address. We have recorded "
+"your statement and our team will contact you; please also check the details "
+"and try again."
+msgstr ""
+
+#: includes/front/front-functions.php:638
+#: templates/admin/request/request-create-template.php:89
+msgid "Order not found."
+msgstr ""
+
+#: includes/front/front-functions.php:685
+msgid "Request a return"
+msgstr ""
+
+#: includes/front/front-functions.php:686 templates/front/request-form.php:161
+msgid "Request cancellation"
+msgstr ""
+
+#: includes/front/front-functions.php:687
+#: includes/front/front-functions.php:1036
+#: includes/front/front-functions.php:1063
+#: includes/front/front-functions.php:1067
+#: templates/front/withdrawal-form.php:34
+msgid "Withdraw from contract here"
+msgstr ""
+
+#: includes/front/front-functions.php:887
+msgid "This link is not valid. Look up your order below."
+msgstr ""
+
+#: includes/front/front-functions.php:894
+msgid "This link has expired. Look up your order again."
+msgstr ""
+
+#: includes/front/front-functions.php:936
+msgid "Online withdrawal is not available on this store. Please contact us."
+msgstr ""
+
+#: includes/front/front-functions.php:1060
+#. translators: %d: number of days
+msgid ""
+"You can withdraw from this contract within %d days of receiving your goods "
+"without giving any reason."
+msgstr ""
+
+#: includes/front/front-functions.php:1085
+msgid "Final sale: this item cannot be returned."
+msgstr ""
+
+#: includes/front/front-functions.php:1089
+msgid "This item is exempt from the statutory right of withdrawal."
+msgstr ""
+
+#: includes/front/front-functions.php:1118
+msgid "Return policy"
+msgstr ""
+
+#: includes/front/front-functions.php:1123
+#. translators: 1: days, 2: link open, 3: link close
+msgid ""
+"You can withdraw from this contract within %1$d days of delivery using our "
+"%2$swithdrawal function%3$s."
+msgstr ""
+
+#: includes/global-functions.php:146 templates/front/withdrawal-form.php:22
+#: templates/front/withdrawal-form.php:57
+msgid "Right of withdrawal"
+msgstr ""
+
+#: includes/global-functions.php:165
+msgid "Return"
+msgstr ""
+
+#: includes/global-functions.php:167
+msgid "Cancellation"
+msgstr ""
+
+#: includes/global-functions.php:183
+msgid "Refund to original payment"
+msgstr ""
+
+#: includes/global-functions.php:199
+msgid "Unopened"
+msgstr ""
+
+#: includes/global-functions.php:200
+msgid "Opened, unused"
+msgstr ""
+
+#: includes/global-functions.php:201
+msgid "Used or worn"
+msgstr ""
+
+#: includes/global-functions.php:202
+msgid "Damaged"
+msgstr ""
+
+#: includes/global-functions.php:203
+msgid "Defective"
+msgstr ""
+
+#: includes/global-functions.php:363
+msgid ""
+"I agree that you start supplying the digital content before the withdrawal "
+"period ends. I understand that I lose my right of withdrawal once the "
+"supply has started."
+msgstr ""
+
+#: includes/global-functions.php:462
+msgid "All"
+msgstr ""
+
+#: includes/global-functions.php:463
+#: templates/admin/request/requests-list-template.php:240
+msgid "Open"
+msgstr ""
+
+#: includes/global-functions.php:476
+msgid "Unmatched statements"
+msgstr ""
+
+#: includes/global-functions.php:504
+#. translators: %d: days
+msgid "Returns accepted within %d day of purchase."
+msgid_plural "Returns accepted within %d days of purchase."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/global-functions.php:506
+#. translators: %d: days
+msgid "Returns accepted within %d day of delivery."
+msgid_plural "Returns accepted within %d days of delivery."
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/install.php:154
+#: templates/admin/request/request-view-template.php:104
+msgid "Requested"
+msgstr ""
+
+#: includes/install.php:161
+#: templates/admin/request/request-view-template.php:105
+#: templates/front/request-view.php:28 templates/front/request-view.php:70
+msgid "Approved"
+msgstr ""
+
+#: includes/install.php:168
+msgid "Awaiting return"
+msgstr ""
+
+#: includes/install.php:175
+#: templates/admin/request/request-view-template.php:110
+#: templates/admin/request/requests-list-template.php:209
+#: templates/front/request-view.php:31
+msgid "Received"
+msgstr ""
+
+#: includes/install.php:182 templates/front/account-requests.php:41
+#: templates/front/request-view.php:33
+msgid "Completed"
+msgstr ""
+
+#: includes/install.php:189
+msgid "Rejected"
+msgstr ""
+
+#: includes/install.php:196
+msgid "Canceled"
+msgstr ""
+
+#: includes/install.php:211
+msgid "Wrong size or fit"
+msgstr ""
+
+#: includes/install.php:212
+msgid "Not as described"
+msgstr ""
+
+#: includes/install.php:213
+msgid "Arrived damaged"
+msgstr ""
+
+#: includes/install.php:214
+msgid "Defective or stopped working"
+msgstr ""
+
+#: includes/install.php:215
+msgid "Wrong item sent"
+msgstr ""
+
+#: includes/install.php:216
+msgid "Changed my mind"
+msgstr ""
+
+#: includes/install.php:217
+msgid "Found a better price"
+msgstr ""
+
+#: includes/install.php:218
+msgid "Other"
+msgstr ""
+
+#: includes/install.php:259
+msgid "Withdraw from contract"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:70
+msgid "Select a page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:98
+msgid "Choose…"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:170
+msgid ""
+"Turn the customer side on, choose which requests customers can make, and "
+"where they make them."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:173
+msgid ""
+"When off, customers see nothing; you can still create requests yourself. "
+"The EU withdrawal button has its own switch."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:174
+msgid "Orders that can be returned"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:174
+msgid "Order statuses that show the \"Request a return\" button."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:175
+msgid ""
+"Money goes back to the card or method they paid with, once you approve the "
+"return."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:180
+#: templates/admin/configuration/configuration-template.php:384
+msgid "Store credit"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:181
+msgid "Offer store credit, with an optional bonus"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:182
+msgid ""
+"Keep the money in your shop: customers pick a coupon or DevDiggers Wallet "
+"credit instead of a refund."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:189
+#: templates/admin/configuration/configuration-template.php:399
+msgid "Exchanges"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:190
+msgid "Offer exchanges for another size, color or any product"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:191
+msgid ""
+"A linked exchange order is created for you; the price difference is charged "
+"or refunded."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:198
+msgid "Warranty claims"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:199
+msgid "Let customers file warranty claims for repair or replacement"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:200
+msgid "Warranty per product, checked automatically when a claim comes in."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:203
+msgid "Cancellation requests"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:203
+msgid ""
+"Adds a \"Request cancellation\" button to orders that have not shipped yet. "
+"Approving one cancels and refunds the order."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:204
+msgid "Cancellable order statuses"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:204
+msgid "Orders in these statuses can get a cancellation request."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:209
+msgid "Instant cancellations"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:210
+msgid "Approve, cancel and refund cancellation requests automatically"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:211
+msgid "Unshipped orders are canceled and refunded the moment the customer asks."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:218
+msgid "Where customers make requests"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:219
+msgid ""
+"Logged-in customers use My Account; guests use the returns portal page "
+"(shortcode [ddwcwr_returns_portal] or the Returns portal block)."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:225
+msgid "My Account endpoint"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:226
+msgid "URL part of the My Account returns page, e.g. \"returns\"."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:232
+msgid "My Account menu label"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:233
+msgid "The name of the returns page in the customer's My Account menu."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:239
+msgid "Guest returns portal page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:240
+msgid "Created on activation. Emails link guests here."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:252
+msgid "Return window"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:253
+msgid "How long customers have to ask for a return, for every product."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:256
+msgid "Items outside the window can no longer be selected on the return form."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:261
+msgid "Completed works best when you complete orders on delivery."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:273
+msgid "Final-sale categories"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:274
+msgid ""
+"Products in these categories cannot be returned. Products also have their "
+"own \"Final sale\" box. The EU right of withdrawal is not affected."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:278
+msgid "Customer note"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:278
+msgid "Require a note with every return"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:278
+msgid ""
+"Customers must explain the problem in a few words before they can send the "
+"request."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:283
+msgid "Photos and videos"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:284
+msgid "Files are stored privately and only shown to the customer and your team."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:287
+msgid "Uploads"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:287
+msgid "Let customers attach photos and videos"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:287
+msgid "Reasons marked \"Photo required\" ask for at least one."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:288
+msgid "Maximum files"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:288
+msgid "How many photos or videos a customer can attach to one request."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:289
+msgid "Maximum size per file (MB)"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:289
+msgid ""
+"Larger files are refused with a message. Your server's upload limit still "
+"applies."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:290
+msgid "Allowed file types"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:290
+msgid "Only these file types can be uploaded with a request or a message."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:295
+msgid "Show the policy"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:296
+msgid "Tell shoppers how returns work before they buy."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:299
+msgid "Product page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:299
+msgid "Show the return window on product pages"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:299
+msgid "Shoppers see it under the Add to cart button."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:300
+msgid "Checkout"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:300
+msgid "Show the policy and withdrawal notice above the Place order button"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:300
+msgid "Works with classic and block checkout."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:304
+msgid "Policy line"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:305
+msgid ""
+"Leave empty to build it from your return window, as shown. Your own text "
+"can use {days} for the return window."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:312
+msgid "Return policy page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:313
+msgid "Linked from the product page and checkout."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:325
+msgid "Return reasons"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:326
+msgid ""
+"Customers pick one reason per item. Add as many as you need, drag to "
+"reorder, and ask for a photo where it helps."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:337
+msgid ""
+"Rename and recolor the built-in statuses. Customers get an email when a "
+"request enters a status with \"Notify\" on."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:343
+msgid "Permissions"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:344
+msgid "Choose who on your team can refund and close requests."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:346
+msgid "Let your whole team work on returns"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:347
+msgid ""
+"Give support staff access to requests without giving them the power to "
+"refund, and share the work."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:349
+msgid ""
+"Separate permissions to manage requests, refund, change settings and see "
+"reports"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:350
+msgid "Statuses only refund-permitted staff can set"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:351
+msgid "Assign requests to a team member and filter by assignee"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:352
+msgid ""
+"Your own statuses such as \"Inspecting\" or \"Sent to repair\", with colors "
+"and emails"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:362
+msgid "Refunds and stock"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:363
+msgid "What happens when you refund a return and when the items come back."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:366
+msgid "Refund through the payment gateway by default"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:366
+msgid ""
+"Gateways without refund support always record a manual refund. You can "
+"choose per request."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:367
+msgid "Tick \"Put items back in stock\" when marking a return received"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:372
+msgid "Return shipping fee"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:373
+msgid ""
+"Deducted from refunds, with its own amount for store credit and exchanges. "
+"Never charged for store-fault reasons or EU withdrawals."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:385
+msgid "Credit keeps the revenue in your store."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:387
+msgid "Turn refunds into repeat sales"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:388
+msgid ""
+"Most customers take store credit when it is offered first and comes with a "
+"small bonus. That money stays in your shop."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:390
+msgid "Store credit as a single-use coupon or DevDiggers Wallet balance"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:391
+msgid "Bonus credit, e.g. 10% extra on top of the item value"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:392
+msgid "Credit shown before refund on the return form"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:393
+msgid "Coupon expiry and refunds to the wallet"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:400
+msgid "Swap instead of refund."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:402
+msgid "Exchanges that keep the sale"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:403
+msgid ""
+"Customers pick another size, color or any product on the return form. The "
+"exchange order is created for you with the credit and the price difference "
+"on it."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:405
+msgid "Exchange for another variation of the same product"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:406
+msgid "Exchange for any product in the store, with live search"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:407
+msgid "Higher price paid through a payment link, lower price refunded"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:408
+msgid "Keep-it refunds and repair or replacement for warranty claims"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:420
+msgid "EU withdrawal button"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:421
+msgid ""
+"Directive (EU) 2023/2673 (Art. 11a of Directive 2011/83/EU, in force since "
+"19 June 2026): a \"Withdraw from contract here\" function, a statement "
+"form, a \"Confirm withdrawal\" button and an acknowledgement on a durable "
+"medium."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:424
+msgid "Offer the online withdrawal function"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:424
+msgid "On by default. Required when you sell to consumers in the EU."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:428
+msgid "Offer it for orders from"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:429
+msgid "Based on the billing country of the order."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:433
+msgid "Countries I choose"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:438
+msgid "Countries"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:438
+msgid "Used when \"Countries I choose\" is selected."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:439
+msgid "Withdrawal period (days)"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:439
+msgid "At least 14. Customers can always withdraw before the goods arrive."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:443
+msgid "Period starts"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:444
+msgid ""
+"Under EU law the 14 days start when the customer receives the goods, so "
+"\"completed\" is right if you complete orders on delivery."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:446
+msgid "When the order is completed (delivered)"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:447
+msgid "When the order is placed"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:455
+msgid "Withdrawal page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:456
+msgid "Holds [ddwcwr_withdrawal_form]. Created on activation."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:460
+msgid "Show \"Withdraw from contract here\" in the site footer"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:460
+msgid ""
+"The function must be easy to find for the whole withdrawal period. It also "
+"shows on eligible orders in My Account."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:461
+msgid "Order emails"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:461
+msgid "Add the withdrawal link to customer order emails"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:461
+msgid ""
+"Adds a \"Withdraw from contract here\" link to the processing and completed "
+"order emails."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:462
+msgid "Model form"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:462
+msgid "Show the model withdrawal form on the withdrawal page"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:462
+msgid ""
+"The Annex I(B) form, addressed to your store name, address and email from "
+"WooCommerce > Settings. For customers who prefer to write."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:463
+msgid "Digital content"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:463
+msgid "Ask for consent at checkout when the cart has downloadable products"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:463
+msgid ""
+"A required checkbox (Art. 16(m)): the customer agrees to immediate supply "
+"and loses the right of withdrawal for those downloads. The order emails "
+"confirm it. Classic checkout, and block checkout on WooCommerce versions "
+"with conditional checkout fields."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:467
+msgid "Consent text"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:468
+msgid "Label of the checkout checkbox. Leave empty for the default."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:472
+msgid "Attempts per hour"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:472
+msgid ""
+"Per visitor, for the withdrawal form and the guest order lookup. Stops "
+"people using the form to send email to strangers."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:477
+msgid "Exempt categories"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:478
+msgid ""
+"Goods exempt under Art. 16 (made to order, perishable, sealed hygiene "
+"goods…). Products also have their own \"Exempt from withdrawal\" box."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:491
+msgid ""
+"Warranty terms per product, claims from My Account and the returns portal, "
+"and extended warranties sold at checkout."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:493
+msgid "Handle warranty claims and sell extended warranties"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:494
+msgid ""
+"Customers file a claim long after the return window has closed, and the "
+"plugin checks the warranty for you. Extended warranties add revenue to "
+"every order."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:496
+msgid "Warranty per product or variation: none, limited or lifetime, with bulk edit"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:497
+msgid "Warranty shown on product pages, even when the product is out of stock"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:498
+msgid ""
+"Warranty claims checked against the purchase date, resolved by repair or "
+"replacement"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:499
+msgid "Paid extended warranties on the product page, in classic and block checkout"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:500
+msgid "Terms saved with each order, so later changes never affect past purchases"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:510
+msgid "Return shipping labels"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:511
+msgid ""
+"You can already upload a label on any request and the customer gets it by "
+"email."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:513
+msgid "Buy prepaid return labels in one click"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:514
+msgid ""
+"Connect your own EasyPost or Shippo account and buy the return label from "
+"the request screen, or automatically the moment you approve a return."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:516
+msgid "EasyPost and Shippo return labels at your own rates"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:517
+msgid "Automatic labels on approval, emailed with the tracking number"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:518
+msgid "One label per request, however many items come back"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:519
+msgid "Printable return slip with a QR code for your warehouse"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:529
+msgid "Fraud protection"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:530
+msgid ""
+"Signals on every request so you can stop return abuse without hurting "
+"honest customers."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:532
+msgid "Stop serial returners and wardrobing"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:533
+msgid ""
+"Every request gets a risk score. Flagged customers wait for a person, and "
+"blocked ones are asked to contact you. EU withdrawals are never refused, "
+"only flagged."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:535
+msgid "Return rate per customer, by number of orders and by spend"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:537
+msgid "Hold or automatically reject serial returners"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:538
+msgid "Blocklist by email address or @domain"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:549
+msgid "Let returns run themselves."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:551
+msgid "Spend less time chasing returns"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:552
+msgid ""
+"Daily jobs remind customers, close stale requests and refund received "
+"returns for you. They only act on requests submitted after you switch them "
+"on."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:554
+msgid "Reminder when a label was sent but nothing was shipped"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:555
+msgid "Ship-by reminder before a request is closed"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:556
+msgid "Close stale requests after a number of days"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:557
+msgid ""
+"Refund, credit or exchange automatically a few hours after the parcel "
+"arrives"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:558
+msgid "REST API and WooCommerce webhooks for your other tools"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:569
+msgid ""
+"Every WPReturns email is a WooCommerce email: edit the subject, heading, "
+"text and recipients, or turn it off, in WooCommerce > Settings > Emails."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:579
+msgid "Customer screens"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:580
+msgid "The returns pages use a clean default design that sits well in most themes."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:582
+msgid "Make the returns pages look like your store"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:583
+msgid ""
+"Match My Account > Returns, the return form, the guest portal and the "
+"withdrawal pages to your brand without writing CSS."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:585
+msgid "Your accent and button text colors"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:586
+msgid "Card background for dark themes"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:587
+msgid "Sharp, soft or round corners"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:598
+msgid "Settings you rarely need to change."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:601
+msgid "Uninstall"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:601
+msgid "Delete all WPReturns data when the plugin is deleted"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:601
+msgid "Requests, settings and uploaded files. Leave off to keep your records."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:619
+#: templates/admin/configuration/configuration-template.php:627
+#: templates/admin/request/request-create-template.php:111
+#: templates/admin/request/request-create-template.php:127
+#: templates/admin/request/request-view-template.php:347
+#: templates/emails/request.php:70 templates/front/request-form.php:98
+msgid "Reason"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:620
+#: templates/admin/configuration/configuration-template.php:627
+msgid "Photo required"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:621
+#: templates/admin/configuration/configuration-template.php:627
+msgid "Active"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:627
+#: templates/admin/configuration/configuration-template.php:697
+msgid "Actions"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:643
+msgid "Add reason"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:656
+#: templates/admin/configuration/configuration-template.php:662
+msgid "Color"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:656
+#: templates/admin/configuration/configuration-template.php:663
+msgid "Notify customer"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:661
+msgid "Status name"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:668
+msgid "Add status"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:679
+msgid "Reorder. Drag, or use the up and down arrow keys."
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:679
+msgid "Drag to reorder"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:697
+msgid "Sent to"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:697
+#: templates/admin/request/request-view-template.php:467
+msgid "Send"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:705
+#: templates/admin/request/request-view-template.php:437
+#: templates/admin/request/request-view-template.php:505
+#: templates/admin/request/requests-list-template.php:205
+msgid "Customer"
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:706
+#. translators: %s: email title
+msgid "Send \"%s\""
+msgstr ""
+
+#: templates/admin/configuration/configuration-template.php:707
+#: templates/admin/request/request-view-template.php:572
+msgid "Manage"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:59
+#. translators: %s: current user display name.
+msgid "Welcome back, %s! 👋🏻"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:60
+msgid "Here's how returns, cancellations and EU withdrawals are going."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:63
+msgid "Open requests"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:76
+msgid "Returns and cancellations"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:80
+msgid "Open now"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:83
+msgid "Waiting for you or the customer"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:96
+msgid "EU withdrawals"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:104
+msgid "Time to resolve"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:110
+msgid "Average, completed requests"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:117
+msgid "Requests over time"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:131
+#: templates/front/account-requests.php:62
+msgid "No requests yet"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:132
+msgid "Requests will show here as customers submit them."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:138
+msgid "Latest requests"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:142
+msgid "Return analytics"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:161
+msgid "See why items come back"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:162
+msgid ""
+"Find the products, reasons and categories that cost you the most, and the "
+"revenue store credit and exchanges kept in your shop."
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:164
+msgid "Return rate against your paid orders"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:165
+msgid "Revenue kept through store credit and exchanges"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:166
+msgid "Top reasons, resolutions and categories"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:167
+msgid "Most returned products with value"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:168
+msgid "CSV export of every request and item"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:188
+msgid "Under an hour"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:195
+#. translators: %d: number of hours
+msgid "%d hour"
+msgid_plural "%d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/dashboard/dashboard-template.php:201
+#. translators: %s: number of days
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/dashboard/dashboard-template.php:217
+#: templates/admin/request/requests-list-template.php:322
+#. translators: %s: human time difference
+msgid "%s ago"
+msgstr ""
+
+#: templates/admin/dashboard/dashboard-template.php:223
+msgid "No requests yet."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:38
+msgid "New request"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:44
+msgid ""
+"Create a request for a customer who called, emailed or came to the store. "
+"Return windows and rules do not block requests you create."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:54
+msgid "1. Find the order"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:55
+msgid "Load the order first, then choose the items below."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:64
+#: templates/front/portal-lookup.php:25 templates/front/withdrawal-form.php:67
+msgid "Order number"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:67
+msgid "The WooCommerce order number, with or without #."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:71
+msgid "Request type"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:80
+msgid "Return or cancellation. EU withdrawals can only come from the customer."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:84
+msgid "Load order"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:100
+#. translators: 1: order number, 2: customer
+msgid "2. Items of order #%1$s (%2$s)"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:101
+msgid ""
+"Set a quantity for each item the customer is sending back. Leave 0 for "
+"items that stay with the customer."
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:109
+#: templates/admin/request/request-view-template.php:345
+#: templates/emails/request.php:68
+msgid "Item"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:110
+#: templates/admin/request/request-create-template.php:120
+#: templates/front/request-form.php:87
+msgid "Quantity"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:112
+#: templates/admin/request/request-create-template.php:134
+#: templates/admin/request/request-view-template.php:348
+#: templates/front/request-form.php:107
+msgid "Condition"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:135
+msgid "Not checked"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:148
+#: templates/front/request-form.php:128
+msgid "Note"
+msgstr ""
+
+#: templates/admin/request/request-create-template.php:151
+msgid ""
+"Saved as the customer's note on the request, for example what they told you "
+"on the phone."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:49
+msgid "Request not found"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:50
+msgid "It may have been deleted."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:109
+#: templates/front/request-view.php:30
+msgid "On its way back"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:113
+#: templates/admin/request/request-view-template.php:196
+msgid "Resolved"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:140
+msgid "Refund amount"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:142
+msgid "The value of the returned items. Change it for a partial refund."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:145
+msgid "Refund goes to"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:147
+msgid "The original payment method"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:148
+msgid "Record only (I pay it back myself)"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:150
+msgid "Gateways without refund support record the refund only."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:153
+msgid "Resolve with"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:155
+msgid "Store credit, exchange or keep-it refund"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:157
+msgid ""
+"Keep the revenue: pay store credit with a bonus, or send a replacement "
+"instead."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:161
+msgid ""
+"For withdrawals you may wait until the goods arrive, or until the customer "
+"shows proof of sending, before refunding (Art. 13(3))."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:163
+msgid "Refund and resolve"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:192
+msgid "This request was rejected"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:192
+#: templates/front/request-view.php:52
+msgid "This request was canceled"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:193
+msgid "Nothing else to do. You can reopen it from \"Change status\" in the sidebar."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:196
+msgid "Resolved, ready to close"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:197
+msgid "Resolved."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:201
+msgid "Mark as completed"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:206
+msgid "Review the request"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:207
+msgid ""
+"Check the items, reasons and photos below, then approve or reject. The "
+"customer gets an email either way."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:209
+#: templates/admin/request/request-view-template.php:584
+msgid "Message to the customer"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:210
+msgid ""
+"Message to the customer (optional), e.g. how to pack the items or why you "
+"rejected it"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:212
+msgid "Approve"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:213
+msgid "Reject"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:218
+msgid "Wait for the items to come back"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:222
+msgid ""
+"The customer has a return label. When the package arrives, check the items "
+"and mark them as received."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:224
+msgid ""
+"The customer has no return label yet. Send one from \"Return shipping\" in "
+"the sidebar, or let them use their own carrier. When the package arrives, "
+"mark it as received."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:229
+msgid "Put the items back in stock (damaged and defective items are skipped)"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:230
+msgid "Mark as received"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:233
+msgid "Resolve without waiting for the items"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:238
+msgid "Items received: resolve the request"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:238
+msgid "Resolve the request"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:239
+msgid "Refund the items. The customer is emailed and the request is completed."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:292
+#. translators: 1: type, 2: source, 3: date
+msgid "%1$s · via %2$s · %3$s"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:301
+#: templates/admin/request/requests-list-template.php:253
+#: templates/front/account-requests.php:115 templates/front/portal-order.php:20
+#. translators: %s: order number
+msgid "Order #%s"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:307
+msgid "Print return slip"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:323
+#: templates/front/withdrawal-form.php:58
+msgid "Withdrawal statement"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:324
+msgid ""
+"Received through the \"Withdraw from contract here\" function. The customer "
+"got the acknowledgement email automatically."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:329
+msgid "Name given"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:331
+msgid "Confirmation email"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:333
+#: templates/admin/request/unmatched-withdrawals-template.php:48
+msgid "Received (UTC)"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:346
+#: templates/emails/request.php:69
+msgid "Qty"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:349
+#: templates/admin/request/requests-list-template.php:207
+msgid "Value"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:368
+#. translators: %d: quantity
+msgid "Restocked: %d"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:392
+#. translators: %s: customer name
+msgid "%s wrote"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:392
+msgid "The customer"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:401
+msgid "Photos and files"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:422
+msgid "Conversation"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:423
+msgid ""
+"Messages are emailed to the customer. Internal notes are only visible to "
+"your team."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:437
+msgid "System"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:443
+msgid "Internal note"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:459
+msgid "Write to the customer or add an internal note…"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:464
+#: templates/front/request-view.php:232
+msgid "Attach files"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:466
+msgid "Internal note (not sent to the customer)"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:473
+msgid "History"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:473
+msgid "Every status change, label and refund, with who did it."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:494
+msgid "Summary"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:497
+msgid "To pay back"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:499
+#: templates/front/request-view.php:179
+msgid "Paid back"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:509
+#: templates/admin/request/requests-list-template.php:267
+msgid "Guest"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:514
+msgid "All their requests"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:517
+msgid "Return rate and risk flags"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:518
+msgid ""
+"See how often this customer returns, flag serial returners and hold their "
+"requests for review."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:527
+#: templates/front/request-view.php:124
+msgid "Return shipping"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:528
+msgid "The label is emailed to the customer and shown on their request page."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:535
+msgid "Download label"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:541
+msgid "Buy return label"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:543
+msgid "EasyPost or Shippo, emailed automatically"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:546
+msgid "Upload a label"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:550
+msgid "Choose a PDF or image"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:552
+msgid "PDF or image from your carrier."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:553
+msgid "Upload label"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:558
+#: templates/front/request-view.php:140
+msgid "Carrier"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:562
+msgid "Customers can add this themselves too."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:563
+#: templates/front/request-view.php:151
+msgid "Save tracking"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:573
+msgid ""
+"Most requests only need the \"Next step\" card. Use this to set any status "
+"yourself."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:578
+msgid "Change status"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:586
+msgid "Optional. Sent with the status email."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:587
+msgid "Update status"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:591
+msgid "Assigned to"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:592
+msgid "Unassigned"
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:593
+msgid "Share the work: assign requests to your team and filter by assignee."
+msgstr ""
+
+#: templates/admin/request/request-view-template.php:598
+msgid "Delete request"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:139
+#: templates/admin/request/requests-list-template.php:140
+msgid "Bulk actions"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:145
+msgid "Filter by type"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:146
+#: templates/admin/request/requests-list-template.php:147
+msgid "All types"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:154
+msgid "Filter by reason"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:155
+#: templates/admin/request/requests-list-template.php:156
+msgid "All reasons"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:162
+msgid "From date"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:164
+msgid "To date"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:166
+msgid "Filter"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:177
+msgid "Reset filters"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:191
+msgid "No withdrawals yet"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:191
+msgid "No requests found"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:192
+msgid ""
+"Statements sent with the \"Withdraw from contract here\" button will appear "
+"here."
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:192
+msgid "Returns and cancellations your customers submit will appear here."
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:209
+#: templates/front/withdrawal-form.php:50
+msgid "Date"
+msgstr ""
+
+#: templates/admin/request/requests-list-template.php:295
+msgid "Paid back:"
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:34
+msgid ""
+"These were sent with an order number and email that did not match any "
+"order, so no acknowledgement email went out. If one looks genuine, contact "
+"the customer and create the request yourself."
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:39
+msgid "Nothing to review"
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:40
+msgid "Every statement matched an order."
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:50
+msgid "Order number given"
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:51
+msgid "Email given"
+msgstr ""
+
+#: templates/admin/request/unmatched-withdrawals-template.php:69
+msgid "Clear list"
+msgstr ""
+
+#: templates/emails/plain/request.php:30 templates/emails/request.php:33
+#. translators: %s: customer name
+msgid "Hi %s,"
+msgstr ""
+
+#: templates/emails/plain/request.php:50
+#. translators: 1: request number, 2: order number
+msgid "%1$s for order #%2$s"
+msgstr ""
+
+#: templates/emails/request.php:62
+#. translators: 1: request number, 2: request type, 3: order number
+msgid "%1$s – %2$s for order #%3$s"
+msgstr ""
+
+#: templates/front/account-requests.php:34
+msgid "Send something back"
+msgstr ""
+
+#: templates/front/account-requests.php:35
+msgid "Return items from your orders and follow every request in one place."
+msgstr ""
+
+#: templates/front/account-requests.php:40
+msgid "In progress"
+msgstr ""
+
+#: templates/front/account-requests.php:42
+msgid "Paid back to you"
+msgstr ""
+
+#: templates/front/account-requests.php:48
+msgid "Your requests"
+msgstr ""
+
+#: templates/front/account-requests.php:54
+#: templates/front/account-requests.php:64 templates/front/portal-lookup.php:20
+msgid "Start a return"
+msgstr ""
+
+#: templates/front/account-requests.php:63
+msgid "When you return something, you can follow it here."
+msgstr ""
+
+#: templates/front/account-requests.php:81
+#. translators: 1: request type, 2: order number
+msgid "%1$s · Order #%2$s"
+msgstr ""
+
+#: templates/front/account-requests.php:97
+msgid "Nothing to return right now"
+msgstr ""
+
+#: templates/front/account-requests.php:98
+msgid "Orders appear here while they can still be returned or canceled."
+msgstr ""
+
+#: templates/front/account-requests.php:101
+msgid ""
+"Pick the order and what you would like to do. You choose the items on the "
+"next screen."
+msgstr ""
+
+#: templates/front/account-requests.php:121
+#. translators: %d: number of items
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/front/order-panel.php:23
+msgid "Something not right? Start a request and we will sort it out."
+msgstr ""
+
+#: templates/front/order-panel.php:23
+msgid "Your requests for this order."
+msgstr ""
+
+#: templates/front/order-panel.php:38
+#. translators: 1: last day to request a return, 2: days left
+msgid "You can request a return until %1$s (%2$s day left)."
+msgid_plural "You can request a return until %1$s (%2$s days left)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/front/order-panel.php:40
+#. translators: 1: last day of the withdrawal period, 2: days left
+msgid "You can withdraw from this contract until %1$s (%2$s day left)."
+msgid_plural "You can withdraw from this contract until %1$s (%2$s days left)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/front/order-panel.php:58
+#. translators: 1: request type, 2: date
+msgid "%1$s · %2$s"
+msgstr ""
+
+#: templates/front/portal-lookup.php:21
+msgid ""
+"Enter your order number and the email address you used at checkout. No "
+"account needed."
+msgstr ""
+
+#: templates/front/portal-lookup.php:26
+msgid "e.g. 1042"
+msgstr ""
+
+#: templates/front/portal-lookup.php:29
+msgid "Billing email"
+msgstr ""
+
+#: templates/front/portal-lookup.php:30
+msgid "you@example.com"
+msgstr ""
+
+#: templates/front/portal-lookup.php:33 templates/front/withdrawal-form.php:105
+msgid "Leave this field empty"
+msgstr ""
+
+#: templates/front/portal-lookup.php:38
+msgid "Find my order"
+msgstr ""
+
+#: templates/front/portal-lookup.php:45
+#. translators: %1$s: link open, %2$s: link close
+msgid "Signed in? %1$sSee your orders in My Account%2$s."
+msgstr ""
+
+#: templates/front/portal-order.php:16
+msgid "Your order"
+msgstr ""
+
+#: templates/front/portal-order.php:31
+#. translators: %d: quantity
+msgid "Qty %d"
+msgstr ""
+
+#: templates/front/product-policy.php:21
+msgid "Details"
+msgstr ""
+
+#: templates/front/request-form.php:25
+#. translators: %s: order number
+msgid "Return items from order #%s"
+msgstr ""
+
+#: templates/front/request-form.php:27
+#. translators: %s: order number
+msgid "Cancel order #%s"
+msgstr ""
+
+#: templates/front/request-form.php:32 templates/front/request-view.php:75
+msgid "Back"
+msgstr ""
+
+#: templates/front/request-form.php:36
+msgid "Choose what to cancel. We stop the order before it ships and refund you."
+msgstr ""
+
+#: templates/front/request-form.php:36
+msgid "Choose the items and tell us what went wrong. It takes about a minute."
+msgstr ""
+
+#: templates/front/request-form.php:42
+msgid "Nothing in this order can be requested right now"
+msgstr ""
+
+#: templates/front/request-form.php:56
+msgid "Items to cancel"
+msgstr ""
+
+#: templates/front/request-form.php:56
+msgid "Which items?"
+msgstr ""
+
+#: templates/front/request-form.php:76
+#. translators: %s: date
+msgid "Request by %s"
+msgstr ""
+
+#: templates/front/request-form.php:90
+msgid "Fewer"
+msgstr ""
+
+#: templates/front/request-form.php:92
+msgid "More"
+msgstr ""
+
+#: templates/front/request-form.php:100
+msgid "Choose a reason"
+msgstr ""
+
+#: templates/front/request-form.php:109
+msgid "Select"
+msgstr ""
+
+#: templates/front/request-form.php:126
+msgid "Anything else?"
+msgstr ""
+
+#: templates/front/request-form.php:136
+msgid "Add photos or videos"
+msgstr ""
+
+#: templates/front/request-form.php:141
+#. translators: 1: number of files, 2: size in MB, 3: file types
+msgid "Up to %1$d files, %2$s MB each (%3$s)."
+msgstr ""
+
+#: templates/front/request-form.php:143
+msgid "Photos are required for this request."
+msgstr ""
+
+#: templates/front/request-form.php:161
+msgid "Submit request"
+msgstr ""
+
+#: templates/front/request-view.php:48
+msgid "We could not accept this request"
+msgstr ""
+
+#: templates/front/request-view.php:49
+msgid "See our message below for the reason. Reply there if you have questions."
+msgstr ""
+
+#: templates/front/request-view.php:53
+msgid "Nothing else to do. You can start a new request from your orders."
+msgstr ""
+
+#: templates/front/request-view.php:56
+msgid "All done"
+msgstr ""
+
+#: templates/front/request-view.php:57
+msgid "Your request has been resolved."
+msgstr ""
+
+#: templates/front/request-view.php:59
+msgid "We are reviewing your request"
+msgstr ""
+
+#: templates/front/request-view.php:60
+msgid ""
+"You will get an email as soon as we decide. Please do not send anything "
+"back yet."
+msgstr ""
+
+#: templates/front/request-view.php:62
+msgid "We have your items"
+msgstr ""
+
+#: templates/front/request-view.php:63
+msgid "We are checking them now. Your refund follows shortly."
+msgstr ""
+
+#: templates/front/request-view.php:66
+msgid "Approved: send your items back"
+msgstr ""
+
+#: templates/front/request-view.php:67
+msgid ""
+"Print the return label, stick it on the package and drop it off with the "
+"carrier."
+msgstr ""
+
+#: templates/front/request-view.php:67
+msgid ""
+"Pack the items securely and send them to us, then add the tracking number "
+"below."
+msgstr ""
+
+#: templates/front/request-view.php:71
+msgid "No need to send anything back. Your refund is on its way."
+msgstr ""
+
+#: templates/front/request-view.php:85
+#. translators: 1: order number, 2: date
+msgid "Order #%1$s · Sent %2$s"
+msgstr ""
+
+#: templates/front/request-view.php:93
+msgid "Request progress"
+msgstr ""
+
+#: templates/front/request-view.php:115
+#. translators: %s: amount
+msgid ""
+"%s is on its way back to your original payment method. Banks usually take a "
+"few days to show it."
+msgstr ""
+
+#: templates/front/request-view.php:129
+msgid "Use any carrier you like and keep the receipt."
+msgstr ""
+
+#: templates/front/request-view.php:135
+msgid "Tracking"
+msgstr ""
+
+#: templates/front/request-view.php:141
+msgid "e.g. UPS"
+msgstr ""
+
+#: templates/front/request-view.php:169
+#. translators: 1: quantity, 2: reason
+msgid "Qty %1$d · %2$s"
+msgstr ""
+
+#: templates/front/request-view.php:179
+msgid "You will get"
+msgstr ""
+
+#: templates/front/request-view.php:186
+msgid "No messages yet. Ask us anything about this request below."
+msgstr ""
+
+#: templates/front/request-view.php:192
+msgid "You"
+msgstr ""
+
+#: templates/front/request-view.php:226
+msgid "Your message"
+msgstr ""
+
+#: templates/front/request-view.php:227
+msgid "Ask us anything about this request…"
+msgstr ""
+
+#: templates/front/request-view.php:240
+msgid "Send message"
+msgstr ""
+
+#: templates/front/request-view.php:251
+msgid "Cancel this request"
+msgstr ""
+
+#: templates/front/withdrawal-done.php:18
+msgid "Withdrawal received"
+msgstr ""
+
+#: templates/front/withdrawal-done.php:22
+#. translators: 1: date and time, 2: email
+msgid ""
+"We received your withdrawal statement on %1$s. An acknowledgement has been "
+"sent to %2$s."
+msgstr ""
+
+#: templates/front/withdrawal-done.php:28
+msgid "Goods"
+msgstr ""
+
+#: templates/front/withdrawal-done.php:45
+msgid ""
+"Please send the goods back within 14 days. We will refund your payment, "
+"including standard delivery costs, after we receive the goods or proof that "
+"you sent them."
+msgstr ""
+
+#: templates/front/withdrawal-done.php:46
+msgid "Track this withdrawal"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:26
+#. translators: %d: number of days
+msgid ""
+"You can withdraw from your contract within %d days of receiving your goods, "
+"without giving any reason."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:30
+msgid "Fill in your name, order number and email."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:31
+msgid "Confirm the withdrawal."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:32
+msgid "Get an email confirming the date and time we received it."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:38
+msgid "Prefer to write to us? Model withdrawal form"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:39
+msgid ""
+"Complete and return this form only if you wish to withdraw from the "
+"contract. You can also use the button above."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:42
+msgid "To:"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:45
+msgid ""
+"I/We (*) hereby give notice that I/We (*) withdraw from my/our (*) contract "
+"of sale of the following goods (*)/for the provision of the following "
+"service (*),"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:46
+msgid "Ordered on (*)/received on (*),"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:47
+msgid "Name of consumer(s),"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:48
+msgid "Address of consumer(s),"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:49
+msgid "Signature of consumer(s) (only if this form is notified on paper),"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:52
+msgid "(*) Delete as appropriate."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:59
+msgid ""
+"Check the details below and confirm. We will email you an acknowledgement "
+"with the date and time we received your statement."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:62
+msgid "Your name"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:70
+msgid "Choose an order"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:73
+#. translators: 1: order number, 2: date
+msgid "#%1$s – %2$s"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:82
+msgid "Email for the confirmation"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:84
+msgid "Use the email address of the order."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:89
+msgid "Goods you withdraw from"
+msgstr ""
+
+#: templates/front/withdrawal-form.php:101
+msgid ""
+"The statement covers every item of the order that can still be withdrawn "
+"from."
+msgstr ""
+
+#: templates/front/withdrawal-form.php:111
+msgid "Confirm withdrawal"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WPReturns – Returns, RMA & EU Withdrawal Button for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://wpreturns.com/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Let customers request returns and cancellations from My Account or a guest "
+"returns portal, add the EU \"Withdraw from contract here\" button, and "
+"handle every request, photo, message and refund from one screen."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "DevDiggers"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://devdiggers.com/"
+msgstr ""
+
+#: assets/js/blocks.js:13
+msgid "Lets customers find an order and request a return without an account."
+msgstr ""
+
+#: assets/js/blocks.js:18
+msgid "The EU \"Withdraw from contract here\" function with the confirmation step."
+msgstr ""
+

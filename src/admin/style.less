@@ -1,0 +1,813 @@
+// WPReturns admin. Built on the framework look (MultiPOS / LoyaltyX conventions).
+
+// Request status badge: color from the status settings.
+.ddwcwr-status {
+	--ddwcwr-status-color: #6b7280;
+	background-color: #e1e4ea;
+	background-color: color-mix( in srgb, var( --ddwcwr-status-color ) 12%, #fff );
+	border-radius: 6px;
+	color: var( --ddwcwr-status-color );
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.5;
+	padding: 2px 10px;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.ddwcwr-list-meta {
+	color: #6b7280;
+	display: block;
+	font-size: 12px;
+	line-height: 1.5;
+}
+
+.ddwcwr-pill {
+	background: rgba( 255, 72, 0, 0.07 );
+	border-radius: 999px;
+	color: #b45309;
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.6;
+	margin: 2px 4px 2px 0;
+	padding: 0 8px;
+}
+
+.ddwcwr-pill {
+	background: var( --ddfw-tab-background-color, #eef4ff );
+	color: var( --ddfw-primary-color, #0256ff );
+}
+
+.ddwcwr-filters {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+
+	select {
+		max-width: 180px;
+	}
+}
+
+// Request screen.
+.ddwcwr-request-screen {
+	.ddfw-edit-screen-bar-heading h2 {
+		align-items: center;
+		display: flex;
+		gap: 10px;
+	}
+
+	// Many short forms in the rail: let it scroll with the page, and keep its cards inside the 320px column.
+	.ddfw-edit-screen-side {
+		grid-template-columns: minmax( 0, 1fr );
+		position: static;
+
+		.ddfw-fields-section {
+			box-sizing: border-box;
+			min-width: 0;
+		}
+	}
+
+	.ddwcwr-field-title {
+		display: block;
+		font-weight: 500;
+		margin: 12px 0 4px;
+	}
+
+	.ddfw-edit-screen-side,
+	.ddwcwr-next-step-body {
+		label:not(.ddwcwr-check) {
+			display: block;
+			font-weight: 500;
+			margin: 12px 0 4px;
+		}
+
+		select,
+		textarea,
+		input[type="text"],
+		input[type="number"] {
+			box-sizing: border-box;
+			max-width: 100%;
+			width: 100%;
+		}
+
+		.description {
+			color: #6b7280;
+			display: block;
+			font-size: 12px;
+			margin-top: 4px;
+		}
+	}
+
+	h4 {
+		font-size: 13px;
+		margin: 20px 0 8px;
+	}
+
+	textarea {
+		box-sizing: border-box;
+		width: 100%;
+	}
+}
+
+.ddwcwr-check {
+	align-items: flex-start;
+	display: flex;
+	gap: 8px;
+	margin: 12px 0 0;
+
+	input[type="checkbox"] {
+		margin: 2px 0 0;
+	}
+}
+
+.ddwcwr-actions {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 14px 0 0;
+}
+
+// Next step card: progress tracker + the action that moves the request on.
+.ddwcwr-next-step {
+	h3 {
+		font-size: 16px;
+		margin: 0 0 4px;
+	}
+
+	.ddwcwr-next-step-body > p {
+		color: #4b5563;
+		margin: 0 0 8px;
+	}
+}
+
+.ddwcwr-steps {
+	counter-reset: ddwcwr-step;
+	display: flex;
+	list-style: none;
+	margin: 0 0 22px;
+	padding: 0;
+
+	li {
+		color: #9ca3af;
+		flex: 1;
+		font-size: 12px;
+		font-weight: 500;
+		margin: 0;
+		position: relative;
+		text-align: center;
+
+		&::before {
+			background: #fff;
+			border: 2px solid #d1d5db;
+			border-radius: 50%;
+			box-sizing: border-box;
+			content: '';
+			display: block;
+			height: 14px;
+			margin: 0 auto 6px;
+			position: relative;
+			width: 14px;
+			z-index: 1;
+		}
+
+		&::after {
+			background: #e5e7eb;
+			content: '';
+			height: 2px;
+			left: -50%;
+			position: absolute;
+			right: 50%;
+			top: 6px;
+		}
+
+		&:first-child::after {
+			display: none;
+		}
+
+		&.is-done,
+		&.is-current {
+			color: #111827;
+		}
+
+		&.is-done::before {
+			background: var( --ddfw-primary-color, #0256ff );
+			border-color: var( --ddfw-primary-color, #0256ff );
+		}
+
+		&.is-done::after,
+		&.is-current::after {
+			background: var( --ddfw-primary-color, #0256ff );
+		}
+
+		&.is-current::before {
+			border-color: var( --ddfw-primary-color, #0256ff );
+			box-shadow: 0 0 0 4px var( --ddfw-tab-background-color, #eef4ff );
+		}
+	}
+
+	&.is-closed li {
+		color: #9ca3af;
+	}
+}
+
+.ddwcwr-fields-grid {
+	display: grid;
+	gap: 0 16px;
+	grid-template-columns: repeat( auto-fit, minmax( 200px, 1fr ) );
+
+	p {
+		margin: 0;
+	}
+}
+
+.ddwcwr-more {
+	border-top: 1px solid #f3f4f6;
+	margin-top: 18px;
+	padding-top: 12px;
+
+	summary {
+		color: var( --ddfw-primary-color, #0256ff );
+		cursor: pointer;
+		font-weight: 500;
+	}
+}
+
+.ddwcwr-history-card {
+	summary {
+		cursor: pointer;
+		list-style: none;
+
+		&::-webkit-details-marker {
+			display: none;
+		}
+
+		h3 {
+			display: inline-block;
+			font-size: 15px;
+			margin: 0 8px 0 0;
+		}
+	}
+
+	&[open] summary {
+		margin-bottom: 16px;
+	}
+}
+
+.ddwcwr-rows {
+	margin: 0;
+
+	> div {
+		display: flex;
+		gap: 12px;
+		justify-content: space-between;
+		padding: 5px 0;
+	}
+
+	dt {
+		color: #6b7280;
+	}
+
+	dd {
+		margin: 0;
+		text-align: right;
+	}
+
+	.is-total {
+		border-top: 1px solid #f3f4f6;
+		font-weight: 600;
+		margin-top: 4px;
+		padding-top: 10px;
+
+		dt {
+			color: #111827;
+		}
+	}
+
+	.is-result dd {
+		color: #15803d;
+		font-weight: 600;
+	}
+}
+
+.ddwcwr-person {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+	margin-bottom: 12px;
+
+	img {
+		border-radius: 50%;
+	}
+
+	div {
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+	}
+
+	a {
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+.ddwcwr-items-table {
+	td {
+		vertical-align: top;
+	}
+
+	.ddwcwr-col-item {
+		width: 40%;
+	}
+}
+
+.ddwcwr-item-cell {
+	align-items: flex-start;
+	display: flex;
+	gap: 10px;
+
+	img {
+		border-radius: 6px;
+		height: 40px;
+		object-fit: cover;
+		width: 40px;
+	}
+}
+
+.ddwcwr-photos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	img {
+		border: 1px solid #e5e7eb;
+		border-radius: 8px;
+		display: block;
+		height: 110px;
+		object-fit: cover;
+		width: 110px;
+	}
+}
+
+.ddwcwr-file-chip {
+	background: #f3f4f6;
+	border-radius: 6px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 4px 6px 0 0;
+	padding: 4px 8px;
+	text-decoration: none;
+}
+
+.ddwcwr-thread {
+	list-style: none;
+	margin: 0 0 16px;
+	padding: 0;
+
+	&-item {
+		background: #f9fafb;
+		border: 1px solid #eef0f3;
+		border-radius: 10px;
+		margin-bottom: 10px;
+		max-width: 88%;
+		padding: 10px 14px;
+	}
+
+	&-staff,
+	&-system {
+		background: var( --ddfw-tab-background-color, #eef4ff );
+		border-color: transparent;
+		margin-left: auto;
+	}
+
+	&-note {
+		background: #fffbeb;
+		border-color: #fde68a;
+		margin-left: auto;
+	}
+
+	&-meta {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		font-size: 12px;
+		gap: 8px;
+
+		time {
+			color: #6b7280;
+			margin-left: auto;
+		}
+	}
+
+	&-body p {
+		margin: 6px 0 0;
+	}
+}
+
+// Composer row: file picker, internal-note toggle and Send share one 36px line.
+.ddwcwr-form-row {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 12px;
+
+	> .ddwcwr-file-button,
+	> .button {
+		box-sizing: border-box;
+		min-height: 36px;
+	}
+
+	.ddwcwr-check {
+		align-items: center;
+		margin: 0;
+
+		input[type="checkbox"] {
+			margin: 0;
+		}
+	}
+
+	> .button {
+		height: 36px;
+		line-height: 34px;
+		margin-left: auto;
+		min-height: 0;
+		padding: 0 18px;
+	}
+}
+
+.ddwcwr-history {
+	list-style: none;
+	margin: 0;
+	max-height: 420px;
+	overflow: auto;
+	padding: 0;
+
+	li {
+		border-left: 2px solid #e5e7eb;
+		margin: 0 0 0 6px;
+		padding: 0 0 12px 14px;
+		position: relative;
+
+		&::before {
+			background: var( --ddfw-primary-color, #0256ff );
+			border-radius: 50%;
+			content: '';
+			height: 8px;
+			left: -5px;
+			position: absolute;
+			top: 6px;
+			width: 8px;
+		}
+	}
+}
+
+.ddwcwr-button-danger,
+.button.ddwcwr-button-danger {
+	color: #b91c1c;
+}
+
+.ddwcwr-result {
+	background: #f0fdf4;
+	border-radius: 8px;
+	color: #14532d;
+	margin-top: 8px;
+	padding: 10px 12px;
+}
+
+.ddwcwr-dl {
+	display: grid;
+	gap: 4px 12px;
+	grid-template-columns: max-content 1fr;
+	margin: 0;
+
+	dt {
+		color: #6b7280;
+	}
+
+	dd {
+		margin: 0;
+	}
+}
+
+.is-busy {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+// Configuration tables: reasons, statuses and emails.
+.ddwcwr-settings-table.ddwcwr-settings-table {
+	th,
+	td {
+		vertical-align: middle;
+	}
+
+	input.regular-text {
+		max-width: 360px;
+		min-width: 260px;
+		width: 100%;
+	}
+
+	.ddwcwr-col-toggle {
+		text-align: center;
+		width: 110px;
+	}
+
+	.ddwcwr-col-color {
+		width: 150px;
+	}
+
+	.ddwcwr-col-recipient {
+		width: 120px;
+	}
+
+	.ddwcwr-col-drag {
+		padding-left: 8px;
+		padding-right: 0;
+		width: 32px;
+	}
+
+	.ddwcwr-col-actions {
+		text-align: right;
+		width: 90px;
+	}
+
+	// Framework buttons are 38px; rows read better with a compact one.
+	.ddwcwr-col-actions .button.button-small {
+		font-size: 12px;
+		height: 28px;
+		line-height: 26px;
+		min-height: 0;
+		padding: 0 12px;
+	}
+
+	.ddwcwr-list-meta {
+		margin-top: 4px;
+	}
+
+	.ddwcwr-email-toggle {
+		justify-content: center;
+	}
+}
+
+.ddwcwr-repeater {
+	margin-bottom: 10px;
+}
+
+.ddwcwr-icon-button {
+	align-items: center;
+	background: transparent;
+	border: 0;
+	border-radius: 6px;
+	box-shadow: none;
+	color: #6b7280;
+	cursor: pointer;
+	display: inline-flex;
+	height: 30px;
+	justify-content: center;
+	padding: 0;
+	width: 30px;
+
+	.dashicons {
+		font-size: 18px;
+		height: 18px;
+		width: 18px;
+	}
+}
+
+// Framework red, no border: the icon is the button.
+.ddwcwr-icon-button-danger {
+	color: var( --ddfw-error-color, #ff4800 );
+
+	&:hover,
+	&:focus-visible {
+		background: var( --ddfw-error-background-color, rgba( 255, 72, 0, 0.07 ) );
+		color: var( --ddfw-error-color, #ff4800 );
+		outline: none;
+	}
+}
+
+.ddwcwr-drag-handle {
+	align-items: center;
+	border-radius: 6px;
+	color: #9ca3af;
+	cursor: grab;
+	display: inline-flex;
+	height: 30px;
+	justify-content: center;
+	width: 24px;
+
+	&:hover,
+	&:focus-visible {
+		background: #f3f4f6;
+		color: var( --ddfw-primary-color, #0256ff );
+		outline: none;
+	}
+}
+
+.ui-sortable-helper {
+	background: #fff;
+	box-shadow: 0 8px 24px rgba( 17, 24, 39, 0.12 );
+	display: table;
+
+	.ddwcwr-drag-handle {
+		cursor: grabbing;
+	}
+}
+
+.ddwcwr-sortable-placeholder td {
+	background: #f5f8ff;
+	border: 1px dashed #b9cbff !important;
+}
+
+.ddwcwr-inline {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+// WooCommerce screens.
+.ddwcwr-order-box {
+	margin: 0;
+
+	li {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+	}
+}
+
+.column-ddwcwr_returns {
+	width: 120px;
+}
+
+@media ( max-width: 782px ) {
+	.ddwcwr-thread-item {
+		max-width: 100%;
+	}
+}
+
+// WP_List_Table views print " |" text between items; the framework shows views as pills, so hide the separators.
+.ddwcwr-list-form .subsubsub {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2px;
+	max-width: 100%;
+}
+
+.ddwcwr-list-form .subsubsub li {
+	display: block;
+	font-size: 0;
+	line-height: 0;
+	white-space: nowrap;
+
+	a {
+		font-size: 13px;
+	}
+}
+
+// File picker: a button with the chosen file names instead of the native "Choose file" control.
+.ddwcwr-file-button {
+	align-items: center;
+	background: #fff;
+	border: 1px solid #d1d5db;
+	border-radius: 6px;
+	color: #374151;
+	cursor: pointer;
+	display: inline-flex !important;
+	font-weight: 500 !important;
+	gap: 6px;
+	margin: 0 !important;
+	max-width: 100%;
+	padding: 5px 10px;
+	position: relative;
+
+	&:hover,
+	&:focus-within {
+		border-color: var( --ddfw-primary-color, #0256ff );
+		color: var( --ddfw-primary-color, #0256ff );
+	}
+
+	input[type="file"] {
+		height: 1px;
+		opacity: 0;
+		position: absolute;
+		width: 1px;
+	}
+
+	.dashicons {
+		font-size: 16px;
+		height: 16px;
+		width: 16px;
+	}
+
+	.ddwcwr-file-name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&.ddwcwr-file-drop {
+		border-style: dashed;
+		box-sizing: border-box;
+		justify-content: center;
+		padding: 14px 10px;
+		width: 100%;
+	}
+}
+
+.ddwcwr-note-card {
+	align-items: flex-start;
+	background: #f9fafb;
+	border: 1px solid #f3f4f6;
+	border-radius: 10px;
+	display: flex;
+	gap: 12px;
+	margin: 20px 0 0;
+	padding: 14px 16px;
+
+	img {
+		border-radius: 50%;
+		flex-shrink: 0;
+	}
+
+	figcaption {
+		color: #6b7280;
+		font-size: 12px;
+		font-weight: 500;
+	}
+
+	blockquote {
+		font-size: 14px;
+		margin: 2px 0 0;
+
+		p {
+			margin: 0;
+		}
+	}
+}
+
+.ddwcwr-history-card summary {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 8px;
+
+	.dashicons {
+		color: #6b7280;
+		transform: rotate( -90deg );
+		transition: transform 0.15s;
+	}
+
+	.ddwcwr-list-meta {
+		flex-basis: 100%;
+		padding-left: 28px;
+	}
+}
+
+.ddwcwr-history-card[open] summary .dashicons {
+	transform: none;
+}
+
+.button.ddwcwr-button-delete {
+	border-color: #fecaca;
+	color: #dc2626;
+
+	&:hover,
+	&:focus {
+		background: #fef2f2;
+		border-color: #dc2626;
+		color: #b91c1c;
+	}
+}
+
+.ddwcwr-email-toggle {
+	align-items: center;
+	display: inline-flex;
+	gap: 8px;
+}
+
+// Locked Pro controls: keep the wrapper as tall as its control so the PRO tag sits on its corner.
+.ddwcwr-locked-action,
+.ddwcwr-locked-field {
+	display: inline-block;
+	position: relative;
+	vertical-align: top;
+}
+
+.ddwcwr-locked-action {
+	margin-left: 4px;
+
+	.page-title-action {
+		margin-left: 0;
+		top: 0;
+	}
+}

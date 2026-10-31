@@ -8,7 +8,7 @@ Free wordpress.org plugin by [DevDiggers](https://devdiggers.com/). A returns po
 | Prefix / namespace | `ddwcwr` / `DDWCWPReturns` |
 | Requires | WordPress 6.5, PHP 7.4, WooCommerce 9.0 |
 | Tested up to | WordPress 7.1, WooCommerce 11.2 |
-| License | GPL-2.0-or-later |
+| License | GPL-3.0-or-later |
 
 ## What it does
 

@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPReturns – Returns, RMA & EU Withdrawal Button for "
 "WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpreturns\n"
-"POT-Creation-Date: 2026-10-31 09:22:04+00:00\n"
+"POT-Creation-Date: 2026-11-01 20:21:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,16 +33,16 @@ msgid ""
 msgstr ""
 
 #: functions.php:122 includes/admin/setup-wizard.php:81
-#: includes/admin-dashboard.php:107 includes/admin-dashboard.php:127
+#: includes/admin-dashboard.php:106 includes/admin-dashboard.php:126
 #: includes/common/common-functions.php:363
 msgid "WPReturns"
 msgstr ""
 
-#: functions.php:138 includes/admin-dashboard.php:135
+#: functions.php:138 includes/admin-dashboard.php:134
 msgid "Dashboard"
 msgstr ""
 
-#: functions.php:139 includes/admin-dashboard.php:160
+#: functions.php:139 includes/admin-dashboard.php:159
 msgid "Configuration"
 msgstr ""
 
@@ -70,10 +70,128 @@ msgstr ""
 msgid "Review on WordPress.org"
 msgstr ""
 
+#: helper/import/import-helper.php:114
+msgid "Unknown source."
+msgstr ""
+
+#: helper/import/import-helper.php:124
+msgid ""
+"This import is already running in another tab. Wait for it to finish, then "
+"run it again."
+msgstr ""
+
+#: helper/import/import-helper.php:229
+#. translators: %s: reason
+msgid "Reason: %s"
+msgstr ""
+
+#: helper/import/import-helper.php:333
+#. translators: 1: plugin name, 2: plugin vendor, 3: order number
+msgid "Imported from %1$s by %2$s (order #%3$s)."
+msgstr ""
+
+#: helper/import/import-helper.php:418 helper/import/import-helper.php:421
+msgid "Refund Requested"
+msgstr ""
+
+#: helper/import/import-helper.php:419
+msgid "Refund Approved"
+msgstr ""
+
+#: helper/import/import-helper.php:420
+msgid "Refund Cancelled"
+msgstr ""
+
+#: helper/import/import-helper.php:422
+msgid "Pending Withdrawal"
+msgstr ""
+
+#: helper/import/import-helper.php:423
+msgid "Cancel Request"
+msgstr ""
+
+#: helper/import/import-helper.php:424
+msgid "Cancel Requested"
+msgstr ""
+
+#: helper/import/import-helper.php:425
+msgid "Return Requested"
+msgstr ""
+
+#: helper/import/import-helper.php:426
+msgid "Withdrawal"
+msgstr ""
+
+#: helper/import/source/buddypilot-source.php:29
+msgid "BuddyPilot Withdrawal"
+msgstr ""
+
+#: helper/import/source/buddypilot-source.php:142
+#. translators: %s: item name
+msgid "%s: accepted"
+msgstr ""
+
+#: helper/import/source/buddypilot-source.php:144
+#. translators: %s: item name
+msgid "%s: rejected"
+msgstr ""
+
+#: helper/import/source/easyreturn-source.php:29
+msgid "Withdrawal Button – Easy Return"
+msgstr ""
+
+#: helper/import/source/germanized-source.php:30
+msgid "Germanized for WooCommerce"
+msgstr ""
+
+#: helper/import/source/piweb-source.php:30
+msgid "Cancel Order Request for WooCommerce"
+msgstr ""
+
+#: helper/import/source/shiptastic-source.php:30
+msgid "Shiptastic for WooCommerce"
+msgstr ""
+
+#: helper/import/source/wccancel-source.php:29
+msgid "WC Cancel Order"
+msgstr ""
+
+#: helper/import/source/wpdesk-source.php:30
+msgid "Flexible Refund and Return Order"
+msgstr ""
+
+#: helper/import/source/wpdesk-source.php:226
+#: helper/import/source/wps-source.php:138
+#. translators: %s: file names
+msgid "Photos sent with the request: %s"
+msgstr ""
+
+#: helper/import/source/wps-source.php:29
+msgid "Return Refund and Exchange for WooCommerce"
+msgstr ""
+
+#: helper/import/source/wps-source.php:182
+#. translators: %s: file names
+msgid "Attached: %s"
+msgstr ""
+
+#: helper/import/source/yith-source.php:29
+msgid "YITH Advanced Refund System"
+msgstr ""
+
+#: helper/import/source/yith-source.php:188
+#. translators: 1: file name, 2: file URL
+msgid "Attached: %1$s (%2$s)"
+msgstr ""
+
+#: helper/import/source/yoohw-source.php:37
+msgid "Order Cancellation & Returns"
+msgstr ""
+
 #: helper/label/label-helper.php:46 helper/request/request-helper.php:576
 #: helper/resolution/resolution-helper.php:57
 #: helper/resolution/resolution-helper.php:90
-#: includes/admin/admin-functions.php:296
+#: includes/admin/admin-functions.php:321
 #: includes/front/front-functions.php:625
 msgid "Request not found."
 msgstr ""
@@ -278,114 +396,115 @@ msgstr ""
 msgid "File not found."
 msgstr ""
 
-#: includes/admin/admin-functions.php:284
-#: includes/admin/admin-functions.php:405
-#: includes/admin/admin-functions.php:454
-#: includes/admin/admin-functions.php:524
+#: includes/admin/admin-functions.php:309
+#: includes/admin/admin-functions.php:430
+#: includes/admin/admin-functions.php:479
+#: includes/admin/admin-functions.php:549
 msgid "The link has expired. Go back and try again."
 msgstr ""
 
-#: includes/admin/admin-functions.php:288
-#: includes/admin/admin-functions.php:409
+#: includes/admin/admin-functions.php:313
+#: includes/admin/admin-functions.php:434
 msgid "You are not allowed to manage return requests."
 msgstr ""
 
-#: includes/admin/admin-functions.php:315
+#: includes/admin/admin-functions.php:340
 msgid "Status updated."
 msgstr ""
 
-#: includes/admin/admin-functions.php:327
+#: includes/admin/admin-functions.php:352
 msgid "Write a message first."
 msgstr ""
 
-#: includes/admin/admin-functions.php:333
+#: includes/admin/admin-functions.php:358
 msgid "Note added."
 msgstr ""
 
-#: includes/admin/admin-functions.php:333
+#: includes/admin/admin-functions.php:358
 msgid "Message sent to the customer."
 msgstr ""
 
-#: includes/admin/admin-functions.php:354
+#: includes/admin/admin-functions.php:379
 msgid "Choose a label file to upload."
 msgstr ""
 
-#: includes/admin/admin-functions.php:364
+#: includes/admin/admin-functions.php:389
 msgid "Label uploaded and sent to the customer."
 msgstr ""
 
-#: includes/admin/admin-functions.php:379
+#: includes/admin/admin-functions.php:404
 #. translators: 1: carrier, 2: tracking
 msgid "Tracking saved: %1$s %2$s"
 msgstr ""
 
-#: includes/admin/admin-functions.php:380
+#: includes/admin/admin-functions.php:405
 msgid "Tracking saved."
 msgstr ""
 
-#: includes/admin/admin-functions.php:386
+#: includes/admin/admin-functions.php:411
 msgid "Marked as received."
 msgstr ""
 
-#: includes/admin/admin-functions.php:391
+#: includes/admin/admin-functions.php:416
 msgid "Request deleted."
 msgstr ""
 
-#: includes/admin/admin-functions.php:395
+#: includes/admin/admin-functions.php:420
 msgid "Nothing changed."
 msgstr ""
 
-#: includes/admin/admin-functions.php:444
+#: includes/admin/admin-functions.php:469
 msgid "Request created."
 msgstr ""
 
-#: includes/admin/admin-functions.php:458
+#: includes/admin/admin-functions.php:483
 msgid "You are not allowed to export requests."
 msgstr ""
 
-#: includes/admin/admin-functions.php:528
+#: includes/admin/admin-functions.php:553
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: includes/admin/admin-functions.php:532
+#: includes/admin/admin-functions.php:557
 msgid "Unmatched submissions cleared."
 msgstr ""
 
-#: includes/admin/admin-functions.php:549
+#: includes/admin/admin-functions.php:574
 msgid "Final sale"
 msgstr ""
 
-#: includes/admin/admin-functions.php:552
+#: includes/admin/admin-functions.php:577
 msgid ""
 "Customers cannot request a return for this product. The EU right of "
 "withdrawal is not affected."
 msgstr ""
 
-#: includes/admin/admin-functions.php:559
+#: includes/admin/admin-functions.php:584
 msgid "Exempt from withdrawal"
 msgstr ""
 
-#: includes/admin/admin-functions.php:562
+#: includes/admin/admin-functions.php:587
 msgid ""
 "Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, "
 "perishable, sealed hygiene goods, etc.)."
 msgstr ""
 
-#: includes/admin/admin-functions.php:605
-#: includes/admin/admin-functions.php:652 includes/admin/setup-wizard.php:90
+#: includes/admin/admin-functions.php:630
+#: includes/admin/admin-functions.php:677 includes/admin/setup-wizard.php:90
 #: includes/admin/setup-wizard.php:227 includes/globals-variables.php:26
 #: includes/install.php:254
 #: templates/admin/configuration/configuration-template.php:175
+#: templates/admin/configuration/import-template.php:136
 #: templates/front/account-requests.php:33
 #: templates/front/account-requests.php:46 templates/front/order-panel.php:22
 msgid "Returns"
 msgstr ""
 
-#: includes/admin/admin-functions.php:637
+#: includes/admin/admin-functions.php:662
 msgid "No return requests for this order."
 msgstr ""
 
-#: includes/admin/admin-functions.php:641
+#: includes/admin/admin-functions.php:666
 #: templates/admin/request/request-create-template.php:159
 msgid "Create request"
 msgstr ""
@@ -545,6 +664,7 @@ msgid "Damaged and defective items are never restocked."
 msgstr ""
 
 #: includes/admin/setup-wizard.php:230
+#: templates/admin/configuration/import-template.php:137
 msgid "Cancellations"
 msgstr ""
 
@@ -607,11 +727,11 @@ msgid ""
 "period."
 msgstr ""
 
-#: includes/admin-dashboard.php:126
+#: includes/admin-dashboard.php:125
 msgid "WPReturns – Returns & EU Withdrawal"
 msgstr ""
 
-#: includes/admin-dashboard.php:140 includes/admin-dashboard.php:255
+#: includes/admin-dashboard.php:139 includes/admin-dashboard.php:255
 #: templates/admin/dashboard/dashboard-template.php:71
 #: templates/admin/dashboard/dashboard-template.php:126
 #: templates/admin/request/request-create-template.php:41
@@ -619,75 +739,79 @@ msgstr ""
 msgid "Requests"
 msgstr ""
 
-#: includes/admin-dashboard.php:145
+#: includes/admin-dashboard.php:144
 #: templates/admin/request/request-view-template.php:286
 msgid "Withdrawals"
 msgstr ""
 
-#: includes/admin-dashboard.php:150
+#: includes/admin-dashboard.php:149
 msgid "Rules"
 msgstr ""
 
-#: includes/admin-dashboard.php:155
+#: includes/admin-dashboard.php:154
 msgid "Customers"
 msgstr ""
 
-#: includes/admin-dashboard.php:163
+#: includes/admin-dashboard.php:162
 #: templates/admin/configuration/configuration-template.php:169
 msgid "General"
 msgstr ""
 
-#: includes/admin-dashboard.php:164
+#: includes/admin-dashboard.php:163
 msgid "Return Policy"
 msgstr ""
 
-#: includes/admin-dashboard.php:165
+#: includes/admin-dashboard.php:164
 msgid "Reasons"
 msgstr ""
 
-#: includes/admin-dashboard.php:166
+#: includes/admin-dashboard.php:165
 #: templates/admin/configuration/configuration-template.php:336
 msgid "Statuses"
 msgstr ""
 
-#: includes/admin-dashboard.php:167
+#: includes/admin-dashboard.php:166
 msgid "Resolutions"
 msgstr ""
 
-#: includes/admin-dashboard.php:168
+#: includes/admin-dashboard.php:167
 msgid "EU Withdrawal"
 msgstr ""
 
-#: includes/admin-dashboard.php:169
+#: includes/admin-dashboard.php:168
 #: templates/admin/configuration/configuration-template.php:490
 msgid "Warranty"
 msgstr ""
 
-#: includes/admin-dashboard.php:170
+#: includes/admin-dashboard.php:169
 msgid "Shipping Labels"
 msgstr ""
 
-#: includes/admin-dashboard.php:171
+#: includes/admin-dashboard.php:170
 msgid "Fraud Protection"
 msgstr ""
 
-#: includes/admin-dashboard.php:172
+#: includes/admin-dashboard.php:171
 #: templates/admin/configuration/configuration-template.php:548
 msgid "Automation"
 msgstr ""
 
-#: includes/admin-dashboard.php:173
+#: includes/admin-dashboard.php:172
 #: templates/admin/configuration/configuration-template.php:568
 msgid "Emails"
 msgstr ""
 
-#: includes/admin-dashboard.php:174
+#: includes/admin-dashboard.php:173
 msgid "Appearance"
 msgstr ""
 
-#: includes/admin-dashboard.php:175
+#: includes/admin-dashboard.php:174
 #: templates/admin/configuration/configuration-template.php:597
 msgid "Advanced"
+msgstr ""
+
+#: includes/admin-dashboard.php:175
+msgid "Import"
 msgstr ""
 
 #: includes/admin-dashboard.php:195
@@ -788,28 +912,65 @@ msgstr ""
 msgid "EU withdrawals are never refused, only flagged"
 msgstr ""
 
-#: includes/admin-dashboard.php:408
+#: includes/admin-dashboard.php:418
 msgid "Delete this permanently? This cannot be undone."
 msgstr ""
 
-#: includes/admin-dashboard.php:409
+#: includes/admin-dashboard.php:419
 msgid "Refund this request now? Refunds cannot be undone from here."
 msgstr ""
 
-#: includes/admin-dashboard.php:410
+#: includes/admin-dashboard.php:420
 msgid "Choose a label file"
 msgstr ""
 
-#: includes/admin-dashboard.php:411
+#: includes/admin-dashboard.php:421
 msgid "Use this file"
 msgstr ""
 
-#: includes/admin-dashboard.php:412
+#: includes/admin-dashboard.php:422
 #: templates/admin/configuration/configuration-template.php:688
 msgid "Remove"
 msgstr ""
 
+#: includes/admin-dashboard.php:424
+#. translators: 1: requests done, 2: requests found
+msgid "Importing… %1$d of %2$d"
+msgstr ""
+
+#: includes/admin-dashboard.php:426
+#. translators: 1: requests checked, 2: requests found
+msgid "Checking… %1$d of %2$d"
+msgstr ""
+
+#: includes/admin-dashboard.php:428
+#. translators: 1: requests to import, 2: requests skipped
+msgid "%1$d ready to import, %2$d already imported or without an order."
+msgstr ""
+
 #: includes/admin-dashboard.php:430
+#. translators: 1: requests imported, 2: requests skipped
+msgid "%1$d imported, %2$d skipped."
+msgstr ""
+
+#: includes/admin-dashboard.php:431
+msgid "Nothing new to import. You are up to date."
+msgstr ""
+
+#: includes/admin-dashboard.php:432
+msgid "Imported just now"
+msgstr ""
+
+#: includes/admin-dashboard.php:433
+#: templates/admin/configuration/import-template.php:157
+msgid "Import new requests"
+msgstr ""
+
+#: includes/admin-dashboard.php:434
+msgid "The import stopped. Run it again: requests already imported are skipped."
+msgstr ""
+
+#: includes/admin-dashboard.php:452
 #. translators: %s: five-star link
 msgid ""
 "If you really like our plugin, please leave us a %s rating, we'll really "
@@ -1614,6 +1775,7 @@ msgid ""
 msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:198
+#: templates/admin/configuration/import-template.php:139
 msgid "Warranty claims"
 msgstr ""
 
@@ -2341,6 +2503,7 @@ msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:621
 #: templates/admin/configuration/configuration-template.php:627
+#: templates/admin/configuration/import-template.php:191
 msgid "Active"
 msgstr ""
 
@@ -2405,6 +2568,181 @@ msgstr ""
 msgid "Manage"
 msgstr ""
 
+#: templates/admin/configuration/import-template.php:38
+msgid "Import from another plugin"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:39
+msgid ""
+"Bring your old return, cancellation and EU withdrawal requests into "
+"WPReturns, with their items, status, dates and messages, so your history "
+"stays in one place."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:44
+msgid "Read-only"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:44
+msgid "The other plugin's data is never changed or deleted."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:45
+msgid "Never twice"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:45
+msgid "Run it as often as you like; imported requests are skipped."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:46
+msgid "No emails"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:46
+msgid "Customers are not notified about old requests."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:55
+msgid "No other returns plugin found"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:56
+msgid ""
+"WPReturns looks for requests from the plugins below, even after they are "
+"deactivated. Nothing to bring over here."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:75
+msgid "Also supported"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:75
+msgid "Supported plugins"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:97
+msgid "Plugin with data"
+msgid_plural "Plugins with data"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/configuration/import-template.php:102
+msgid "Requests found"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:107
+msgid "Imported to WPReturns"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:138
+#: templates/admin/dashboard/dashboard-template.php:96
+msgid "EU withdrawals"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:147
+#. translators: %s: date
+msgid "Imported %s"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:147
+msgid "Imported"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:150
+msgid "Partly imported"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:153
+msgid "Ready to import"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:160
+#. translators: %s: number of requests
+msgid "Import %s request"
+msgid_plural "Import %s requests"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/configuration/import-template.php:188
+#. translators: %s: plugin vendor
+msgid "by %s"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:191
+msgid "Deactivated"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:206
+#. translators: %s: number of requests
+msgid "<strong>%s</strong> request found"
+msgid_plural "<strong>%s</strong> requests found"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/configuration/import-template.php:208
+#. translators: %s: number of requests
+msgid "<strong>%s</strong> imported"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:218
+msgid "Imported so far"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:224
+msgid "Check first"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:251
+msgid "Next steps"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:252
+msgid "Your history is in WPReturns. Two things finish the move."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:267
+msgid "Handle open requests in WPReturns"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:272
+#. translators: %s: number of requests
+msgid "%s imported request is still open."
+msgid_plural "%s imported requests are still open."
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/configuration/import-template.php:274
+msgid ""
+"Every imported request is closed. New requests now come in through "
+"WPReturns."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:280
+#: templates/admin/dashboard/dashboard-template.php:63
+msgid "Open requests"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:294
+msgid "Switch off the old plugin"
+msgid_plural "Switch off the old plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: templates/admin/configuration/import-template.php:298
+msgid ""
+"Customers then see only one returns form. Your import stays, and orders "
+"keep their status in WooCommerce."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:300
+msgid "Done. Orders they gave their own status stay visible in WooCommerce."
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:306
+msgid "Go to Plugins"
+msgstr ""
+
 #: templates/admin/dashboard/dashboard-template.php:59
 #. translators: %s: current user display name.
 msgid "Welcome back, %s! 👋🏻"
@@ -2412,10 +2750,6 @@ msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:60
 msgid "Here's how returns, cancellations and EU withdrawals are going."
-msgstr ""
-
-#: templates/admin/dashboard/dashboard-template.php:63
-msgid "Open requests"
 msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:76
@@ -2428,10 +2762,6 @@ msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:83
 msgid "Waiting for you or the customer"
-msgstr ""
-
-#: templates/admin/dashboard/dashboard-template.php:96
-msgid "EU withdrawals"
 msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:104
@@ -3567,6 +3897,11 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "https://devdiggers.com/"
+msgstr ""
+
+#: templates/admin/configuration/import-template.php:147
+msgctxt "short import date"
+msgid "M j"
 msgstr ""
 
 #: assets/js/blocks.js:13

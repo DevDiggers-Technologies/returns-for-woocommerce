@@ -24,6 +24,10 @@ if ( ! class_exists( 'DDWCWR_Common_Hooks' ) ) {
 		public function __construct( $ddwcwr_configuration ) {
 			parent::__construct( $ddwcwr_configuration );
 
+			// Order statuses of a returns plugin the store imported from, kept after that plugin is deactivated.
+			add_action( 'init', [ \DDWCWPReturns\Helper\Import\DDWCWR_Import_Helper::class, 'register_kept_statuses' ], 99 );
+			add_filter( 'wc_order_statuses', [ \DDWCWPReturns\Helper\Import\DDWCWR_Import_Helper::class, 'add_kept_statuses' ], 99 );
+
 			// Emails.
 			add_filter( 'woocommerce_email_classes', [ $this, 'ddwcwr_add_email_classes' ] );
 			add_filter( 'woocommerce_prepare_email_for_preview', [ $this, 'ddwcwr_prepare_email_preview' ] );

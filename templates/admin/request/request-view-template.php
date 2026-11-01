@@ -434,7 +434,7 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 									}
 
 									$author = $message['author_id'] ? get_userdata( $message['author_id'] ) : false;
-									$name   = 'customer' === $message['author_type'] ? ( $request['customer_name'] ? $request['customer_name'] : __( 'Customer', 'wpreturns' ) ) : ( $author ? $author->display_name : __( 'System', 'wpreturns' ) );
+									$name   = 'customer' === $message['author_type'] ? ( $request['customer_name'] ? $request['customer_name'] : __( 'Customer', 'wpreturns' ) ) : ( $author ? $author->display_name : ( 'staff' === $message['author_type'] ? get_bloginfo( 'name' ) : __( 'System', 'wpreturns' ) ) );
 									?>
 									<li class="ddwcwr-thread-item ddwcwr-thread-<?php echo esc_attr( 'note' === $message['kind'] ? 'note' : $message['author_type'] ); ?>">
 										<div class="ddwcwr-thread-meta">

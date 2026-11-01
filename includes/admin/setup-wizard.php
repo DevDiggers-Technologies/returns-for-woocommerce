@@ -123,7 +123,7 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		 * @return string
 		 */
 		protected function get_logo( $size ) {
-			return '<svg width="' . absint( $size ) . '" height="' . absint( $size ) . '" viewBox="0 0 32 32" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="15" fill="var(--ddfw-tab-background-color)"/><path d="M16 10.5 22 13.5 16 16.5 10 13.5Z" fill="var(--ddfw-primary-color)" fill-opacity="0.45"/><path d="M10 13.5 16 16.5V23.5L10 20.5Z" fill="var(--ddfw-primary-color)"/><path d="M22 13.5 16 16.5V23.5L22 20.5Z" fill="var(--ddfw-primary-color)" fill-opacity="0.75"/><path d="M13 12 19 15" stroke="white" stroke-width="1.2" stroke-linecap="round"/><path d="M9.5 9.5a7.5 7.5 0 0 1 11-1.5" stroke="var(--ddfw-primary-color)" stroke-width="1.6" stroke-linecap="round"/><path d="m8.6 7.2.9 2.3 2.3-.7" stroke="var(--ddfw-primary-color)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+			return '<svg width="' . absint( $size ) . '" height="' . absint( $size ) . '" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><rect width="64" height="64" rx="17" fill="#2f4be8"/><path d="M32 9 52 20.5 32 32 12 20.5Z" fill="#cbd2f9" stroke="#cbd2f9" stroke-width="3" stroke-linejoin="round"/><path d="M12 20.5 32 32v24L12 44.5Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/><path d="M52 20.5 32 32v24l20-11.5Z" fill="#7b8cf0" stroke="#7b8cf0" stroke-width="3" stroke-linejoin="round"/><path d="M22 14.75 42 26.25v8" fill="none" stroke="#2f4be8" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 		}
 
 		/**

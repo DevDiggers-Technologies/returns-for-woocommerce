@@ -78,6 +78,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				'ddwcwr-emails'     => '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/>',
 				'ddwcwr-appearance' => '<circle cx="13.5" cy="6.5" r="1.5"/><circle cx="17.5" cy="10.5" r="1.5"/><circle cx="8.5" cy="7.5" r="1.5"/><circle cx="6.5" cy="12.5" r="1.5"/><path d="M12 2a10 10 0 0 0 0 20c1 0 1.7-.8 1.7-1.7 0-.4-.2-.8-.4-1.1-.3-.3-.4-.7-.4-1.1 0-.9.8-1.7 1.7-1.7h2A5.5 5.5 0 0 0 22 11c0-5-4.5-9-10-9z"/>',
 				'ddwcwr-advanced'   => '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',
+				'ddwcwr-import'     => '<path d="M12 3v12M7 10l5 5 5-5"/><path d="M5 21h14"/>',
 			];
 
 			foreach ( $list as $name => $paths ) {
@@ -95,14 +96,12 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		public function ddwcwr_add_dashboard_menu() {
 			ob_start();
 			?>
-			<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-				<circle cx="16" cy="16" r="15" fill="var(--ddfw-tab-background-color)"/>
-				<path d="M16 10.5 22 13.5 16 16.5 10 13.5Z" fill="var(--ddfw-primary-color)" fill-opacity="0.45"/>
-				<path d="M10 13.5 16 16.5V23.5L10 20.5Z" fill="var(--ddfw-primary-color)"/>
-				<path d="M22 13.5 16 16.5V23.5L22 20.5Z" fill="var(--ddfw-primary-color)" fill-opacity="0.75"/>
-				<path d="M13 12 19 15" stroke="white" stroke-width="1.2" stroke-linecap="round"/>
-				<path d="M9.5 9.5a7.5 7.5 0 0 1 11-1.5" stroke="var(--ddfw-primary-color)" stroke-width="1.6" stroke-linecap="round"/>
-				<path d="m8.6 7.2.9 2.3 2.3-.7" stroke="var(--ddfw-primary-color)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+			<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<rect width="64" height="64" rx="17" fill="#2f4be8"/>
+				<path d="M32 9 52 20.5 32 32 12 20.5Z" fill="#cbd2f9" stroke="#cbd2f9" stroke-width="3" stroke-linejoin="round"/>
+				<path d="M12 20.5 32 32v24L12 44.5Z" fill="#fff" stroke="#fff" stroke-width="3" stroke-linejoin="round"/>
+				<path d="M52 20.5 32 32v24l20-11.5Z" fill="#7b8cf0" stroke="#7b8cf0" stroke-width="3" stroke-linejoin="round"/>
+				<path d="M22 14.75 42 26.25v8" fill="none" stroke="#2f4be8" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
 			<?php esc_html_e( 'WPReturns', 'wpreturns' ); ?>
 			<?php
@@ -173,6 +172,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 							'emails'      => $tab( esc_html__( 'Emails', 'wpreturns' ), 'ddwcwr-emails', 'ddwcwr_configuration_tab' ),
 							'appearance'  => $tab( esc_html__( 'Appearance', 'wpreturns' ), 'ddwcwr-appearance', 'ddwcwr_configuration_tab' ),
 							'advanced'    => $tab( esc_html__( 'Advanced', 'wpreturns' ), 'ddwcwr-advanced', 'ddwcwr_configuration_tab' ),
+							'import'      => $tab( esc_html__( 'Import', 'wpreturns' ), 'ddwcwr-import', 'ddwcwr_get_import_template' ),
 						],
 					],
 				],
@@ -355,6 +355,15 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		}
 
 		/**
+		 * Import tab: copy requests from other returns plugins.
+		 *
+		 * @return void
+		 */
+		public function ddwcwr_get_import_template() {
+			new Admin\Configuration\DDWCWR_Import_Template();
+		}
+
+		/**
 		 * Configuration tab (one template class, one method per tab).
 		 *
 		 * @return void
@@ -402,14 +411,27 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				'ddwcwr-admin-script',
 				'ddwcwrAdminObj',
 				[
-					'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-					'emailNonce' => wp_create_nonce( 'ddwcwr_toggle_email' ),
-					'i18n'       => [
+					'ajaxUrl'     => admin_url( 'admin-ajax.php' ),
+					'emailNonce'  => wp_create_nonce( 'ddwcwr_toggle_email' ),
+					'importNonce' => wp_create_nonce( 'ddwcwr_import_batch' ),
+					'i18n'        => [
 						'confirmDelete'  => esc_html__( 'Delete this permanently? This cannot be undone.', 'wpreturns' ),
 						'confirmProcess' => esc_html__( 'Refund this request now? Refunds cannot be undone from here.', 'wpreturns' ),
 						'chooseLabel'    => esc_html__( 'Choose a label file', 'wpreturns' ),
 						'useFile'        => esc_html__( 'Use this file', 'wpreturns' ),
 						'remove'         => esc_html__( 'Remove', 'wpreturns' ),
+						/* translators: 1: requests done, 2: requests found */
+						'importing'      => esc_html__( 'Importing… %1$d of %2$d', 'wpreturns' ),
+						/* translators: 1: requests checked, 2: requests found */
+						'checking'       => esc_html__( 'Checking… %1$d of %2$d', 'wpreturns' ),
+						/* translators: 1: requests to import, 2: requests skipped */
+						'checked'        => esc_html__( '%1$d ready to import, %2$d already imported or without an order.', 'wpreturns' ),
+						/* translators: 1: requests imported, 2: requests skipped */
+						'imported'       => esc_html__( '%1$d imported, %2$d skipped.', 'wpreturns' ),
+						'importedNone'   => esc_html__( 'Nothing new to import. You are up to date.', 'wpreturns' ),
+						'importedBadge'  => esc_html__( 'Imported just now', 'wpreturns' ),
+						'importNew'      => esc_html__( 'Import new requests', 'wpreturns' ),
+						'importFailed'   => esc_html__( 'The import stopped. Run it again: requests already imported are skipped.', 'wpreturns' ),
 					],
 				]
 			);

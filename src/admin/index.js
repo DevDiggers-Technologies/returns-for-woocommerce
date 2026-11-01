@@ -177,3 +177,114 @@ document.addEventListener( 'change', ( event ) => {
 			input.disabled = false;
 		} );
 } );
+
+// Import tab: run one plugin's import a batch at a time, with live progress on its card.
+document.addEventListener( 'click', ( event ) => {
+	const button = event.target.closest( '.ddwcwr-import-run' );
+
+	if ( ! button || ! window.ddwcwrAdminObj ) {
+		return;
+	}
+
+	const card = button.closest( '.ddwcwr-import-card' );
+	const status = card.querySelector( '.ddwcwr-import-status' );
+	const bar = card.querySelector( '.ddwcwr-import-progress' );
+	const buttons = card.querySelectorAll( '.ddwcwr-import-run' );
+	const dryRun = !! button.dataset.dryRun;
+	const count = Number( card.dataset.count ) || 0;
+	const before = Number( card.dataset.imported ) || 0;
+	const totals = { imported: 0, skipped: 0 };
+	const format = ( text, ...values ) => values.reduce( ( out, value, index ) => out.replace( `%${ index + 1 }$d`, value ).replace( '%d', value ), text );
+	const progress = ( value ) => {
+		const percent = count ? Math.min( 100, Math.round( ( value / count ) * 100 ) ) : 100;
+
+		bar.firstElementChild.style.width = `${ percent }%`;
+		bar.setAttribute( 'aria-valuenow', percent );
+	};
+	const finish = () => {
+		const imported = before + totals.imported;
+
+		progress( imported );
+
+		if ( dryRun ) {
+			status.textContent = format( i18n.checked, totals.imported, totals.skipped );
+			return;
+		}
+
+		status.textContent = totals.imported ? format( i18n.imported, totals.imported, totals.skipped ) : i18n.importedNone;
+		status.classList.add( 'is-success' );
+		card.dataset.imported = imported;
+		card.classList.remove( 'is-ready', 'is-partial' );
+		card.classList.add( 'is-done' );
+		card.querySelector( '.ddwcwr-import-badge' ).textContent = i18n.importedBadge;
+		card.querySelector( '.ddwcwr-import-imported-count' ).textContent = imported.toLocaleString();
+		const go = card.querySelector( '.ddwcwr-import-go' );
+
+		go.textContent = i18n.importNew;
+		go.classList.remove( 'button-primary' );
+
+		const total = document.querySelector( '.ddwcwr-import-total-imported .ddwcwr-import-stat-value' );
+		const next = document.querySelector( '.ddwcwr-import-next' );
+
+		if ( total ) {
+			total.textContent = ( ( Number( total.textContent.replace( /\D/g, '' ) ) || 0 ) + totals.imported ).toLocaleString();
+		}
+
+		if ( next && totals.imported ) {
+			next.classList.remove( 'is-hidden' );
+		}
+	};
+	const run = ( cursor ) => {
+		const body = new window.FormData();
+
+		body.append( 'action', 'ddwcwr_import_batch' );
+		body.append( 'nonce', window.ddwcwrAdminObj.importNonce );
+		body.append( 'source', card.dataset.source );
+		body.append( 'cursor', cursor );
+		body.append( 'dry_run', dryRun ? '1' : '' );
+
+		return window.fetch( window.ddwcwrAdminObj.ajaxUrl, { method: 'POST', credentials: 'same-origin', body } )
+			.then( ( response ) => response.json() )
+			.then( ( result ) => {
+				if ( ! result.success ) {
+					throw new Error( typeof result.data === 'string' ? result.data : '' );
+				}
+
+				totals.imported += result.data.imported;
+				totals.skipped += result.data.skipped;
+
+				const done = totals.imported + totals.skipped;
+
+				if ( ! result.data.done ) {
+					status.textContent = format( dryRun ? i18n.checking : i18n.importing, done, count );
+					progress( done );
+					return run( result.data.cursor );
+				}
+
+				finish();
+			} );
+	};
+
+	buttons.forEach( ( item ) => {
+		item.disabled = true;
+	} );
+	button.classList.add( 'is-busy' );
+	card.classList.add( 'is-running' );
+	status.classList.remove( 'is-success', 'is-error' );
+	status.textContent = format( dryRun ? i18n.checking : i18n.importing, 0, count );
+	progress( 0 );
+
+	run( '' )
+		.catch( ( error ) => {
+			status.textContent = error.message || i18n.importFailed;
+			status.classList.add( 'is-error' );
+			progress( Number( card.dataset.imported ) || 0 );
+		} )
+		.finally( () => {
+			buttons.forEach( ( item ) => {
+				item.disabled = false;
+			} );
+			button.classList.remove( 'is-busy' );
+			card.classList.remove( 'is-running' );
+		} );
+} );

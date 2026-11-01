@@ -28,6 +28,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Hooks' ) ) {
 
 			add_action( 'admin_init', [ $this, 'ddwcwr_register_settings' ] );
 			add_action( 'wp_ajax_ddwcwr_toggle_email', [ $this, 'ddwcwr_toggle_email' ] );
+			add_action( 'wp_ajax_ddwcwr_import_batch', [ $this, 'ddwcwr_import_batch' ] );
 			// A new My Account endpoint slug needs new rewrite rules (flushed on the next load).
 			add_action(
 				'update_option__ddwcwr_my_account_endpoint',

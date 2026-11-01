@@ -10,6 +10,7 @@
 namespace DDWCWPReturns\Includes\Admin;
 
 use DDWCWPReturns\Helper\Request\DDWCWR_Request_Helper;
+use DDWCWPReturns\Helper\Import\DDWCWR_Import_Helper;
 use DDWCWPReturns\Helper\Resolution\DDWCWR_Resolution_Helper;
 use DDWCWPReturns\Helper\Label\DDWCWR_Label_Helper;
 use DDWCWPReturns\Helper\Upload\DDWCWR_Upload_Helper;
@@ -69,6 +70,30 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 
 			update_option( 'woocommerce_' . $id . '_settings', $settings );
 			wp_send_json_success( [ 'enabled' => $settings['enabled'] ] );
+		}
+
+		/**
+		 * Import one batch of requests from another returns plugin (AJAX).
+		 *
+		 * @return void
+		 */
+		public function ddwcwr_import_batch() {
+			check_ajax_referer( 'ddwcwr_import_batch', 'nonce' );
+
+			if ( ! ddwcwr_current_user_can() ) {
+				wp_send_json_error( null, 403 );
+			}
+
+			$source = isset( $_POST['source'] ) ? sanitize_key( wp_unslash( $_POST['source'] ) ) : '';
+			$cursor = isset( $_POST['cursor'] ) ? sanitize_text_field( wp_unslash( $_POST['cursor'] ) ) : '';
+
+			$result = ( new DDWCWR_Import_Helper() )->run_batch( $source, $cursor, ! empty( $_POST['dry_run'] ) );
+
+			if ( is_wp_error( $result ) ) {
+				wp_send_json_error( $result->get_error_message(), 400 );
+			}
+
+			wp_send_json_success( $result );
 		}
 
 		/**

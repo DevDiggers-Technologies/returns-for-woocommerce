@@ -1,4 +1,4 @@
-# WPReturns – Returns, RMA & EU Withdrawal Button for WooCommerce
+# WPReturns
 
 Free wordpress.org plugin by [DevDiggers](https://devdiggers.com/). A returns portal and RMA workflow for WooCommerce plus the EU "Withdraw from contract here" function (Directive (EU) 2023/2673). WPReturns Pro (`wpreturns-pro`) is an add-on that requires this plugin.
 

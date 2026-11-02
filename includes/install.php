@@ -14,6 +14,11 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 	 */
 	class DDWCWR_Install {
 		/**
+		 * Schema and defaults version this copy installs.
+		 */
+		const DB_VERSION = '1.0.0';
+
+		/**
 		 * On plugin activation.
 		 *
 		 * @return void
@@ -42,6 +47,8 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 			self::ddwcwr_create_schema();
 			self::ddwcwr_add_default_options();
 			self::ddwcwr_create_pages();
+
+			update_option( '_ddwcwr_free_db_version', self::DB_VERSION );
 		}
 
 		/**

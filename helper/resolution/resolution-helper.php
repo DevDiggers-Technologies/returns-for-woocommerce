@@ -175,11 +175,13 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 			$this->request_helper->update_request( $request_id, $fields );
 			$this->request_helper->log( $request_id, $result['message'], $args['author_id'] );
 
-			do_action( 'ddwcwr_resolution_processed', $request_id, $result, $this->request_helper->get_request( $request_id ) );
-
+			// Complete first, so the resolution email and webhooks show the final status. The status email stays quiet
+			// for a processed request: the resolution email covers it.
 			if ( $args['complete'] ) {
 				$this->request_helper->change_status( $request_id, 'completed', [ 'author_id' => $args['author_id'] ] );
 			}
+
+			do_action( 'ddwcwr_resolution_processed', $request_id, $result, $this->request_helper->get_request( $request_id ) );
 
 			return $result;
 		}

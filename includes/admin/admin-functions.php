@@ -16,6 +16,8 @@ use DDWCWPReturns\Helper\Label\DDWCWR_Label_Helper;
 use DDWCWPReturns\Helper\Upload\DDWCWR_Upload_Helper;
 use DDWCWPReturns\Templates\Admin\Configuration\DDWCWR_Configuration_Template;
 
+use Automattic\WooCommerce\Utilities\FeaturesUtil;
+
 defined( 'ABSPATH' ) || exit();
 
 if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
@@ -412,6 +414,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					break;
 
 				case 'delete':
+					// Withdrawal statements are the store's legal record, so they cannot be deleted.
+					if ( 'withdrawal' === $request['type'] ) {
+						$this->ddwcwr_back_to_request( $request_id, __( 'Withdrawal statements cannot be deleted. They are the record that the customer withdrew.', 'wpreturns' ), true );
+					}
+
 					$this->request_helper->delete_request( $request_id );
 					wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&ddwcwr-message=' . rawurlencode( __( 'Request deleted.', 'wpreturns' ) ) ) );
 					exit;
@@ -453,7 +460,8 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			$request_id = $this->request_helper->create_request(
 				[
 					'order'    => ddwcwr_order_adapter()->get_order( $order_id ),
-					'type'     => isset( $_POST['type'] ) ? sanitize_key( wp_unslash( $_POST['type'] ) ) : 'return',
+					// Staff never file a withdrawal for the customer: the statement must come from them.
+					'type'     => isset( $_POST['type'] ) && 'withdrawal' !== sanitize_key( wp_unslash( $_POST['type'] ) ) ? sanitize_key( wp_unslash( $_POST['type'] ) ) : 'return',
 					'items'    => $items,
 					'note'     => isset( $_POST['note'] ) ? sanitize_textarea_field( wp_unslash( $_POST['note'] ) ) : '',
 					'source'   => 'admin',
@@ -696,6 +704,33 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			foreach ( array_slice( $this->request_helper->get_order_requests( $order_id ), 0, 2 ) as $request ) {
 				printf( '<a href="%1$s">%2$s</a> ', esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&request-id=' . absint( $request['id'] ) ) ), wp_kses_post( ddwcwr_get_status_badge( $request['status'] ) ) );
 			}
+		}
+
+		/**
+		 * Warn when WooCommerce's own order withdrawal form (WooCommerce 11.1+) is on next to the WPReturns button.
+		 * Two withdrawal forms would split the log and confuse customers.
+		 *
+		 * @return void
+		 */
+		public function ddwcwr_wc_withdrawal_notice() {
+			if ( 'yes' !== $this->ddwcwr_configuration['withdrawal_enabled'] || ! current_user_can( 'manage_woocommerce' ) || ! class_exists( FeaturesUtil::class ) || ! FeaturesUtil::feature_is_enabled( 'order_withdrawal' ) ) {
+				return;
+			}
+
+			$screen = get_current_screen();
+
+			if ( ! $screen || ! preg_match( '/ddwcwr|wc-settings|^plugins$|^dashboard$/', (string) $screen->id ) ) {
+				return;
+			}
+
+			printf(
+				'<div class="notice notice-warning"><p>%1$s</p><p><a href="%2$s">%3$s</a> &nbsp; <a href="%4$s">%5$s</a></p></div>',
+				esc_html__( 'WooCommerce\'s own order withdrawal form is on, and the WPReturns withdrawal button is on too. Customers would see two withdrawal forms. Keep one of them.', 'wpreturns' ),
+				esc_url( admin_url( 'admin.php?page=wc-settings&tab=advanced&section=features' ) ),
+				esc_html__( 'Turn off the WooCommerce form', 'wpreturns' ),
+				esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=configuration&tab=withdrawal' ) ),
+				esc_html__( 'Open the WPReturns withdrawal settings', 'wpreturns' )
+			);
 		}
 	}
 }

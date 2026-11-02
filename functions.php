@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: WPReturns – Returns, RMA & EU Withdrawal Button for WooCommerce
+ * Plugin Name: WPReturns
  * Description: Let customers request returns and cancellations from My Account or a guest returns portal, add the EU "Withdraw from contract here" button, and handle every request, photo, message and refund from one screen.
  * Plugin URI: https://wpreturns.com/
  * Author: DevDiggers
@@ -110,6 +110,12 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 			require_once DDWCWR_PLUGIN_FILE . 'includes/install.php';
 			require_once DDWCWR_PLUGIN_FILE . 'includes/globals-variables.php';
 
+			// The activation hook does not run on every site of a network, or after a manual upload over an older
+			// copy: install whenever this site has not been set up for this version. Every step is safe to repeat.
+			if ( DDWCWR_Install::DB_VERSION !== get_option( '_ddwcwr_free_db_version' ) ) {
+				DDWCWR_Install::ddwcwr_install();
+			}
+
 			new DDWCWR_File_Handler();
 
 			// The review notice only belongs on this plugin's own screen and its dismiss request.
@@ -156,7 +162,7 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 				$links = array_merge(
 					$links,
 					[
-						'support'       => '<a href="https://devdiggers.com/contact/" aria-label="' . esc_attr__( 'Support', 'wpreturns' ) . '">' . esc_html__( 'Support', 'wpreturns' ) . '</a>',
+						'support'       => '<a href="https://wpreturns.com/support/" aria-label="' . esc_attr__( 'Support', 'wpreturns' ) . '">' . esc_html__( 'Support', 'wpreturns' ) . '</a>',
 						'documentation' => '<a href="https://wpreturns.com/docs/" target="_blank" aria-label="' . esc_attr__( 'Documentation', 'wpreturns' ) . '">' . esc_html__( 'Documentation', 'wpreturns' ) . '</a>',
 						'review'        => self::ddwcwr_get_review_link(),
 					]

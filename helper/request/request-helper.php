@@ -356,6 +356,8 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 					'source'      => 'account',
 					'by_admin'    => false,
 					'meta'        => [],
+					// Address the request (and its emails) go to, when it is not the order's billing email.
+					'email'       => '',
 				]
 			);
 
@@ -466,7 +468,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 				[
 					'order_id'         => $order_data['id'],
 					'customer_id'      => $order_data['customer_id'],
-					'customer_email'   => strtolower( $order_data['email'] ),
+					'customer_email'   => strtolower( is_email( $args['email'] ) ? $args['email'] : $order_data['email'] ),
 					'customer_name'    => $order_data['name'],
 					'type'             => $type,
 					'status'           => 'pending',

@@ -62,7 +62,22 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 		 * @return int
 		 */
 		public function count() {
-			return $this->count_orders_with_meta( 'wps_rma_return_product' );
+			global $wpdb;
+
+			list( $table ) = $this->order_meta_table();
+			$total         = 0;
+
+			// One order can hold several requests (one per request time), so count the requests, not the orders.
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared -- Table name from order_meta_table().
+			foreach ( $wpdb->get_col( $wpdb->prepare( "SELECT meta_value FROM {$table} WHERE meta_key = %s", 'wps_rma_return_product' ) ) as $value ) {
+				$entries = maybe_unserialize( $value );
+
+				foreach ( is_array( $entries ) ? $entries : [] as $entry ) {
+					$total += is_array( $entry ) && ! empty( $entry['products'] ) ? 1 : 0;
+				}
+			}
+
+			return $total;
 		}
 
 		/**
@@ -132,11 +147,27 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 
 				$note = isset( $entry['reason'] ) ? (string) $entry['reason'] : '';
 
-				foreach ( $files as $upload ) {
-					if ( ! empty( $upload['files'] ) ) {
-						/* translators: %s: file names */
-						$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'wpreturns' ), implode( ', ', array_map( 'wp_basename', (array) $upload['files'] ) ) );
+				// WP Swings files photos under the request's date ("d-m-Y"), and "<order id>-" when none was sent.
+				$day  = is_numeric( $time ) ? gmdate( 'd-m-Y', (int) $time ) : '';
+				$sent = isset( $files[ $day ]['files'] ) ? (array) $files[ $day ]['files'] : [];
+
+				// The only request on the order owns every photo, whatever date they were filed under.
+				if ( ! $sent && 1 === count( $entries ) ) {
+					foreach ( $files as $upload ) {
+						$sent = isset( $upload['files'] ) ? array_merge( $sent, (array) $upload['files'] ) : $sent;
 					}
+				}
+
+				$photos = $sent ? array_filter(
+					array_map( 'wp_basename', $sent ),
+					function ( $name ) use ( $order ) {
+						return '' !== $name && $order->get_id() . '-' !== $name;
+					}
+				) : [];
+
+				if ( $photos ) {
+					/* translators: %s: file names */
+					$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'wpreturns' ), implode( ', ', $photos ) );
 				}
 
 				$requests[] = $this->request(

@@ -146,6 +146,11 @@ if ( ! function_exists( 'ddwcwr_get_reason_label' ) ) {
 			return __( 'Right of withdrawal', 'wpreturns' );
 		}
 
+		// Cancellation items carry the type as their reason, like withdrawals.
+		if ( 'cancellation' === $slug ) {
+			return __( 'Order cancellation', 'wpreturns' );
+		}
+
 		$reasons = ddwcwr_get_reasons( false );
 
 		return isset( $reasons[ $slug ] ) ? $reasons[ $slug ]['label'] : $slug;

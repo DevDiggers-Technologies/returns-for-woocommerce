@@ -1,4 +1,4 @@
-=== WPReturns – Returns, RMA & EU Withdrawal Button for WooCommerce ===
+=== WPReturns ===
 Contributors: devdiggers
 Plugin URI: https://wpreturns.com/
 Author: DevDiggers
@@ -21,7 +21,7 @@ Most stores still handle returns by email. The customer writes in, you ask for t
 
 **[WPReturns](https://wpreturns.com/)** gives your customers a proper returns page and gives you one screen for every return request. Customers pick the items, a reason and a quantity, add photos and send the request. You approve it, upload a return label if you have one, mark the parcel received and refund it through WooCommerce in one click. Stock goes back automatically.
 
-It also adds the **EU withdrawal button**. Since 19 June 2026, online shops selling to consumers in the EU must offer a "Withdraw from contract here" function with a confirmation step and an acknowledgement on a durable medium (Directive (EU) 2023/2673). WPReturns does all of that out of the box, for guests and account holders.
+It also adds the **EU withdrawal button**. Since 19 June 2026, online shops selling to consumers in the EU must offer a "Withdraw from contract here" function with a confirmation step and an acknowledgement on a durable medium (Directive (EU) 2023/2673). WPReturns adds the button, the confirmation step and the acknowledgement email, for guests and account holders. Check your own obligations with a lawyer in the countries you sell to.
 
 Everything runs inside WooCommerce on your own server. No account to sign up for, no per-return fees, and no customer or order data sent anywhere.
 
@@ -181,6 +181,10 @@ Yes, with both, and with classic checkout and the legacy order storage.
 = I used WPReturns Pro before. Will my data carry over? =
 
 Yes. The free plugin uses the same tables and settings. Requests, messages, photos and withdrawals stay as they are, and Pro features come back when you activate Pro again.
+
+= Where do I get support? =
+
+Free version questions go to the support forum here on WordPress.org. The developers who build WPReturns answer there. Pro license holders get direct support from DevDiggers through a ticket.
 
 == Screenshots ==
 

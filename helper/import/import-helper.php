@@ -88,7 +88,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 
 			$unmatched = count(
 				array_filter(
-					array_column( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ), 'import_key' ),
+					self::unmatched_keys(),
 					function ( $key ) use ( $slug ) {
 						return 0 === strpos( $key, $slug . ':' );
 					}
@@ -169,7 +169,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			global $wpdb;
 
 			if ( ! $request['order'] ) {
-				return in_array( $request['key'], array_column( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ), 'import_key' ), true );
+				return in_array( $request['key'], self::unmatched_keys(), true );
 			}
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -198,6 +198,9 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 					'import_key' => $request['key'],
 				];
 				update_option( '_ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
+
+				// The log keeps the last 200 statements; the keys are kept apart so a trimmed one is never imported again.
+				update_option( '_ddwcwr_imported_unmatched_keys', array_merge( self::unmatched_keys(), [ $request['key'] ] ), false );
 
 				return true;
 			}
@@ -272,7 +275,14 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			$refunded = 0;
 
 			if ( 'completed' === $status ) {
-				$refunded = null !== $request['refunded'] ? (float) $request['refunded'] : min( $total, (float) $order->get_total_refunded() );
+				if ( null !== $request['refunded'] ) {
+					$refunded = (float) $request['refunded'];
+				} else {
+					// The order's refunds are shared by every request on it: claim only what earlier imports left.
+					// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+					$claimed  = (float) $wpdb->get_var( $wpdb->prepare( "SELECT SUM(refunded_total) FROM {$wpdb->prefix}ddwcwr_requests WHERE order_id = %d AND source = 'import'", $order_data['id'] ) );
+					$refunded = max( 0, min( $total, (float) $order->get_total_refunded() - $claimed ) );
+				}
 			}
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -357,6 +367,22 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			$this->keep_order_status( $order );
 
 			return true;
+		}
+
+		/**
+		 * Import keys of withdrawal statements that named no known order.
+		 *
+		 * @return string[]
+		 */
+		protected static function unmatched_keys() {
+			return array_values(
+				array_unique(
+					array_merge(
+						(array) get_option( '_ddwcwr_imported_unmatched_keys', [] ),
+						array_filter( array_column( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ), 'import_key' ) )
+					)
+				)
+			);
 		}
 
 		/**

@@ -27,6 +27,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Hooks' ) ) {
 			parent::__construct( $ddwcwr_configuration );
 
 			add_action( 'admin_init', [ $this, 'ddwcwr_register_settings' ] );
+			add_action( 'admin_notices', [ $this, 'ddwcwr_wc_withdrawal_notice' ] );
 			add_action( 'wp_ajax_ddwcwr_toggle_email', [ $this, 'ddwcwr_toggle_email' ] );
 			add_action( 'wp_ajax_ddwcwr_import_batch', [ $this, 'ddwcwr_import_batch' ] );
 			// A new My Account endpoint slug needs new rewrite rules (flushed on the next load).

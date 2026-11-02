@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: WPReturns – Returns, RMA & EU Withdrawal Button for "
 "WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpreturns\n"
-"POT-Creation-Date: 2026-11-01 20:21:44+00:00\n"
+"POT-Creation-Date: 2026-11-01 22:11:52+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -32,41 +32,41 @@ msgid ""
 "in order to work."
 msgstr ""
 
-#: functions.php:122 includes/admin/setup-wizard.php:81
+#: functions.php:128 includes/admin/setup-wizard.php:81
 #: includes/admin-dashboard.php:106 includes/admin-dashboard.php:126
 #: includes/common/common-functions.php:363
 msgid "WPReturns"
 msgstr ""
 
-#: functions.php:138 includes/admin-dashboard.php:134
+#: functions.php:144 includes/admin-dashboard.php:134
 msgid "Dashboard"
 msgstr ""
 
-#: functions.php:139 includes/admin-dashboard.php:159
+#: functions.php:145 includes/admin-dashboard.php:159
 msgid "Configuration"
 msgstr ""
 
-#: functions.php:140
+#: functions.php:146
 msgid "Setup Wizard"
 msgstr ""
 
-#: functions.php:141
+#: functions.php:147
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: functions.php:159
+#: functions.php:165
 msgid "Support"
 msgstr ""
 
-#: functions.php:160
+#: functions.php:166
 msgid "Documentation"
 msgstr ""
 
-#: functions.php:175
+#: functions.php:181
 msgid "Review"
 msgstr ""
 
-#: functions.php:175
+#: functions.php:181
 msgid "Review on WordPress.org"
 msgstr ""
 
@@ -80,45 +80,45 @@ msgid ""
 "run it again."
 msgstr ""
 
-#: helper/import/import-helper.php:229
+#: helper/import/import-helper.php:232
 #. translators: %s: reason
 msgid "Reason: %s"
 msgstr ""
 
-#: helper/import/import-helper.php:333
+#: helper/import/import-helper.php:343
 #. translators: 1: plugin name, 2: plugin vendor, 3: order number
 msgid "Imported from %1$s by %2$s (order #%3$s)."
 msgstr ""
 
-#: helper/import/import-helper.php:418 helper/import/import-helper.php:421
+#: helper/import/import-helper.php:444 helper/import/import-helper.php:447
 msgid "Refund Requested"
 msgstr ""
 
-#: helper/import/import-helper.php:419
+#: helper/import/import-helper.php:445
 msgid "Refund Approved"
 msgstr ""
 
-#: helper/import/import-helper.php:420
+#: helper/import/import-helper.php:446
 msgid "Refund Cancelled"
 msgstr ""
 
-#: helper/import/import-helper.php:422
+#: helper/import/import-helper.php:448
 msgid "Pending Withdrawal"
 msgstr ""
 
-#: helper/import/import-helper.php:423
+#: helper/import/import-helper.php:449
 msgid "Cancel Request"
 msgstr ""
 
-#: helper/import/import-helper.php:424
+#: helper/import/import-helper.php:450
 msgid "Cancel Requested"
 msgstr ""
 
-#: helper/import/import-helper.php:425
+#: helper/import/import-helper.php:451
 msgid "Return Requested"
 msgstr ""
 
-#: helper/import/import-helper.php:426
+#: helper/import/import-helper.php:452
 msgid "Withdrawal"
 msgstr ""
 
@@ -161,7 +161,7 @@ msgid "Flexible Refund and Return Order"
 msgstr ""
 
 #: helper/import/source/wpdesk-source.php:226
-#: helper/import/source/wps-source.php:138
+#: helper/import/source/wps-source.php:170
 #. translators: %s: file names
 msgid "Photos sent with the request: %s"
 msgstr ""
@@ -170,7 +170,7 @@ msgstr ""
 msgid "Return Refund and Exchange for WooCommerce"
 msgstr ""
 
-#: helper/import/source/wps-source.php:182
+#: helper/import/source/wps-source.php:213
 #. translators: %s: file names
 msgid "Attached: %s"
 msgstr ""
@@ -188,11 +188,11 @@ msgstr ""
 msgid "Order Cancellation & Returns"
 msgstr ""
 
-#: helper/label/label-helper.php:46 helper/request/request-helper.php:576
+#: helper/label/label-helper.php:46 helper/request/request-helper.php:578
 #: helper/resolution/resolution-helper.php:57
 #: helper/resolution/resolution-helper.php:90
 #: includes/admin/admin-functions.php:321
-#: includes/front/front-functions.php:625
+#: includes/front/front-functions.php:640
 msgid "Request not found."
 msgstr ""
 
@@ -237,75 +237,75 @@ msgstr ""
 msgid "The withdrawal period ended on %s."
 msgstr ""
 
-#: helper/request/request-helper.php:365
+#: helper/request/request-helper.php:367
 msgid "We could not find that order."
 msgstr ""
 
-#: helper/request/request-helper.php:373 includes/front/front-functions.php:735
+#: helper/request/request-helper.php:375 includes/front/front-functions.php:750
 msgid "This order cannot get this kind of request right now."
 msgstr ""
 
-#: helper/request/request-helper.php:403
+#: helper/request/request-helper.php:405
 msgid "One of the selected items is not part of this order."
 msgstr ""
 
-#: helper/request/request-helper.php:410
+#: helper/request/request-helper.php:412
 #. translators: 1: product name, 2: reason
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: helper/request/request-helper.php:415
+#: helper/request/request-helper.php:417
 #. translators: 1: product name, 2: quantity
 msgid "You can request up to %2$d of %1$s."
 msgstr ""
 
-#: helper/request/request-helper.php:425
+#: helper/request/request-helper.php:427
 #. translators: %s: product name
 msgid "Please choose a reason for %s."
 msgstr ""
 
-#: helper/request/request-helper.php:447
+#: helper/request/request-helper.php:449
 msgid ""
 "Every item of this order is already covered by a request or a refund, or "
 "cannot be withdrawn from. Check your existing requests or contact us."
 msgstr ""
 
-#: helper/request/request-helper.php:450 includes/front/front-functions.php:78
+#: helper/request/request-helper.php:452 includes/front/front-functions.php:78
 msgid "Please select at least one item."
 msgstr ""
 
-#: helper/request/request-helper.php:454
+#: helper/request/request-helper.php:456
 msgid "Please add a short note about your request."
 msgstr ""
 
-#: helper/request/request-helper.php:458
+#: helper/request/request-helper.php:460
 msgid "Please add a photo of the items."
 msgstr ""
 
-#: helper/request/request-helper.php:490
+#: helper/request/request-helper.php:492
 msgid "Your request could not be saved. Please try again."
 msgstr ""
 
-#: helper/request/request-helper.php:501
+#: helper/request/request-helper.php:503
 #. translators: 1: request type, 2: source
 msgid "%1$s request submitted (%2$s)."
 msgstr ""
 
-#: helper/request/request-helper.php:508
+#: helper/request/request-helper.php:510
 #. translators: 1: request number, 2: request type
 msgid "WPReturns: %1$s (%2$s) was created for this order."
 msgstr ""
 
-#: helper/request/request-helper.php:580
+#: helper/request/request-helper.php:582
 msgid "Unknown status."
 msgstr ""
 
-#: helper/request/request-helper.php:600
+#: helper/request/request-helper.php:602
 #. translators: 1: old status, 2: new status
 msgid "Status changed from %1$s to %2$s."
 msgstr ""
 
-#: helper/request/request-helper.php:710
+#: helper/request/request-helper.php:712
 #. translators: %s: request number
 msgid "return-label-%s"
 msgstr ""
@@ -397,14 +397,14 @@ msgid "File not found."
 msgstr ""
 
 #: includes/admin/admin-functions.php:309
-#: includes/admin/admin-functions.php:430
-#: includes/admin/admin-functions.php:479
-#: includes/admin/admin-functions.php:549
+#: includes/admin/admin-functions.php:435
+#: includes/admin/admin-functions.php:485
+#: includes/admin/admin-functions.php:555
 msgid "The link has expired. Go back and try again."
 msgstr ""
 
 #: includes/admin/admin-functions.php:313
-#: includes/admin/admin-functions.php:434
+#: includes/admin/admin-functions.php:439
 msgid "You are not allowed to manage return requests."
 msgstr ""
 
@@ -445,54 +445,60 @@ msgstr ""
 msgid "Marked as received."
 msgstr ""
 
-#: includes/admin/admin-functions.php:416
+#: includes/admin/admin-functions.php:417
+msgid ""
+"Withdrawal statements cannot be deleted. They are the record that the "
+"customer withdrew."
+msgstr ""
+
+#: includes/admin/admin-functions.php:421
 msgid "Request deleted."
 msgstr ""
 
-#: includes/admin/admin-functions.php:420
+#: includes/admin/admin-functions.php:425
 msgid "Nothing changed."
 msgstr ""
 
-#: includes/admin/admin-functions.php:469
+#: includes/admin/admin-functions.php:475
 msgid "Request created."
 msgstr ""
 
-#: includes/admin/admin-functions.php:483
+#: includes/admin/admin-functions.php:489
 msgid "You are not allowed to export requests."
 msgstr ""
 
-#: includes/admin/admin-functions.php:553
+#: includes/admin/admin-functions.php:559
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: includes/admin/admin-functions.php:557
+#: includes/admin/admin-functions.php:563
 msgid "Unmatched submissions cleared."
 msgstr ""
 
-#: includes/admin/admin-functions.php:574
+#: includes/admin/admin-functions.php:580
 msgid "Final sale"
 msgstr ""
 
-#: includes/admin/admin-functions.php:577
+#: includes/admin/admin-functions.php:583
 msgid ""
 "Customers cannot request a return for this product. The EU right of "
 "withdrawal is not affected."
 msgstr ""
 
-#: includes/admin/admin-functions.php:584
+#: includes/admin/admin-functions.php:590
 msgid "Exempt from withdrawal"
 msgstr ""
 
-#: includes/admin/admin-functions.php:587
+#: includes/admin/admin-functions.php:593
 msgid ""
 "Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, "
 "perishable, sealed hygiene goods, etc.)."
 msgstr ""
 
-#: includes/admin/admin-functions.php:630
-#: includes/admin/admin-functions.php:677 includes/admin/setup-wizard.php:90
+#: includes/admin/admin-functions.php:636
+#: includes/admin/admin-functions.php:683 includes/admin/setup-wizard.php:90
 #: includes/admin/setup-wizard.php:227 includes/globals-variables.php:26
-#: includes/install.php:254
+#: includes/install.php:261
 #: templates/admin/configuration/configuration-template.php:175
 #: templates/admin/configuration/import-template.php:136
 #: templates/front/account-requests.php:33
@@ -500,11 +506,11 @@ msgstr ""
 msgid "Returns"
 msgstr ""
 
-#: includes/admin/admin-functions.php:662
+#: includes/admin/admin-functions.php:668
 msgid "No return requests for this order."
 msgstr ""
 
-#: includes/admin/admin-functions.php:666
+#: includes/admin/admin-functions.php:672
 #: templates/admin/request/request-create-template.php:159
 msgid "Create request"
 msgstr ""
@@ -541,7 +547,7 @@ msgid ""
 "shipped."
 msgstr ""
 
-#: includes/admin/setup-wizard.php:104 includes/global-functions.php:166
+#: includes/admin/setup-wizard.php:104 includes/global-functions.php:171
 msgid "EU withdrawal"
 msgstr ""
 
@@ -1031,12 +1037,12 @@ msgstr ""
 #: templates/admin/request/request-view-template.php:340
 #: templates/admin/request/request-view-template.php:496
 #: templates/admin/request/requests-list-template.php:206
-#: templates/front/request-view.php:158
+#: templates/front/request-view.php:169
 msgid "Items"
 msgstr ""
 
 #: includes/common/common-functions.php:274
-#: templates/front/request-view.php:184
+#: templates/front/request-view.php:195
 msgid "Messages"
 msgstr ""
 
@@ -1210,12 +1216,12 @@ msgstr ""
 
 #: includes/emails/email-customer-label-ready.php:66
 #: templates/admin/request/request-view-template.php:560
-#: templates/front/request-view.php:144
+#: templates/front/request-view.php:155
 msgid "Tracking number"
 msgstr ""
 
 #: includes/emails/email-customer-label-ready.php:70
-#: templates/front/request-view.php:127
+#: templates/front/request-view.php:138
 msgid "Download return label"
 msgstr ""
 
@@ -1423,145 +1429,145 @@ msgstr ""
 msgid "Cancel this request?"
 msgstr ""
 
-#: includes/front/front-functions.php:239
-#: includes/front/front-functions.php:322
-#: includes/front/front-functions.php:360
-#: includes/front/front-functions.php:405
-#: includes/front/front-functions.php:429
-#: includes/front/front-functions.php:463
+#: includes/front/front-functions.php:254
+#: includes/front/front-functions.php:337
+#: includes/front/front-functions.php:375
+#: includes/front/front-functions.php:420
+#: includes/front/front-functions.php:444
+#: includes/front/front-functions.php:481
 msgid "Your session expired. Please try again."
 msgstr ""
 
-#: includes/front/front-functions.php:247
+#: includes/front/front-functions.php:262
 msgid "You do not have access to this order."
 msgstr ""
 
-#: includes/front/front-functions.php:295
+#: includes/front/front-functions.php:310
 #. translators: %s: request number
 msgid "Thanks! Your request %s has been submitted. We have emailed you a copy."
 msgstr ""
 
-#: includes/front/front-functions.php:329
+#: includes/front/front-functions.php:344
 msgid "You do not have access to this request."
 msgstr ""
 
-#: includes/front/front-functions.php:343
+#: includes/front/front-functions.php:358
 msgid "Please write a message."
 msgstr ""
 
-#: includes/front/front-functions.php:348
+#: includes/front/front-functions.php:363
 msgid "Message sent."
 msgstr ""
 
-#: includes/front/front-functions.php:367
+#: includes/front/front-functions.php:382
 msgid "You cannot change this request."
 msgstr ""
 
-#: includes/front/front-functions.php:375
+#: includes/front/front-functions.php:390
 msgid "Please enter the tracking number."
 msgstr ""
 
-#: includes/front/front-functions.php:387
+#: includes/front/front-functions.php:402
 #. translators: 1: carrier, 2: tracking number
 msgid "Customer added return tracking: %1$s %2$s"
 msgstr ""
 
-#: includes/front/front-functions.php:393
+#: includes/front/front-functions.php:408
 msgid "Thanks, we saved your tracking number."
 msgstr ""
 
-#: includes/front/front-functions.php:412
+#: includes/front/front-functions.php:427
 msgid "Only requests that are still waiting for review can be canceled."
 msgstr ""
 
-#: includes/front/front-functions.php:416
+#: includes/front/front-functions.php:431
 msgid "Canceled by the customer."
 msgstr ""
 
-#: includes/front/front-functions.php:417
+#: includes/front/front-functions.php:432
 msgid "Your request was canceled."
 msgstr ""
 
-#: includes/front/front-functions.php:439
+#: includes/front/front-functions.php:454
 msgid "Too many attempts. Please wait an hour and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:448
+#: includes/front/front-functions.php:463
 msgid ""
 "We could not find an order with that number and email address. Please check "
 "both and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:477
+#: includes/front/front-functions.php:495
 msgid "Please fill in your name, the order number and your email address."
 msgstr ""
 
-#: includes/front/front-functions.php:482
+#: includes/front/front-functions.php:500
 msgid ""
 "Too many attempts. Please wait an hour and try again, or contact us "
 "directly."
 msgstr ""
 
-#: includes/front/front-functions.php:506
+#: includes/front/front-functions.php:524
 msgid ""
 "We could not match that order number and email address. We have recorded "
 "your statement and our team will contact you; please also check the details "
 "and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:638
+#: includes/front/front-functions.php:653
 #: templates/admin/request/request-create-template.php:89
 msgid "Order not found."
 msgstr ""
 
-#: includes/front/front-functions.php:685
+#: includes/front/front-functions.php:700
 msgid "Request a return"
 msgstr ""
 
-#: includes/front/front-functions.php:686 templates/front/request-form.php:161
+#: includes/front/front-functions.php:701 templates/front/request-form.php:161
 msgid "Request cancellation"
 msgstr ""
 
-#: includes/front/front-functions.php:687
-#: includes/front/front-functions.php:1036
-#: includes/front/front-functions.php:1063
-#: includes/front/front-functions.php:1067
+#: includes/front/front-functions.php:702
+#: includes/front/front-functions.php:1051
+#: includes/front/front-functions.php:1078
+#: includes/front/front-functions.php:1082
 #: templates/front/withdrawal-form.php:34
 msgid "Withdraw from contract here"
 msgstr ""
 
-#: includes/front/front-functions.php:887
+#: includes/front/front-functions.php:902
 msgid "This link is not valid. Look up your order below."
 msgstr ""
 
-#: includes/front/front-functions.php:894
+#: includes/front/front-functions.php:909
 msgid "This link has expired. Look up your order again."
 msgstr ""
 
-#: includes/front/front-functions.php:936
+#: includes/front/front-functions.php:951
 msgid "Online withdrawal is not available on this store. Please contact us."
 msgstr ""
 
-#: includes/front/front-functions.php:1060
+#: includes/front/front-functions.php:1075
 #. translators: %d: number of days
 msgid ""
 "You can withdraw from this contract within %d days of receiving your goods "
 "without giving any reason."
 msgstr ""
 
-#: includes/front/front-functions.php:1085
+#: includes/front/front-functions.php:1100
 msgid "Final sale: this item cannot be returned."
 msgstr ""
 
-#: includes/front/front-functions.php:1089
+#: includes/front/front-functions.php:1104
 msgid "This item is exempt from the statutory right of withdrawal."
 msgstr ""
 
-#: includes/front/front-functions.php:1118
+#: includes/front/front-functions.php:1133
 msgid "Return policy"
 msgstr ""
 
-#: includes/front/front-functions.php:1123
+#: includes/front/front-functions.php:1138
 #. translators: 1: days, 2: link open, 3: link close
 msgid ""
 "You can withdraw from this contract within %1$d days of delivery using our "
@@ -1573,140 +1579,144 @@ msgstr ""
 msgid "Right of withdrawal"
 msgstr ""
 
-#: includes/global-functions.php:165
+#: includes/global-functions.php:151
+msgid "Order cancellation"
+msgstr ""
+
+#: includes/global-functions.php:170
 msgid "Return"
 msgstr ""
 
-#: includes/global-functions.php:167
+#: includes/global-functions.php:172
 msgid "Cancellation"
 msgstr ""
 
-#: includes/global-functions.php:183
+#: includes/global-functions.php:188
 msgid "Refund to original payment"
 msgstr ""
 
-#: includes/global-functions.php:199
+#: includes/global-functions.php:204
 msgid "Unopened"
 msgstr ""
 
-#: includes/global-functions.php:200
+#: includes/global-functions.php:205
 msgid "Opened, unused"
 msgstr ""
 
-#: includes/global-functions.php:201
+#: includes/global-functions.php:206
 msgid "Used or worn"
 msgstr ""
 
-#: includes/global-functions.php:202
+#: includes/global-functions.php:207
 msgid "Damaged"
 msgstr ""
 
-#: includes/global-functions.php:203
+#: includes/global-functions.php:208
 msgid "Defective"
 msgstr ""
 
-#: includes/global-functions.php:363
+#: includes/global-functions.php:368
 msgid ""
 "I agree that you start supplying the digital content before the withdrawal "
 "period ends. I understand that I lose my right of withdrawal once the "
 "supply has started."
 msgstr ""
 
-#: includes/global-functions.php:462
+#: includes/global-functions.php:467
 msgid "All"
 msgstr ""
 
-#: includes/global-functions.php:463
+#: includes/global-functions.php:468
 #: templates/admin/request/requests-list-template.php:240
 msgid "Open"
 msgstr ""
 
-#: includes/global-functions.php:476
+#: includes/global-functions.php:481
 msgid "Unmatched statements"
 msgstr ""
 
-#: includes/global-functions.php:504
+#: includes/global-functions.php:509
 #. translators: %d: days
 msgid "Returns accepted within %d day of purchase."
 msgid_plural "Returns accepted within %d days of purchase."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/global-functions.php:506
+#: includes/global-functions.php:511
 #. translators: %d: days
 msgid "Returns accepted within %d day of delivery."
 msgid_plural "Returns accepted within %d days of delivery."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/install.php:154
+#: includes/install.php:161
 #: templates/admin/request/request-view-template.php:104
 msgid "Requested"
 msgstr ""
 
-#: includes/install.php:161
+#: includes/install.php:168
 #: templates/admin/request/request-view-template.php:105
 #: templates/front/request-view.php:28 templates/front/request-view.php:70
 msgid "Approved"
 msgstr ""
 
-#: includes/install.php:168
+#: includes/install.php:175
 msgid "Awaiting return"
 msgstr ""
 
-#: includes/install.php:175
+#: includes/install.php:182
 #: templates/admin/request/request-view-template.php:110
 #: templates/admin/request/requests-list-template.php:209
 #: templates/front/request-view.php:31
 msgid "Received"
 msgstr ""
 
-#: includes/install.php:182 templates/front/account-requests.php:41
+#: includes/install.php:189 templates/front/account-requests.php:41
 #: templates/front/request-view.php:33
 msgid "Completed"
 msgstr ""
 
-#: includes/install.php:189
+#: includes/install.php:196
 msgid "Rejected"
 msgstr ""
 
-#: includes/install.php:196
+#: includes/install.php:203
 msgid "Canceled"
 msgstr ""
 
-#: includes/install.php:211
+#: includes/install.php:218
 msgid "Wrong size or fit"
 msgstr ""
 
-#: includes/install.php:212
+#: includes/install.php:219
 msgid "Not as described"
 msgstr ""
 
-#: includes/install.php:213
+#: includes/install.php:220
 msgid "Arrived damaged"
 msgstr ""
 
-#: includes/install.php:214
+#: includes/install.php:221
 msgid "Defective or stopped working"
 msgstr ""
 
-#: includes/install.php:215
+#: includes/install.php:222
 msgid "Wrong item sent"
 msgstr ""
 
-#: includes/install.php:216
+#: includes/install.php:223
 msgid "Changed my mind"
 msgstr ""
 
-#: includes/install.php:217
+#: includes/install.php:224
 msgid "Found a better price"
 msgstr ""
 
-#: includes/install.php:218
+#: includes/install.php:225
 msgid "Other"
 msgstr ""
 
-#: includes/install.php:259
+#: includes/install.php:266
 msgid "Withdraw from contract"
 msgstr ""
 
@@ -3187,7 +3197,7 @@ msgid "Write to the customer or add an internal note…"
 msgstr ""
 
 #: templates/admin/request/request-view-template.php:464
-#: templates/front/request-view.php:232
+#: templates/front/request-view.php:243
 msgid "Attach files"
 msgstr ""
 
@@ -3212,7 +3222,7 @@ msgid "To pay back"
 msgstr ""
 
 #: templates/admin/request/request-view-template.php:499
-#: templates/front/request-view.php:179
+#: templates/front/request-view.php:190
 msgid "Paid back"
 msgstr ""
 
@@ -3236,7 +3246,7 @@ msgid ""
 msgstr ""
 
 #: templates/admin/request/request-view-template.php:527
-#: templates/front/request-view.php:124
+#: templates/front/request-view.php:135
 msgid "Return shipping"
 msgstr ""
 
@@ -3273,7 +3283,7 @@ msgid "Upload label"
 msgstr ""
 
 #: templates/admin/request/request-view-template.php:558
-#: templates/front/request-view.php:140
+#: templates/front/request-view.php:151
 msgid "Carrier"
 msgstr ""
 
@@ -3282,7 +3292,7 @@ msgid "Customers can add this themselves too."
 msgstr ""
 
 #: templates/admin/request/request-view-template.php:563
-#: templates/front/request-view.php:151
+#: templates/front/request-view.php:162
 msgid "Save tracking"
 msgstr ""
 
@@ -3697,55 +3707,65 @@ msgstr ""
 msgid "Request progress"
 msgstr ""
 
-#: templates/front/request-view.php:115
+#: templates/front/request-view.php:119
+#. translators: %s: amount
+msgid "%s was added to your wallet. You can spend it on your next order."
+msgstr ""
+
+#: templates/front/request-view.php:122
 #. translators: %s: amount
 msgid ""
 "%s is on its way back to your original payment method. Banks usually take a "
 "few days to show it."
 msgstr ""
 
-#: templates/front/request-view.php:129
+#: templates/front/request-view.php:125
+#. translators: %s: amount
+msgid "We refunded %s. The store pays it back to you directly."
+msgstr ""
+
+#: templates/front/request-view.php:140
 msgid "Use any carrier you like and keep the receipt."
 msgstr ""
 
-#: templates/front/request-view.php:135
+#: templates/front/request-view.php:146
 msgid "Tracking"
 msgstr ""
 
-#: templates/front/request-view.php:141
+#: templates/front/request-view.php:152
 msgid "e.g. UPS"
 msgstr ""
 
-#: templates/front/request-view.php:169
+#: templates/front/request-view.php:180
 #. translators: 1: quantity, 2: reason
 msgid "Qty %1$d · %2$s"
 msgstr ""
 
-#: templates/front/request-view.php:179
+#: templates/front/request-view.php:190
 msgid "You will get"
 msgstr ""
 
-#: templates/front/request-view.php:186
+#: templates/front/request-view.php:197
 msgid "No messages yet. Ask us anything about this request below."
 msgstr ""
 
-#: templates/front/request-view.php:192
+#: templates/front/request-view.php:203
 msgid "You"
 msgstr ""
 
-#: templates/front/request-view.php:226
+#: templates/front/request-view.php:237
 msgid "Your message"
 msgstr ""
 
-#: templates/front/request-view.php:227
+#: templates/front/request-view.php:238
 msgid "Ask us anything about this request…"
 msgstr ""
 
-#: templates/front/request-view.php:240
+#: templates/front/request-view.php:251
 msgid "Send message"
 msgstr ""
 
-#: templates/front/request-view.php:251
+#: templates/front/request-view.php:262
 msgid "Cancel this request"
 msgstr ""
 

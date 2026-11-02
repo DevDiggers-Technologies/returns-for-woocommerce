@@ -191,6 +191,21 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		}
 
 		/**
+		 * Give back one attempt, so only failed tries count toward the limit.
+		 *
+		 * @param string $bucket Bucket.
+		 * @return void
+		 */
+		protected function ddwcwr_rate_limit_forgive( $bucket ) {
+			$key   = 'ddwcwr_rl_' . $bucket . '_' . substr( ddwcwr_get_client_ip_hash(), 0, 24 );
+			$count = (int) get_transient( $key );
+
+			if ( $count > 0 ) {
+				set_transient( $key, $count - 1, HOUR_IN_SECONDS );
+			}
+		}
+
+		/**
 		 * Handle every customer form post.
 		 *
 		 * @return void
@@ -449,6 +464,9 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				return;
 			}
 
+			// A customer who finds their order is not guessing: only failed lookups count toward the limit.
+			$this->ddwcwr_rate_limit_forgive( 'lookup' );
+
 			wp_safe_redirect( $this->ddwcwr_get_guest_order_url( $order ) );
 			exit;
 		}
@@ -525,6 +543,8 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 					'type'   => 'withdrawal',
 					'items'  => $items,
 					'source' => 'withdrawal',
+					// The acknowledgement goes to the address the customer gave in the statement.
+					'email'  => $email,
 					'meta'   => [
 						'statement_name'  => $name,
 						'statement_email' => $email,
@@ -539,11 +559,6 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			}
 
 			$request = $this->request_helper->get_request( $request_id );
-
-			// The confirmation goes to the address the customer gave in the statement.
-			if ( strtolower( $email ) !== $request['customer_email'] ) {
-				$this->request_helper->update_request( $request_id, [ 'customer_email' => strtolower( $email ) ] );
-			}
 
 			wp_safe_redirect(
 				add_query_arg(
@@ -1051,8 +1066,21 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				return;
 			}
 
-			if ( $email && 0 === strpos( (string) $email->id, 'ddwcwr_' ) ) {
+			// Only the processing and completed order emails, as the setting says. Refund, note and invoice emails can go
+			// out long after the withdrawal period, and WPReturns' own emails carry their own wording.
+			if ( $email && ! in_array( (string) $email->id, [ 'customer_processing_order', 'customer_completed_order' ], true ) ) {
 				return;
+			}
+
+			$order_data = ddwcwr_order_adapter()->get_order_data( $order );
+
+			// The period runs from delivery (or from the order date): once it is over, offering the link would mislead.
+			if ( $order_data['is_completed'] || 'created' === $this->ddwcwr_configuration['withdrawal_from'] ) {
+				$window = $this->request_helper->get_window( $order_data, $this->ddwcwr_configuration['withdrawal_days'], $this->ddwcwr_configuration['withdrawal_from'] );
+
+				if ( ! $window['open'] ) {
+					return;
+				}
 			}
 
 			$url = ddwcwr_get_withdrawal_url( $order->get_id() );

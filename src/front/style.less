@@ -26,6 +26,13 @@
 	-webkit-font-smoothing: antialiased;
 	box-sizing: border-box;
 	container-type: inline-size;
+
+	// The script shows and hides parts with the hidden attribute: no display rule below may override it
+	// (the photo hint used to stay visible for every reason).
+	[hidden] {
+		display: none !important;
+	}
+
 	letter-spacing: -0.003em;
 
 	*,
@@ -391,13 +398,11 @@
 	line-height: 1.2;
 	min-height: 40px;
 	padding: 9px 16px;
-	text-decoration: none;
+	// Themes style links inside content paragraphs (Kadence: ".entry-content p a" with color inherit and an
+	// underline). A button keeps its own look wherever it sits.
+	text-decoration: none !important;
 	transition: transform 0.15s var( --ddwcwr-ease ), filter 0.15s, background-color 0.15s;
 	white-space: nowrap;
-
-	&:hover {
-		text-decoration: none;
-	}
 
 	&:active {
 		transform: scale( 0.98 );
@@ -411,10 +416,10 @@
 
 .ddwcwr-ui .ddwcwr-btn-primary {
 	background: var( --ddwcwr-accent );
-	color: var( --ddwcwr-accent-text );
+	color: var( --ddwcwr-accent-text ) !important;
 
 	&:hover {
-		color: var( --ddwcwr-accent-text );
+		color: var( --ddwcwr-accent-text ) !important;
 		filter: brightness( 1.08 );
 	}
 }

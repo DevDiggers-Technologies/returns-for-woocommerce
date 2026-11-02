@@ -111,8 +111,19 @@ if ( 'rejected' === $request['status'] ) {
 			<?php if ( ! empty( $request['meta']['result'] ) && (float) $request['refunded_total'] > 0 ) : ?>
 				<p>
 					<?php
-					/* translators: %s: amount */
-					echo wp_kses_post( sprintf( __( '%s is on its way back to your original payment method. Banks usually take a few days to show it.', 'wpreturns' ), wc_price( $request['refunded_total'], $ddwcwr_currency ) ) );
+					// Only a refund the payment gateway sent goes back to the card; a recorded one is paid back by the store.
+					$ddwcwr_refund = ! empty( $request['refund_id'] ) ? wc_get_order( $request['refund_id'] ) : false;
+
+					if ( ! empty( $request['meta']['wallet_transactions'] ) ) {
+						/* translators: %s: amount */
+						echo wp_kses_post( sprintf( __( '%s was added to your wallet. You can spend it on your next order.', 'wpreturns' ), wc_price( $request['refunded_total'], $ddwcwr_currency ) ) );
+					} elseif ( $ddwcwr_refund && $ddwcwr_refund->get_refunded_payment() ) {
+						/* translators: %s: amount */
+						echo wp_kses_post( sprintf( __( '%s is on its way back to your original payment method. Banks usually take a few days to show it.', 'wpreturns' ), wc_price( $request['refunded_total'], $ddwcwr_currency ) ) );
+					} else {
+						/* translators: %s: amount */
+						echo wp_kses_post( sprintf( __( 'We refunded %s. The store pays it back to you directly.', 'wpreturns' ), wc_price( $request['refunded_total'], $ddwcwr_currency ) ) );
+					}
 					?>
 				</p>
 			<?php endif; ?>

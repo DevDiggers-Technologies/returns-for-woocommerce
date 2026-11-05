@@ -258,6 +258,10 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 					esc_html_e( 'Add New', 'wpreturns' );
 					?>
 				</a>
+				<span class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
+					<button type="button" class="page-title-action button" disabled="disabled"><?php esc_html_e( 'Export CSV', 'wpreturns' ); ?></button>
+					<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
+				</span>
 			<?php endif; ?>
 			<hr class="wp-header-end" />
 			<?php if ( 'withdrawal' === $type ) : ?>

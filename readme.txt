@@ -201,7 +201,15 @@ Free version questions go to the support forum here on WordPress.org. The develo
 
 WPReturns itself sends no data to any outside service. Requests, messages and withdrawal statements are stored in your WordPress database, uploaded files in a private folder on your server, and emails go out through the WooCommerce mailer. The storefront makes no external requests. The bundled DevDiggers framework, which draws the admin screens, connects to the services below, only inside the WordPress admin.
 
-**1. Newsletter subscription (optional)**
+**1. DevDiggers extensions directory**
+
+* What it is: A read only API on devdiggers.com that returns the public list of DevDiggers extensions.
+* What it is used for: Showing available DevDiggers extensions on the DevDiggers Plugins > Extensions admin page.
+* When data is sent: Only when an administrator opens the Extensions page. The response is cached for 24 hours, so the request runs at most once a day. No other screen makes this request.
+* What data is sent: A standard outbound HTTP request only, meaning your server's IP address and a user agent string. No personal data and no store data are sent. The page also loads each listed extension's image from devdiggers.com in the administrator's browser.
+* Endpoint: https://devdiggers.com/wp-json/ddwcs/v1/plugins
+
+**2. Newsletter subscription (optional)**
 
 * What it is: A contact and newsletter endpoint on devdiggers.com.
 * What it is used for: Adding your email address to the DevDiggers newsletter, only if you choose to subscribe.
@@ -209,9 +217,9 @@ WPReturns itself sends no data to any outside service. Requests, messages and wi
 * What data is sent: The email address you enter and your site URL.
 * Endpoint: https://devdiggers.com/?fluentcrm=1&route=contact
 
-The newsletter is provided by DevDiggers: Terms and Conditions https://devdiggers.com/terms-and-conditions/ and Privacy Policy https://devdiggers.com/privacy-policy/.
+The services above are provided by DevDiggers: Terms and Conditions https://devdiggers.com/terms-and-conditions/ and Privacy Policy https://devdiggers.com/privacy-policy/.
 
-**2. Gravatar (avatar images)**
+**3. Gravatar (avatar images)**
 
 * What it is: Gravatar, the avatar service operated by Automattic, used through WordPress core's `get_avatar()`.
 * What it is used for: Showing the customer's avatar on the request screen and the administrator's avatar in the plugin dashboard header. This is standard WordPress behaviour.

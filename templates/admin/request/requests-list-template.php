@@ -135,6 +135,11 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 
 			$filters = $this->get_filters();
 			?>
+			<div class="alignleft actions ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
+				<label class="screen-reader-text" for="ddwcwr-locked-bulk"><?php esc_html_e( 'Bulk actions', 'wpreturns' ); ?></label>
+				<select id="ddwcwr-locked-bulk" disabled="disabled"><option><?php esc_html_e( 'Bulk actions', 'wpreturns' ); ?></option></select>
+				<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
+			</div>
 			<div class="alignleft actions ddwcwr-filters">
 				<?php if ( ! $this->fixed_type ) : ?>
 					<label class="screen-reader-text" for="ddwcwr-filter-type"><?php esc_html_e( 'Filter by type', 'wpreturns' ); ?></label>

@@ -57,6 +57,7 @@ if ( ! class_exists( 'DDFW_Admin' ) ) {
 			add_menu_page( esc_html__( 'DevDiggers Plugins', 'wpreturns' ), esc_html__( 'DevDiggers Plugins', 'wpreturns' ), $menu_capability, $parent_slug, [ $this, 'ddfw_get_main_dashboard' ], ddfw_get_devdiggers_plugin_menu_icon_src(), 56 );
 
 			add_submenu_page( $parent_slug, esc_html__( 'Dashboard', 'wpreturns' ), esc_html__( 'Dashboard', 'wpreturns' ), $menu_capability, $parent_slug, [ $this, 'ddfw_get_main_dashboard' ] );
+			add_submenu_page( $parent_slug, esc_html__( 'Extensions', 'wpreturns' ), esc_html__( 'Extensions', 'wpreturns' ), $menu_capability, 'devdiggers-extensions', [ $this, 'ddfw_get_extensions_page' ] );
 		}
 
 		/**
@@ -66,6 +67,15 @@ if ( ! class_exists( 'DDFW_Admin' ) ) {
 		 */
 		public function ddfw_get_main_dashboard() {
 			include DDFW_FILE . 'templates/layout/dashboard.php';
+		}
+
+		/**
+		 * Get the extensions page
+		 * 
+		 * @return void
+		 */
+		public function ddfw_get_extensions_page() {
+			include DDFW_FILE . 'templates/layout/extensions.php';
 		}
 
 		/**

@@ -3,7 +3,8 @@
  * Configuration template: every settings tab.
  *
  * Field definitions live here once and are reused by DDWCWR_Admin_Functions::ddwcwr_register_settings(), so every
- * field shown is registered and sanitized by its type. Sections that only exist in Pro show one upgrade card.
+ * field shown is registered and sanitized by its type. Pro settings are shown as locked fields (renamed, never
+ * registered) or, when a whole section is Pro, as one upgrade card.
  *
  * @package WPReturns
  * @version 1.0.0
@@ -100,6 +101,16 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		}
 
 		/**
+		 * Disabled Pro field, labelled PRO. Its id is renamed, so no setting of that name exists to save.
+		 *
+		 * @param array $field Field.
+		 * @return array
+		 */
+		protected static function locked( $field ) {
+			return ddfw_locked_field( $field + [ 'value' => '' ], 'ddwcwr' );
+		}
+
+		/**
 		 * Section that is Pro from top to bottom: heading plus one upgrade card, no fields.
 		 *
 		 * @param string $image Screenshot name in assets/images/pro.
@@ -162,8 +173,44 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 								$checkbox( 'ddwcwr-enabled', esc_html__( 'Customer requests', 'wpreturns' ), esc_html__( 'Let customers request returns and cancellations', 'wpreturns' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself. The EU withdrawal button has its own switch.', 'wpreturns' ), 'enabled' ),
 								self::multi_select( 'ddwcwr-eligible-order-statuses', esc_html__( 'Orders that can be returned', 'wpreturns' ), esc_html__( 'Order statuses that show the "Request a return" button.', 'wpreturns' ), wc_get_order_statuses(), $c['eligible_order_statuses'] ),
 								$checkbox( 'ddwcwr-allow-refund', esc_html__( 'Returns', 'wpreturns' ), esc_html__( 'Let customers return items for a refund', 'wpreturns' ), esc_html__( 'Money goes back to the card or method they paid with, once you approve the return.', 'wpreturns' ), 'allow_refund' ),
+								self::locked(
+									[
+										'type'           => 'checkbox',
+										'id'             => 'allow-store-credit',
+										'label'          => esc_html__( 'Store credit', 'wpreturns' ),
+										'checkbox_label' => esc_html__( 'Offer store credit, with an optional bonus', 'wpreturns' ),
+										'description'    => esc_html__( 'Keep the money in your shop: customers pick a coupon or DevDiggers Wallet credit instead of a refund.', 'wpreturns' ),
+									]
+								),
+								self::locked(
+									[
+										'type'           => 'checkbox',
+										'id'             => 'allow-exchange',
+										'label'          => esc_html__( 'Exchanges', 'wpreturns' ),
+										'checkbox_label' => esc_html__( 'Offer exchanges for another size, color or any product', 'wpreturns' ),
+										'description'    => esc_html__( 'A linked exchange order is created for you; the price difference is charged or refunded.', 'wpreturns' ),
+									]
+								),
+								self::locked(
+									[
+										'type'           => 'checkbox',
+										'id'             => 'allow-warranty',
+										'label'          => esc_html__( 'Warranty claims', 'wpreturns' ),
+										'checkbox_label' => esc_html__( 'Let customers file warranty claims for repair or replacement', 'wpreturns' ),
+										'description'    => esc_html__( 'Warranty per product, checked automatically when a claim comes in.', 'wpreturns' ),
+									]
+								),
 								$checkbox( 'ddwcwr-allow-cancellation', esc_html__( 'Cancellation requests', 'wpreturns' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'wpreturns' ), esc_html__( 'Adds a "Request cancellation" button to orders that have not shipped yet. Approving one cancels and refunds the order.', 'wpreturns' ), 'allow_cancellation' ),
 								self::multi_select( 'ddwcwr-cancellation-statuses', esc_html__( 'Cancellable order statuses', 'wpreturns' ), esc_html__( 'Orders in these statuses can get a cancellation request.', 'wpreturns' ), wc_get_order_statuses(), $c['cancellation_statuses'] ),
+								self::locked(
+									[
+										'type'           => 'checkbox',
+										'id'             => 'auto-approve-cancellation',
+										'label'          => esc_html__( 'Instant cancellations', 'wpreturns' ),
+										'checkbox_label' => esc_html__( 'Approve, cancel and refund cancellation requests automatically', 'wpreturns' ),
+										'description'    => esc_html__( 'Unshipped orders are canceled and refunded the moment the customer asks.', 'wpreturns' ),
+									]
+								),
 							],
 						],
 						[
@@ -317,6 +364,18 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 							'fields' => [
 								$checkbox( 'ddwcwr-refund-via-gateway', esc_html__( 'Gateway refunds', 'wpreturns' ), esc_html__( 'Refund through the payment gateway by default', 'wpreturns' ), esc_html__( 'Gateways without refund support always record a manual refund. You can choose per request.', 'wpreturns' ), 'refund_via_gateway' ),
 								$checkbox( 'ddwcwr-restock-on-receive', esc_html__( 'Restock', 'wpreturns' ), esc_html__( 'Tick "Put items back in stock" when marking a return received', 'wpreturns' ), esc_html__( 'Damaged and defective items are never restocked.', 'wpreturns' ), 'restock_on_receive' ),
+								self::locked(
+									[
+										'type'        => 'number',
+										'id'          => 'return-shipping-fee',
+										'label'       => esc_html__( 'Return shipping fee', 'wpreturns' ),
+										'description' => esc_html__( 'Deducted from refunds, with its own amount for store credit and exchanges. Never charged for store-fault reasons or EU withdrawals.', 'wpreturns' ),
+										'custom_attributes' => [
+											'min'  => 0,
+											'step' => 0.01,
+										],
+									]
+								),
 							],
 						],
 						self::pro_section(

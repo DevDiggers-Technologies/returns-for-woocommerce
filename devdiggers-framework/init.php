@@ -101,6 +101,7 @@ require_once DDFW_FILE . 'autoload/autoload.php';
 
 // Load the framework files.
 require_once DDFW_FILE . 'global-functions.php';
+require_once DDFW_FILE . 'includes/class-ddfw-plugins-api.php';
 
 if ( is_admin() ) {
 	require_once DDFW_FILE . 'includes/class-ddfw-assets.php';

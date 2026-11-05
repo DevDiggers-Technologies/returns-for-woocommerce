@@ -78,15 +78,7 @@ if ( empty( $ddwcwr_configuration['my_account_endpoint'] ) ) {
 	$ddwcwr_configuration['my_account_endpoint'] = 'returns';
 }
 
-// Only the built-in statuses: rows a Pro install added stay stored but are not used here.
-$ddwcwr_configuration['statuses'] = array_values(
-	array_filter(
-		(array) get_option( '_ddwcwr_statuses', DDWCWR_Install::ddwcwr_get_default_statuses() ),
-		function ( $status ) {
-			return ! empty( $status['core'] );
-		}
-	)
-);
+$ddwcwr_configuration['statuses'] = array_values( (array) get_option( '_ddwcwr_statuses', DDWCWR_Install::ddwcwr_get_default_statuses() ) );
 $ddwcwr_configuration['reasons']  = get_option( '_ddwcwr_reasons', DDWCWR_Install::ddwcwr_get_default_reasons() );
 
 $ddwcwr_configuration = apply_filters( 'ddwcwr_configuration', $ddwcwr_configuration );

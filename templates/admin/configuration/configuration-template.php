@@ -3,8 +3,7 @@
  * Configuration template: every settings tab.
  *
  * Field definitions live here once and are reused by DDWCWR_Admin_Functions::ddwcwr_register_settings(), so every
- * field shown is registered and sanitized by its type. Pro settings are shown as locked fields (renamed, never
- * registered) or, when a whole section is Pro, as one upgrade card.
+ * field shown is registered and sanitized by its type. Sections that only exist in Pro show one upgrade card.
  *
  * @package WPReturns
  * @version 1.0.0
@@ -101,16 +100,6 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		}
 
 		/**
-		 * Disabled Pro field, labelled PRO. Its id is renamed, so no setting of that name exists to save.
-		 *
-		 * @param array $field Field.
-		 * @return array
-		 */
-		protected static function locked( $field ) {
-			return ddfw_locked_field( $field + [ 'value' => '' ], 'ddwcwr' );
-		}
-
-		/**
 		 * Section that is Pro from top to bottom: heading plus one upgrade card, no fields.
 		 *
 		 * @param string $image Screenshot name in assets/images/pro.
@@ -173,44 +162,8 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 								$checkbox( 'ddwcwr-enabled', esc_html__( 'Customer requests', 'wpreturns' ), esc_html__( 'Let customers request returns and cancellations', 'wpreturns' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself. The EU withdrawal button has its own switch.', 'wpreturns' ), 'enabled' ),
 								self::multi_select( 'ddwcwr-eligible-order-statuses', esc_html__( 'Orders that can be returned', 'wpreturns' ), esc_html__( 'Order statuses that show the "Request a return" button.', 'wpreturns' ), wc_get_order_statuses(), $c['eligible_order_statuses'] ),
 								$checkbox( 'ddwcwr-allow-refund', esc_html__( 'Returns', 'wpreturns' ), esc_html__( 'Let customers return items for a refund', 'wpreturns' ), esc_html__( 'Money goes back to the card or method they paid with, once you approve the return.', 'wpreturns' ), 'allow_refund' ),
-								self::locked(
-									[
-										'type'           => 'checkbox',
-										'id'             => 'allow-store-credit',
-										'label'          => esc_html__( 'Store credit', 'wpreturns' ),
-										'checkbox_label' => esc_html__( 'Offer store credit, with an optional bonus', 'wpreturns' ),
-										'description'    => esc_html__( 'Keep the money in your shop: customers pick a coupon or DevDiggers Wallet credit instead of a refund.', 'wpreturns' ),
-									]
-								),
-								self::locked(
-									[
-										'type'           => 'checkbox',
-										'id'             => 'allow-exchange',
-										'label'          => esc_html__( 'Exchanges', 'wpreturns' ),
-										'checkbox_label' => esc_html__( 'Offer exchanges for another size, color or any product', 'wpreturns' ),
-										'description'    => esc_html__( 'A linked exchange order is created for you; the price difference is charged or refunded.', 'wpreturns' ),
-									]
-								),
-								self::locked(
-									[
-										'type'           => 'checkbox',
-										'id'             => 'allow-warranty',
-										'label'          => esc_html__( 'Warranty claims', 'wpreturns' ),
-										'checkbox_label' => esc_html__( 'Let customers file warranty claims for repair or replacement', 'wpreturns' ),
-										'description'    => esc_html__( 'Warranty per product, checked automatically when a claim comes in.', 'wpreturns' ),
-									]
-								),
 								$checkbox( 'ddwcwr-allow-cancellation', esc_html__( 'Cancellation requests', 'wpreturns' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'wpreturns' ), esc_html__( 'Adds a "Request cancellation" button to orders that have not shipped yet. Approving one cancels and refunds the order.', 'wpreturns' ), 'allow_cancellation' ),
 								self::multi_select( 'ddwcwr-cancellation-statuses', esc_html__( 'Cancellable order statuses', 'wpreturns' ), esc_html__( 'Orders in these statuses can get a cancellation request.', 'wpreturns' ), wc_get_order_statuses(), $c['cancellation_statuses'] ),
-								self::locked(
-									[
-										'type'           => 'checkbox',
-										'id'             => 'auto-approve-cancellation',
-										'label'          => esc_html__( 'Instant cancellations', 'wpreturns' ),
-										'checkbox_label' => esc_html__( 'Approve, cancel and refund cancellation requests automatically', 'wpreturns' ),
-										'description'    => esc_html__( 'Unshipped orders are canceled and refunded the moment the customer asks.', 'wpreturns' ),
-									]
-								),
 							],
 						],
 						[
@@ -334,7 +287,7 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 						[
 							'header'            => [
 								'heading'     => esc_html__( 'Statuses', 'wpreturns' ),
-								'description' => esc_html__( 'Rename and recolor the built-in statuses. Customers get an email when a request enters a status with "Notify" on.', 'wpreturns' ),
+								'description' => esc_html__( 'Rename, recolor and add your own statuses, such as "Inspecting" or "Sent to repair". Customers get an email when a request enters a status with "Notify" on.', 'wpreturns' ),
 							],
 							'after_header_html' => self::get_statuses_html( $c['statuses'] ),
 						],
@@ -349,7 +302,6 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 									esc_html__( 'Separate permissions to manage requests, refund, change settings and see reports', 'wpreturns' ),
 									esc_html__( 'Statuses only refund-permitted staff can set', 'wpreturns' ),
 									esc_html__( 'Assign requests to a team member and filter by assignee', 'wpreturns' ),
-									esc_html__( 'Your own statuses such as "Inspecting" or "Sent to repair", with colors and emails', 'wpreturns' ),
 								],
 							]
 						),
@@ -365,18 +317,6 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 							'fields' => [
 								$checkbox( 'ddwcwr-refund-via-gateway', esc_html__( 'Gateway refunds', 'wpreturns' ), esc_html__( 'Refund through the payment gateway by default', 'wpreturns' ), esc_html__( 'Gateways without refund support always record a manual refund. You can choose per request.', 'wpreturns' ), 'refund_via_gateway' ),
 								$checkbox( 'ddwcwr-restock-on-receive', esc_html__( 'Restock', 'wpreturns' ), esc_html__( 'Tick "Put items back in stock" when marking a return received', 'wpreturns' ), esc_html__( 'Damaged and defective items are never restocked.', 'wpreturns' ), 'restock_on_receive' ),
-								self::locked(
-									[
-										'type'        => 'number',
-										'id'          => 'return-shipping-fee',
-										'label'       => esc_html__( 'Return shipping fee', 'wpreturns' ),
-										'description' => esc_html__( 'Deducted from refunds, with its own amount for store credit and exchanges. Never charged for store-fault reasons or EU withdrawals.', 'wpreturns' ),
-										'custom_attributes' => [
-											'min'  => 0,
-											'step' => 0.01,
-										],
-									]
-								),
 							],
 						],
 						self::pro_section(
@@ -646,26 +586,44 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		}
 
 		/**
-		 * Built-in statuses: label, color and notify. Adding statuses is a Pro feature.
+		 * Statuses repeater. Built-in statuses can be renamed but not removed.
 		 *
 		 * @param array $statuses Statuses.
 		 * @return string
 		 */
 		protected static function get_statuses_html( $statuses ) {
-			$html  = '<div class="ddfw-table-wrapper"><table class="widefat fixed ddfw-table ddwcwr-settings-table"><thead><tr>';
-			$html .= '<th>' . esc_html__( 'Status', 'wpreturns' ) . '</th><th class="ddwcwr-col-color">' . esc_html__( 'Color', 'wpreturns' ) . '</th><th class="ddwcwr-col-toggle">' . esc_html__( 'Notify customer', 'wpreturns' ) . '</th>';
+			$row = function ( $index, $status ) {
+				$actions = ! empty( $status['core'] )
+					? '<span class="ddwcwr-icon-button ddwcwr-icon-button-muted" title="' . esc_attr__( 'Built-in statuses cannot be removed', 'wpreturns' ) . '"><span class="dashicons dashicons-lock" aria-hidden="true"></span><span class="screen-reader-text">' . esc_html__( 'Built in', 'wpreturns' ) . '</span></span>'
+					: self::get_remove_button_html();
+
+				return '<tr class="ddwcwr-repeater-row">' . self::get_drag_handle_html()
+					. '<td><input type="hidden" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $status['slug'] ) . '" /><input type="text" class="regular-text" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $status['label'] ) . '" aria-label="' . esc_attr__( 'Status name', 'wpreturns' ) . '" />' . ( $status['slug'] ? '<span class="ddwcwr-list-meta">' . esc_html( $status['slug'] ) . '</span>' : '' ) . '</td>'
+					. '<td class="ddwcwr-col-color"><input type="colorpicker" class="ddfw-color-picker" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][color]" value="' . esc_attr( $status['color'] ) . '" data-default-value="' . esc_attr( $status['color'] ) . '" aria-label="' . esc_attr__( 'Color', 'wpreturns' ) . '" /></td>'
+					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][notify]" value="yes" ' . checked( ! empty( $status['notify'] ), true, false ) . ' aria-label="' . esc_attr__( 'Notify customer', 'wpreturns' ) . '" /></td>'
+					. '<td class="ddwcwr-col-actions">' . $actions . '</td>'
+					. '</tr>';
+			};
+
+			$html  = '<div class="ddfw-table-wrapper"><table class="widefat fixed ddfw-table ddwcwr-settings-table ddwcwr-repeater"><thead><tr>';
+			$html .= '<th class="ddwcwr-col-drag"><span class="screen-reader-text">' . esc_html__( 'Order', 'wpreturns' ) . '</span></th><th>' . esc_html__( 'Status', 'wpreturns' ) . '</th><th class="ddwcwr-col-color">' . esc_html__( 'Color', 'wpreturns' ) . '</th><th class="ddwcwr-col-toggle">' . esc_html__( 'Notify customer', 'wpreturns' ) . '</th><th class="ddwcwr-col-actions"><span class="screen-reader-text">' . esc_html__( 'Actions', 'wpreturns' ) . '</span></th>';
 			$html .= '</tr></thead><tbody>';
 
 			foreach ( array_values( (array) $statuses ) as $index => $status ) {
-				$html .= '<tr>'
-					. '<td><input type="hidden" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $status['slug'] ) . '" /><input type="text" class="regular-text" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $status['label'] ) . '" aria-label="' . esc_attr__( 'Status name', 'wpreturns' ) . '" /><span class="ddwcwr-list-meta">' . esc_html( $status['slug'] ) . '</span></td>'
-					. '<td class="ddwcwr-col-color"><input type="colorpicker" class="ddfw-color-picker" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][color]" value="' . esc_attr( $status['color'] ) . '" data-default-value="' . esc_attr( $status['color'] ) . '" aria-label="' . esc_attr__( 'Color', 'wpreturns' ) . '" /></td>'
-					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][notify]" value="yes" ' . checked( ! empty( $status['notify'] ), true, false ) . ' aria-label="' . esc_attr__( 'Notify customer', 'wpreturns' ) . '" /></td>'
-					. '</tr>';
+				$html .= $row( $index, $status );
 			}
 
 			$html .= '</tbody></table></div>';
-			$html .= '<p class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action"><button type="button" class="button" disabled="disabled">' . esc_html__( 'Add status', 'wpreturns' ) . '</button>' . ddfw_get_pro_tag() . '</p>';
+			$html .= '<script type="text/html" id="ddwcwr-repeater-template">' . $row(
+				'__i__',
+				[
+					'slug'   => '',
+					'label'  => '',
+					'color'  => '#6b7280',
+					'notify' => 'yes',
+				]
+			) . '</script>';
+			$html .= '<p><button type="button" class="button ddwcwr-repeater-add">' . esc_html__( 'Add status', 'wpreturns' ) . '</button></p>';
 
 			return $html;
 		}

@@ -109,9 +109,6 @@ $svg_tags = ddfw_kses_allowed_svg_tags();
 				</h1>
 				<p><?php esc_html_e( 'Manage all your DevDiggers plugins from one place.', 'wpreturns' ); ?></p>
 			</div>
-			<a href="<?php echo esc_url( admin_url( 'admin.php?page=devdiggers-extensions' ) ); ?>" class="ddfw-button ddfw-button-secondary ddfw-dashboard-header-action">
-				<?php esc_html_e( 'Browse Extensions', 'wpreturns' ); ?>
-			</a>
 		</div>
 
 		<div class="ddfw-dashboard-stats">

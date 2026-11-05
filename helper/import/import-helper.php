@@ -481,8 +481,15 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 						'exclude_from_search'       => false,
 						'show_in_admin_all_list'    => true,
 						'show_in_admin_status_list' => true,
-						/* translators: %s: number of orders */
-						'label_count'               => _n_noop( $label . ' <span class="count">(%s)</span>', $label . ' <span class="count">(%s)</span>', 'wpreturns' ), // phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralSingular, WordPress.WP.I18n.NonSingularStringLiteralPlural
+						// The label is the other plugin's own (already translated) name, so it is not run through gettext.
+						'label_count'               => [
+							0          => $label . ' <span class="count">(%s)</span>',
+							1          => $label . ' <span class="count">(%s)</span>',
+							'singular' => $label . ' <span class="count">(%s)</span>',
+							'plural'   => $label . ' <span class="count">(%s)</span>',
+							'context'  => null,
+							'domain'   => null,
+						],
 					]
 				);
 			}

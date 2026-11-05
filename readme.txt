@@ -78,7 +78,7 @@ Logged in customers get a Returns page in My Account and a "Request a return" bu
 * A request screen with a "Next step" card, items, photos, the conversation, internal notes and a full history.
 * Approve, reject, upload a label, save tracking, mark received with restock, and **refund through WooCommerce** (to the gateway or recorded only).
 * Create a request yourself for phone or email returns.
-* Rename and recolor the seven built-in statuses, and choose which ones email the customer.
+* Rename and recolor the seven built-in statuses, add your own, and choose which ones email the customer.
 * A Returns box on the order screen and a Returns column in the orders list.
 
 === Built the WooCommerce way ===
@@ -102,7 +102,7 @@ Pro is for stores where returns are a cost worth managing: it turns refunds into
 
 * **Return rules**: windows per product, category, role or country, final-sale rules by item price, order total or customer, auto-approve and auto-reject, restocking fees, free return shipping thresholds, photo rules and keep-it refunds.
 * **Automation**: label and ship-by reminders, auto-close of stale requests and automatic refunds after receipt.
-* **Bulk actions** on the Requests list and **custom statuses**.
+* **Bulk actions** on the Requests list.
 
 === Shipping labels and fraud protection ===
 
@@ -201,15 +201,7 @@ Free version questions go to the support forum here on WordPress.org. The develo
 
 WPReturns itself sends no data to any outside service. Requests, messages and withdrawal statements are stored in your WordPress database, uploaded files in a private folder on your server, and emails go out through the WooCommerce mailer. The storefront makes no external requests. The bundled DevDiggers framework, which draws the admin screens, connects to the services below, only inside the WordPress admin.
 
-**1. DevDiggers extensions directory**
-
-* What it is: A read only API on devdiggers.com that returns the public list of DevDiggers extensions.
-* What it is used for: Showing available DevDiggers extensions on the DevDiggers Plugins > Extensions admin page.
-* When data is sent: Only when an administrator opens the Extensions page. The response is cached for 24 hours, so the request runs at most once a day. No other screen makes this request.
-* What data is sent: A standard outbound HTTP request only, meaning your server's IP address and a user agent string. No personal data and no store data are sent. The page also loads each listed extension's image from devdiggers.com in the administrator's browser.
-* Endpoint: https://devdiggers.com/wp-json/ddwcs/v1/plugins
-
-**2. Newsletter subscription (optional)**
+**1. Newsletter subscription (optional)**
 
 * What it is: A contact and newsletter endpoint on devdiggers.com.
 * What it is used for: Adding your email address to the DevDiggers newsletter, only if you choose to subscribe.
@@ -217,9 +209,9 @@ WPReturns itself sends no data to any outside service. Requests, messages and wi
 * What data is sent: The email address you enter and your site URL.
 * Endpoint: https://devdiggers.com/?fluentcrm=1&route=contact
 
-The services above are provided by DevDiggers: Terms and Conditions https://devdiggers.com/terms-and-conditions/ and Privacy Policy https://devdiggers.com/privacy-policy/.
+The newsletter is provided by DevDiggers: Terms and Conditions https://devdiggers.com/terms-and-conditions/ and Privacy Policy https://devdiggers.com/privacy-policy/.
 
-**3. Gravatar (avatar images)**
+**2. Gravatar (avatar images)**
 
 * What it is: Gravatar, the avatar service operated by Automattic, used through WordPress core's `get_avatar()`.
 * What it is used for: Showing the customer's avatar on the request screen and the administrator's avatar in the plugin dashboard header. This is standard WordPress behaviour.
@@ -254,7 +246,7 @@ The build configuration is in `webpack.config.js` and `babel.config.js`. Two thi
 * Request screen for the shop team: next step card, approve or reject, upload a label, mark received with restock, refund through WooCommerce, internal notes and history.
 * EU withdrawal function: "Withdraw from contract here" link, two-step statement with "Confirm withdrawal", acknowledgement email, model withdrawal form, Art. 16 exemptions and a withdrawal log with CSV export.
 * Checkout consent for digital content (Art. 16(m)) in classic and block checkout, with the consent confirmed in the order emails.
-* Dashboard, Requests list with filters and search, editable built-in statuses, Returns box on the order screen and a setup wizard.
+* Dashboard, Requests list with filters and search, editable built-in and custom statuses, Returns box on the order screen and a setup wizard.
 * WooCommerce emails, GDPR export and erase, HPOS, classic and block checkout, translation ready with WPML and Polylang support for your own texts.
 
 == Upgrade Notice ==

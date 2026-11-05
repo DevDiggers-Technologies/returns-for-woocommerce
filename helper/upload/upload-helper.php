@@ -151,17 +151,12 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 			}
 
 			$stored = [];
-			$base   = self::get_base_dir();
-			$sub    = gmdate( 'Y/m' );
-
-			wp_mkdir_p( $base . '/' . $sub );
 
 			foreach ( $prepared as list( $file, $name, $check ) ) {
-				$key = $sub . '/' . wp_generate_password( 32, false, false ) . '.' . $check['ext'];
+				$key = $this->move_upload( $file, $check['ext'], $allowed );
 
-				// phpcs:ignore Generic.PHP.ForbiddenFunctions.Found -- Moving a validated upload into the private folder.
-				if ( ! move_uploaded_file( $file['tmp_name'], $base . '/' . $key ) ) {
-					return new \WP_Error( 'ddwcwr_upload', __( 'The file could not be saved. Please try again.', 'wpreturns' ) );
+				if ( is_wp_error( $key ) ) {
+					return $key;
 				}
 
 				$stored[] = [
@@ -176,43 +171,84 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 		}
 
 		/**
-		 * Copy an admin-uploaded file (e.g. a label) from a media attachment path into the private folder.
+		 * Store an admin-uploaded file (e.g. a label) in the private folder.
 		 *
-		 * @param string $path Source path.
-		 * @param string $name Original name.
+		 * @param array $file One $_FILES entry.
 		 * @return array|\WP_Error
 		 */
-		public function store_file( $path, $name ) {
-			$check = wp_check_filetype_and_ext(
-				$path,
-				$name,
-				self::get_allowed_mimes() + [
-					'pdf' => 'application/pdf',
-					'png' => 'image/png',
-					'jpg' => 'image/jpeg',
-					'zpl' => 'text/plain',
-				]
-			);
+		public function store_file( $file ) {
+			$name  = sanitize_file_name( $file['name'] );
+			$mimes = self::get_allowed_mimes() + [
+				'pdf' => 'application/pdf',
+				'png' => 'image/png',
+				'jpg' => 'image/jpeg',
+				'zpl' => 'text/plain',
+			];
+			$check = wp_check_filetype_and_ext( $file['tmp_name'], $name, $mimes );
 
 			if ( empty( $check['ext'] ) ) {
 				return new \WP_Error( 'ddwcwr_upload', __( 'Labels must be a PDF or an image.', 'wpreturns' ) );
 			}
 
-			$sub = gmdate( 'Y/m' );
-			$key = $sub . '/' . wp_generate_password( 32, false, false ) . '.' . $check['ext'];
+			$key = $this->move_upload( $file, $check['ext'], $mimes );
 
-			wp_mkdir_p( self::get_base_dir() . '/' . $sub );
-
-			if ( ! copy( $path, self::get_base_dir() . '/' . $key ) ) {
-				return new \WP_Error( 'ddwcwr_upload', __( 'The file could not be saved.', 'wpreturns' ) );
+			if ( is_wp_error( $key ) ) {
+				return $key;
 			}
 
 			return [
 				'key'  => $key,
-				'name' => sanitize_file_name( $name ),
+				'name' => $name,
 				'type' => $check['type'],
-				'size' => (int) filesize( self::get_base_dir() . '/' . $key ),
+				'size' => (int) $file['size'],
 			];
+		}
+
+		/**
+		 * Move one validated upload into the private folder with wp_handle_upload(), under a random name.
+		 *
+		 * @param array  $file  One $_FILES entry.
+		 * @param string $ext   Checked extension.
+		 * @param array  $mimes Allowed ext => mime.
+		 * @return string|\WP_Error Stored key.
+		 */
+		protected function move_upload( $file, $ext, $mimes ) {
+			if ( ! function_exists( 'wp_handle_upload' ) ) {
+				require_once ABSPATH . 'wp-admin/includes/file.php';
+			}
+
+			$base       = self::get_base_dir();
+			$sub        = gmdate( 'Y/m' );
+			$to_private = function ( $dirs ) use ( $base, $sub ) {
+				$dirs['path']   = $base . '/' . $sub;
+				$dirs['subdir'] = '/' . $sub;
+				$dirs['error']  = false;
+
+				return $dirs;
+			};
+
+			wp_mkdir_p( $base . '/' . $sub );
+
+			$file['name'] = wp_generate_password( 32, false, false ) . '.' . $ext;
+
+			// Write into the private folder instead of the public uploads folder.
+			add_filter( 'upload_dir', $to_private );
+
+			$result = wp_handle_upload(
+				$file,
+				[
+					'test_form' => false,
+					'mimes'     => $mimes,
+				]
+			);
+
+			remove_filter( 'upload_dir', $to_private );
+
+			if ( ! empty( $result['error'] ) || empty( $result['file'] ) ) {
+				return new \WP_Error( 'ddwcwr_upload', __( 'The file could not be saved. Please try again.', 'wpreturns' ) );
+			}
+
+			return $sub . '/' . basename( $result['file'] );
 		}
 
 		/**

@@ -15,7 +15,6 @@ defined( 'ABSPATH' ) || exit(); // Exit if accessed directly.
 $current_page = ! empty( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
 $hub_tabs     = [
 	ddfw_get_parent_menu_slug() => esc_html__( 'Dashboard', 'wpreturns' ),
-	'devdiggers-extensions'     => esc_html__( 'Extensions', 'wpreturns' ),
 ];
 ?>
 <nav class="ddfw-header-tab-wrapper ddfw-hub-header">

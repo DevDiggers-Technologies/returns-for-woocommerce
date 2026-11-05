@@ -220,30 +220,41 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		}
 
 		/**
-		 * Sanitize the built-in statuses: label, color and notify. Statuses saved by Pro are kept as they are.
+		 * Sanitize the statuses repeater (built-in statuses are always kept).
 		 *
 		 * @param mixed $value Value.
 		 * @return array
 		 */
 		public function ddwcwr_sanitize_statuses( $value ) {
-			$posted   = array_column( array_filter( (array) $value, 'is_array' ), null, 'slug' );
 			$statuses = [];
+			$core     = array_column( \DDWCWR_Install::ddwcwr_get_default_statuses(), null, 'slug' );
 
-			foreach ( (array) get_option( '_ddwcwr_statuses', \DDWCWR_Install::ddwcwr_get_default_statuses() ) as $status ) {
-				if ( ! empty( $status['core'] ) && isset( $posted[ $status['slug'] ] ) ) {
-					$row   = $posted[ $status['slug'] ];
-					$label = isset( $row['label'] ) ? sanitize_text_field( $row['label'] ) : '';
-					$color = isset( $row['color'] ) ? sanitize_hex_color( $row['color'] ) : '';
+			foreach ( array_filter( (array) $value, 'is_array' ) as $row ) {
+				$label = isset( $row['label'] ) ? sanitize_text_field( $row['label'] ) : '';
+				$slug  = ! empty( $row['slug'] ) ? sanitize_key( $row['slug'] ) : sanitize_key( str_replace( '-', '_', sanitize_title( $label ) ) );
 
-					$status['label']  = '' === $label ? $status['label'] : $label;
-					$status['color']  = $color ? $color : $status['color'];
-					$status['notify'] = ! empty( $row['notify'] ) ? 'yes' : '';
+				if ( '' === $label || '' === $slug || isset( $statuses[ $slug ] ) ) {
+					continue;
 				}
 
-				$statuses[] = $status;
+				$color = isset( $row['color'] ) ? sanitize_hex_color( $row['color'] ) : '';
+
+				$statuses[ $slug ] = [
+					'slug'   => $slug,
+					'label'  => $label,
+					'color'  => $color ? $color : '#6b7280',
+					'notify' => ! empty( $row['notify'] ) ? 'yes' : '',
+					'core'   => isset( $core[ $slug ] ) ? 'yes' : '',
+				];
 			}
 
-			return $statuses;
+			foreach ( $core as $slug => $status ) {
+				if ( ! isset( $statuses[ $slug ] ) ) {
+					$statuses[ $slug ] = $status;
+				}
+			}
+
+			return array_values( $statuses );
 		}
 
 		/**
@@ -374,14 +385,14 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					break;
 
 				case 'upload_label':
-					// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Validated by is_uploaded_file and the type check in store_file().
+					// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Validated by is_uploaded_file, the type check in store_file() and wp_handle_upload().
 					$file = isset( $_FILES['label_file'] ) ? $_FILES['label_file'] : null;
 
 					if ( ! $file || UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
 						$this->ddwcwr_back_to_request( $request_id, __( 'Choose a label file to upload.', 'wpreturns' ), true );
 					}
 
-					$stored = ( new DDWCWR_Upload_Helper() )->store_file( $file['tmp_name'], sanitize_file_name( $file['name'] ) );
+					$stored = ( new DDWCWR_Upload_Helper() )->store_file( $file );
 
 					if ( is_wp_error( $stored ) ) {
 						$this->ddwcwr_back_to_request( $request_id, $stored->get_error_message(), true );

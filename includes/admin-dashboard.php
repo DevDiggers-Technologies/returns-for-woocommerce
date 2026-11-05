@@ -187,9 +187,6 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_add_screen_options() {
-			// phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound, WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase -- $myListTable is the global the framework screen options read.
-			global $myListTable;
-
 			$menu = ! empty( $_GET['menu'] ) ? sanitize_title( wp_unslash( $_GET['menu'] ) ) : 'dashboard'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$args = [
 				'label'    => esc_html__( 'Results per page', 'wpreturns' ),
@@ -202,12 +199,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				case 'withdrawals':
 					if ( empty( $_GET['request-id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 						$args['option'] = 'ddwcwr_requests_per_page';
-						$myListTable    = new Admin\Request\DDWCWR_Requests_List_Template( 'withdrawals' === $menu ? 'withdrawal' : '' );
+						// Built here so its columns register with Screen Options.
+						new Admin\Request\DDWCWR_Requests_List_Template( 'withdrawals' === $menu ? 'withdrawal' : '' );
 					}
 					break;
 			}
-
-			// phpcs:enable
 
 			if ( ! empty( $args['option'] ) ) {
 				add_screen_option( 'per_page', $args );
@@ -262,10 +258,6 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 					esc_html_e( 'Add New', 'wpreturns' );
 					?>
 				</a>
-				<span class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
-					<button type="button" class="page-title-action button" disabled="disabled"><?php esc_html_e( 'Export CSV', 'wpreturns' ); ?></button>
-					<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
-				</span>
 			<?php endif; ?>
 			<hr class="wp-header-end" />
 			<?php if ( 'withdrawal' === $type ) : ?>

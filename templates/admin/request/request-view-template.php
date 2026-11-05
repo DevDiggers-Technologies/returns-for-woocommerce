@@ -149,13 +149,6 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 						</select>
 						<span class="description"><?php esc_html_e( 'Gateways without refund support record the refund only.', 'wpreturns' ); ?></span>
 					</p>
-					<p class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-field">
-						<label for="ddwcwr-locked-resolution"><?php esc_html_e( 'Resolve with', 'wpreturns' ); ?> <?php echo wp_kses_post( ddfw_get_pro_tag() ); ?></label>
-						<select id="ddwcwr-locked-resolution" disabled="disabled">
-							<option><?php esc_html_e( 'Store credit, exchange or keep-it refund', 'wpreturns' ); ?></option>
-						</select>
-						<span class="description"><?php esc_html_e( 'Keep the revenue: pay store credit with a bonus, or send a replacement instead.', 'wpreturns' ); ?></span>
-					</p>
 				</div>
 				<?php if ( 'withdrawal' === $request['type'] && ! in_array( $request['status'], [ 'received', 'completed' ], true ) ) : ?>
 					<p class="description"><?php esc_html_e( 'For withdrawals you may wait until the goods arrive, or until the customer shows proof of sending, before refunding (Art. 13(3)).', 'wpreturns' ); ?></p>
@@ -301,12 +294,6 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 								echo esc_html( sprintf( __( 'Order #%s', 'wpreturns' ), $order->get_order_number() ) );
 								?>
 							</a>
-						<?php endif; ?>
-						<?php if ( 'cancellation' !== $request['type'] ) : ?>
-							<span class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
-								<button type="button" class="button" disabled="disabled"><?php esc_html_e( 'Print return slip', 'wpreturns' ); ?></button>
-								<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
-							</span>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -513,10 +500,6 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 							<p class="ddwcwr-actions">
 								<a class="button" href="<?php echo esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&s=' . rawurlencode( $request['customer_email'] ) ) ); ?>"><?php esc_html_e( 'All their requests', 'wpreturns' ); ?></a>
 							</p>
-							<p class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-field">
-								<span class="ddwcwr-field-title"><?php esc_html_e( 'Return rate and risk flags', 'wpreturns' ); ?> <?php echo wp_kses_post( ddfw_get_pro_tag() ); ?></span>
-								<span class="description"><?php esc_html_e( 'See how often this customer returns, flag serial returners and hold their requests for review.', 'wpreturns' ); ?></span>
-							</p>
 						</div>
 
 						<?php if ( 'cancellation' !== $request['type'] ) : ?>
@@ -537,11 +520,6 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 								<?php endif; ?>
 
 								<?php if ( ! $final ) : ?>
-									<p class="ddwcwr-actions ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
-										<button type="button" class="button" disabled="disabled"><?php esc_html_e( 'Buy return label', 'wpreturns' ); ?></button>
-										<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
-										<span class="ddwcwr-list-meta"><?php esc_html_e( 'EasyPost or Shippo, emailed automatically', 'wpreturns' ); ?></span>
-									</p>
 									<?php $this->form_open( 'upload_label', true ); ?>
 										<span class="ddwcwr-field-title"><?php esc_html_e( 'Upload a label', 'wpreturns' ); ?></span>
 										<label class="ddwcwr-file-button ddwcwr-file-drop">
@@ -586,12 +564,6 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 								<span class="description"><?php esc_html_e( 'Optional. Sent with the status email.', 'wpreturns' ); ?></span>
 								<p class="ddwcwr-actions"><button type="submit" class="button"><?php esc_html_e( 'Update status', 'wpreturns' ); ?></button></p>
 							</form>
-
-							<p class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-field">
-								<label for="ddwcwr-locked-assign"><?php esc_html_e( 'Assigned to', 'wpreturns' ); ?> <?php echo wp_kses_post( ddfw_get_pro_tag() ); ?></label>
-								<select id="ddwcwr-locked-assign" disabled="disabled"><option><?php esc_html_e( 'Unassigned', 'wpreturns' ); ?></option></select>
-								<span class="description"><?php esc_html_e( 'Share the work: assign requests to your team and filter by assignee.', 'wpreturns' ); ?></span>
-							</p>
 
 							<?php if ( 'withdrawal' !== $request['type'] ) : ?>
 								<?php $this->form_open( 'delete' ); ?>

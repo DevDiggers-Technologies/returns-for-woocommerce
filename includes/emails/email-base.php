@@ -1,8 +1,8 @@
 <?php
 /**
- * Base class of every WPReturns email.
+ * Base class of every DevDiggers Returns email.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -108,10 +108,10 @@ if ( ! class_exists( 'DDWCWR_Email_Base' ) ) {
 			$this->placeholders['{order_date}']     = $order && $order->get_date_created() ? wc_format_datetime( $order->get_date_created() ) : '';
 
 			if ( ! $this->is_customer_email() ) {
-				$this->button = [ admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&request-id=' . absint( $this->request['id'] ) ), __( 'Open request', 'wpreturns' ) ];
+				$this->button = [ admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&request-id=' . absint( $this->request['id'] ) ), __( 'Open request', 'devdiggers-returns' ) ];
 			} else {
 				$this->recipient = $this->request['customer_email'];
-				$this->button    = [ ddwcwr_get_request_view_url( $this->request, empty( $this->request['customer_id'] ) ), __( 'View your request', 'wpreturns' ) ];
+				$this->button    = [ ddwcwr_get_request_view_url( $this->request, empty( $this->request['customer_id'] ) ), __( 'View your request', 'devdiggers-returns' ) ];
 			}
 
 			return true;
@@ -180,10 +180,10 @@ if ( ! class_exists( 'DDWCWR_Email_Base' ) ) {
 
 				if ( 'heading' === $key ) {
 					$fields['intro'] = [
-						'title'       => __( 'Message', 'wpreturns' ),
+						'title'       => __( 'Message', 'devdiggers-returns' ),
 						'type'        => 'textarea',
 						'css'         => 'width:400px; height:75px;',
-						'placeholder' => __( 'Leave empty to use the built-in text, which adapts to the request (return, cancellation, withdrawal).', 'wpreturns' ),
+						'placeholder' => __( 'Leave empty to use the built-in text, which adapts to the request (return, cancellation, withdrawal).', 'devdiggers-returns' ),
 						'description' => $this->placeholder_text(),
 						'desc_tip'    => false,
 						'default'     => '',
@@ -231,7 +231,7 @@ if ( ! class_exists( 'DDWCWR_Email_Base' ) ) {
 
 			$this->preview_items = [
 				[
-					'name'       => __( 'Sample product', 'wpreturns' ),
+					'name'       => __( 'Sample product', 'devdiggers-returns' ),
 					'qty'        => 1,
 					'reason'     => 'wrong-size',
 					'line_total' => 49,
@@ -246,8 +246,8 @@ if ( ! class_exists( 'DDWCWR_Email_Base' ) ) {
 				$this->placeholders['{order_number}'] = $this->object->get_order_number();
 			}
 
-			$this->intro  = __( 'This is a preview with a sample request. The real email explains the next step for the customer\'s request.', 'wpreturns' );
-			$this->button = [ home_url( '/' ), $this->is_customer_email() ? __( 'View your request', 'wpreturns' ) : __( 'Open request', 'wpreturns' ) ];
+			$this->intro  = __( 'This is a preview with a sample request. The real email explains the next step for the customer\'s request.', 'devdiggers-returns' );
+			$this->button = [ home_url( '/' ), $this->is_customer_email() ? __( 'View your request', 'devdiggers-returns' ) : __( 'Open request', 'devdiggers-returns' ) ];
 			$this->apply_custom_message();
 
 			return $this;
@@ -278,7 +278,7 @@ if ( ! class_exists( 'DDWCWR_Email_Base' ) ) {
 		 */
 		protected function placeholder_text() {
 			/* translators: %s: list of placeholders */
-			return sprintf( __( 'Available placeholders: %s', 'wpreturns' ), '<code>' . implode( '</code>, <code>', array_keys( $this->placeholders ) ) . '</code>' );
+			return sprintf( __( 'Available placeholders: %s', 'devdiggers-returns' ), '<code>' . implode( '</code>, <code>', array_keys( $this->placeholders ) ) . '</code>' );
 		}
 	}
 }

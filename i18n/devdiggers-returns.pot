@@ -2,9 +2,10 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPReturns 1.0.0\n"
+"Project-Id-Version: DevDiggers Returns – Returns, Refunds, Exchanges & RMA "
+"for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpreturns\n"
-"POT-Creation-Date: 2026-11-05 10:17:17+00:00\n"
+"POT-Creation-Date: 2026-11-06 14:03:35+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -27,12 +28,14 @@ msgstr ""
 #: functions.php:97
 #. translators: %1$s: opening link tag, %2$s: closing link tag
 msgid ""
-"WPReturns is activated but not effective. It requires %1$sWooCommerce%2$s "
-"in order to work."
+"DevDiggers Returns is activated but not effective. It requires "
+"%1$sWooCommerce%2$s in order to work."
 msgstr ""
 
-#. Plugin Name of the plugin/theme
-msgid "WPReturns"
+#: functions.php:128 includes/admin/setup-wizard.php:81
+#: includes/admin-dashboard.php:106 includes/admin-dashboard.php:126
+#: includes/common/common-functions.php:363
+msgid "DevDiggers Returns"
 msgstr ""
 
 #: functions.php:144 includes/admin-dashboard.php:134
@@ -203,7 +206,7 @@ msgstr ""
 
 #: helper/order/woocommerce-order-adapter.php:248
 #. translators: 1: product name, 2: quantity, 3: new stock
-msgid "WPReturns restocked %1$s × %2$d (stock now %3$s)."
+msgid "DevDiggers Returns restocked %1$s × %2$d (stock now %3$s)."
 msgstr ""
 
 #: helper/request/request-helper.php:298
@@ -290,7 +293,7 @@ msgstr ""
 
 #: helper/request/request-helper.php:510
 #. translators: 1: request number, 2: request type
-msgid "WPReturns: %1$s (%2$s) was created for this order."
+msgid "DevDiggers Returns: %1$s (%2$s) was created for this order."
 msgstr ""
 
 #: helper/request/request-helper.php:582
@@ -335,7 +338,7 @@ msgstr ""
 
 #: helper/resolution/resolution-helper.php:146
 #. translators: %s: request number
-msgid "WPReturns %s"
+msgid "DevDiggers Returns %s"
 msgstr ""
 
 #: helper/resolution/resolution-helper.php:166
@@ -510,9 +513,9 @@ msgstr ""
 
 #: includes/admin/admin-functions.php:739
 msgid ""
-"WooCommerce's own order withdrawal form is on, and the WPReturns withdrawal "
-"button is on too. Customers would see two withdrawal forms. Keep one of "
-"them."
+"WooCommerce's own order withdrawal form is on, and the DevDiggers Returns "
+"withdrawal button is on too. Customers would see two withdrawal forms. Keep "
+"one of them."
 msgstr ""
 
 #: includes/admin/admin-functions.php:741
@@ -520,7 +523,7 @@ msgid "Turn off the WooCommerce form"
 msgstr ""
 
 #: includes/admin/admin-functions.php:743
-msgid "Open the WPReturns withdrawal settings"
+msgid "Open the DevDiggers Returns withdrawal settings"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:82
@@ -584,7 +587,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:138
-msgid "Welcome to WPReturns!"
+msgid "Welcome to DevDiggers Returns!"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:139
@@ -742,7 +745,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin-dashboard.php:125
-msgid "WPReturns – Returns & EU Withdrawal"
+msgid "DevDiggers Returns – Returns & EU Withdrawal"
 msgstr ""
 
 #: includes/admin-dashboard.php:139 includes/admin-dashboard.php:251
@@ -2451,8 +2454,9 @@ msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:568
 msgid ""
-"Every WPReturns email is a WooCommerce email: edit the subject, heading, "
-"text and recipients, or turn it off, in WooCommerce > Settings > Emails."
+"Every DevDiggers Returns email is a WooCommerce email: edit the subject, "
+"heading, text and recipients, or turn it off, in WooCommerce > Settings > "
+"Emails."
 msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:578
@@ -2494,7 +2498,7 @@ msgid "Uninstall"
 msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:600
-msgid "Delete all WPReturns data when the plugin is deleted"
+msgid "Delete all DevDiggers Returns data when the plugin is deleted"
 msgstr ""
 
 #: templates/admin/configuration/configuration-template.php:600
@@ -2598,8 +2602,8 @@ msgstr ""
 #: templates/admin/configuration/import-template.php:39
 msgid ""
 "Bring your old return, cancellation and EU withdrawal requests into "
-"WPReturns, with their items, status, dates and messages, so your history "
-"stays in one place."
+"DevDiggers Returns, with their items, status, dates and messages, so your "
+"history stays in one place."
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:44
@@ -2632,8 +2636,8 @@ msgstr ""
 
 #: templates/admin/configuration/import-template.php:56
 msgid ""
-"WPReturns looks for requests from the plugins below, even after they are "
-"deactivated. Nothing to bring over here."
+"DevDiggers Returns looks for requests from the plugins below, even after "
+"they are deactivated. Nothing to bring over here."
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:75
@@ -2655,7 +2659,7 @@ msgid "Requests found"
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:107
-msgid "Imported to WPReturns"
+msgid "Imported to DevDiggers Returns"
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:138
@@ -2721,11 +2725,11 @@ msgid "Next steps"
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:252
-msgid "Your history is in WPReturns. Two things finish the move."
+msgid "Your history is in DevDiggers Returns. Two things finish the move."
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:267
-msgid "Handle open requests in WPReturns"
+msgid "Handle open requests in DevDiggers Returns"
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:272
@@ -2738,7 +2742,7 @@ msgstr[1] ""
 #: templates/admin/configuration/import-template.php:274
 msgid ""
 "Every imported request is closed. New requests now come in through "
-"WPReturns."
+"DevDiggers Returns."
 msgstr ""
 
 #: templates/admin/configuration/import-template.php:280
@@ -3907,6 +3911,10 @@ msgstr ""
 
 #: templates/front/withdrawal-form.php:111
 msgid "Confirm withdrawal"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "DevDiggers Returns – Returns, Refunds, Exchanges & RMA for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

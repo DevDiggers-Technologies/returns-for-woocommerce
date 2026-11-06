@@ -5,7 +5,7 @@
  * Every setting the plugin reads, with its default. A setting that was never saved gets its default; a saved
  * empty checkbox stays empty, so turning a feature off sticks.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -23,7 +23,7 @@ $ddwcwr_defaults = [
 	'window_from'                     => 'completed',
 	'eligible_order_statuses'         => [ 'wc-completed' ],
 	'my_account_endpoint'             => 'returns',
-	'my_account_endpoint_title'       => __( 'Returns', 'wpreturns' ),
+	'my_account_endpoint_title'       => __( 'Returns', 'devdiggers-returns' ),
 	'portal_page_id'                  => 0,
 	'require_note'                    => '',
 	'final_sale_categories'           => [],

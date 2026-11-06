@@ -5,7 +5,7 @@
  * EU withdrawals in {prefix}withbuea_returns with one row per item (and its reason) in {prefix}withbuea_return_items.
  * Dates are site-local. The bank account some customers enter is not imported.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Easyreturn_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Withdrawal Button – Easy Return', 'wpreturns' );
+			return __( 'Withdrawal Button – Easy Return', 'devdiggers-returns' );
 		}
 
 		/**

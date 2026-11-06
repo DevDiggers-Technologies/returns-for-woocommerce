@@ -2,7 +2,7 @@
 /**
  * Setup wizard: the few settings a store must decide before taking returns.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -23,7 +23,7 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		 *
 		 * @var string
 		 */
-		const SLUG = 'wpreturns';
+		const SLUG = 'devdiggers-returns';
 
 		/**
 		 * Options a wizard step may write.
@@ -78,39 +78,39 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 				'dashboard_page' => 'ddwcwr-dashboard',
 				'redirect_url'   => admin_url( 'admin.php?page=ddwcwr-dashboard' ),
 				'brand'          => [
-					'name'        => esc_html__( 'WPReturns', 'wpreturns' ),
-					'description' => esc_html__( 'Returns, cancellations and the EU withdrawal button for WooCommerce. A few questions and your store is ready to take returns.', 'wpreturns' ),
+					'name'        => esc_html__( 'DevDiggers Returns', 'devdiggers-returns' ),
+					'description' => esc_html__( 'Returns, cancellations and the EU withdrawal button for WooCommerce. A few questions and your store is ready to take returns.', 'devdiggers-returns' ),
 				],
 				'steps'          => [
 					'welcome'     => [
-						'label'         => esc_html__( 'Welcome', 'wpreturns' ),
+						'label'         => esc_html__( 'Welcome', 'devdiggers-returns' ),
 						'view_callback' => [ $this, 'welcome_view' ],
 					],
 					'returns'     => [
-						'label'         => esc_html__( 'Returns', 'wpreturns' ),
-						'title'         => esc_html__( 'Your return policy', 'wpreturns' ),
-						'description'   => esc_html__( 'How long customers have to ask for a return.', 'wpreturns' ),
+						'label'         => esc_html__( 'Returns', 'devdiggers-returns' ),
+						'title'         => esc_html__( 'Your return policy', 'devdiggers-returns' ),
+						'description'   => esc_html__( 'How long customers have to ask for a return.', 'devdiggers-returns' ),
 						'view_callback' => [ $this, 'returns_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'resolutions' => [
-						'label'         => esc_html__( 'Refunds', 'wpreturns' ),
-						'title'         => esc_html__( 'Refunds and cancellations', 'wpreturns' ),
-						'description'   => esc_html__( 'How refunds are paid and whether customers can cancel orders that have not shipped.', 'wpreturns' ),
+						'label'         => esc_html__( 'Refunds', 'devdiggers-returns' ),
+						'title'         => esc_html__( 'Refunds and cancellations', 'devdiggers-returns' ),
+						'description'   => esc_html__( 'How refunds are paid and whether customers can cancel orders that have not shipped.', 'devdiggers-returns' ),
 						'view_callback' => [ $this, 'resolutions_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'withdrawal'  => [
-						'label'         => esc_html__( 'EU withdrawal', 'wpreturns' ),
-						'title'         => esc_html__( 'Withdrawal button', 'wpreturns' ),
-						'description'   => esc_html__( 'From 19 June 2026, stores selling to EU consumers online must offer a "Withdraw from contract here" function.', 'wpreturns' ),
+						'label'         => esc_html__( 'EU withdrawal', 'devdiggers-returns' ),
+						'title'         => esc_html__( 'Withdrawal button', 'devdiggers-returns' ),
+						'description'   => esc_html__( 'From 19 June 2026, stores selling to EU consumers online must offer a "Withdraw from contract here" function.', 'devdiggers-returns' ),
 						'view_callback' => [ $this, 'withdrawal_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'ready'       => [
-						'label'             => esc_html__( 'Ready!', 'wpreturns' ),
-						'ready_title'       => esc_html__( 'You are ready to take returns.', 'wpreturns' ),
-						'ready_description' => esc_html__( 'Customers can now start returns from My Account and the returns page. Reasons, statuses and emails are under Configuration.', 'wpreturns' ),
+						'label'             => esc_html__( 'Ready!', 'devdiggers-returns' ),
+						'ready_title'       => esc_html__( 'You are ready to take returns.', 'devdiggers-returns' ),
+						'ready_description' => esc_html__( 'Customers can now start returns from My Account and the returns page. Reasons, statuses and emails are under Configuration.', 'devdiggers-returns' ),
 					],
 				],
 			];
@@ -135,8 +135,8 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 			?>
 			<div class="ddfw-setup-wizard-ready ddfw-setup-wizard-onboarding">
 				<div class="ddfw-success-icon-wrap"><?php echo $this->get_logo( 100 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG. ?></div>
-				<h2 class="ddfw-setup-wizard-ready-title"><?php esc_html_e( 'Welcome to WPReturns!', 'wpreturns' ); ?></h2>
-				<p class="ddfw-setup-wizard-ready-desc"><?php esc_html_e( 'Let\'s set your return window, how refunds work and the EU withdrawal button. It takes about two minutes and you can change everything later.', 'wpreturns' ); ?></p>
+				<h2 class="ddfw-setup-wizard-ready-title"><?php esc_html_e( 'Welcome to DevDiggers Returns!', 'devdiggers-returns' ); ?></h2>
+				<p class="ddfw-setup-wizard-ready-desc"><?php esc_html_e( 'Let\'s set your return window, how refunds work and the EU withdrawal button. It takes about two minutes and you can change everything later.', 'devdiggers-returns' ); ?></p>
 			</div>
 			<?php
 		}
@@ -192,23 +192,23 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function returns_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'enabled', esc_html__( 'Customer requests', 'wpreturns' ), esc_html__( 'Let customers request returns and cancellations', 'wpreturns' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself.', 'wpreturns' ) ),
+					$this->checkbox( 'enabled', esc_html__( 'Customer requests', 'devdiggers-returns' ), esc_html__( 'Let customers request returns and cancellations', 'devdiggers-returns' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself.', 'devdiggers-returns' ) ),
 					[
 						'type'              => 'number',
 						'id'                => 'ddwcwr-return-window-days',
-						'label'             => esc_html__( 'Days to request a return', 'wpreturns' ),
-						'description'       => esc_html__( '30 is common. Under EU law consumers get at least 14 days to withdraw anyway.', 'wpreturns' ),
+						'label'             => esc_html__( 'Days to request a return', 'devdiggers-returns' ),
+						'description'       => esc_html__( '30 is common. Under EU law consumers get at least 14 days to withdraw anyway.', 'devdiggers-returns' ),
 						'value'             => $this->configuration['return_window_days'],
 						'custom_attributes' => [ 'min' => 0 ],
 					],
 					[
 						'type'        => 'select',
 						'id'          => 'ddwcwr-window-from',
-						'label'       => esc_html__( 'Count days from', 'wpreturns' ),
-						'description' => esc_html__( '"Completed" works best when you complete orders on delivery.', 'wpreturns' ),
+						'label'       => esc_html__( 'Count days from', 'devdiggers-returns' ),
+						'description' => esc_html__( '"Completed" works best when you complete orders on delivery.', 'devdiggers-returns' ),
 						'options'     => [
-							'completed' => esc_html__( 'Order completed (delivered)', 'wpreturns' ),
-							'created'   => esc_html__( 'Order placed', 'wpreturns' ),
+							'completed' => esc_html__( 'Order completed (delivered)', 'devdiggers-returns' ),
+							'created'   => esc_html__( 'Order placed', 'devdiggers-returns' ),
 						],
 						'value'       => $this->configuration['window_from'],
 					],
@@ -224,10 +224,10 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function resolutions_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'allow_refund', esc_html__( 'Returns', 'wpreturns' ), esc_html__( 'Let customers return items for a refund', 'wpreturns' ), esc_html__( 'Money back to the card or method the customer paid with, once you approve it.', 'wpreturns' ) ),
-					$this->checkbox( 'refund_via_gateway', esc_html__( 'Gateway refunds', 'wpreturns' ), esc_html__( 'Send refunds through the payment gateway', 'wpreturns' ), esc_html__( 'When off, refunds are only recorded and you pay them back yourself. You can still choose per request.', 'wpreturns' ) ),
-					$this->checkbox( 'restock_on_receive', esc_html__( 'Restock', 'wpreturns' ), esc_html__( 'Put returned items back in stock when they arrive', 'wpreturns' ), esc_html__( 'Damaged and defective items are never restocked.', 'wpreturns' ) ),
-					$this->checkbox( 'allow_cancellation', esc_html__( 'Cancellations', 'wpreturns' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'wpreturns' ), esc_html__( 'You approve each one; the order is canceled and refunded.', 'wpreturns' ) ),
+					$this->checkbox( 'allow_refund', esc_html__( 'Returns', 'devdiggers-returns' ), esc_html__( 'Let customers return items for a refund', 'devdiggers-returns' ), esc_html__( 'Money back to the card or method the customer paid with, once you approve it.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'refund_via_gateway', esc_html__( 'Gateway refunds', 'devdiggers-returns' ), esc_html__( 'Send refunds through the payment gateway', 'devdiggers-returns' ), esc_html__( 'When off, refunds are only recorded and you pay them back yourself. You can still choose per request.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'restock_on_receive', esc_html__( 'Restock', 'devdiggers-returns' ), esc_html__( 'Put returned items back in stock when they arrive', 'devdiggers-returns' ), esc_html__( 'Damaged and defective items are never restocked.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'allow_cancellation', esc_html__( 'Cancellations', 'devdiggers-returns' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'devdiggers-returns' ), esc_html__( 'You approve each one; the order is canceled and refunded.', 'devdiggers-returns' ) ),
 				]
 			);
 		}
@@ -240,19 +240,19 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function withdrawal_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'withdrawal_enabled', esc_html__( 'Withdrawal function', 'wpreturns' ), esc_html__( 'Show the "Withdraw from contract here" button', 'wpreturns' ), esc_html__( 'Customers confirm in two steps and get an acknowledgement email with the date and time.', 'wpreturns' ) ),
+					$this->checkbox( 'withdrawal_enabled', esc_html__( 'Withdrawal function', 'devdiggers-returns' ), esc_html__( 'Show the "Withdraw from contract here" button', 'devdiggers-returns' ), esc_html__( 'Customers confirm in two steps and get an acknowledgement email with the date and time.', 'devdiggers-returns' ) ),
 					[
 						'type'        => 'select',
 						'id'          => 'ddwcwr-withdrawal-scope',
-						'label'       => esc_html__( 'Show it for', 'wpreturns' ),
-						'description' => esc_html__( 'Based on the billing country of the order. You can pick individual countries on the EU Withdrawal tab.', 'wpreturns' ),
+						'label'       => esc_html__( 'Show it for', 'devdiggers-returns' ),
+						'description' => esc_html__( 'Based on the billing country of the order. You can pick individual countries on the EU Withdrawal tab.', 'devdiggers-returns' ),
 						'options'     => [
-							'eu'  => esc_html__( 'EU and EEA countries', 'wpreturns' ),
-							'all' => esc_html__( 'All countries', 'wpreturns' ),
+							'eu'  => esc_html__( 'EU and EEA countries', 'devdiggers-returns' ),
+							'all' => esc_html__( 'All countries', 'devdiggers-returns' ),
 						],
 						'value'       => $this->configuration['withdrawal_scope'],
 					],
-					$this->checkbox( 'withdrawal_footer_link', esc_html__( 'Footer link', 'wpreturns' ), esc_html__( 'Add a "Withdraw from contract here" link to every page', 'wpreturns' ), esc_html__( 'The law asks for the function to be easy to find for the whole withdrawal period.', 'wpreturns' ) ),
+					$this->checkbox( 'withdrawal_footer_link', esc_html__( 'Footer link', 'devdiggers-returns' ), esc_html__( 'Add a "Withdraw from contract here" link to every page', 'devdiggers-returns' ), esc_html__( 'The law asks for the function to be easy to find for the whole withdrawal period.', 'devdiggers-returns' ) ),
 				]
 			);
 		}

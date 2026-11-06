@@ -7,7 +7,9 @@ set -e
 cd "$(dirname "$0")"
 cd ..
 
-PLUGIN_SLUG=$(basename "$(pwd)")
+# The wordpress.org slug is the text domain; the local folder name may differ.
+PLUGIN_SLUG=$(grep -m 1 "Text Domain:" functions.php | awk '{print $NF}' | tr -d '\r')
+PLUGIN_SLUG=${PLUGIN_SLUG:-$(basename "$(pwd)")}
 PROJECT_PATH=$(pwd)
 BUILD_PATH="${PROJECT_PATH}/build"
 DESTINATION_PATH="$BUILD_PATH/$PLUGIN_SLUG"

@@ -2,7 +2,7 @@
 /**
  * Request helper: storage, validation, status changes, messages.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -295,12 +295,12 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 				$already           = isset( $requested[ $item_id ] ) ? $requested[ $item_id ] : 0;
 				$item['available'] = max( 0, $item['qty'] - $item['refunded_qty'] - $already );
 				$item['eligible']  = $item['available'] > 0;
-				$item['message']   = $item['available'] > 0 ? '' : __( 'Already requested or refunded.', 'wpreturns' );
+				$item['message']   = $item['available'] > 0 ? '' : __( 'Already requested or refunded.', 'devdiggers-returns' );
 				$item['deadline']  = 0;
 
 				if ( $item['eligible'] && 'return' === $type && ddwcwr_is_final_sale( $item ) ) {
 					$item['eligible'] = false;
-					$item['message']  = __( 'This item is final sale and cannot be returned.', 'wpreturns' );
+					$item['message']  = __( 'This item is final sale and cannot be returned.', 'devdiggers-returns' );
 				} elseif ( $item['eligible'] && 'return' === $type ) {
 					$state            = $this->get_window( $order_data, $ddwcwr_configuration['return_window_days'], $ddwcwr_configuration['window_from'] );
 					$item['deadline'] = $state['deadline'];
@@ -309,15 +309,15 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 					if ( ! $state['open'] ) {
 						$item['eligible'] = false;
 						/* translators: %s: date the return window closed */
-						$item['message'] = sprintf( __( 'The return window closed on %s.', 'wpreturns' ), date_i18n( wc_date_format(), $state['deadline'] ) );
+						$item['message'] = sprintf( __( 'The return window closed on %s.', 'devdiggers-returns' ), date_i18n( wc_date_format(), $state['deadline'] ) );
 					}
 				} elseif ( $item['eligible'] && 'withdrawal' === $type ) {
 					if ( ddwcwr_is_withdrawal_excluded( $item ) ) {
 						$item['eligible'] = false;
-						$item['message']  = __( 'This item is exempt from the right of withdrawal.', 'wpreturns' );
+						$item['message']  = __( 'This item is exempt from the right of withdrawal.', 'devdiggers-returns' );
 					} elseif ( $item['downloadable'] && $order_data['digital_consent'] ) {
 						$item['eligible'] = false;
-						$item['message']  = __( 'You agreed to the immediate supply of this digital content at checkout, so the right of withdrawal does not apply.', 'wpreturns' );
+						$item['message']  = __( 'You agreed to the immediate supply of this digital content at checkout, so the right of withdrawal does not apply.', 'devdiggers-returns' );
 					} elseif ( $order_data['is_completed'] ) {
 						$state            = $this->get_window( $order_data, $ddwcwr_configuration['withdrawal_days'], $ddwcwr_configuration['withdrawal_from'] );
 						$item['deadline'] = $state['deadline'];
@@ -325,7 +325,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 						if ( ! $state['open'] ) {
 							$item['eligible'] = false;
 							/* translators: %s: date the withdrawal period ended */
-							$item['message'] = sprintf( __( 'The withdrawal period ended on %s.', 'wpreturns' ), date_i18n( wc_date_format(), $state['deadline'] ) );
+							$item['message'] = sprintf( __( 'The withdrawal period ended on %s.', 'devdiggers-returns' ), date_i18n( wc_date_format(), $state['deadline'] ) );
 						}
 					}
 				}
@@ -364,7 +364,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 			$order = $args['order'];
 
 			if ( ! $order ) {
-				return new \WP_Error( 'ddwcwr_order', __( 'We could not find that order.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_order', __( 'We could not find that order.', 'devdiggers-returns' ) );
 			}
 
 			$adapter    = ddwcwr_order_adapter();
@@ -372,7 +372,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 			$type       = $args['type'];
 
 			if ( ! array_key_exists( $type, ddwcwr_get_request_types() ) || ( ! $args['by_admin'] && ! $this->order_status_allows( $order_data, $type ) ) ) {
-				return new \WP_Error( 'ddwcwr_type', __( 'This order cannot get this kind of request right now.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_type', __( 'This order cannot get this kind of request right now.', 'devdiggers-returns' ) );
 			}
 
 			$eligible = $this->get_eligible_items( $order, $type );
@@ -402,19 +402,19 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 				}
 
 				if ( ! isset( $eligible[ $item_id ] ) ) {
-					return new \WP_Error( 'ddwcwr_item', __( 'One of the selected items is not part of this order.', 'wpreturns' ) );
+					return new \WP_Error( 'ddwcwr_item', __( 'One of the selected items is not part of this order.', 'devdiggers-returns' ) );
 				}
 
 				$item = $eligible[ $item_id ];
 
 				if ( ! $args['by_admin'] && ! $item['eligible'] ) {
 					/* translators: 1: product name, 2: reason */
-					return new \WP_Error( 'ddwcwr_item', sprintf( __( '%1$s: %2$s', 'wpreturns' ), $item['name'], $item['message'] ) );
+					return new \WP_Error( 'ddwcwr_item', sprintf( __( '%1$s: %2$s', 'devdiggers-returns' ), $item['name'], $item['message'] ) );
 				}
 
 				if ( $qty > $item['available'] ) {
 					/* translators: 1: product name, 2: quantity */
-					return new \WP_Error( 'ddwcwr_qty', sprintf( __( 'You can request up to %2$d of %1$s.', 'wpreturns' ), $item['name'], $item['available'] ) );
+					return new \WP_Error( 'ddwcwr_qty', sprintf( __( 'You can request up to %2$d of %1$s.', 'devdiggers-returns' ), $item['name'], $item['available'] ) );
 				}
 
 				if ( in_array( $type, [ 'withdrawal', 'cancellation' ], true ) ) {
@@ -424,7 +424,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 
 					if ( ! isset( $reasons[ $reason ] ) ) {
 						/* translators: %s: product name */
-						return new \WP_Error( 'ddwcwr_reason', sprintf( __( 'Please choose a reason for %s.', 'wpreturns' ), $item['name'] ) );
+						return new \WP_Error( 'ddwcwr_reason', sprintf( __( 'Please choose a reason for %s.', 'devdiggers-returns' ), $item['name'] ) );
 					}
 
 					$photos = $photos || ! empty( $reasons[ $reason ]['require_photo'] );
@@ -446,18 +446,18 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 
 			if ( empty( $rows ) ) {
 				if ( in_array( $type, [ 'withdrawal', 'cancellation' ], true ) ) {
-					return new \WP_Error( 'ddwcwr_items', __( 'Every item of this order is already covered by a request or a refund, or cannot be withdrawn from. Check your existing requests or contact us.', 'wpreturns' ) );
+					return new \WP_Error( 'ddwcwr_items', __( 'Every item of this order is already covered by a request or a refund, or cannot be withdrawn from. Check your existing requests or contact us.', 'devdiggers-returns' ) );
 				}
 
-				return new \WP_Error( 'ddwcwr_items', __( 'Please select at least one item.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_items', __( 'Please select at least one item.', 'devdiggers-returns' ) );
 			}
 
 			if ( ! $args['by_admin'] && 'return' === $type && 'yes' === $ddwcwr_configuration['require_note'] && '' === trim( $args['note'] ) ) {
-				return new \WP_Error( 'ddwcwr_note', __( 'Please add a short note about your request.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_note', __( 'Please add a short note about your request.', 'devdiggers-returns' ) );
 			}
 
 			if ( ! $args['by_admin'] && 'return' === $type && $photos && empty( $args['attachments'] ) ) {
-				return new \WP_Error( 'ddwcwr_photos', __( 'Please add a photo of the items.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_photos', __( 'Please add a photo of the items.', 'devdiggers-returns' ) );
 			}
 
 			$now = current_time( 'mysql' );
@@ -489,7 +489,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 			$request_id = (int) $wpdb->insert_id;
 
 			if ( ! $request_id ) {
-				return new \WP_Error( 'ddwcwr_db', __( 'Your request could not be saved. Please try again.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_db', __( 'Your request could not be saved. Please try again.', 'devdiggers-returns' ) );
 			}
 
 			foreach ( $rows as $row ) {
@@ -500,14 +500,14 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 
 			$types = ddwcwr_get_request_types();
 			/* translators: 1: request type, 2: source */
-			$this->log( $request_id, sprintf( __( '%1$s request submitted (%2$s).', 'wpreturns' ), $types[ $type ], $args['source'] ) );
+			$this->log( $request_id, sprintf( __( '%1$s request submitted (%2$s).', 'devdiggers-returns' ), $types[ $type ], $args['source'] ) );
 
 			if ( '' !== trim( $args['note'] ) || ! empty( $args['attachments'] ) ) {
 				$this->add_message( $request_id, $args['note'], 'message', $args['by_admin'] ? 'staff' : 'customer', get_current_user_id(), $args['attachments'], false );
 			}
 
 			/* translators: 1: request number, 2: request type */
-			$adapter->add_order_note( $order, sprintf( __( 'WPReturns: %1$s (%2$s) was created for this order.', 'wpreturns' ), ddwcwr_get_request_number( $request_id ), $types[ $type ] ) );
+			$adapter->add_order_note( $order, sprintf( __( 'DevDiggers Returns: %1$s (%2$s) was created for this order.', 'devdiggers-returns' ), ddwcwr_get_request_number( $request_id ), $types[ $type ] ) );
 
 			do_action( 'ddwcwr_request_created', $request_id, $this->get_request( $request_id ) );
 
@@ -575,11 +575,11 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 			$statuses = ddwcwr_get_statuses();
 
 			if ( ! $request ) {
-				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'devdiggers-returns' ) );
 			}
 
 			if ( ! isset( $statuses[ $status ] ) ) {
-				return new \WP_Error( 'ddwcwr_status', __( 'Unknown status.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_status', __( 'Unknown status.', 'devdiggers-returns' ) );
 			}
 
 			$old = $request['status'];
@@ -599,7 +599,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 			$this->update_request( $request_id, $fields );
 
 			/* translators: 1: old status, 2: new status */
-			$this->log( $request_id, sprintf( __( 'Status changed from %1$s to %2$s.', 'wpreturns' ), ddwcwr_get_status_label( $old ), ddwcwr_get_status_label( $status ) ), $args['author_id'] );
+			$this->log( $request_id, sprintf( __( 'Status changed from %1$s to %2$s.', 'devdiggers-returns' ), ddwcwr_get_status_label( $old ), ddwcwr_get_status_label( $status ) ), $args['author_id'] );
 
 			if ( '' !== trim( (string) $args['note'] ) ) {
 				// Sent with the status email, not as a separate message email.
@@ -709,7 +709,7 @@ if ( ! class_exists( 'DDWCWR_Request_Helper' ) ) {
 				return [
 					'key'  => $key,
 					/* translators: %s: request number */
-					'name' => sprintf( __( 'return-label-%s', 'wpreturns' ), $request['number'] ) . '.' . pathinfo( $key, PATHINFO_EXTENSION ),
+					'name' => sprintf( __( 'return-label-%s', 'devdiggers-returns' ), $request['number'] ) . '.' . pathinfo( $key, PATHINFO_EXTENSION ),
 				];
 			}
 

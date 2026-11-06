@@ -2,7 +2,7 @@
 /**
  * Dashboard helper: request figures for the selected date range.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 

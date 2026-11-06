@@ -3,7 +3,7 @@
  * File handler
  *
  * @author DevDiggers
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 

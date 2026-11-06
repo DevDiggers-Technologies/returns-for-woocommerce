@@ -5,7 +5,7 @@
  * EU withdrawal declarations in {prefix}buddypilot_withdrawal_declarations. Items are a JSON snapshot; a partial
  * resolution marks each item accepted or rejected. Dates are GMT; an operator may override the filing date.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Buddypilot_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'BuddyPilot Withdrawal', 'wpreturns' );
+			return __( 'BuddyPilot Withdrawal', 'devdiggers-returns' );
 		}
 
 		/**
@@ -139,9 +139,9 @@ if ( ! class_exists( 'DDWCWR_Buddypilot_Source' ) ) {
 					$name      = isset( $entry['name'] ) ? $entry['name'] : '#' . $entry['item_id'];
 					$decided[] = 'accepted' === $entry['resolution']
 						/* translators: %s: item name */
-						? sprintf( __( '%s: accepted', 'wpreturns' ), $name )
+						? sprintf( __( '%s: accepted', 'devdiggers-returns' ), $name )
 						/* translators: %s: item name */
-						: sprintf( __( '%s: rejected', 'wpreturns' ), $name ) . ( empty( $entry['item_note'] ) ? '' : ' (' . $entry['item_note'] . ')' );
+						: sprintf( __( '%s: rejected', 'devdiggers-returns' ), $name ) . ( empty( $entry['item_note'] ) ? '' : ' (' . $entry['item_note'] . ')' );
 				}
 			}
 

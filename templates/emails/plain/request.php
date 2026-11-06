@@ -2,7 +2,7 @@
 /**
  * Request email (plain text)
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  *
  * @var \WC_Email $email
@@ -27,7 +27,7 @@ echo "\n=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
 
 if ( ! $sent_to_admin && $ddwcwr_request['customer_name'] ) {
 	/* translators: %s: customer name */
-	echo esc_html( sprintf( __( 'Hi %s,', 'wpreturns' ), $ddwcwr_request['customer_name'] ) ) . "\n\n";
+	echo esc_html( sprintf( __( 'Hi %s,', 'devdiggers-returns' ), $ddwcwr_request['customer_name'] ) ) . "\n\n";
 }
 
 if ( $intro ) {
@@ -47,13 +47,13 @@ if ( ! empty( $button[0] ) ) {
 }
 
 /* translators: 1: request number, 2: order number */
-echo "\n" . esc_html( sprintf( __( '%1$s for order #%2$s', 'wpreturns' ), $ddwcwr_request['number'], $email->placeholders['{order_number}'] ) ) . "\n";
+echo "\n" . esc_html( sprintf( __( '%1$s for order #%2$s', 'devdiggers-returns' ), $ddwcwr_request['number'], $email->placeholders['{order_number}'] ) ) . "\n";
 
 foreach ( $items as $ddwcwr_item ) {
 	echo '- ' . esc_html( $ddwcwr_item['name'] ) . ' × ' . esc_html( $ddwcwr_item['qty'] ) . ' (' . esc_html( ddwcwr_get_reason_label( $ddwcwr_item['reason'] ) ) . ")\n";
 }
 
-echo "\n" . esc_html__( 'Status', 'wpreturns' ) . ': ' . esc_html( ddwcwr_get_status_label( $ddwcwr_request['status'] ) ) . "\n\n";
+echo "\n" . esc_html__( 'Status', 'devdiggers-returns' ) . ': ' . esc_html( ddwcwr_get_status_label( $ddwcwr_request['status'] ) ) . "\n\n";
 
 if ( $additional_content ) {
 	echo esc_html( wp_strip_all_tags( wptexturize( $additional_content ) ) ) . "\n\n";

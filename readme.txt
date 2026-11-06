@@ -1,4 +1,4 @@
-=== WPReturns ===
+=== DevDiggers Returns – Returns, Refunds, Exchanges & RMA for WooCommerce ===
 Contributors: devdiggers
 Plugin URI: https://wpreturns.com/
 Author: DevDiggers
@@ -19,15 +19,15 @@ Returns portal and RMA for WooCommerce with the EU withdrawal button. Guest and 
 
 Most stores still handle returns by email. The customer writes in, you ask for the order number, then for photos, then you work out the refund by hand and hope you remember to restock the item.
 
-**[WPReturns](https://wpreturns.com/)** gives your customers a proper returns page and gives you one screen for every return request. Customers pick the items, a reason and a quantity, add photos and send the request. You approve it, upload a return label if you have one, mark the parcel received and refund it through WooCommerce in one click. Stock goes back automatically.
+**[DevDiggers Returns](https://wpreturns.com/)** gives your customers a proper returns page and gives you one screen for every return request. Customers pick the items, a reason and a quantity, add photos and send the request. You approve it, upload a return label if you have one, mark the parcel received and refund it through WooCommerce in one click. Stock goes back automatically.
 
-It also adds the **EU withdrawal button**. Since 19 June 2026, online shops selling to consumers in the EU must offer a "Withdraw from contract here" function with a confirmation step and an acknowledgement on a durable medium (Directive (EU) 2023/2673). WPReturns adds the button, the confirmation step and the acknowledgement email, for guests and account holders. Check your own obligations with a lawyer in the countries you sell to.
+It also adds the **EU withdrawal button**. Since 19 June 2026, online shops selling to consumers in the EU must offer a "Withdraw from contract here" function with a confirmation step and an acknowledgement on a durable medium (Directive (EU) 2023/2673). DevDiggers Returns adds the button, the confirmation step and the acknowledgement email, for guests and account holders. Check your own obligations with a lawyer in the countries you sell to.
 
 Everything runs inside WooCommerce on your own server. No account to sign up for, no per-return fees, and no customer or order data sent anywhere.
 
 = Quick links =
 
-* [Support](https://wordpress.org/support/plugin/wpreturns/)
+* [Support](https://wordpress.org/support/plugin/devdiggers-returns/)
 * [Upgrade to Pro](https://wpreturns.com/)
 
 = How a return works =
@@ -88,7 +88,7 @@ Logged in customers get a Returns page in My Account and a "Request a return" bu
 * GDPR export and erase for every request. Withdrawal records are anonymized, not deleted.
 * HPOS, block and classic checkout, RTL and translation ready, with a `wpml-config.xml` so WPML and Polylang can translate your reasons, statuses and policy line.
 
-= WPReturns Pro: keep the revenue =
+= DevDiggers Returns Pro: keep the revenue =
 
 Pro is for stores where returns are a cost worth managing: it turns refunds into store credit and exchanges, decides routine requests for you and shows where returns come from.
 
@@ -114,15 +114,15 @@ Pro is for stores where returns are a cost worth managing: it turns refunds into
 * **Analytics**: return rate, revenue kept, top reasons, categories and most returned products, with a full CSV export of every request.
 * Team permissions and assignment, appearance settings, REST API and WooCommerce webhooks.
 
-[Upgrade to WPReturns Pro](https://wpreturns.com/)
+[Upgrade to DevDiggers Returns Pro](https://wpreturns.com/)
 
 == Installation ==
 
 1. Install and activate WooCommerce.
-2. Install WPReturns from Plugins > Add New, or upload the `wpreturns` folder to `/wp-content/plugins/`.
+2. Install DevDiggers Returns from Plugins > Add New, or upload the `devdiggers-returns` folder to `/wp-content/plugins/`.
 3. Activate the plugin. The setup wizard opens and asks a few questions.
 4. The "Returns" and "Withdraw from contract" pages are created for you. Add them to your menus or footer.
-5. Check DevDiggers Plugins > WPReturns > Configuration, especially the Return Policy and EU Withdrawal tabs.
+5. Check DevDiggers Plugins > DevDiggers Returns > Configuration, especially the Return Policy and EU Withdrawal tabs.
 
 == Frequently Asked Questions ==
 
@@ -136,7 +136,7 @@ Yes. The whole EU withdrawal flow, the acknowledgement email, the model withdraw
 
 = What is the difference between a return and a withdrawal? =
 
-A return follows your own return policy: your window, your reasons, your final-sale items. A withdrawal is the customer's legal right in the EU to cancel a distance contract within 14 days without a reason. WPReturns keeps them apart, so a final-sale item cannot be returned but can still be withdrawn from unless it is exempt under Art. 16.
+A return follows your own return policy: your window, your reasons, your final-sale items. A withdrawal is the customer's legal right in the EU to cancel a distance contract within 14 days without a reason. DevDiggers Returns keeps them apart, so a final-sale item cannot be returned but can still be withdrawn from unless it is exempt under Art. 16.
 
 = Can guests return items without an account? =
 
@@ -156,11 +156,11 @@ Refunds are WooCommerce refunds, so they go through your gateway when it support
 
 = Can I charge a restocking fee or offer store credit instead of a refund? =
 
-Those are part of WPReturns Pro, along with exchanges, warranty claims, return rules and prepaid labels.
+Those are part of DevDiggers Returns Pro, along with exchanges, warranty claims, return rules and prepaid labels.
 
 = How is it different from other WooCommerce returns plugins? =
 
-The guest returns portal, partial returns with quantities and photo uploads are free here; several other returns plugins keep them for their paid version. WPReturns is also a full EU withdrawal button, so you do not need a second plugin for that.
+The guest returns portal, partial returns with quantities and photo uploads are free here; several other returns plugins keep them for their paid version. DevDiggers Returns is also a full EU withdrawal button, so you do not need a second plugin for that.
 
 = Where are customer photos stored? =
 
@@ -178,13 +178,13 @@ Only until they agree to immediate supply. Turn on "Digital content" in the EU W
 
 Yes, with both, and with classic checkout and the legacy order storage.
 
-= I used WPReturns Pro before. Will my data carry over? =
+= I used DevDiggers Returns Pro before. Will my data carry over? =
 
 Yes. The free plugin uses the same tables and settings. Requests, messages, photos and withdrawals stay as they are, and Pro features come back when you activate Pro again.
 
 = Where do I get support? =
 
-Free version questions go to the support forum here on WordPress.org. The developers who build WPReturns answer there. Pro license holders get direct support from DevDiggers through a ticket.
+Free version questions go to the support forum here on WordPress.org. The developers who build DevDiggers Returns answer there. Pro license holders get direct support from DevDiggers through a ticket.
 
 == Screenshots ==
 
@@ -199,7 +199,7 @@ Free version questions go to the support forum here on WordPress.org. The develo
 
 == External services ==
 
-WPReturns itself sends no data to any outside service. Requests, messages and withdrawal statements are stored in your WordPress database, uploaded files in a private folder on your server, and emails go out through the WooCommerce mailer. The storefront makes no external requests. The bundled DevDiggers framework, which draws the admin screens, connects to the services below, only inside the WordPress admin.
+DevDiggers Returns itself sends no data to any outside service. Requests, messages and withdrawal statements are stored in your WordPress database, uploaded files in a private folder on your server, and emails go out through the WooCommerce mailer. The storefront makes no external requests. The bundled DevDiggers framework, which draws the admin screens, connects to the services below, only inside the WordPress admin.
 
 **1. DevDiggers extensions directory**
 

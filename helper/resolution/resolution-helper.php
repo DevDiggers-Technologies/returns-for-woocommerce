@@ -2,7 +2,7 @@
 /**
  * Resolution helper: refunds, cancellations and restocking.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -54,7 +54,7 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 			$request = $this->request_helper->get_request( $request_id );
 
 			if ( ! $request ) {
-				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'devdiggers-returns' ) );
 			}
 
 			$order = ddwcwr_order_adapter()->get_order( $request['order_id'] );
@@ -66,7 +66,7 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 					if ( $qty > 0 && ! in_array( $item['item_condition'], [ 'damaged', 'defective' ], true ) && ddwcwr_order_adapter()->restock_item( $order, $item['order_item_id'], $qty ) ) {
 						$this->request_helper->update_item( $item['id'], [ 'restocked' => (int) $item['restocked'] + $qty ] );
 						/* translators: 1: product name, 2: quantity */
-						$this->request_helper->log( $request_id, sprintf( __( 'Restocked %1$s × %2$d.', 'wpreturns' ), $item['name'], $qty ), $author_id );
+						$this->request_helper->log( $request_id, sprintf( __( 'Restocked %1$s × %2$d.', 'devdiggers-returns' ), $item['name'], $qty ), $author_id );
 					}
 				}
 			}
@@ -87,15 +87,15 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 			$request = $this->request_helper->get_request( $request_id );
 
 			if ( ! $request ) {
-				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'devdiggers-returns' ) );
 			}
 
 			if ( ! empty( $request['meta']['processed'] ) ) {
-				return new \WP_Error( 'ddwcwr_processed', __( 'This request has already been resolved.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_processed', __( 'This request has already been resolved.', 'devdiggers-returns' ) );
 			}
 
 			if ( in_array( $request['status'], [ 'rejected', 'cancelled' ], true ) ) {
-				return new \WP_Error( 'ddwcwr_status', __( 'Rejected or canceled requests cannot be resolved.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_status', __( 'Rejected or canceled requests cannot be resolved.', 'devdiggers-returns' ) );
 			}
 
 			$args = wp_parse_args(
@@ -115,7 +115,7 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 			$order = ddwcwr_order_adapter()->get_order( $request['order_id'] );
 
 			if ( ! $order ) {
-				return new \WP_Error( 'ddwcwr_order', __( 'The order of this request no longer exists.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_order', __( 'The order of this request no longer exists.', 'devdiggers-returns' ) );
 			}
 
 			$items  = $this->request_helper->get_request_items( $request_id );
@@ -133,17 +133,17 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 			];
 			$result = [ 'resolution' => 'refund' ];
 			/* translators: %s: request number */
-			$cancel_note = sprintf( __( 'Canceled by customer request %s.', 'wpreturns' ), $request['number'] );
+			$cancel_note = sprintf( __( 'Canceled by customer request %s.', 'devdiggers-returns' ), $request['number'] );
 
 			if ( 'cancellation' === $request['type'] && ! $order->get_date_paid() ) {
 				ddwcwr_order_adapter()->cancel_order( $order, $cancel_note );
-				$result['message'] = __( 'The order was canceled. It was not paid, so there was nothing to refund.', 'wpreturns' );
+				$result['message'] = __( 'The order was canceled. It was not paid, so there was nothing to refund.', 'devdiggers-returns' );
 			} else {
 				$refunded = 0;
 
 				if ( $amount > 0 ) {
 					/* translators: %s: request number */
-					$refund = ddwcwr_order_adapter()->create_refund( $order, $amount, $lines, sprintf( __( 'WPReturns %s', 'wpreturns' ), $request['number'] ), 'gateway' === $args['refund_method'], 'cancellation' === $request['type'] );
+					$refund = ddwcwr_order_adapter()->create_refund( $order, $amount, $lines, sprintf( __( 'DevDiggers Returns %s', 'devdiggers-returns' ), $request['number'] ), 'gateway' === $args['refund_method'], 'cancellation' === $request['type'] );
 
 					if ( is_wp_error( $refund ) ) {
 						return $refund;
@@ -163,8 +163,8 @@ if ( ! class_exists( 'DDWCWR_Resolution_Helper' ) ) {
 
 				$result['message'] = $refunded > 0
 					/* translators: 1: amount, 2: how */
-					? sprintf( __( 'Refunded %1$s %2$s.', 'wpreturns' ), $this->money( $refunded, [ 'currency' => $order->get_currency() ] ), ! empty( $result['via_gateway'] ) ? __( 'to the original payment method', 'wpreturns' ) : __( '(recorded in WooCommerce; pay it back manually)', 'wpreturns' ) )
-					: __( 'Resolved without a refund.', 'wpreturns' );
+					? sprintf( __( 'Refunded %1$s %2$s.', 'devdiggers-returns' ), $this->money( $refunded, [ 'currency' => $order->get_currency() ] ), ! empty( $result['via_gateway'] ) ? __( 'to the original payment method', 'devdiggers-returns' ) : __( '(recorded in WooCommerce; pay it back manually)', 'devdiggers-returns' ) )
+					: __( 'Resolved without a refund.', 'devdiggers-returns' );
 			}
 
 			$meta              = $fields['meta'];

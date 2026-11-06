@@ -6,7 +6,7 @@
  * items that point at the original order items (_parent_id). Read with SQL so it works with Germanized deactivated
  * (the order type is then unknown to WooCommerce). A withdrawal with no matching order goes to the unmatched list.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Germanized_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Germanized for WooCommerce', 'wpreturns' );
+			return __( 'Germanized for WooCommerce', 'devdiggers-returns' );
 		}
 
 		/**

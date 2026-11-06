@@ -1,5 +1,5 @@
 /**
- * WPReturns admin screens. Delegated handlers, so they survive the framework's in-page navigation.
+ * DevDiggers Returns admin screens. Delegated handlers, so they survive the framework's in-page navigation.
  */
 import './style.less';
 

@@ -2,7 +2,7 @@
 /**
  * Withdrawal statements that matched no order.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -31,13 +31,13 @@ if ( ! class_exists( 'DDWCWR_Unmatched_Withdrawals_Template' ) ) {
 				</ul>
 			</div>
 			<div class="ddwcwr-unmatched">
-				<p class="description"><?php esc_html_e( 'These were sent with an order number and email that did not match any order, so no acknowledgement email went out. If one looks genuine, contact the customer and create the request yourself.', 'wpreturns' ); ?></p>
+				<p class="description"><?php esc_html_e( 'These were sent with an order number and email that did not match any order, so no acknowledgement email went out. If one looks genuine, contact the customer and create the request yourself.', 'devdiggers-returns' ); ?></p>
 				<?php if ( empty( $log ) ) : ?>
 					<?php
 					ddfw_print_empty_state(
 						[
-							'title'       => esc_html__( 'Nothing to review', 'wpreturns' ),
-							'description' => esc_html__( 'Every statement matched an order.', 'wpreturns' ),
+							'title'       => esc_html__( 'Nothing to review', 'devdiggers-returns' ),
+							'description' => esc_html__( 'Every statement matched an order.', 'devdiggers-returns' ),
 						]
 					);
 					?>
@@ -45,10 +45,10 @@ if ( ! class_exists( 'DDWCWR_Unmatched_Withdrawals_Template' ) ) {
 				<div class="ddfw-table-wrapper"><table class="widefat fixed striped ddfw-table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Received (UTC)', 'wpreturns' ); ?></th>
-							<th><?php esc_html_e( 'Name', 'wpreturns' ); ?></th>
-							<th><?php esc_html_e( 'Order number given', 'wpreturns' ); ?></th>
-							<th><?php esc_html_e( 'Email given', 'wpreturns' ); ?></th>
+							<th><?php esc_html_e( 'Received (UTC)', 'devdiggers-returns' ); ?></th>
+							<th><?php esc_html_e( 'Name', 'devdiggers-returns' ); ?></th>
+							<th><?php esc_html_e( 'Order number given', 'devdiggers-returns' ); ?></th>
+							<th><?php esc_html_e( 'Email given', 'devdiggers-returns' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -66,7 +66,7 @@ if ( ! class_exists( 'DDWCWR_Unmatched_Withdrawals_Template' ) ) {
 					<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 						<input type="hidden" name="action" value="ddwcwr_clear_unmatched" />
 						<?php wp_nonce_field( 'ddwcwr_clear_unmatched', 'ddwcwr_nonce' ); ?>
-						<p><button type="submit" class="button ddwcwr-confirm-delete"><?php esc_html_e( 'Clear list', 'wpreturns' ); ?></button></p>
+						<p><button type="submit" class="button ddwcwr-confirm-delete"><?php esc_html_e( 'Clear list', 'devdiggers-returns' ); ?></button></p>
 					</form>
 				<?php endif; ?>
 				<?php endif; ?>

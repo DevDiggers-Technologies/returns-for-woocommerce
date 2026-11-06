@@ -5,7 +5,7 @@
  * Every order, item, refund, stock, customer and coupon call the returns logic makes goes through this
  * interface, so another commerce platform can be added by writing one more implementation.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 

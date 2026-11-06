@@ -9,13 +9,13 @@ import { useBlockProps } from '@wordpress/block-editor';
 
 const blocks = {
 	'ddwcwr/returns-portal': {
-		title: __( 'Returns portal', 'wpreturns' ),
-		description: __( 'Lets customers find an order and request a return without an account.', 'wpreturns' ),
+		title: __( 'Returns portal', 'devdiggers-returns' ),
+		description: __( 'Lets customers find an order and request a return without an account.', 'devdiggers-returns' ),
 		icon: 'update',
 	},
 	'ddwcwr/withdrawal-form': {
-		title: __( 'Withdrawal form', 'wpreturns' ),
-		description: __( 'The EU "Withdraw from contract here" function with the confirmation step.', 'wpreturns' ),
+		title: __( 'Withdrawal form', 'devdiggers-returns' ),
+		description: __( 'The EU "Withdraw from contract here" function with the confirmation step.', 'devdiggers-returns' ),
 		icon: 'undo',
 	},
 };

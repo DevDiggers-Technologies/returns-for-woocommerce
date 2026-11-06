@@ -15,4 +15,4 @@ for T in `find i18n -name "*.pot"`
 		mv $T-build $T
 	done
 
-printf "\n%bReplaced development mappings with production files in wpreturns.pot%b\n\n" "$GREEN_BOLD" "$COLOR_RESET"
+printf "\n%bReplaced development mappings with production files in devdiggers-returns.pot%b\n\n" "$GREEN_BOLD" "$COLOR_RESET"

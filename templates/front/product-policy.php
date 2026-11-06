@@ -2,7 +2,7 @@
 /**
  * Product page: return policy and withdrawal exemption.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  *
  * @var array  $lines      [ type, text ].
@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit();
 			<span>
 			<?php echo esc_html( $ddwcwr_line[1] ); ?>
 			<?php if ( 'policy' === $ddwcwr_line[0] && $policy_url ) : ?>
-				<a href="<?php echo esc_url( $policy_url ); ?>"><?php esc_html_e( 'Details', 'wpreturns' ); ?></a>
+				<a href="<?php echo esc_url( $policy_url ); ?>"><?php esc_html_e( 'Details', 'devdiggers-returns' ); ?></a>
 			<?php endif; ?>
 			</span>
 		</li>

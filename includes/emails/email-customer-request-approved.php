@@ -2,7 +2,7 @@
 /**
  * Return request approved email
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Approved' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_request_approved';
 			$this->customer_email = true;
-			$this->title          = __( 'Return request approved', 'wpreturns' );
-			$this->description    = __( 'Sent to the customer when a request is approved.', 'wpreturns' );
+			$this->title          = __( 'Return request approved', 'devdiggers-returns' );
+			$this->description    = __( 'Sent to the customer when a request is approved.', 'devdiggers-returns' );
 
 			add_action( 'ddwcwr_request_status_changed_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Approved' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] Your request {request_number} is approved', 'wpreturns' );
+			return __( '[{site_title}] Your request {request_number} is approved', 'devdiggers-returns' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Approved' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Good news: request {request_number} is approved', 'wpreturns' );
+			return __( 'Good news: request {request_number} is approved', 'devdiggers-returns' );
 		}
 
 		/**
@@ -64,9 +64,9 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Approved' ) ) {
 			}
 
 			if ( 'cancellation' === $this->request['type'] ) {
-				$this->intro = __( 'Your cancellation request is approved. We have stopped the order and any payment will be refunded.', 'wpreturns' );
+				$this->intro = __( 'Your cancellation request is approved. We have stopped the order and any payment will be refunded.', 'devdiggers-returns' );
 			} else {
-				$this->intro = __( 'Your request is approved. Please pack the items below securely; we will send your return label or instructions shortly if they are not included here.', 'wpreturns' );
+				$this->intro = __( 'Your request is approved. Please pack the items below securely; we will send your return label or instructions shortly if they are not included here.', 'devdiggers-returns' );
 			}
 
 			$this->note = ! empty( $args['note'] ) ? $args['note'] : '';

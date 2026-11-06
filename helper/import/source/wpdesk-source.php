@@ -6,7 +6,7 @@
  * (fr_refund_request_data); WP Desk moves those into its table and keeps the order ID in legacy_order_id, so a request
  * found in both places is imported once.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Wpdesk_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Flexible Refund and Return Order', 'wpreturns' );
+			return __( 'Flexible Refund and Return Order', 'devdiggers-returns' );
 		}
 
 		/**
@@ -223,7 +223,7 @@ if ( ! class_exists( 'DDWCWR_Wpdesk_Source' ) ) {
 
 				if ( $names ) {
 					/* translators: %s: file names */
-					$lines[] = sprintf( __( 'Photos sent with the request: %s', 'wpreturns' ), implode( ', ', array_unique( $names ) ) );
+					$lines[] = sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns' ), implode( ', ', array_unique( $names ) ) );
 				}
 			}
 

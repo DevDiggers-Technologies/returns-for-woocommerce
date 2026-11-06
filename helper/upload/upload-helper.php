@@ -6,7 +6,7 @@
  * renamed to random file names, blocked from direct access (.htaccess + index.php), and are only served through
  * the plugin after an ownership or capability check.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -122,7 +122,7 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 
 			if ( count( $files ) > $max_files ) {
 				/* translators: %d: maximum number of files */
-				return new \WP_Error( 'ddwcwr_upload', sprintf( _n( 'You can upload up to %d file.', 'You can upload up to %d files.', $max_files, 'wpreturns' ), $max_files ) );
+				return new \WP_Error( 'ddwcwr_upload', sprintf( _n( 'You can upload up to %d file.', 'You can upload up to %d files.', $max_files, 'devdiggers-returns' ), $max_files ) );
 			}
 
 			$prepared = [];
@@ -132,19 +132,19 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 
 				if ( UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
 					/* translators: %s: file name */
-					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%s could not be uploaded. Please try again.', 'wpreturns' ), $name ) );
+					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%s could not be uploaded. Please try again.', 'devdiggers-returns' ), $name ) );
 				}
 
 				if ( (int) $file['size'] > $max_bytes ) {
 					/* translators: 1: file name, 2: size limit in MB */
-					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%1$s is larger than %2$s MB.', 'wpreturns' ), $name, $ddwcwr_configuration['max_file_size'] ) );
+					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%1$s is larger than %2$s MB.', 'devdiggers-returns' ), $name, $ddwcwr_configuration['max_file_size'] ) );
 				}
 
 				$check = wp_check_filetype_and_ext( $file['tmp_name'], $name, $allowed );
 
 				if ( empty( $check['ext'] ) || empty( $check['type'] ) ) {
 					/* translators: 1: file name, 2: allowed extensions */
-					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%1$s is not an allowed file type. Allowed: %2$s.', 'wpreturns' ), $name, implode( ', ', array_keys( $allowed ) ) ) );
+					return new \WP_Error( 'ddwcwr_upload', sprintf( __( '%1$s is not an allowed file type. Allowed: %2$s.', 'devdiggers-returns' ), $name, implode( ', ', array_keys( $allowed ) ) ) );
 				}
 
 				$prepared[] = [ $file, $name, $check ];
@@ -187,7 +187,7 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 			$check = wp_check_filetype_and_ext( $file['tmp_name'], $name, $mimes );
 
 			if ( empty( $check['ext'] ) ) {
-				return new \WP_Error( 'ddwcwr_upload', __( 'Labels must be a PDF or an image.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_upload', __( 'Labels must be a PDF or an image.', 'devdiggers-returns' ) );
 			}
 
 			$key = $this->move_upload( $file, $check['ext'], $mimes );
@@ -245,7 +245,7 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 			remove_filter( 'upload_dir', $to_private );
 
 			if ( ! empty( $result['error'] ) || empty( $result['file'] ) ) {
-				return new \WP_Error( 'ddwcwr_upload', __( 'The file could not be saved. Please try again.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_upload', __( 'The file could not be saved. Please try again.', 'devdiggers-returns' ) );
 			}
 
 			return $sub . '/' . basename( $result['file'] );
@@ -294,7 +294,7 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 			$path = $this->get_path( $key );
 
 			if ( ! $path ) {
-				wp_die( esc_html__( 'File not found.', 'wpreturns' ), '', [ 'response' => 404 ] );
+				wp_die( esc_html__( 'File not found.', 'devdiggers-returns' ), '', [ 'response' => 404 ] );
 			}
 
 			$type   = wp_check_filetype( $path );

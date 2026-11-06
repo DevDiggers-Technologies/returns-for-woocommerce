@@ -80,7 +80,7 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 			} else {
 				$response = [
 					'success' => false,
-					'message' => esc_html__( 'Security check failed!', 'wpreturns' ),
+					'message' => esc_html__( 'Security check failed!', 'devdiggers-returns' ),
 				];
 			}
 			wp_send_json( $response );
@@ -110,7 +110,7 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 			} else {
 				$response = [
 					'success' => false,
-					'message' => esc_html__( 'Security check failed!', 'wpreturns' ),
+					'message' => esc_html__( 'Security check failed!', 'devdiggers-returns' ),
 				];
 			}
 			wp_send_json( $response );
@@ -142,7 +142,7 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 			} else {
 				$response = [
 					'error'   => true,
-					'message' => esc_html__( 'Security check failed!', 'wpreturns' ),
+					'message' => esc_html__( 'Security check failed!', 'devdiggers-returns' ),
 				];
 			}
 			wp_send_json( $response );
@@ -155,28 +155,28 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 		 */
 		public function ddfw_newsletter_subscribe() {
 			if ( ! check_ajax_referer( 'ddfw-nonce', 'nonce', false ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Security check failed.', 'devdiggers-returns' ) ] );
 			}
 
 			if ( ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_woocommerce' ) ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions.', 'devdiggers-returns' ) ] );
 			}
 
 			$email = sanitize_email( wp_unslash( $_POST['email'] ?? '' ) );
 
 			if ( ! is_email( $email ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Please enter a valid email address.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Please enter a valid email address.', 'devdiggers-returns' ) ] );
 			}
 
 			$user_id = get_current_user_id();
 			if ( ! $user_id ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'You must be logged in to subscribe.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'You must be logged in to subscribe.', 'devdiggers-returns' ) ] );
 			}
 
 			// Check if already subscribed
 			$already_subscribed = get_option( 'ddfw_newsletter_subscribed' );
 			if ( $already_subscribed ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'You are already subscribed to our newsletter.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'You are already subscribed to our newsletter.', 'devdiggers-returns' ) ] );
 			}
 
 			// Prepare data for FluentCRM webhook
@@ -197,7 +197,7 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 			] );
 
 			if ( is_wp_error( $response ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Failed to connect to newsletter service. Please try again.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Failed to connect to newsletter service. Please try again.', 'devdiggers-returns' ) ] );
 			}
 
 			$body = wp_remote_retrieve_body( $response );
@@ -208,9 +208,9 @@ if ( ! class_exists( 'DDFW_Ajax' ) ) {
 				update_option( 'ddfw_newsletter_subscribed', true );
 				update_option( 'ddfw_newsletter_email', $email );
 
-				wp_send_json_success( [ 'message' => esc_html__( 'Thank you for subscribing!', 'wpreturns' ) ] );
+				wp_send_json_success( [ 'message' => esc_html__( 'Thank you for subscribing!', 'devdiggers-returns' ) ] );
 			} else {
-				$error_message = $data['message'] ?? esc_html__( 'Subscription failed. Please try again.', 'wpreturns' );
+				$error_message = $data['message'] ?? esc_html__( 'Subscription failed. Please try again.', 'devdiggers-returns' );
 				wp_send_json_error( [ 'message' => $error_message ] );
 			}
 		}

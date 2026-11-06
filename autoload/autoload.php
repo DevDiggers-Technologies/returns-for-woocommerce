@@ -2,7 +2,7 @@
 /**
  * Dynamically loads classes
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  */
 
 defined( 'ABSPATH' ) || exit();

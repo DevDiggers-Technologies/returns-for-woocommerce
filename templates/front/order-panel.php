@@ -2,7 +2,7 @@
 /**
  * Returns panel under an order.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  *
  * @var object $order    Order.
@@ -19,8 +19,8 @@ $ddwcwr_types = ddwcwr_get_request_types();
 	<header class="ddwcwr-panel-head">
 		<span class="ddwcwr-icon-tile"><?php echo wp_kses( ddwcwr_icon( 'return', 22 ), ddwcwr_kses_icon() ); ?></span>
 		<div>
-			<h2 id="ddwcwr-order-panel-title"><?php esc_html_e( 'Returns', 'wpreturns' ); ?></h2>
-			<p class="ddwcwr-meta"><?php echo $links ? esc_html__( 'Something not right? Start a request and we will sort it out.', 'wpreturns' ) : esc_html__( 'Your requests for this order.', 'wpreturns' ); ?></p>
+			<h2 id="ddwcwr-order-panel-title"><?php esc_html_e( 'Returns', 'devdiggers-returns' ); ?></h2>
+			<p class="ddwcwr-meta"><?php echo $links ? esc_html__( 'Something not right? Start a request and we will sort it out.', 'devdiggers-returns' ) : esc_html__( 'Your requests for this order.', 'devdiggers-returns' ); ?></p>
 			<?php
 			foreach ( [ 'return', 'withdrawal' ] as $ddwcwr_type ) :
 				if ( empty( $links[ $ddwcwr_type ]['deadline'] ) ) {
@@ -35,9 +35,9 @@ $ddwcwr_types = ddwcwr_get_request_types();
 					echo esc_html(
 						'return' === $ddwcwr_type
 							/* translators: 1: last day to request a return, 2: days left */
-							? sprintf( _n( 'You can request a return until %1$s (%2$s day left).', 'You can request a return until %1$s (%2$s days left).', $ddwcwr_days, 'wpreturns' ), $ddwcwr_date, number_format_i18n( $ddwcwr_days ) )
+							? sprintf( _n( 'You can request a return until %1$s (%2$s day left).', 'You can request a return until %1$s (%2$s days left).', $ddwcwr_days, 'devdiggers-returns' ), $ddwcwr_date, number_format_i18n( $ddwcwr_days ) )
 							/* translators: 1: last day of the withdrawal period, 2: days left */
-							: sprintf( _n( 'You can withdraw from this contract until %1$s (%2$s day left).', 'You can withdraw from this contract until %1$s (%2$s days left).', $ddwcwr_days, 'wpreturns' ), $ddwcwr_date, number_format_i18n( $ddwcwr_days ) )
+							: sprintf( _n( 'You can withdraw from this contract until %1$s (%2$s day left).', 'You can withdraw from this contract until %1$s (%2$s days left).', $ddwcwr_days, 'devdiggers-returns' ), $ddwcwr_date, number_format_i18n( $ddwcwr_days ) )
 					);
 					?>
 				</p>
@@ -55,7 +55,7 @@ $ddwcwr_types = ddwcwr_get_request_types();
 							<span class="ddwcwr-meta">
 								<?php
 								/* translators: 1: request type, 2: date */
-								echo esc_html( sprintf( __( '%1$s · %2$s', 'wpreturns' ), isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], date_i18n( wc_date_format(), strtotime( $ddwcwr_request['created'] ) ) ) );
+								echo esc_html( sprintf( __( '%1$s · %2$s', 'devdiggers-returns' ), isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], date_i18n( wc_date_format(), strtotime( $ddwcwr_request['created'] ) ) ) );
 								?>
 							</span>
 						</span>

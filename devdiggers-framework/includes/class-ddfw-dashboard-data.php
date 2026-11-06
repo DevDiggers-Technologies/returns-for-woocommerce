@@ -59,70 +59,70 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 					$data = [
 						'from'  => current_time( 'Y-m-d' ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'Today', 'wpreturns' ),
+						'label' => esc_html__( 'Today', 'devdiggers-returns' ),
 					];
 					break;
 				case '7_days':
 					$data = [
 						'from'  => gmdate( 'Y-m-d', $week_start ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'This Week', 'wpreturns' ),
+						'label' => esc_html__( 'This Week', 'devdiggers-returns' ),
 					];
 					break;
 				case 'last_week':
 					$data = [
 						'from'  => gmdate( 'Y-m-d', $week_start - 7 * DAY_IN_SECONDS ),
 						'to'    => gmdate( 'Y-m-d', $week_start - DAY_IN_SECONDS ),
-						'label' => esc_html__( 'Last Week', 'wpreturns' ),
+						'label' => esc_html__( 'Last Week', 'devdiggers-returns' ),
 					];
 					break;
 				case '30_days':
 					$data = [
 						'from'  => current_time( 'Y-m-01' ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'This Month', 'wpreturns' ),
+						'label' => esc_html__( 'This Month', 'devdiggers-returns' ),
 					];
 					break;
 				case 'last_month':
 					$data = [
 						'from'  => gmdate( 'Y-m-01', strtotime( 'first day of last month', $now ) ),
 						'to'    => gmdate( 'Y-m-t', strtotime( 'last day of last month', $now ) ),
-						'label' => esc_html__( 'Last Month', 'wpreturns' ),
+						'label' => esc_html__( 'Last Month', 'devdiggers-returns' ),
 					];
 					break;
 				case '90_days':
 					$data = [
 						'from'  => gmdate( 'Y-m-d', strtotime( '-90 days', $now ) ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'Last 3 Months', 'wpreturns' ),
+						'label' => esc_html__( 'Last 3 Months', 'devdiggers-returns' ),
 					];
 					break;
 				case '180_days':
 					$data = [
 						'from'  => gmdate( 'Y-m-d', strtotime( '-180 days', $now ) ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'Last 6 Months', 'wpreturns' ),
+						'label' => esc_html__( 'Last 6 Months', 'devdiggers-returns' ),
 					];
 					break;
 				case 'year_to_date':
 					$data = [
 						'from'  => current_time( 'Y-01-01' ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'Year to Date', 'wpreturns' ),
+						'label' => esc_html__( 'Year to Date', 'devdiggers-returns' ),
 					];
 					break;
 				case 'last_year':
 					$data = [
 						'from'  => gmdate( 'Y-01-01', strtotime( '-1 year', $now ) ),
 						'to'    => gmdate( 'Y-12-31', strtotime( '-1 year', $now ) ),
-						'label' => esc_html__( 'Last Year', 'wpreturns' ),
+						'label' => esc_html__( 'Last Year', 'devdiggers-returns' ),
 					];
 					break;
 				case 'all_time':
 					$data = [
 						'from'  => $all_time_start,
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'All Time', 'wpreturns' ),
+						'label' => esc_html__( 'All Time', 'devdiggers-returns' ),
 					];
 					break;
 				case 'custom':
@@ -134,7 +134,7 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 						'from'  => $from,
 						'to'    => $to,
 						/* translators: 1: from date, 2: to date. */
-						'label' => sprintf( esc_html__( '%1$s – %2$s', 'wpreturns' ), date_i18n( 'j M Y', strtotime( $from ) ), date_i18n( 'j M Y', strtotime( $to ) ) ),
+						'label' => sprintf( esc_html__( '%1$s – %2$s', 'devdiggers-returns' ), date_i18n( 'j M Y', strtotime( $from ) ), date_i18n( 'j M Y', strtotime( $to ) ) ),
 					];
 					break;
 				default:
@@ -142,7 +142,7 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 					$data  = [
 						'from'  => current_time( 'Y-m-01' ),
 						'to'    => current_time( 'Y-m-d' ),
-						'label' => esc_html__( 'This Month', 'wpreturns' ),
+						'label' => esc_html__( 'This Month', 'devdiggers-returns' ),
 					];
 					break;
 			}
@@ -281,16 +281,16 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 		public static function get_presets() {
 			// Order matters: get_preset_groups() splits this list into day, week, month, range and year.
 			return [
-				'today'        => esc_html__( 'Today', 'wpreturns' ),
-				'7_days'       => esc_html__( 'This Week', 'wpreturns' ),
-				'last_week'    => esc_html__( 'Last Week', 'wpreturns' ),
-				'30_days'      => esc_html__( 'This Month', 'wpreturns' ),
-				'last_month'   => esc_html__( 'Last Month', 'wpreturns' ),
-				'90_days'      => esc_html__( 'Last 3 Months', 'wpreturns' ),
-				'180_days'     => esc_html__( 'Last 6 Months', 'wpreturns' ),
-				'year_to_date' => esc_html__( 'Year to Date', 'wpreturns' ),
-				'last_year'    => esc_html__( 'Last Year', 'wpreturns' ),
-				'all_time'     => esc_html__( 'All Time', 'wpreturns' ),
+				'today'        => esc_html__( 'Today', 'devdiggers-returns' ),
+				'7_days'       => esc_html__( 'This Week', 'devdiggers-returns' ),
+				'last_week'    => esc_html__( 'Last Week', 'devdiggers-returns' ),
+				'30_days'      => esc_html__( 'This Month', 'devdiggers-returns' ),
+				'last_month'   => esc_html__( 'Last Month', 'devdiggers-returns' ),
+				'90_days'      => esc_html__( 'Last 3 Months', 'devdiggers-returns' ),
+				'180_days'     => esc_html__( 'Last 6 Months', 'devdiggers-returns' ),
+				'year_to_date' => esc_html__( 'Year to Date', 'devdiggers-returns' ),
+				'last_year'    => esc_html__( 'Last Year', 'devdiggers-returns' ),
+				'all_time'     => esc_html__( 'All Time', 'devdiggers-returns' ),
 			];
 		}
 

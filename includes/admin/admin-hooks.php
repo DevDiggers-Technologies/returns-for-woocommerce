@@ -3,7 +3,7 @@
  * This file handles all admin end action hooks.
  *
  * @author DevDiggers
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 

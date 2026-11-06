@@ -2,7 +2,7 @@
 /**
  * Label helper: attaches the return label the store uploads and keeps a private copy.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -43,7 +43,7 @@ if ( ! class_exists( 'DDWCWR_Label_Helper' ) ) {
 			$request = $this->request_helper->get_request( $request_id );
 
 			if ( ! $request ) {
-				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_request', __( 'Request not found.', 'devdiggers-returns' ) );
 			}
 
 			if ( $request['label_file'] && $request['label_file'] !== $file['key'] ) {
@@ -60,7 +60,7 @@ if ( ! class_exists( 'DDWCWR_Label_Helper' ) ) {
 				]
 			);
 
-			$this->request_helper->log( $request_id, __( 'Return label uploaded.', 'wpreturns' ) );
+			$this->request_helper->log( $request_id, __( 'Return label uploaded.', 'devdiggers-returns' ) );
 
 			if ( in_array( $request['status'], [ 'pending', 'approved' ], true ) ) {
 				$this->request_helper->change_status( $request_id, 'awaiting_return', [ 'notify' => false ] );

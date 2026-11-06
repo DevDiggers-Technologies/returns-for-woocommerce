@@ -2,7 +2,7 @@
 /**
  * Return resolved email
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Resolution' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_resolution';
 			$this->customer_email = true;
-			$this->title          = __( 'Return resolved', 'wpreturns' );
-			$this->description    = __( 'Sent to the customer when the refund or cancellation is done.', 'wpreturns' );
+			$this->title          = __( 'Return resolved', 'devdiggers-returns' );
+			$this->description    = __( 'Sent to the customer when the refund or cancellation is done.', 'devdiggers-returns' );
 
 			add_action( 'ddwcwr_resolution_processed_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Resolution' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] Request {request_number} is resolved', 'wpreturns' );
+			return __( '[{site_title}] Request {request_number} is resolved', 'devdiggers-returns' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Resolution' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Your request is resolved', 'wpreturns' );
+			return __( 'Your request is resolved', 'devdiggers-returns' );
 		}
 
 		/**
@@ -63,10 +63,10 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Resolution' ) ) {
 			$currency = [ 'currency' => $this->object ? $this->object->get_currency() : get_woocommerce_currency() ];
 
 			if ( 'cancellation' === $this->request['type'] && empty( $result['amount'] ) ) {
-				$this->intro = __( 'Your order has been canceled.', 'wpreturns' );
+				$this->intro = __( 'Your order has been canceled.', 'devdiggers-returns' );
 			} else {
-				$this->intro                                  = __( 'Your refund has been issued. Depending on your bank it can take a few days to appear.', 'wpreturns' );
-				$this->extra[ __( 'Refunded', 'wpreturns' ) ] = wc_price( isset( $result['amount'] ) ? $result['amount'] : 0, $currency );
+				$this->intro                                  = __( 'Your refund has been issued. Depending on your bank it can take a few days to appear.', 'devdiggers-returns' );
+				$this->extra[ __( 'Refunded', 'devdiggers-returns' ) ] = wc_price( isset( $result['amount'] ) ? $result['amount'] : 0, $currency );
 			}
 
 			$this->dispatch();

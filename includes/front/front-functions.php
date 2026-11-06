@@ -3,7 +3,7 @@
  * Front callbacks.
  *
  * @author DevDiggers
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -44,14 +44,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		}
 
 		/**
-		 * Render a front template (themes can override in yourtheme/wpreturns/front/).
+		 * Render a front template (themes can override in yourtheme/devdiggers-returns/front/).
 		 *
 		 * @param string $name Template name.
 		 * @param array  $args Arguments.
 		 * @return void
 		 */
 		protected function template( $name, $args = [] ) {
-			wc_get_template( 'front/' . $name . '.php', $args, 'wpreturns/', DDWCWR_PLUGIN_FILE . 'templates/' );
+			wc_get_template( 'front/' . $name . '.php', $args, 'devdiggers-returns/', DDWCWR_PLUGIN_FILE . 'templates/' );
 		}
 
 		/**
@@ -72,11 +72,11 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 					'maxFiles' => absint( $this->ddwcwr_configuration['max_files'] ),
 					'maxSize'  => (float) $this->ddwcwr_configuration['max_file_size'],
 					'i18n'     => [
-						'tooMany'      => __( 'You selected too many files.', 'wpreturns' ),
+						'tooMany'      => __( 'You selected too many files.', 'devdiggers-returns' ),
 						/* translators: %s: file name */
-						'tooBig'       => __( '%s is too large.', 'wpreturns' ),
-						'selectItem'   => __( 'Please select at least one item.', 'wpreturns' ),
-						'confirmLeave' => __( 'Cancel this request?', 'wpreturns' ),
+						'tooBig'       => __( '%s is too large.', 'devdiggers-returns' ),
+						'selectItem'   => __( 'Please select at least one item.', 'devdiggers-returns' ),
+						'confirmLeave' => __( 'Cancel this request?', 'devdiggers-returns' ),
 					],
 				]
 			);
@@ -251,7 +251,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_submit_request() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_submit_request' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$order    = $this->ddwcwr_get_authorized_order( $order_id, true );
 
 			if ( ! $order ) {
-				wc_add_notice( __( 'You do not have access to this order.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'You do not have access to this order.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -307,7 +307,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$request = $this->request_helper->get_request( $request_id );
 
 			/* translators: %s: request number */
-			wc_add_notice( sprintf( __( 'Thanks! Your request %s has been submitted. We have emailed you a copy.', 'wpreturns' ), $request['number'] ) );
+			wc_add_notice( sprintf( __( 'Thanks! Your request %s has been submitted. We have emailed you a copy.', 'devdiggers-returns' ), $request['number'] ) );
 			wp_safe_redirect( ddwcwr_get_request_view_url( $request, ! is_user_logged_in() ) );
 			exit;
 		}
@@ -334,14 +334,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_send_message() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_request_action' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
 			$request = $this->ddwcwr_get_posted_request();
 
 			if ( ! $request ) {
-				wc_add_notice( __( 'You do not have access to this request.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'You do not have access to this request.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -355,12 +355,12 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			}
 
 			if ( '' === trim( $message ) && empty( $files ) ) {
-				wc_add_notice( __( 'Please write a message.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Please write a message.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
 			$this->request_helper->add_message( $request['id'], $message, 'message', 'customer', get_current_user_id(), $files );
-			wc_add_notice( __( 'Message sent.', 'wpreturns' ) );
+			wc_add_notice( __( 'Message sent.', 'devdiggers-returns' ) );
 			wp_safe_redirect( ddwcwr_get_request_view_url( $request, ! is_user_logged_in() ) . '#ddwcwr-conversation' );
 			exit;
 		}
@@ -372,14 +372,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_add_tracking() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_request_action' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
 			$request = $this->ddwcwr_get_posted_request();
 
 			if ( ! $request || in_array( $request['status'], ddwcwr_get_final_statuses(), true ) ) {
-				wc_add_notice( __( 'You cannot change this request.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'You cannot change this request.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -387,7 +387,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$carrier  = isset( $_POST['ddwcwr_carrier'] ) ? sanitize_text_field( wp_unslash( $_POST['ddwcwr_carrier'] ) ) : '';
 
 			if ( '' === $tracking ) {
-				wc_add_notice( __( 'Please enter the tracking number.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Please enter the tracking number.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -399,13 +399,13 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				]
 			);
 			/* translators: 1: carrier, 2: tracking number */
-			$this->request_helper->log( $request['id'], sprintf( __( 'Customer added return tracking: %1$s %2$s', 'wpreturns' ), $carrier, $tracking ) );
+			$this->request_helper->log( $request['id'], sprintf( __( 'Customer added return tracking: %1$s %2$s', 'devdiggers-returns' ), $carrier, $tracking ) );
 
 			if ( 'approved' === $request['status'] ) {
 				$this->request_helper->change_status( $request['id'], 'awaiting_return', [ 'notify' => false ] );
 			}
 
-			wc_add_notice( __( 'Thanks, we saved your tracking number.', 'wpreturns' ) );
+			wc_add_notice( __( 'Thanks, we saved your tracking number.', 'devdiggers-returns' ) );
 			wp_safe_redirect( ddwcwr_get_request_view_url( $request, ! is_user_logged_in() ) );
 			exit;
 		}
@@ -417,19 +417,19 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_cancel_request() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_request_action' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
 			$request = $this->ddwcwr_get_posted_request();
 
 			if ( ! $request || 'pending' !== $request['status'] ) {
-				wc_add_notice( __( 'Only requests that are still waiting for review can be canceled.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Only requests that are still waiting for review can be canceled.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
-			$this->request_helper->change_status( $request['id'], 'cancelled', [ 'note' => __( 'Canceled by the customer.', 'wpreturns' ) ] );
-			wc_add_notice( __( 'Your request was canceled.', 'wpreturns' ) );
+			$this->request_helper->change_status( $request['id'], 'cancelled', [ 'note' => __( 'Canceled by the customer.', 'devdiggers-returns' ) ] );
+			wc_add_notice( __( 'Your request was canceled.', 'devdiggers-returns' ) );
 			wp_safe_redirect( ddwcwr_get_request_view_url( $request, ! is_user_logged_in() ) );
 			exit;
 		}
@@ -441,7 +441,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_portal_lookup() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_portal_lookup' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -451,7 +451,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			}
 
 			if ( $this->ddwcwr_rate_limited( 'lookup' ) ) {
-				wc_add_notice( __( 'Too many attempts. Please wait an hour and try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Too many attempts. Please wait an hour and try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -460,7 +460,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$order  = ddwcwr_order_adapter()->find_order( $number, $email );
 
 			if ( ! $order ) {
-				wc_add_notice( __( 'We could not find an order with that number and email address. Please check both and try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'We could not find an order with that number and email address. Please check both and try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -478,7 +478,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 */
 		protected function ddwcwr_handle_withdrawal() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_withdrawal' ) ) {
-				wc_add_notice( __( 'Your session expired. Please try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -492,12 +492,12 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$picked = isset( $_POST['ddwcwr_withdraw_items'] ) ? array_map( 'absint', (array) wp_unslash( $_POST['ddwcwr_withdraw_items'] ) ) : [];
 
 			if ( '' === $name || '' === $number || ! is_email( $email ) ) {
-				wc_add_notice( __( 'Please fill in your name, the order number and your email address.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Please fill in your name, the order number and your email address.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
 			if ( $this->ddwcwr_rate_limited( 'withdrawal' ) ) {
-				wc_add_notice( __( 'Too many attempts. Please wait an hour and try again, or contact us directly.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'Too many attempts. Please wait an hour and try again, or contact us directly.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -521,7 +521,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				];
 				update_option( '_ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
 
-				wc_add_notice( __( 'We could not match that order number and email address. We have recorded your statement and our team will contact you; please also check the details and try again.', 'wpreturns' ), 'error' );
+				wc_add_notice( __( 'We could not match that order number and email address. We have recorded your statement and our team will contact you; please also check the details and try again.', 'devdiggers-returns' ), 'error' );
 				return;
 			}
 
@@ -637,7 +637,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				$request = $this->request_helper->get_request( absint( substr( $value, 5 ) ) );
 
 				if ( ! $request || get_current_user_id() !== (int) $request['customer_id'] ) {
-					wc_print_notice( __( 'Request not found.', 'wpreturns' ), 'error' );
+					wc_print_notice( __( 'Request not found.', 'devdiggers-returns' ), 'error' );
 					return;
 				}
 
@@ -650,7 +650,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				$type  = isset( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'return'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display only.
 
 				if ( ! $order ) {
-					wc_print_notice( __( 'Order not found.', 'wpreturns' ), 'error' );
+					wc_print_notice( __( 'Order not found.', 'devdiggers-returns' ), 'error' );
 					return;
 				}
 
@@ -697,9 +697,9 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$is_owner   = is_user_logged_in() && ddwcwr_order_adapter()->order_belongs_to( $order, get_current_user_id() );
 			$links      = [];
 			$labels     = [
-				'return'       => __( 'Request a return', 'wpreturns' ),
-				'cancellation' => __( 'Request cancellation', 'wpreturns' ),
-				'withdrawal'   => __( 'Withdraw from contract here', 'wpreturns' ),
+				'return'       => __( 'Request a return', 'devdiggers-returns' ),
+				'cancellation' => __( 'Request cancellation', 'devdiggers-returns' ),
+				'withdrawal'   => __( 'Withdraw from contract here', 'devdiggers-returns' ),
 			];
 
 			foreach ( $labels as $type => $label ) {
@@ -747,7 +747,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$order_data = ddwcwr_order_adapter()->get_order_data( $order );
 
 			if ( ! $this->request_helper->order_status_allows( $order_data, $type ) ) {
-				wc_print_notice( __( 'This order cannot get this kind of request right now.', 'wpreturns' ), 'notice' );
+				wc_print_notice( __( 'This order cannot get this kind of request right now.', 'devdiggers-returns' ), 'notice' );
 				return;
 			}
 
@@ -899,14 +899,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				if ( $this->request_helper->can_view( $request, $key ) ) {
 					$this->ddwcwr_render_request_view( $request, $key );
 				} else {
-					wc_print_notice( __( 'This link is not valid. Look up your order below.', 'wpreturns' ), 'error' );
+					wc_print_notice( __( 'This link is not valid. Look up your order below.', 'devdiggers-returns' ), 'error' );
 					$this->template( 'portal-lookup' );
 				}
 			} elseif ( $order_id ) {
 				$order = $this->ddwcwr_get_authorized_order( $order_id );
 
 				if ( ! $order ) {
-					wc_print_notice( __( 'This link has expired. Look up your order again.', 'wpreturns' ), 'notice' );
+					wc_print_notice( __( 'This link has expired. Look up your order again.', 'devdiggers-returns' ), 'notice' );
 					$this->template( 'portal-lookup' );
 				} elseif ( $type ) {
 					$this->ddwcwr_render_request_form( $order, $type, $this->ddwcwr_get_guest_order_url( $order ) );
@@ -948,7 +948,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			wc_print_notices();
 
 			if ( 'yes' !== $this->ddwcwr_configuration['withdrawal_enabled'] ) {
-				wc_print_notice( __( 'Online withdrawal is not available on this store. Please contact us.', 'wpreturns' ), 'notice' );
+				wc_print_notice( __( 'Online withdrawal is not available on this store. Please contact us.', 'devdiggers-returns' ), 'notice' );
 				echo '</div>';
 
 				return ob_get_clean();
@@ -1048,7 +1048,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			printf(
 				'<div class="ddwcwr-footer-withdrawal"><a href="%1$s">%2$s</a></div>',
 				esc_url( add_query_arg( 'ddwcwr-step', 'form', ddwcwr_get_withdrawal_url() ) ),
-				esc_html__( 'Withdraw from contract here', 'wpreturns' )
+				esc_html__( 'Withdraw from contract here', 'devdiggers-returns' )
 			);
 		}
 
@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			}
 
 			// Only the processing and completed order emails, as the setting says. Refund, note and invoice emails can go
-			// out long after the withdrawal period, and WPReturns' own emails carry their own wording.
+			// out long after the withdrawal period, and DevDiggers Returns' own emails carry their own wording.
 			if ( $email && ! in_array( (string) $email->id, [ 'customer_processing_order', 'customer_completed_order' ], true ) ) {
 				return;
 			}
@@ -1085,14 +1085,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			$url = ddwcwr_get_withdrawal_url( $order->get_id() );
 			/* translators: %d: number of days */
-			$text = sprintf( __( 'You can withdraw from this contract within %d days of receiving your goods without giving any reason.', 'wpreturns' ), absint( $this->ddwcwr_configuration['withdrawal_days'] ) );
+			$text = sprintf( __( 'You can withdraw from this contract within %d days of receiving your goods without giving any reason.', 'devdiggers-returns' ), absint( $this->ddwcwr_configuration['withdrawal_days'] ) );
 
 			if ( $plain_text ) {
-				echo "\n" . esc_html( $text ) . ' ' . esc_html__( 'Withdraw from contract here', 'wpreturns' ) . ': ' . esc_url_raw( $url ) . "\n";
+				echo "\n" . esc_html( $text ) . ' ' . esc_html__( 'Withdraw from contract here', 'devdiggers-returns' ) . ': ' . esc_url_raw( $url ) . "\n";
 				return;
 			}
 
-			printf( '<p style="margin:16px 0;">%1$s <a href="%2$s">%3$s</a></p>', esc_html( $text ), esc_url( $url ), esc_html__( 'Withdraw from contract here', 'wpreturns' ) );
+			printf( '<p style="margin:16px 0;">%1$s <a href="%2$s">%3$s</a></p>', esc_html( $text ), esc_url( $url ), esc_html__( 'Withdraw from contract here', 'devdiggers-returns' ) );
 		}
 
 		/**
@@ -1110,11 +1110,11 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$lines = [];
 
 			if ( 'yes' === $this->ddwcwr_configuration['show_policy_product'] ) {
-				$lines[] = ddwcwr_is_final_sale( [ 'parent_id' => $product->get_id() ] ) ? [ 'final', __( 'Final sale: this item cannot be returned.', 'wpreturns' ) ] : [ 'policy', ddwcwr_get_policy_line( $this->ddwcwr_configuration['return_window_days'] ) ];
+				$lines[] = ddwcwr_is_final_sale( [ 'parent_id' => $product->get_id() ] ) ? [ 'final', __( 'Final sale: this item cannot be returned.', 'devdiggers-returns' ) ] : [ 'policy', ddwcwr_get_policy_line( $this->ddwcwr_configuration['return_window_days'] ) ];
 			}
 
 			if ( 'yes' === $this->ddwcwr_configuration['withdrawal_enabled'] && ddwcwr_is_withdrawal_excluded( [ 'parent_id' => $product->get_id() ] ) ) {
-				$lines[] = [ 'final', __( 'This item is exempt from the statutory right of withdrawal.', 'wpreturns' ) ];
+				$lines[] = [ 'final', __( 'This item is exempt from the statutory right of withdrawal.', 'devdiggers-returns' ) ];
 			}
 
 			if ( $lines ) {
@@ -1143,12 +1143,12 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$parts[] = esc_html( ddwcwr_get_policy_line( $this->ddwcwr_configuration['return_window_days'] ) );
 
 			if ( $this->ddwcwr_configuration['policy_page_id'] ) {
-				$parts[] = '<a href="' . esc_url( get_permalink( $this->ddwcwr_configuration['policy_page_id'] ) ) . '" target="_blank">' . esc_html__( 'Return policy', 'wpreturns' ) . '</a>';
+				$parts[] = '<a href="' . esc_url( get_permalink( $this->ddwcwr_configuration['policy_page_id'] ) ) . '" target="_blank">' . esc_html__( 'Return policy', 'devdiggers-returns' ) . '</a>';
 			}
 
 			if ( 'yes' === $this->ddwcwr_configuration['withdrawal_enabled'] && $this->ddwcwr_configuration['withdrawal_page_id'] ) {
 				/* translators: 1: days, 2: link open, 3: link close */
-				$parts[] = sprintf( esc_html__( 'You can withdraw from this contract within %1$d days of delivery using our %2$swithdrawal function%3$s.', 'wpreturns' ), absint( $this->ddwcwr_configuration['withdrawal_days'] ), '<a href="' . esc_url( ddwcwr_get_withdrawal_url() ) . '" target="_blank">', '</a>' );
+				$parts[] = sprintf( esc_html__( 'You can withdraw from this contract within %1$d days of delivery using our %2$swithdrawal function%3$s.', 'devdiggers-returns' ), absint( $this->ddwcwr_configuration['withdrawal_days'] ), '<a href="' . esc_url( ddwcwr_get_withdrawal_url() ) . '" target="_blank">', '</a>' );
 			}
 
 			return $parts ? '<p class="ddwcwr-checkout-policy">' . implode( ' ', $parts ) . '</p>' : '';

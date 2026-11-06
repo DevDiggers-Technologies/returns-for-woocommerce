@@ -1,10 +1,10 @@
 <?php
 /**
- * Uninstall: removes WPReturns data only when "Delete all WPReturns data" is on (Configuration > Advanced).
+ * Uninstall: removes DevDiggers Returns data only when "Delete all DevDiggers Returns data" is on (Configuration > Advanced).
  *
  * Order item warranty meta and WooCommerce refunds, coupons and exchange orders are kept: they belong to orders.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  */
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;

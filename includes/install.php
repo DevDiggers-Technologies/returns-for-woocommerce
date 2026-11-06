@@ -2,7 +2,7 @@
 /**
  * Install routine: schema, defaults and pages.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 
 			// First activation of a store that has not saved settings yet: open the setup wizard.
 			if ( false === get_option( '_ddwcwr_enabled', false ) ) {
-				set_transient( 'ddfw_activation_redirect_wpreturns', true, 30 );
+				set_transient( 'ddfw_activation_redirect_devdiggers-returns', true, 30 );
 			}
 
 			self::ddwcwr_install();
@@ -158,49 +158,49 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 			return [
 				[
 					'slug'   => 'pending',
-					'label'  => __( 'Requested', 'wpreturns' ),
+					'label'  => __( 'Requested', 'devdiggers-returns' ),
 					'color'  => '#b33a0b',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'approved',
-					'label'  => __( 'Approved', 'wpreturns' ),
+					'label'  => __( 'Approved', 'devdiggers-returns' ),
 					'color'  => '#0256ff',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'awaiting_return',
-					'label'  => __( 'Awaiting return', 'wpreturns' ),
+					'label'  => __( 'Awaiting return', 'devdiggers-returns' ),
 					'color'  => '#6d28d9',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'received',
-					'label'  => __( 'Received', 'wpreturns' ),
+					'label'  => __( 'Received', 'devdiggers-returns' ),
 					'color'  => '#0f766e',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'completed',
-					'label'  => __( 'Completed', 'wpreturns' ),
+					'label'  => __( 'Completed', 'devdiggers-returns' ),
 					'color'  => '#15703a',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'rejected',
-					'label'  => __( 'Rejected', 'wpreturns' ),
+					'label'  => __( 'Rejected', 'devdiggers-returns' ),
 					'color'  => '#c81e1e',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'cancelled',
-					'label'  => __( 'Canceled', 'wpreturns' ),
+					'label'  => __( 'Canceled', 'devdiggers-returns' ),
 					'color'  => '#556274',
 					'notify' => 'yes',
 					'core'   => 'yes',
@@ -215,14 +215,14 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 */
 		public static function ddwcwr_get_default_reasons() {
 			$reasons = [
-				'wrong-size'       => [ __( 'Wrong size or fit', 'wpreturns' ), '' ],
-				'not-as-described' => [ __( 'Not as described', 'wpreturns' ), 'yes' ],
-				'damaged'          => [ __( 'Arrived damaged', 'wpreturns' ), 'yes' ],
-				'defective'        => [ __( 'Defective or stopped working', 'wpreturns' ), 'yes' ],
-				'wrong-item'       => [ __( 'Wrong item sent', 'wpreturns' ), 'yes' ],
-				'changed-mind'     => [ __( 'Changed my mind', 'wpreturns' ), '' ],
-				'better-price'     => [ __( 'Found a better price', 'wpreturns' ), '' ],
-				'other'            => [ __( 'Other', 'wpreturns' ), '' ],
+				'wrong-size'       => [ __( 'Wrong size or fit', 'devdiggers-returns' ), '' ],
+				'not-as-described' => [ __( 'Not as described', 'devdiggers-returns' ), 'yes' ],
+				'damaged'          => [ __( 'Arrived damaged', 'devdiggers-returns' ), 'yes' ],
+				'defective'        => [ __( 'Defective or stopped working', 'devdiggers-returns' ), 'yes' ],
+				'wrong-item'       => [ __( 'Wrong item sent', 'devdiggers-returns' ), 'yes' ],
+				'changed-mind'     => [ __( 'Changed my mind', 'devdiggers-returns' ), '' ],
+				'better-price'     => [ __( 'Found a better price', 'devdiggers-returns' ), '' ],
+				'other'            => [ __( 'Other', 'devdiggers-returns' ), '' ],
 			];
 
 			$list = [];
@@ -258,12 +258,12 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		public static function ddwcwr_create_pages() {
 			$pages = [
 				'_ddwcwr_portal_page_id'     => [
-					'title'   => __( 'Returns', 'wpreturns' ),
+					'title'   => __( 'Returns', 'devdiggers-returns' ),
 					'slug'    => 'returns',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_returns_portal]<!-- /wp:shortcode -->',
 				],
 				'_ddwcwr_withdrawal_page_id' => [
-					'title'   => __( 'Withdraw from contract', 'wpreturns' ),
+					'title'   => __( 'Withdraw from contract', 'devdiggers-returns' ),
 					'slug'    => 'withdrawal',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_withdrawal_form]<!-- /wp:shortcode -->',
 				],

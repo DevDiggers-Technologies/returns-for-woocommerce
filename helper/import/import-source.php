@@ -1,6 +1,6 @@
 <?php
 /**
- * Base for one plugin WPReturns can import requests from.
+ * Base for one plugin DevDiggers Returns can import requests from.
  *
  * A source reads the other plugin's data (with SQL, so it also works after that plugin is deactivated) and turns
  * each request into the shape DDWCWR_Import_Helper writes. It never writes to the other plugin's data.
@@ -9,8 +9,8 @@
  * key         Unique import key, used to never import the same request twice.
  * order       \WC_Order, or null for a withdrawal statement that names no known order (see "unmatched").
  * type        return|cancellation|withdrawal|warranty.
- * status      A WPReturns status slug.
- * reason      Reason text of the whole request, matched against the WPReturns reasons.
+ * status      A DevDiggers Returns status slug.
+ * reason      Reason text of the whole request, matched against the DevDiggers Returns reasons.
  * note        What the customer wrote.
  * items       [ order_item_id => [ qty, reason ] ]. Empty with all_items true for whole-order requests.
  * all_items   Every line of the order.
@@ -21,7 +21,7 @@
  * meta        Extra request meta (EU withdrawal statement fields).
  * unmatched   [ name, order, email, date ] when order is null.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 

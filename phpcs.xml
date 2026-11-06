@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<ruleset name="WPReturns">
+<ruleset name="DevDiggers Returns">
 	<description>WordPress Coding Standards with the DevDiggers house style (short arrays, feature-name.php files).</description>
 
 	<file>.</file>
@@ -35,7 +35,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="wpreturns"/>
+				<element value="devdiggers-returns"/>
 			</property>
 		</properties>
 	</rule>

@@ -3,7 +3,7 @@
  * This file handles all admin end action callbacks.
  *
  * @author DevDiggers
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -319,11 +319,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			$request_id = isset( $_POST['request_id'] ) ? absint( $_POST['request_id'] ) : 0;
 
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_request_action_' . $request_id ) ) {
-				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			if ( ! ddwcwr_current_user_can() ) {
-				wp_die( esc_html__( 'You are not allowed to manage return requests.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'You are not allowed to manage return requests.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			$request = $this->request_helper->get_request( $request_id );
@@ -331,7 +331,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			$user_id = get_current_user_id();
 
 			if ( ! $request ) {
-				wp_die( esc_html__( 'Request not found.', 'wpreturns' ), '', [ 'response' => 404 ] );
+				wp_die( esc_html__( 'Request not found.', 'devdiggers-returns' ), '', [ 'response' => 404 ] );
 			}
 
 			switch ( $do ) {
@@ -350,7 +350,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 						]
 					);
 
-					$this->ddwcwr_back_to_request( $request_id, is_wp_error( $result ) ? $result->get_error_message() : __( 'Status updated.', 'wpreturns' ), is_wp_error( $result ) );
+					$this->ddwcwr_back_to_request( $request_id, is_wp_error( $result ) ? $result->get_error_message() : __( 'Status updated.', 'devdiggers-returns' ), is_wp_error( $result ) );
 					break;
 
 				case 'message':
@@ -362,13 +362,13 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					}
 
 					if ( '' === trim( $message ) && empty( $files ) ) {
-						$this->ddwcwr_back_to_request( $request_id, __( 'Write a message first.', 'wpreturns' ), true );
+						$this->ddwcwr_back_to_request( $request_id, __( 'Write a message first.', 'devdiggers-returns' ), true );
 					}
 
 					$internal = ! empty( $_POST['internal'] );
 
 					$this->request_helper->add_message( $request_id, $message, $internal ? 'note' : 'message', 'staff', $user_id, $files );
-					$this->ddwcwr_back_to_request( $request_id, $internal ? __( 'Note added.', 'wpreturns' ) : __( 'Message sent to the customer.', 'wpreturns' ) );
+					$this->ddwcwr_back_to_request( $request_id, $internal ? __( 'Note added.', 'devdiggers-returns' ) : __( 'Message sent to the customer.', 'devdiggers-returns' ) );
 					break;
 
 				case 'process':
@@ -389,7 +389,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					$file = isset( $_FILES['label_file'] ) ? $_FILES['label_file'] : null;
 
 					if ( ! $file || UPLOAD_ERR_OK !== (int) $file['error'] || ! is_uploaded_file( $file['tmp_name'] ) ) {
-						$this->ddwcwr_back_to_request( $request_id, __( 'Choose a label file to upload.', 'wpreturns' ), true );
+						$this->ddwcwr_back_to_request( $request_id, __( 'Choose a label file to upload.', 'devdiggers-returns' ), true );
 					}
 
 					$stored = ( new DDWCWR_Upload_Helper() )->store_file( $file );
@@ -399,7 +399,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					}
 
 					( new DDWCWR_Label_Helper() )->attach_label( $request_id, $stored );
-					$this->ddwcwr_back_to_request( $request_id, __( 'Label uploaded and sent to the customer.', 'wpreturns' ) );
+					$this->ddwcwr_back_to_request( $request_id, __( 'Label uploaded and sent to the customer.', 'devdiggers-returns' ) );
 					break;
 
 				case 'tracking':
@@ -414,28 +414,28 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 						]
 					);
 					/* translators: 1: carrier, 2: tracking */
-					$this->request_helper->log( $request_id, sprintf( __( 'Tracking saved: %1$s %2$s', 'wpreturns' ), $carrier, $tracking ), $user_id );
-					$this->ddwcwr_back_to_request( $request_id, __( 'Tracking saved.', 'wpreturns' ) );
+					$this->request_helper->log( $request_id, sprintf( __( 'Tracking saved: %1$s %2$s', 'devdiggers-returns' ), $carrier, $tracking ), $user_id );
+					$this->ddwcwr_back_to_request( $request_id, __( 'Tracking saved.', 'devdiggers-returns' ) );
 					break;
 
 				case 'receive':
 					$result = ( new DDWCWR_Resolution_Helper() )->mark_received( $request_id, ! empty( $_POST['restock'] ), $user_id );
 
-					$this->ddwcwr_back_to_request( $request_id, is_wp_error( $result ) ? $result->get_error_message() : __( 'Marked as received.', 'wpreturns' ), is_wp_error( $result ) );
+					$this->ddwcwr_back_to_request( $request_id, is_wp_error( $result ) ? $result->get_error_message() : __( 'Marked as received.', 'devdiggers-returns' ), is_wp_error( $result ) );
 					break;
 
 				case 'delete':
 					// Withdrawal statements are the store's legal record, so they cannot be deleted.
 					if ( 'withdrawal' === $request['type'] ) {
-						$this->ddwcwr_back_to_request( $request_id, __( 'Withdrawal statements cannot be deleted. They are the record that the customer withdrew.', 'wpreturns' ), true );
+						$this->ddwcwr_back_to_request( $request_id, __( 'Withdrawal statements cannot be deleted. They are the record that the customer withdrew.', 'devdiggers-returns' ), true );
 					}
 
 					$this->request_helper->delete_request( $request_id );
-					wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&ddwcwr-message=' . rawurlencode( __( 'Request deleted.', 'wpreturns' ) ) ) );
+					wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&ddwcwr-message=' . rawurlencode( __( 'Request deleted.', 'devdiggers-returns' ) ) ) );
 					exit;
 			}
 
-			$this->ddwcwr_back_to_request( $request_id, __( 'Nothing changed.', 'wpreturns' ), true );
+			$this->ddwcwr_back_to_request( $request_id, __( 'Nothing changed.', 'devdiggers-returns' ), true );
 		}
 
 		/**
@@ -445,11 +445,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		 */
 		public function ddwcwr_handle_create_request() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_create_request' ) ) {
-				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			if ( ! ddwcwr_current_user_can() ) {
-				wp_die( esc_html__( 'You are not allowed to manage return requests.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'You are not allowed to manage return requests.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			$order_id = isset( $_POST['order_id'] ) ? absint( $_POST['order_id'] ) : 0;
@@ -485,7 +485,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 				exit;
 			}
 
-			$this->ddwcwr_back_to_request( $request_id, __( 'Request created.', 'wpreturns' ) );
+			$this->ddwcwr_back_to_request( $request_id, __( 'Request created.', 'devdiggers-returns' ) );
 		}
 
 		/**
@@ -495,11 +495,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		 */
 		public function ddwcwr_handle_export_withdrawals() {
 			if ( ! isset( $_GET['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr_nonce'] ) ), 'ddwcwr_export_withdrawals' ) ) {
-				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			if ( ! ddwcwr_current_user_can() ) {
-				wp_die( esc_html__( 'You are not allowed to export requests.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'You are not allowed to export requests.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			$requests = $this->request_helper->get_requests(
@@ -517,7 +517,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 
 			nocache_headers();
 			header( 'Content-Type: text/csv; charset=utf-8' );
-			header( 'Content-Disposition: attachment; filename=wpreturns-withdrawals-' . gmdate( 'Y-m-d' ) . '.csv' );
+			header( 'Content-Disposition: attachment; filename=devdiggers-returns-withdrawals-' . gmdate( 'Y-m-d' ) . '.csv' );
 
 			$out = fopen( 'php://output', 'w' ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen -- Streaming the download.
 
@@ -565,15 +565,15 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		 */
 		public function ddwcwr_handle_clear_unmatched() {
 			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_clear_unmatched' ) ) {
-				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'The link has expired. Go back and try again.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			if ( ! ddwcwr_current_user_can() ) {
-				wp_die( esc_html__( 'You are not allowed to do this.', 'wpreturns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'You are not allowed to do this.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
 			}
 
 			delete_option( '_ddwcwr_unmatched_withdrawals' );
-			wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=withdrawals&ddwcwr-message=' . rawurlencode( __( 'Unmatched submissions cleared.', 'wpreturns' ) ) ) );
+			wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=withdrawals&ddwcwr-message=' . rawurlencode( __( 'Unmatched submissions cleared.', 'devdiggers-returns' ) ) ) );
 			exit;
 		}
 
@@ -590,20 +590,20 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			woocommerce_wp_checkbox(
 				[
 					'id'          => '_ddwcwr_final_sale',
-					'label'       => __( 'Final sale', 'wpreturns' ),
+					'label'       => __( 'Final sale', 'devdiggers-returns' ),
 					'value'       => $product_object->get_meta( '_ddwcwr_final_sale', true ),
 					'cbvalue'     => 'yes',
-					'description' => __( 'Customers cannot request a return for this product. The EU right of withdrawal is not affected.', 'wpreturns' ),
+					'description' => __( 'Customers cannot request a return for this product. The EU right of withdrawal is not affected.', 'devdiggers-returns' ),
 				]
 			);
 
 			woocommerce_wp_checkbox(
 				[
 					'id'          => '_ddwcwr_withdrawal_excluded',
-					'label'       => __( 'Exempt from withdrawal', 'wpreturns' ),
+					'label'       => __( 'Exempt from withdrawal', 'devdiggers-returns' ),
 					'value'       => $product_object->get_meta( '_ddwcwr_withdrawal_excluded', true ),
 					'cbvalue'     => 'yes',
-					'description' => __( 'Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, perishable, sealed hygiene goods, etc.).', 'wpreturns' ),
+					'description' => __( 'Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, perishable, sealed hygiene goods, etc.).', 'devdiggers-returns' ),
 				]
 			);
 
@@ -646,7 +646,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		public function ddwcwr_add_order_meta_box() {
 			$screen = function_exists( 'wc_get_page_screen_id' ) ? wc_get_page_screen_id( 'shop-order' ) : 'shop_order';
 
-			add_meta_box( 'ddwcwr-order-requests', __( 'Returns', 'wpreturns' ), [ $this, 'ddwcwr_order_meta_box' ], $screen, 'side', 'default' );
+			add_meta_box( 'ddwcwr-order-requests', __( 'Returns', 'devdiggers-returns' ), [ $this, 'ddwcwr_order_meta_box' ], $screen, 'side', 'default' );
 		}
 
 		/**
@@ -678,11 +678,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 
 				echo '</ul>';
 			} else {
-				echo '<p>' . esc_html__( 'No return requests for this order.', 'wpreturns' ) . '</p>';
+				echo '<p>' . esc_html__( 'No return requests for this order.', 'devdiggers-returns' ) . '</p>';
 			}
 
 			if ( ddwcwr_current_user_can() ) {
-				printf( '<p><a class="button" href="%1$s">%2$s</a></p>', esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order->get_id() ) ), esc_html__( 'Create request', 'wpreturns' ) );
+				printf( '<p><a class="button" href="%1$s">%2$s</a></p>', esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order->get_id() ) ), esc_html__( 'Create request', 'devdiggers-returns' ) );
 			}
 		}
 
@@ -693,7 +693,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		 * @return array
 		 */
 		public function ddwcwr_add_orders_column( $columns ) {
-			$columns['ddwcwr_returns'] = __( 'Returns', 'wpreturns' );
+			$columns['ddwcwr_returns'] = __( 'Returns', 'devdiggers-returns' );
 
 			return $columns;
 		}
@@ -718,7 +718,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		}
 
 		/**
-		 * Warn when WooCommerce's own order withdrawal form (WooCommerce 11.1+) is on next to the WPReturns button.
+		 * Warn when WooCommerce's own order withdrawal form (WooCommerce 11.1+) is on next to the DevDiggers Returns button.
 		 * Two withdrawal forms would split the log and confuse customers.
 		 *
 		 * @return void
@@ -736,11 +736,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 
 			printf(
 				'<div class="notice notice-warning"><p>%1$s</p><p><a href="%2$s">%3$s</a> &nbsp; <a href="%4$s">%5$s</a></p></div>',
-				esc_html__( 'WooCommerce\'s own order withdrawal form is on, and the WPReturns withdrawal button is on too. Customers would see two withdrawal forms. Keep one of them.', 'wpreturns' ),
+				esc_html__( 'WooCommerce\'s own order withdrawal form is on, and the DevDiggers Returns withdrawal button is on too. Customers would see two withdrawal forms. Keep one of them.', 'devdiggers-returns' ),
 				esc_url( admin_url( 'admin.php?page=wc-settings&tab=advanced&section=features' ) ),
-				esc_html__( 'Turn off the WooCommerce form', 'wpreturns' ),
+				esc_html__( 'Turn off the WooCommerce form', 'devdiggers-returns' ),
 				esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=configuration&tab=withdrawal' ) ),
-				esc_html__( 'Open the WPReturns withdrawal settings', 'wpreturns' )
+				esc_html__( 'Open the DevDiggers Returns withdrawal settings', 'devdiggers-returns' )
 			);
 		}
 	}

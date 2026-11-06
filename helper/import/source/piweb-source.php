@@ -6,7 +6,7 @@
  * plugin keeps no decision: the shop moves the order to Cancelled (approved) or back to Processing (declined). A new
  * request overwrites the old one, so only the latest exists.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Piweb_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Cancel Order Request for WooCommerce', 'wpreturns' );
+			return __( 'Cancel Order Request for WooCommerce', 'devdiggers-returns' );
 		}
 
 		/**

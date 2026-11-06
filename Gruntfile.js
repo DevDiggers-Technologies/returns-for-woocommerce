@@ -11,7 +11,7 @@ module.exports = function( grunt ) {
 					domainPath: '/i18n',
 					exclude: [ '\.git/*', 'bin/*', 'node_modules/*', 'tests/*', 'vendor/*', 'devdiggers-framework/*' ],
 					mainFile: 'functions.php',
-					potFilename: 'wpreturns.pot',
+					potFilename: 'devdiggers-returns.pot',
 					potHeaders: {
 						poedit: true,
 						'x-poedit-keywordslist': true
@@ -24,7 +24,7 @@ module.exports = function( grunt ) {
 
 		checktextdomain: {
 			options:{
-				text_domain: 'wpreturns',
+				text_domain: 'devdiggers-returns',
 				keywords: [
 					'__:1,2d',
 					'_e:1,2d',

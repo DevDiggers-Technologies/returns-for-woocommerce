@@ -6,7 +6,7 @@
  * woocommerce_stc_shipment_items and a reason code per item (_return_reason_code). Reason labels are in the
  * woocommerce_shiptastic_return_reasons option.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Shiptastic_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Shiptastic for WooCommerce', 'wpreturns' );
+			return __( 'Shiptastic for WooCommerce', 'devdiggers-returns' );
 		}
 
 		/**

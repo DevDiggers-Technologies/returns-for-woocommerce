@@ -4,7 +4,7 @@
  *
  * Override by copying it to yourtheme/woocommerce/emails/request.php.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  *
  * @var \WC_Email $email
@@ -30,7 +30,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore
 ?>
 <?php if ( ! $sent_to_admin && $ddwcwr_request['customer_name'] ) : ?>
 	<?php /* translators: %s: customer name */ ?>
-	<p><?php echo esc_html( sprintf( __( 'Hi %s,', 'wpreturns' ), $ddwcwr_request['customer_name'] ) ); ?></p>
+	<p><?php echo esc_html( sprintf( __( 'Hi %s,', 'devdiggers-returns' ), $ddwcwr_request['customer_name'] ) ); ?></p>
 <?php endif; ?>
 
 <?php if ( $intro ) : ?>
@@ -59,15 +59,15 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore
 <h2>
 	<?php
 	/* translators: 1: request number, 2: request type, 3: order number */
-	echo esc_html( sprintf( __( '%1$s – %2$s for order #%3$s', 'wpreturns' ), $ddwcwr_request['number'], isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], $email->placeholders['{order_number}'] ) );
+	echo esc_html( sprintf( __( '%1$s – %2$s for order #%3$s', 'devdiggers-returns' ), $ddwcwr_request['number'], isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], $email->placeholders['{order_number}'] ) );
 	?>
 </h2>
 <table cellspacing="0" cellpadding="6" border="1" style="width:100%;border-collapse:collapse;margin-bottom:16px;border-color:#e5e7eb;">
 	<thead>
 		<tr>
-			<th style="text-align:left;"><?php esc_html_e( 'Item', 'wpreturns' ); ?></th>
-			<th style="text-align:left;"><?php esc_html_e( 'Qty', 'wpreturns' ); ?></th>
-			<th style="text-align:left;"><?php esc_html_e( 'Reason', 'wpreturns' ); ?></th>
+			<th style="text-align:left;"><?php esc_html_e( 'Item', 'devdiggers-returns' ); ?></th>
+			<th style="text-align:left;"><?php esc_html_e( 'Qty', 'devdiggers-returns' ); ?></th>
+			<th style="text-align:left;"><?php esc_html_e( 'Reason', 'devdiggers-returns' ); ?></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -83,7 +83,7 @@ do_action( 'woocommerce_email_header', $email_heading, $email ); // phpcs:ignore
 	</tbody>
 	<tfoot>
 		<tr>
-			<th scope="row" colspan="2" style="text-align:left;"><?php esc_html_e( 'Status', 'wpreturns' ); ?></th>
+			<th scope="row" colspan="2" style="text-align:left;"><?php esc_html_e( 'Status', 'devdiggers-returns' ); ?></th>
 			<td style="text-align:left;"><?php echo esc_html( ddwcwr_get_status_label( $ddwcwr_request['status'] ) ); ?></td>
 		</tr>
 	</tfoot>

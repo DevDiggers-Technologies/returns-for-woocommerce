@@ -2,7 +2,7 @@
 /**
  * Create a request for a customer (phone, email or in-store returns).
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -35,13 +35,13 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 			<div class="ddfw-edit-screen-bar">
 				<div class="ddfw-edit-screen-bar-title">
 					<div class="ddfw-edit-screen-bar-heading">
-						<h2><?php esc_html_e( 'New request', 'wpreturns' ); ?></h2>
+						<h2><?php esc_html_e( 'New request', 'devdiggers-returns' ); ?></h2>
 						<a class="ddfw-edit-screen-back" href="<?php echo esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests' ) ); ?>">
 							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M15 19.5 7.7 12.2l7.3-7.3" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-							<?php esc_html_e( 'Requests', 'wpreturns' ); ?>
+							<?php esc_html_e( 'Requests', 'devdiggers-returns' ); ?>
 						</a>
 					</div>
-					<p><?php esc_html_e( 'Create a request for a customer who called, emailed or came to the store. Return windows and rules do not block requests you create.', 'wpreturns' ); ?></p>
+					<p><?php esc_html_e( 'Create a request for a customer who called, emailed or came to the store. Return windows and rules do not block requests you create.', 'devdiggers-returns' ); ?></p>
 				</div>
 			</div>
 
@@ -51,8 +51,8 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 						<?php
 						ddfw_fields_heading(
 							[
-								'heading'     => esc_html__( '1. Find the order', 'wpreturns' ),
-								'description' => esc_html__( 'Load the order first, then choose the items below.', 'wpreturns' ),
+								'heading'     => esc_html__( '1. Find the order', 'devdiggers-returns' ),
+								'description' => esc_html__( 'Load the order first, then choose the items below.', 'devdiggers-returns' ),
 							]
 						);
 						?>
@@ -61,14 +61,14 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 						<input type="hidden" name="action" value="add" />
 						<table class="form-table" role="presentation">
 							<tr>
-								<th scope="row"><label for="ddwcwr-order-id"><?php esc_html_e( 'Order number', 'wpreturns' ); ?></label></th>
+								<th scope="row"><label for="ddwcwr-order-id"><?php esc_html_e( 'Order number', 'devdiggers-returns' ); ?></label></th>
 								<td>
 									<input type="text" id="ddwcwr-order-id" name="order-id" class="regular-text" value="<?php echo esc_attr( $order_id ? $order_id : '' ); ?>" aria-describedby="ddwcwr-order-id-description" />
-									<p class="description" id="ddwcwr-order-id-description"><?php esc_html_e( 'The WooCommerce order number, with or without #.', 'wpreturns' ); ?></p>
+									<p class="description" id="ddwcwr-order-id-description"><?php esc_html_e( 'The WooCommerce order number, with or without #.', 'devdiggers-returns' ); ?></p>
 								</td>
 							</tr>
 							<tr>
-								<th scope="row"><label for="ddwcwr-new-type"><?php esc_html_e( 'Request type', 'wpreturns' ); ?></label></th>
+								<th scope="row"><label for="ddwcwr-new-type"><?php esc_html_e( 'Request type', 'devdiggers-returns' ); ?></label></th>
 								<td>
 									<select id="ddwcwr-new-type" name="type" aria-describedby="ddwcwr-new-type-description">
 										<?php foreach ( ddwcwr_get_request_types() as $slug => $label ) : ?>
@@ -77,16 +77,16 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 											<?php endif; ?>
 										<?php endforeach; ?>
 									</select>
-									<p class="description" id="ddwcwr-new-type-description"><?php esc_html_e( 'Return or cancellation. EU withdrawals can only come from the customer.', 'wpreturns' ); ?></p>
+									<p class="description" id="ddwcwr-new-type-description"><?php esc_html_e( 'Return or cancellation. EU withdrawals can only come from the customer.', 'devdiggers-returns' ); ?></p>
 								</td>
 							</tr>
 						</table>
-						<p><button type="submit" class="button"><?php esc_html_e( 'Load order', 'wpreturns' ); ?></button></p>
+						<p><button type="submit" class="button"><?php esc_html_e( 'Load order', 'devdiggers-returns' ); ?></button></p>
 					</form>
 
 					<?php
 					if ( $order_id && ! $order ) {
-						ddfw_print_notification( esc_html__( 'Order not found.', 'wpreturns' ), 'error' );
+						ddfw_print_notification( esc_html__( 'Order not found.', 'devdiggers-returns' ), 'error' );
 					}
 
 					if ( $order ) :
@@ -97,8 +97,8 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 							ddfw_fields_heading(
 								[
 									/* translators: 1: order number, 2: customer */
-									'heading'     => esc_html( sprintf( __( '2. Items of order #%1$s (%2$s)', 'wpreturns' ), $order->get_order_number(), $order->get_formatted_billing_full_name() ) ),
-									'description' => esc_html__( 'Set a quantity for each item the customer is sending back. Leave 0 for items that stay with the customer.', 'wpreturns' ),
+									'heading'     => esc_html( sprintf( __( '2. Items of order #%1$s (%2$s)', 'devdiggers-returns' ), $order->get_order_number(), $order->get_formatted_billing_full_name() ) ),
+									'description' => esc_html__( 'Set a quantity for each item the customer is sending back. Leave 0 for items that stay with the customer.', 'devdiggers-returns' ),
 								]
 							);
 							?>
@@ -106,10 +106,10 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 								<table class="widefat fixed ddfw-table">
 									<thead>
 										<tr>
-											<th><?php esc_html_e( 'Item', 'wpreturns' ); ?></th>
-											<th><?php esc_html_e( 'Quantity', 'wpreturns' ); ?></th>
-											<th><?php esc_html_e( 'Reason', 'wpreturns' ); ?></th>
-											<th><?php esc_html_e( 'Condition', 'wpreturns' ); ?></th>
+											<th><?php esc_html_e( 'Item', 'devdiggers-returns' ); ?></th>
+											<th><?php esc_html_e( 'Quantity', 'devdiggers-returns' ); ?></th>
+											<th><?php esc_html_e( 'Reason', 'devdiggers-returns' ); ?></th>
+											<th><?php esc_html_e( 'Condition', 'devdiggers-returns' ); ?></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -117,22 +117,22 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 											<tr>
 												<td><strong><?php echo esc_html( $item['name'] ); ?></strong><?php echo $item['message'] ? '<span class="ddwcwr-list-meta">' . esc_html( $item['message'] ) . '</span>' : ''; ?></td>
 												<td>
-													<select name="items[<?php echo esc_attr( $item_id ); ?>][qty]" aria-label="<?php esc_attr_e( 'Quantity', 'wpreturns' ); ?>">
+													<select name="items[<?php echo esc_attr( $item_id ); ?>][qty]" aria-label="<?php esc_attr_e( 'Quantity', 'devdiggers-returns' ); ?>">
 														<?php for ( $qty = 0; $qty <= $item['available']; $qty++ ) : ?>
 															<option value="<?php echo esc_attr( $qty ); ?>"><?php echo esc_html( $qty ); ?></option>
 														<?php endfor; ?>
 													</select>
 												</td>
 												<td>
-													<select name="items[<?php echo esc_attr( $item_id ); ?>][reason]" aria-label="<?php esc_attr_e( 'Reason', 'wpreturns' ); ?>">
+													<select name="items[<?php echo esc_attr( $item_id ); ?>][reason]" aria-label="<?php esc_attr_e( 'Reason', 'devdiggers-returns' ); ?>">
 														<?php foreach ( ddwcwr_get_reasons() as $slug => $reason ) : ?>
 															<option value="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $reason['label'] ); ?></option>
 														<?php endforeach; ?>
 													</select>
 												</td>
 												<td>
-													<select name="items[<?php echo esc_attr( $item_id ); ?>][condition]" aria-label="<?php esc_attr_e( 'Condition', 'wpreturns' ); ?>">
-														<option value=""><?php esc_html_e( 'Not checked', 'wpreturns' ); ?></option>
+													<select name="items[<?php echo esc_attr( $item_id ); ?>][condition]" aria-label="<?php esc_attr_e( 'Condition', 'devdiggers-returns' ); ?>">
+														<option value=""><?php esc_html_e( 'Not checked', 'devdiggers-returns' ); ?></option>
 														<?php foreach ( ddwcwr_get_item_conditions() as $slug => $label ) : ?>
 															<option value="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $label ); ?></option>
 														<?php endforeach; ?>
@@ -145,10 +145,10 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 							</div>
 							<table class="form-table" role="presentation">
 								<tr>
-									<th scope="row"><label for="ddwcwr-new-note"><?php esc_html_e( 'Note', 'wpreturns' ); ?></label></th>
+									<th scope="row"><label for="ddwcwr-new-note"><?php esc_html_e( 'Note', 'devdiggers-returns' ); ?></label></th>
 									<td>
 										<textarea id="ddwcwr-new-note" name="note" rows="3" class="large-text" aria-describedby="ddwcwr-new-note-description"></textarea>
-										<p class="description" id="ddwcwr-new-note-description"><?php esc_html_e( 'Saved as the customer\'s note on the request, for example what they told you on the phone.', 'wpreturns' ); ?></p>
+										<p class="description" id="ddwcwr-new-note-description"><?php esc_html_e( 'Saved as the customer\'s note on the request, for example what they told you on the phone.', 'devdiggers-returns' ); ?></p>
 									</td>
 								</tr>
 							</table>
@@ -156,7 +156,7 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 							<input type="hidden" name="order_id" value="<?php echo esc_attr( $order->get_id() ); ?>" />
 							<input type="hidden" name="type" value="<?php echo esc_attr( $type ); ?>" />
 							<?php wp_nonce_field( 'ddwcwr_create_request', 'ddwcwr_nonce' ); ?>
-							<p><button type="submit" class="button button-primary"><?php esc_html_e( 'Create request', 'wpreturns' ); ?></button></p>
+							<p><button type="submit" class="button button-primary"><?php esc_html_e( 'Create request', 'devdiggers-returns' ); ?></button></p>
 						</form>
 					<?php endif; ?>
 				</div>

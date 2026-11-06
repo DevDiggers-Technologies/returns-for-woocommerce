@@ -8,7 +8,7 @@
  *
  *   php bin/test-free-boundary.php
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  */
 
 $root   = dirname( __DIR__ ) . '/';
@@ -241,7 +241,7 @@ foreach ( [ 'assets/js', 'assets/css' ] as $dir ) {
 // 9. The Free bootstrap yields to Pro and loads the framework on its own pages.
 $bootstrap = ddwcwr_read( $root . 'functions.php' );
 
-foreach ( [ "class_exists( 'DDWCWR_Init' )", "'ddwcwr' !== \$prefix", 'DDWCWR_Free_Init', 'Text Domain: wpreturns' ] as $needle ) {
+foreach ( [ "class_exists( 'DDWCWR_Init' )", "'ddwcwr' !== \$prefix", 'DDWCWR_Free_Init', 'Text Domain: devdiggers-returns' ] as $needle ) {
 	if ( false === strpos( $bootstrap, $needle ) ) {
 		$errors[] = "Bootstrap guard '{$needle}' is missing from functions.php.";
 	}

@@ -5,7 +5,7 @@
  * Requests are yith_refund_request posts with _ywcars_* meta. The conversation is in {prefix}ywcars_messages; its
  * first message is the customer's reason. Message dates come from MySQL NOW(), so they are in the database clock.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Yith_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'YITH Advanced Refund System', 'wpreturns' );
+			return __( 'YITH Advanced Refund System', 'devdiggers-returns' );
 		}
 
 		/**
@@ -185,7 +185,7 @@ if ( ! class_exists( 'DDWCWR_Yith_Source' ) ) {
 					// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 					foreach ( $wpdb->get_results( $wpdb->prepare( "SELECT meta_key, meta_value FROM {$meta_table} WHERE message = %d", $row->ID ) ) as $file ) {
 						/* translators: 1: file name, 2: file URL */
-						$text .= "\n" . sprintf( __( 'Attached: %1$s (%2$s)', 'wpreturns' ), $file->meta_key, $file->meta_value );
+						$text .= "\n" . sprintf( __( 'Attached: %1$s (%2$s)', 'devdiggers-returns' ), $file->meta_key, $file->meta_value );
 					}
 				}
 

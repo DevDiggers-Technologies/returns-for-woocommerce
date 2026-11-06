@@ -2,7 +2,7 @@
 /**
  * WooCommerce order adapter
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -179,7 +179,7 @@ if ( ! class_exists( 'DDWCWR_WooCommerce_Order_Adapter' ) ) {
 			}
 
 			if ( $amount <= 0 ) {
-				return new \WP_Error( 'ddwcwr_refund_amount', __( 'There is nothing left to refund on this order.', 'wpreturns' ) );
+				return new \WP_Error( 'ddwcwr_refund_amount', __( 'There is nothing left to refund on this order.', 'devdiggers-returns' ) );
 			}
 
 			// Fees make the refund smaller than the items: scale every line so the record adds up.
@@ -245,7 +245,7 @@ if ( ! class_exists( 'DDWCWR_WooCommerce_Order_Adapter' ) ) {
 			}
 
 			/* translators: 1: product name, 2: quantity, 3: new stock */
-			$order->add_order_note( sprintf( __( 'WPReturns restocked %1$s × %2$d (stock now %3$s).', 'wpreturns' ), $product->get_formatted_name(), $qty, $new_stock ) );
+			$order->add_order_note( sprintf( __( 'DevDiggers Returns restocked %1$s × %2$d (stock now %3$s).', 'devdiggers-returns' ), $product->get_formatted_name(), $qty, $new_stock ) );
 
 			return true;
 		}

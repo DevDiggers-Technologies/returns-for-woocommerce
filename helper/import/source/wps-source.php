@@ -5,7 +5,7 @@
  * One request per order, in order meta wps_rma_return_product keyed by the request time. Order messages are in
  * wps_cutomer_order_msg (the plugin's own spelling) and photos in wps_rma_return_attachment.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Return Refund and Exchange for WooCommerce', 'wpreturns' );
+			return __( 'Return Refund and Exchange for WooCommerce', 'devdiggers-returns' );
 		}
 
 		/**
@@ -167,7 +167,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 
 				if ( $photos ) {
 					/* translators: %s: file names */
-					$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'wpreturns' ), implode( ', ', $photos ) );
+					$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns' ), implode( ', ', $photos ) );
 				}
 
 				$requests[] = $this->request(
@@ -210,7 +210,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 
 					if ( ! empty( $message['files'] ) ) {
 						/* translators: %s: file names */
-						$text .= "\n" . sprintf( __( 'Attached: %s', 'wpreturns' ), implode( ', ', array_map( 'wp_basename', (array) $message['files'] ) ) );
+						$text .= "\n" . sprintf( __( 'Attached: %s', 'devdiggers-returns' ), implode( ', ', array_map( 'wp_basename', (array) $message['files'] ) ) );
 					}
 
 					$messages[] = $this->message( isset( $message['sender'] ) && 'Customer' === $message['sender'] ? 'customer' : 'staff', $text, (int) $time );

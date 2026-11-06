@@ -6,7 +6,7 @@
  * order was cancelled at once) and one return (request_return_reason) per order. No request date is stored; the
  * order note the plugin adds with the customer's reason gives it.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -34,7 +34,7 @@ if ( ! class_exists( 'DDWCWR_Yoohw_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Order Cancellation & Returns', 'wpreturns' );
+			return __( 'Order Cancellation & Returns', 'devdiggers-returns' );
 		}
 
 		/**

@@ -1,5 +1,5 @@
 /**
- * WPReturns customer screens: request form and uploads.
+ * DevDiggers Returns customer screens: request form and uploads.
  */
 import './style.less';
 

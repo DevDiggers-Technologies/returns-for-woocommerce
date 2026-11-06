@@ -62,12 +62,12 @@ if ( ! class_exists( 'DDFW_Setup_Wizard' ) ) {
 
 				// Capability check first, kept separate so the condition cannot be bypassed.
 				if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_woocommerce' ) ) {
-					wp_die( esc_html__( 'Security check failed.', 'wpreturns' ) );
+					wp_die( esc_html__( 'Security check failed.', 'devdiggers-returns' ) );
 				}
 
 				// Then verify the nonce on its own.
 				if ( ! wp_verify_nonce( $nonce, 'ddfw_skip_setup_wizard_' . $slug ) ) {
-					wp_die( esc_html__( 'Security check failed.', 'wpreturns' ) );
+					wp_die( esc_html__( 'Security check failed.', 'devdiggers-returns' ) );
 				}
 
 				update_option( 'ddfw_setup_wizard_completed_' . $slug, true );
@@ -133,7 +133,7 @@ if ( ! class_exists( 'DDFW_Setup_Wizard' ) ) {
 			check_ajax_referer( 'ddfw-wizard-nonce', 'nonce' );
 
 			if ( ! current_user_can( 'manage_options' ) && ! current_user_can( 'manage_woocommerce' ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Insufficient permissions.', 'devdiggers-returns' ) ] );
 			}
 
 			$plugin_slug = isset( $_POST['plugin_slug'] ) ? sanitize_text_field( wp_unslash( $_POST['plugin_slug'] ) ) : '';
@@ -147,11 +147,11 @@ if ( ! class_exists( 'DDFW_Setup_Wizard' ) ) {
 			$form_data   = isset( $_POST['form_data'] ) ? map_deep( wp_unslash( $_POST['form_data'] ), 'sanitize_text_field' ) : [];
 
 			if ( empty( $plugin_slug ) || empty( $step_id ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Invalid request.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Invalid request.', 'devdiggers-returns' ) ] );
 			}
 
 			if ( ! isset( $this->args['steps'][ $step_id ] ) ) {
-				wp_send_json_error( [ 'message' => esc_html__( 'Step not found.', 'wpreturns' ) ] );
+				wp_send_json_error( [ 'message' => esc_html__( 'Step not found.', 'devdiggers-returns' ) ] );
 			}
 
 			$step_config = $this->args['steps'][ $step_id ];
@@ -198,8 +198,8 @@ if ( ! class_exists( 'DDFW_Setup_Wizard' ) ) {
 		 * @return void
 		 */
 		public function ready_view( $step = [] ) {
-			$title = $step['ready_title'] ?? esc_html__( 'Congratulations! You are all set.', 'wpreturns' );
-			$desc  = $step['ready_description'] ?? esc_html__( 'You can now start using the plugin and configure more advanced settings from the dashboard.', 'wpreturns' );
+			$title = $step['ready_title'] ?? esc_html__( 'Congratulations! You are all set.', 'devdiggers-returns' );
+			$desc  = $step['ready_description'] ?? esc_html__( 'You can now start using the plugin and configure more advanced settings from the dashboard.', 'devdiggers-returns' );
 			?>
 			<div class="ddfw-setup-wizard-ready ddfw-setup-wizard-onboarding">
 				<div class="ddfw-success-icon-wrap">

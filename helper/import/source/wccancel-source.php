@@ -5,7 +5,7 @@
  * Whole-order cancellation requests, one row per order in {prefix}wc_cancel_orders (is_approved: 0 waiting,
  * 1 approved, 2 declined). The customer's text is order meta _wc_cancel_additional_txt.
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Wccancel_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'WC Cancel Order', 'wpreturns' );
+			return __( 'WC Cancel Order', 'devdiggers-returns' );
 		}
 
 		/**

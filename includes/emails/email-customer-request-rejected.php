@@ -2,7 +2,7 @@
 /**
  * Return request rejected email
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Rejected' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_request_rejected';
 			$this->customer_email = true;
-			$this->title          = __( 'Return request rejected', 'wpreturns' );
-			$this->description    = __( 'Sent to the customer when a request is rejected, with the reason you give.', 'wpreturns' );
+			$this->title          = __( 'Return request rejected', 'devdiggers-returns' );
+			$this->description    = __( 'Sent to the customer when a request is rejected, with the reason you give.', 'devdiggers-returns' );
 
 			add_action( 'ddwcwr_request_status_changed_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Rejected' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] Update on your request {request_number}', 'wpreturns' );
+			return __( '[{site_title}] Update on your request {request_number}', 'devdiggers-returns' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Rejected' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Request {request_number} could not be accepted', 'wpreturns' );
+			return __( 'Request {request_number} could not be accepted', 'devdiggers-returns' );
 		}
 
 		/**
@@ -63,7 +63,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Rejected' ) ) {
 				return;
 			}
 
-			$this->intro = __( 'We are sorry, we could not accept this request.', 'wpreturns' );
+			$this->intro = __( 'We are sorry, we could not accept this request.', 'devdiggers-returns' );
 			$this->note  = ! empty( $args['note'] ) ? $args['note'] : '';
 			$this->dispatch();
 		}

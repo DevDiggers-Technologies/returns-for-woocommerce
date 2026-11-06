@@ -2,7 +2,7 @@
 /**
  * Return request message email
  *
- * @package WPReturns
+ * @package DevDiggers Returns
  * @version 1.0.0
  */
 
@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_New_Message' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_new_message';
 			$this->customer_email = true;
-			$this->title          = __( 'Return request message', 'wpreturns' );
-			$this->description    = __( 'Sent to the customer when your team replies on a request.', 'wpreturns' );
+			$this->title          = __( 'Return request message', 'devdiggers-returns' );
+			$this->description    = __( 'Sent to the customer when your team replies on a request.', 'devdiggers-returns' );
 
 			add_action( 'ddwcwr_request_message_added_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_New_Message' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] New message about request {request_number}', 'wpreturns' );
+			return __( '[{site_title}] New message about request {request_number}', 'devdiggers-returns' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_New_Message' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'New message about {request_number}', 'wpreturns' );
+			return __( 'New message about {request_number}', 'devdiggers-returns' );
 		}
 
 		/**
@@ -62,7 +62,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_New_Message' ) ) {
 				return;
 			}
 
-			$this->intro = __( 'We sent you a message about your request:', 'wpreturns' );
+			$this->intro = __( 'We sent you a message about your request:', 'devdiggers-returns' );
 			$this->note  = $message;
 			$this->dispatch();
 		}

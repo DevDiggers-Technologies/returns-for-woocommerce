@@ -234,7 +234,7 @@ This plugin contains no licence checks, no update checks and no telemetry.
 
 The admin, storefront and block editor JavaScript and CSS are compiled from the `src/` folder with webpack and Babel. The complete, human readable source code, including all build configuration, is published in our public GitHub repository:
 
-https://github.com/DevDiggers-Technologies/wpreturns
+https://github.com/DevDiggers-Technologies/devdiggers-returns
 
 To build the assets from source:
 

@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: DevDiggers Returns – Returns, Refunds, Exchanges & RMA for WooCommerce
+ * Plugin Name: DevDiggers Returns for WooCommerce
  * Description: Let customers request returns and cancellations from My Account or a guest returns portal, add the EU "Withdraw from contract here" button, and handle every request, photo, message and refund from one screen.
  * Plugin URI: https://wpreturns.com/
  * Author: DevDiggers

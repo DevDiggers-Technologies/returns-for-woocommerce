@@ -1,4 +1,4 @@
-=== DevDiggers Returns – Returns, Refunds, Exchanges & RMA for WooCommerce ===
+=== DevDiggers Returns for WooCommerce ===
 Contributors: devdiggers
 Plugin URI: https://wpreturns.com/
 Author: DevDiggers

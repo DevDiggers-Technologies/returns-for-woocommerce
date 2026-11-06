@@ -4,7 +4,7 @@ Free wordpress.org plugin by [DevDiggers](https://devdiggers.com/). A returns po
 
 | | |
 |---|---|
-| Slug and text domain | `devdiggers-returns` |
+| Slug and text domain | `devdiggers-returns-for-woocommerce` |
 | Prefix / namespace | `ddwcwr` / `DDWCWPReturns` |
 | Requires | WordPress 6.5, PHP 7.4, WooCommerce 9.0 |
 | Tested up to | WordPress 7.1, WooCommerce 11.2 |
@@ -54,7 +54,7 @@ includes/{admin,common,front} *-hooks.php register hooks, *-functions.php hold c
 includes/emails/              WC_Email classes, template templates/emails/request.php
 helper/order/                 order adapter interface + WooCommerce adapter (the only place touching WC orders)
 helper/{request,resolution,label,upload,dashboard}/  domain logic
-templates/admin|front         screens (themes override front templates in yourtheme/devdiggers-returns/front/)
+templates/admin|front         screens (themes override front templates in yourtheme/devdiggers-returns-for-woocommerce/front/)
 src/ -> assets/               webpack (front, admin, blocks)
 bin/test-free-boundary.php    asserts no Pro code ships here (npm test)
 wpml-config.xml               reasons, statuses, policy line and menu label for WPML/Polylang
@@ -80,7 +80,7 @@ npm run build:release  # zip without dev files (.distignore)
 
 ## Support
 
-- [Support forum](https://wordpress.org/support/plugin/devdiggers-returns/)
+- [Support forum](https://wordpress.org/support/plugin/devdiggers-returns-for-woocommerce/)
 - [DevDiggers Returns Pro](https://wpreturns.com/)
 
 ## Changelog

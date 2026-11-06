@@ -143,12 +143,12 @@ if ( ! function_exists( 'ddwcwr_get_reason_label' ) ) {
 	 */
 	function ddwcwr_get_reason_label( $slug ) {
 		if ( 'withdrawal' === $slug ) {
-			return __( 'Right of withdrawal', 'devdiggers-returns' );
+			return __( 'Right of withdrawal', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		// Cancellation items carry the type as their reason, like withdrawals.
 		if ( 'cancellation' === $slug ) {
-			return __( 'Order cancellation', 'devdiggers-returns' );
+			return __( 'Order cancellation', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		$reasons = ddwcwr_get_reasons( false );
@@ -167,9 +167,9 @@ if ( ! function_exists( 'ddwcwr_get_request_types' ) ) {
 		return apply_filters(
 			'ddwcwr_request_types',
 			[
-				'return'       => __( 'Return', 'devdiggers-returns' ),
-				'withdrawal'   => __( 'EU withdrawal', 'devdiggers-returns' ),
-				'cancellation' => __( 'Cancellation', 'devdiggers-returns' ),
+				'return'       => __( 'Return', 'devdiggers-returns-for-woocommerce' ),
+				'withdrawal'   => __( 'EU withdrawal', 'devdiggers-returns-for-woocommerce' ),
+				'cancellation' => __( 'Cancellation', 'devdiggers-returns-for-woocommerce' ),
 			]
 		);
 	}
@@ -185,7 +185,7 @@ if ( ! function_exists( 'ddwcwr_get_resolutions' ) ) {
 		return apply_filters(
 			'ddwcwr_resolutions',
 			[
-				'refund' => __( 'Refund to original payment', 'devdiggers-returns' ),
+				'refund' => __( 'Refund to original payment', 'devdiggers-returns-for-woocommerce' ),
 			]
 		);
 	}
@@ -201,11 +201,11 @@ if ( ! function_exists( 'ddwcwr_get_item_conditions' ) ) {
 		return apply_filters(
 			'ddwcwr_item_conditions',
 			[
-				'unopened'  => __( 'Unopened', 'devdiggers-returns' ),
-				'opened'    => __( 'Opened, unused', 'devdiggers-returns' ),
-				'used'      => __( 'Used or worn', 'devdiggers-returns' ),
-				'damaged'   => __( 'Damaged', 'devdiggers-returns' ),
-				'defective' => __( 'Defective', 'devdiggers-returns' ),
+				'unopened'  => __( 'Unopened', 'devdiggers-returns-for-woocommerce' ),
+				'opened'    => __( 'Opened, unused', 'devdiggers-returns-for-woocommerce' ),
+				'used'      => __( 'Used or worn', 'devdiggers-returns-for-woocommerce' ),
+				'damaged'   => __( 'Damaged', 'devdiggers-returns-for-woocommerce' ),
+				'defective' => __( 'Defective', 'devdiggers-returns-for-woocommerce' ),
 			]
 		);
 	}
@@ -365,7 +365,7 @@ if ( ! function_exists( 'ddwcwr_get_digital_consent_text' ) ) {
 
 		$text = trim( (string) $ddwcwr_configuration['withdrawal_digital_consent_text'] );
 
-		return '' !== $text ? $text : __( 'I agree that you start supplying the digital content before the withdrawal period ends. I understand that I lose my right of withdrawal once the supply has started.', 'devdiggers-returns' );
+		return '' !== $text ? $text : __( 'I agree that you start supplying the digital content before the withdrawal period ends. I understand that I lose my right of withdrawal once the supply has started.', 'devdiggers-returns-for-woocommerce' );
 	}
 }
 
@@ -464,8 +464,8 @@ if ( ! function_exists( 'ddwcwr_get_list_views' ) ) {
 		}
 
 		$views = [
-			'all'  => $link( '', __( 'All', 'devdiggers-returns' ), array_sum( $counts ) ),
-			'open' => $link( 'open', __( 'Open', 'devdiggers-returns' ), $open ),
+			'all'  => $link( '', __( 'All', 'devdiggers-returns-for-woocommerce' ), array_sum( $counts ) ),
+			'open' => $link( 'open', __( 'Open', 'devdiggers-returns-for-woocommerce' ), $open ),
 		];
 
 		foreach ( ddwcwr_get_statuses() as $slug => $status ) {
@@ -478,7 +478,7 @@ if ( ! function_exists( 'ddwcwr_get_list_views' ) ) {
 			$unmatched = count( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ) );
 
 			if ( $unmatched ) {
-				$views['unmatched'] = $link( 'unmatched', __( 'Unmatched statements', 'devdiggers-returns' ), $unmatched );
+				$views['unmatched'] = $link( 'unmatched', __( 'Unmatched statements', 'devdiggers-returns-for-woocommerce' ), $unmatched );
 			}
 		}
 
@@ -506,9 +506,9 @@ if ( ! function_exists( 'ddwcwr_get_policy_line' ) ) {
 
 		return 'created' === $ddwcwr_configuration['window_from']
 			/* translators: %d: days */
-			? sprintf( _n( 'Returns accepted within %d day of purchase.', 'Returns accepted within %d days of purchase.', $days, 'devdiggers-returns' ), $days )
+			? sprintf( _n( 'Returns accepted within %d day of purchase.', 'Returns accepted within %d days of purchase.', $days, 'devdiggers-returns-for-woocommerce' ), $days )
 			/* translators: %d: days */
-			: sprintf( _n( 'Returns accepted within %d day of delivery.', 'Returns accepted within %d days of delivery.', $days, 'devdiggers-returns' ), $days );
+			: sprintf( _n( 'Returns accepted within %d day of delivery.', 'Returns accepted within %d days of delivery.', $days, 'devdiggers-returns-for-woocommerce' ), $days );
 	}
 }
 

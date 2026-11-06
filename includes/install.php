@@ -29,7 +29,7 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 
 			// First activation of a store that has not saved settings yet: open the setup wizard.
 			if ( false === get_option( '_ddwcwr_enabled', false ) ) {
-				set_transient( 'ddfw_activation_redirect_devdiggers-returns', true, 30 );
+				set_transient( 'ddfw_activation_redirect_devdiggers-returns-for-woocommerce', true, 30 );
 			}
 
 			self::ddwcwr_install();
@@ -158,49 +158,49 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 			return [
 				[
 					'slug'   => 'pending',
-					'label'  => __( 'Requested', 'devdiggers-returns' ),
+					'label'  => __( 'Requested', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#b33a0b',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'approved',
-					'label'  => __( 'Approved', 'devdiggers-returns' ),
+					'label'  => __( 'Approved', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#0256ff',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'awaiting_return',
-					'label'  => __( 'Awaiting return', 'devdiggers-returns' ),
+					'label'  => __( 'Awaiting return', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#6d28d9',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'received',
-					'label'  => __( 'Received', 'devdiggers-returns' ),
+					'label'  => __( 'Received', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#0f766e',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'completed',
-					'label'  => __( 'Completed', 'devdiggers-returns' ),
+					'label'  => __( 'Completed', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#15703a',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'rejected',
-					'label'  => __( 'Rejected', 'devdiggers-returns' ),
+					'label'  => __( 'Rejected', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#c81e1e',
 					'notify' => 'yes',
 					'core'   => 'yes',
 				],
 				[
 					'slug'   => 'cancelled',
-					'label'  => __( 'Canceled', 'devdiggers-returns' ),
+					'label'  => __( 'Canceled', 'devdiggers-returns-for-woocommerce' ),
 					'color'  => '#556274',
 					'notify' => 'yes',
 					'core'   => 'yes',
@@ -215,14 +215,14 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 */
 		public static function ddwcwr_get_default_reasons() {
 			$reasons = [
-				'wrong-size'       => [ __( 'Wrong size or fit', 'devdiggers-returns' ), '' ],
-				'not-as-described' => [ __( 'Not as described', 'devdiggers-returns' ), 'yes' ],
-				'damaged'          => [ __( 'Arrived damaged', 'devdiggers-returns' ), 'yes' ],
-				'defective'        => [ __( 'Defective or stopped working', 'devdiggers-returns' ), 'yes' ],
-				'wrong-item'       => [ __( 'Wrong item sent', 'devdiggers-returns' ), 'yes' ],
-				'changed-mind'     => [ __( 'Changed my mind', 'devdiggers-returns' ), '' ],
-				'better-price'     => [ __( 'Found a better price', 'devdiggers-returns' ), '' ],
-				'other'            => [ __( 'Other', 'devdiggers-returns' ), '' ],
+				'wrong-size'       => [ __( 'Wrong size or fit', 'devdiggers-returns-for-woocommerce' ), '' ],
+				'not-as-described' => [ __( 'Not as described', 'devdiggers-returns-for-woocommerce' ), 'yes' ],
+				'damaged'          => [ __( 'Arrived damaged', 'devdiggers-returns-for-woocommerce' ), 'yes' ],
+				'defective'        => [ __( 'Defective or stopped working', 'devdiggers-returns-for-woocommerce' ), 'yes' ],
+				'wrong-item'       => [ __( 'Wrong item sent', 'devdiggers-returns-for-woocommerce' ), 'yes' ],
+				'changed-mind'     => [ __( 'Changed my mind', 'devdiggers-returns-for-woocommerce' ), '' ],
+				'better-price'     => [ __( 'Found a better price', 'devdiggers-returns-for-woocommerce' ), '' ],
+				'other'            => [ __( 'Other', 'devdiggers-returns-for-woocommerce' ), '' ],
 			];
 
 			$list = [];
@@ -258,12 +258,12 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		public static function ddwcwr_create_pages() {
 			$pages = [
 				'_ddwcwr_portal_page_id'     => [
-					'title'   => __( 'Returns', 'devdiggers-returns' ),
+					'title'   => __( 'Returns', 'devdiggers-returns-for-woocommerce' ),
 					'slug'    => 'returns',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_returns_portal]<!-- /wp:shortcode -->',
 				],
 				'_ddwcwr_withdrawal_page_id' => [
-					'title'   => __( 'Withdraw from contract', 'devdiggers-returns' ),
+					'title'   => __( 'Withdraw from contract', 'devdiggers-returns-for-woocommerce' ),
 					'slug'    => 'withdrawal',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_withdrawal_form]<!-- /wp:shortcode -->',
 				],

@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Easyreturn_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Withdrawal Button – Easy Return', 'devdiggers-returns' );
+			return __( 'Withdrawal Button – Easy Return', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

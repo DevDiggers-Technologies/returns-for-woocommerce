@@ -30,28 +30,28 @@ foreach ( $requests as $ddwcwr_request ) {
 ?>
 <div class="ddwcwr-account">
 	<header class="ddwcwr-hero">
-		<span class="ddwcwr-eyebrow"><?php esc_html_e( 'Returns', 'devdiggers-returns' ); ?></span>
-		<h2><?php esc_html_e( 'Send something back', 'devdiggers-returns' ); ?></h2>
-		<p><?php esc_html_e( 'Return items from your orders and follow every request in one place.', 'devdiggers-returns' ); ?></p>
+		<span class="ddwcwr-eyebrow"><?php esc_html_e( 'Returns', 'devdiggers-returns-for-woocommerce' ); ?></span>
+		<h2><?php esc_html_e( 'Send something back', 'devdiggers-returns-for-woocommerce' ); ?></h2>
+		<p><?php esc_html_e( 'Return items from your orders and follow every request in one place.', 'devdiggers-returns-for-woocommerce' ); ?></p>
 	</header>
 
 	<?php if ( $requests ) : ?>
 		<ul class="ddwcwr-stats">
-			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'In progress', 'devdiggers-returns' ); ?></span><strong><?php echo esc_html( $ddwcwr_open ); ?></strong></li>
-			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'Completed', 'devdiggers-returns' ); ?></span><strong><?php echo esc_html( $ddwcwr_done ); ?></strong></li>
-			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'Paid back to you', 'devdiggers-returns' ); ?></span><strong><?php echo wp_kses_post( wc_price( $ddwcwr_paid ) ); ?></strong></li>
+			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'In progress', 'devdiggers-returns-for-woocommerce' ); ?></span><strong><?php echo esc_html( $ddwcwr_open ); ?></strong></li>
+			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'Completed', 'devdiggers-returns-for-woocommerce' ); ?></span><strong><?php echo esc_html( $ddwcwr_done ); ?></strong></li>
+			<li><span class="ddwcwr-eyebrow"><?php esc_html_e( 'Paid back to you', 'devdiggers-returns-for-woocommerce' ); ?></span><strong><?php echo wp_kses_post( wc_price( $ddwcwr_paid ) ); ?></strong></li>
 		</ul>
 	<?php endif; ?>
 
-	<nav class="ddwcwr-nav" aria-label="<?php esc_attr_e( 'Returns', 'devdiggers-returns' ); ?>">
+	<nav class="ddwcwr-nav" aria-label="<?php esc_attr_e( 'Returns', 'devdiggers-returns-for-woocommerce' ); ?>">
 		<a class="ddwcwr-nav-item<?php echo 'new' !== $ddwcwr_view ? ' is-active' : ''; ?>" href="<?php echo esc_url( add_query_arg( 'ddwcwr-view', 'requests', $ddwcwr_base_url ) ); ?>"<?php echo 'new' !== $ddwcwr_view ? ' aria-current="page"' : ''; ?>>
-			<?php esc_html_e( 'Your requests', 'devdiggers-returns' ); ?>
+			<?php esc_html_e( 'Your requests', 'devdiggers-returns-for-woocommerce' ); ?>
 			<?php if ( $ddwcwr_open ) : ?>
 				<span class="ddwcwr-nav-count"><?php echo esc_html( $ddwcwr_open ); ?></span>
 			<?php endif; ?>
 		</a>
 		<a class="ddwcwr-nav-item<?php echo 'new' === $ddwcwr_view ? ' is-active' : ''; ?>" href="<?php echo esc_url( add_query_arg( 'ddwcwr-view', 'new', $ddwcwr_base_url ) ); ?>"<?php echo 'new' === $ddwcwr_view ? ' aria-current="page"' : ''; ?>>
-			<?php esc_html_e( 'Start a return', 'devdiggers-returns' ); ?>
+			<?php esc_html_e( 'Start a return', 'devdiggers-returns-for-woocommerce' ); ?>
 		</a>
 	</nav>
 
@@ -59,9 +59,9 @@ foreach ( $requests as $ddwcwr_request ) {
 		<?php if ( empty( $requests ) ) : ?>
 			<div class="ddwcwr-empty">
 				<?php echo wp_kses( ddwcwr_icon( 'box', 32 ), ddwcwr_kses_icon() ); ?>
-				<h3><?php esc_html_e( 'No requests yet', 'devdiggers-returns' ); ?></h3>
-				<p><?php esc_html_e( 'When you return something, you can follow it here.', 'devdiggers-returns' ); ?></p>
-				<a class="ddwcwr-btn ddwcwr-btn-primary" href="<?php echo esc_url( add_query_arg( 'ddwcwr-view', 'new', $ddwcwr_base_url ) ); ?>"><?php esc_html_e( 'Start a return', 'devdiggers-returns' ); ?></a>
+				<h3><?php esc_html_e( 'No requests yet', 'devdiggers-returns-for-woocommerce' ); ?></h3>
+				<p><?php esc_html_e( 'When you return something, you can follow it here.', 'devdiggers-returns-for-woocommerce' ); ?></p>
+				<a class="ddwcwr-btn ddwcwr-btn-primary" href="<?php echo esc_url( add_query_arg( 'ddwcwr-view', 'new', $ddwcwr_base_url ) ); ?>"><?php esc_html_e( 'Start a return', 'devdiggers-returns-for-woocommerce' ); ?></a>
 			</div>
 		<?php else : ?>
 			<ul class="ddwcwr-list">
@@ -78,7 +78,7 @@ foreach ( $requests as $ddwcwr_request ) {
 								<span class="ddwcwr-meta">
 									<?php
 									/* translators: 1: request type, 2: order number */
-									echo esc_html( sprintf( __( '%1$s · Order #%2$s', 'devdiggers-returns' ), isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], $ddwcwr_order ? $ddwcwr_order->get_order_number() : $ddwcwr_request['order_id'] ) );
+									echo esc_html( sprintf( __( '%1$s · Order #%2$s', 'devdiggers-returns-for-woocommerce' ), isset( $ddwcwr_types[ $ddwcwr_request['type'] ] ) ? $ddwcwr_types[ $ddwcwr_request['type'] ] : $ddwcwr_request['type'], $ddwcwr_order ? $ddwcwr_order->get_order_number() : $ddwcwr_request['order_id'] ) );
 									?>
 								</span>
 							</span>
@@ -94,11 +94,11 @@ foreach ( $requests as $ddwcwr_request ) {
 	<?php elseif ( empty( $orders ) ) : ?>
 		<div class="ddwcwr-empty">
 			<?php echo wp_kses( ddwcwr_icon( 'return', 32 ), ddwcwr_kses_icon() ); ?>
-			<h3><?php esc_html_e( 'Nothing to return right now', 'devdiggers-returns' ); ?></h3>
-			<p><?php esc_html_e( 'Orders appear here while they can still be returned or canceled.', 'devdiggers-returns' ); ?></p>
+			<h3><?php esc_html_e( 'Nothing to return right now', 'devdiggers-returns-for-woocommerce' ); ?></h3>
+			<p><?php esc_html_e( 'Orders appear here while they can still be returned or canceled.', 'devdiggers-returns-for-woocommerce' ); ?></p>
 		</div>
 	<?php else : ?>
-		<p class="ddwcwr-lead"><?php esc_html_e( 'Pick the order and what you would like to do. You choose the items on the next screen.', 'devdiggers-returns' ); ?></p>
+		<p class="ddwcwr-lead"><?php esc_html_e( 'Pick the order and what you would like to do. You choose the items on the next screen.', 'devdiggers-returns-for-woocommerce' ); ?></p>
 		<ul class="ddwcwr-list">
 			<?php foreach ( $orders as $ddwcwr_entry ) : ?>
 				<?php
@@ -112,13 +112,13 @@ foreach ( $requests as $ddwcwr_request ) {
 						<strong>
 							<?php
 							/* translators: %s: order number */
-							echo esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns' ), $ddwcwr_order->get_order_number() ) );
+							echo esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns-for-woocommerce' ), $ddwcwr_order->get_order_number() ) );
 							?>
 						</strong>
 						<span class="ddwcwr-meta">
 							<?php
 							/* translators: %d: number of items */
-							echo esc_html( sprintf( _n( '%d item', '%d items', $ddwcwr_count, 'devdiggers-returns' ), $ddwcwr_count ) );
+							echo esc_html( sprintf( _n( '%d item', '%d items', $ddwcwr_count, 'devdiggers-returns-for-woocommerce' ), $ddwcwr_count ) );
 							?>
 							· <?php echo wp_kses_post( $ddwcwr_order->get_formatted_order_total() ); ?>
 						</span>

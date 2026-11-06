@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Status_Updated' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_status_updated';
 			$this->customer_email = true;
-			$this->title          = __( 'Return status updated', 'devdiggers-returns' );
-			$this->description    = __( 'Sent to the customer when a request moves to any status marked “Notify customer” (other than approved and rejected, which have their own emails).', 'devdiggers-returns' );
+			$this->title          = __( 'Return status updated', 'devdiggers-returns-for-woocommerce' );
+			$this->description    = __( 'Sent to the customer when a request moves to any status marked “Notify customer” (other than approved and rejected, which have their own emails).', 'devdiggers-returns-for-woocommerce' );
 
 			add_action( 'ddwcwr_request_status_changed_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Status_Updated' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] Request {request_number} is now {status}', 'devdiggers-returns' );
+			return __( '[{site_title}] Request {request_number} is now {status}', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Status_Updated' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Request {request_number}: {status}', 'devdiggers-returns' );
+			return __( 'Request {request_number}: {status}', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -72,10 +72,10 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Status_Updated' ) ) {
 			}
 
 			/* translators: %s: status */
-			$this->intro = sprintf( __( 'Your request is now: %s.', 'devdiggers-returns' ), ddwcwr_get_status_label( $status ) );
+			$this->intro = sprintf( __( 'Your request is now: %s.', 'devdiggers-returns-for-woocommerce' ), ddwcwr_get_status_label( $status ) );
 
 			if ( 'received' === $status ) {
-				$this->intro = __( 'Your return has arrived and we are checking it now.', 'devdiggers-returns' );
+				$this->intro = __( 'Your return has arrived and we are checking it now.', 'devdiggers-returns-for-woocommerce' );
 			}
 
 			$this->note = ! empty( $args['note'] ) ? $args['note'] : '';

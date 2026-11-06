@@ -56,11 +56,11 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 					'columns'       => 5,
 					'header'        => [
 						/* translators: %s: current user display name. */
-						'welcome'  => esc_html__( 'Welcome back, %s! 👋🏻', 'devdiggers-returns' ),
-						'subtitle' => esc_html__( 'Here\'s how returns, cancellations and EU withdrawals are going.', 'devdiggers-returns' ),
+						'welcome'  => esc_html__( 'Welcome back, %s! 👋🏻', 'devdiggers-returns-for-woocommerce' ),
+						'subtitle' => esc_html__( 'Here\'s how returns, cancellations and EU withdrawals are going.', 'devdiggers-returns-for-woocommerce' ),
 						'actions'  => [
 							[
-								'label'   => esc_html__( 'Open requests', 'devdiggers-returns' ),
+								'label'   => esc_html__( 'Open requests', 'devdiggers-returns-for-woocommerce' ),
 								'url'     => admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&status=open' ),
 								'primary' => true,
 							],
@@ -68,23 +68,23 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 					],
 					'summary_cards' => [
 						[
-							'title'       => esc_html__( 'Requests', 'devdiggers-returns' ),
+							'title'       => esc_html__( 'Requests', 'devdiggers-returns-for-woocommerce' ),
 							'value'       => $summary['requests']['value'],
 							'change'      => $summary['requests']['change'],
 							'is_positive' => $summary['requests']['change'] <= 0,
 							'previous'    => number_format_i18n( $summary['requests']['previous'] ),
-							'note'        => esc_html__( 'Returns and cancellations', 'devdiggers-returns' ),
+							'note'        => esc_html__( 'Returns and cancellations', 'devdiggers-returns-for-woocommerce' ),
 							'icon'        => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1 0 3-6.7L3 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 3v5h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 						],
 						[
-							'title'      => esc_html__( 'Open now', 'devdiggers-returns' ),
+							'title'      => esc_html__( 'Open now', 'devdiggers-returns-for-woocommerce' ),
 							'value'      => $open,
 							'value_type' => 'text',
-							'note'       => esc_html__( 'Waiting for you or the customer', 'devdiggers-returns' ),
+							'note'       => esc_html__( 'Waiting for you or the customer', 'devdiggers-returns-for-woocommerce' ),
 							'icon'       => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M21 8 12 3 3 8v8l9 5 9-5V8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m3 8 9 5 9-5M12 13v8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
 						],
 						[
-							'title'       => esc_html__( 'Refunded', 'devdiggers-returns' ),
+							'title'       => esc_html__( 'Refunded', 'devdiggers-returns-for-woocommerce' ),
 							'value'       => wc_price( $summary['refunded']['value'] ),
 							'value_type'  => 'html',
 							'change'      => $summary['refunded']['change'],
@@ -93,7 +93,7 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 							'icon'        => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 						],
 						[
-							'title'       => esc_html__( 'EU withdrawals', 'devdiggers-returns' ),
+							'title'       => esc_html__( 'EU withdrawals', 'devdiggers-returns-for-woocommerce' ),
 							'value'       => $summary['withdrawals']['value'],
 							'change'      => $summary['withdrawals']['change'],
 							'is_positive' => $summary['withdrawals']['change'] <= 0,
@@ -101,20 +101,20 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 							'icon'        => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="2"/></svg>',
 						],
 						[
-							'title'       => esc_html__( 'Time to resolve', 'devdiggers-returns' ),
+							'title'       => esc_html__( 'Time to resolve', 'devdiggers-returns-for-woocommerce' ),
 							'value'       => $this->format_duration( $summary['hours']['value'], $this->data['resolved'][0] ),
 							'value_type'  => 'text',
 							'change'      => $summary['hours']['change'],
 							'is_positive' => $summary['hours']['change'] <= 0,
 							'previous'    => $this->format_duration( $summary['hours']['previous'], $this->data['resolved'][1] ),
-							'note'        => esc_html__( 'Average, completed requests', 'devdiggers-returns' ),
+							'note'        => esc_html__( 'Average, completed requests', 'devdiggers-returns-for-woocommerce' ),
 							'icon'        => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
 						],
 					],
 					'charts'        => [
 						[
 							'id'         => 'trend',
-							'title'      => esc_html__( 'Requests over time', 'devdiggers-returns' ),
+							'title'      => esc_html__( 'Requests over time', 'devdiggers-returns-for-woocommerce' ),
 							'date_label' => $label,
 							'full_width' => true,
 							'type'       => 'line',
@@ -123,23 +123,23 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 							'series'     => [
 								[
 									'key'   => 'requests',
-									'label' => esc_html__( 'Requests', 'devdiggers-returns' ),
+									'label' => esc_html__( 'Requests', 'devdiggers-returns-for-woocommerce' ),
 									'color' => '#0256ff',
 								],
 							],
 							'empty'      => [
-								'title' => esc_html__( 'No requests yet', 'devdiggers-returns' ),
-								'desc'  => esc_html__( 'Requests will show here as customers submit them.', 'devdiggers-returns' ),
+								'title' => esc_html__( 'No requests yet', 'devdiggers-returns-for-woocommerce' ),
+								'desc'  => esc_html__( 'Requests will show here as customers submit them.', 'devdiggers-returns-for-woocommerce' ),
 							],
 						],
 					],
 					'widgets'       => [
 						[
-							'title'  => esc_html__( 'Latest requests', 'devdiggers-returns' ),
+							'title'  => esc_html__( 'Latest requests', 'devdiggers-returns-for-woocommerce' ),
 							'render' => [ $this, 'render_recent_requests' ],
 						],
 						[
-							'title'  => esc_html__( 'Return analytics', 'devdiggers-returns' ),
+							'title'  => esc_html__( 'Return analytics', 'devdiggers-returns-for-woocommerce' ),
 							'render' => [ $this, 'render_analytics_upgrade' ],
 						],
 					],
@@ -158,14 +158,14 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 				ddwcwr_get_upgrade_card(
 					'analytics',
 					[
-						'heading'       => esc_html__( 'See why items come back', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'Find the products, reasons and categories that cost you the most, and the revenue store credit and exchanges kept in your shop.', 'devdiggers-returns' ),
+						'heading'       => esc_html__( 'See why items come back', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'Find the products, reasons and categories that cost you the most, and the revenue store credit and exchanges kept in your shop.', 'devdiggers-returns-for-woocommerce' ),
 						'list_features' => [
-							esc_html__( 'Return rate against your paid orders', 'devdiggers-returns' ),
-							esc_html__( 'Revenue kept through store credit and exchanges', 'devdiggers-returns' ),
-							esc_html__( 'Top reasons, resolutions and categories', 'devdiggers-returns' ),
-							esc_html__( 'Most returned products with value', 'devdiggers-returns' ),
-							esc_html__( 'CSV export of every request and item', 'devdiggers-returns' ),
+							esc_html__( 'Return rate against your paid orders', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Revenue kept through store credit and exchanges', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Top reasons, resolutions and categories', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Most returned products with value', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'CSV export of every request and item', 'devdiggers-returns-for-woocommerce' ),
 						],
 					]
 				)
@@ -185,20 +185,20 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 			}
 
 			if ( $hours < 1 ) {
-				return __( 'Under an hour', 'devdiggers-returns' );
+				return __( 'Under an hour', 'devdiggers-returns-for-woocommerce' );
 			}
 
 			if ( $hours < 24 ) {
 				$hours = max( 0, (int) round( $hours ) );
 
 				/* translators: %d: number of hours */
-				return sprintf( _n( '%d hour', '%d hours', $hours, 'devdiggers-returns' ), $hours );
+				return sprintf( _n( '%d hour', '%d hours', $hours, 'devdiggers-returns-for-woocommerce' ), $hours );
 			}
 
 			$days = round( $hours / 24, 1 );
 
 			/* translators: %s: number of days */
-			return sprintf( _n( '%s day', '%s days', (int) ceil( $days ), 'devdiggers-returns' ), number_format_i18n( $days, 1 ) );
+			return sprintf( _n( '%s day', '%s days', (int) ceil( $days ), 'devdiggers-returns-for-woocommerce' ), number_format_i18n( $days, 1 ) );
 		}
 
 		/**
@@ -214,13 +214,13 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 				$items[] = [
 					'title' => $request['number'] . ' · ' . ( $request['customer_name'] ? $request['customer_name'] : $request['customer_email'] ),
 					/* translators: %s: human time difference */
-					'meta'  => ( isset( $types[ $request['type'] ] ) ? $types[ $request['type'] ] : $request['type'] ) . ' · ' . sprintf( __( '%s ago', 'devdiggers-returns' ), human_time_diff( strtotime( $request['created'] ), current_time( 'timestamp' ) ) ), // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
+					'meta'  => ( isset( $types[ $request['type'] ] ) ? $types[ $request['type'] ] : $request['type'] ) . ' · ' . sprintf( __( '%s ago', 'devdiggers-returns-for-woocommerce' ), human_time_diff( strtotime( $request['created'] ), current_time( 'timestamp' ) ) ), // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 					'value' => ddwcwr_get_status_badge( $request['status'] ),
 					'url'   => admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&request-id=' . absint( $request['id'] ) ),
 				];
 			}
 
-			DDFW_Dashboard::render_list( $items, __( 'No requests yet.', 'devdiggers-returns' ), false );
+			DDFW_Dashboard::render_list( $items, __( 'No requests yet.', 'devdiggers-returns-for-woocommerce' ), false );
 		}
 	}
 }

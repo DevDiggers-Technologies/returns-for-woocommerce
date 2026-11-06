@@ -120,15 +120,15 @@ if ( ! class_exists( 'DDFW_Review_Notice' ) ) {
 				<p>
 					<?php
 					/* translators: %s: Plugin Name */
-					echo sprintf( esc_html__( 'Enjoying %s? We would love to hear your feedback! Could you take a moment to leave a review?', 'devdiggers-returns' ), '<strong>' . esc_html( $plugin_name ) . '</strong>' );
+					echo sprintf( esc_html__( 'Enjoying %s? We would love to hear your feedback! Could you take a moment to leave a review?', 'devdiggers-returns-for-woocommerce' ), '<strong>' . esc_html( $plugin_name ) . '</strong>' );
 					?>
 				</p>
 				<p>
-					<a href="<?php echo esc_url( $review_url ); ?>" class="button button-primary ddfw-review-notice-action" data-action="already-did" data-open-review="true" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Leave a Review', 'devdiggers-returns' ); ?></a>
+					<a href="<?php echo esc_url( $review_url ); ?>" class="button button-primary ddfw-review-notice-action" data-action="already-did" data-open-review="true" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Leave a Review', 'devdiggers-returns-for-woocommerce' ); ?></a>
 					&nbsp;&nbsp;
-					<button type="button" class="button button-secondary ddfw-review-notice-action" data-action="maybe-later"><?php esc_html_e( 'Maybe Later', 'devdiggers-returns' ); ?></button>
+					<button type="button" class="button button-secondary ddfw-review-notice-action" data-action="maybe-later"><?php esc_html_e( 'Maybe Later', 'devdiggers-returns-for-woocommerce' ); ?></button>
 					&nbsp;&nbsp;
-					<a href="#" class="ddfw-review-notice-action" data-action="already-did"><?php esc_html_e( 'I Already Did', 'devdiggers-returns' ); ?></a>
+					<a href="#" class="ddfw-review-notice-action" data-action="already-did"><?php esc_html_e( 'I Already Did', 'devdiggers-returns-for-woocommerce' ); ?></a>
 				</p>
 			</div>
 			<?php

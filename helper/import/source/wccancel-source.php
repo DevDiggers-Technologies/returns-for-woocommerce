@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Wccancel_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'WC Cancel Order', 'devdiggers-returns' );
+			return __( 'WC Cancel Order', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

@@ -103,7 +103,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				<path d="M52 20.5 32 32v24l20-11.5Z" fill="#7b8cf0" stroke="#7b8cf0" stroke-width="3" stroke-linejoin="round"/>
 				<path d="M22 14.75 42 26.25v8" fill="none" stroke="#2f4be8" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
-			<?php esc_html_e( 'DevDiggers Returns', 'devdiggers-returns' ); ?>
+			<?php esc_html_e( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ); ?>
 			<?php
 			$plugin_name = ob_get_clean();
 
@@ -122,8 +122,8 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 			}
 
 			$args = [
-				'page_title'              => esc_html__( 'DevDiggers Returns – Returns & EU Withdrawal', 'devdiggers-returns' ),
-				'menu_title'              => $pending ? esc_html__( 'DevDiggers Returns', 'devdiggers-returns' ) . ' <span class="awaiting-mod">' . absint( $pending ) . '</span>' : esc_html__( 'DevDiggers Returns', 'devdiggers-returns' ),
+				'page_title'              => esc_html__( 'DevDiggers Returns – Returns & EU Withdrawal', 'devdiggers-returns-for-woocommerce' ),
+				'menu_title'              => $pending ? esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ) . ' <span class="awaiting-mod">' . absint( $pending ) . '</span>' : esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ),
 				'slug'                    => 'ddwcwr-dashboard',
 				'plugin_name'             => $plugin_name,
 				'capability'              => 'manage_woocommerce',
@@ -131,48 +131,48 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				'screen_options_callback' => [ $this, 'ddwcwr_add_screen_options' ],
 				'menus'                   => [
 					'dashboard'     => [
-						'label'    => esc_html__( 'Dashboard', 'devdiggers-returns' ),
+						'label'    => esc_html__( 'Dashboard', 'devdiggers-returns-for-woocommerce' ),
 						'callback' => [ $this, 'ddwcwr_get_dashboard_template' ],
 						'layout'   => 'full-width',
 					],
 					'requests'      => [
-						'label'    => esc_html__( 'Requests', 'devdiggers-returns' ),
+						'label'    => esc_html__( 'Requests', 'devdiggers-returns-for-woocommerce' ),
 						'callback' => [ $this, 'ddwcwr_get_requests_template' ],
 						'layout'   => 'full-width',
 					],
 					'withdrawals'   => [
-						'label'    => esc_html__( 'Withdrawals', 'devdiggers-returns' ),
+						'label'    => esc_html__( 'Withdrawals', 'devdiggers-returns-for-woocommerce' ),
 						'callback' => [ $this, 'ddwcwr_get_withdrawals_template' ],
 						'layout'   => 'full-width',
 					],
 					'rules'         => [
-						'label'    => esc_html__( 'Rules', 'devdiggers-returns' ),
+						'label'    => esc_html__( 'Rules', 'devdiggers-returns-for-woocommerce' ),
 						'callback' => [ $this, 'ddwcwr_get_rules_template' ],
 						'layout'   => 'full-width',
 					],
 					'customers'     => [
-						'label'    => esc_html__( 'Customers', 'devdiggers-returns' ),
+						'label'    => esc_html__( 'Customers', 'devdiggers-returns-for-woocommerce' ),
 						'callback' => [ $this, 'ddwcwr_get_customers_template' ],
 						'layout'   => 'full-width',
 					],
 					'configuration' => [
-						'label'  => esc_html__( 'Configuration', 'devdiggers-returns' ),
+						'label'  => esc_html__( 'Configuration', 'devdiggers-returns-for-woocommerce' ),
 						'layout' => 'sidebar',
 						'tabs'   => [
-							'general'     => $tab( esc_html__( 'General', 'devdiggers-returns' ), 'general', 'ddwcwr_configuration_tab' ),
-							'policy'      => $tab( esc_html__( 'Return Policy', 'devdiggers-returns' ), 'ddwcwr-policy', 'ddwcwr_configuration_tab' ),
-							'reasons'     => $tab( esc_html__( 'Reasons', 'devdiggers-returns' ), 'ddwcwr-reasons', 'ddwcwr_configuration_tab' ),
-							'statuses'    => $tab( esc_html__( 'Statuses', 'devdiggers-returns' ), 'ddwcwr-statuses', 'ddwcwr_configuration_tab' ),
-							'resolutions' => $tab( esc_html__( 'Resolutions', 'devdiggers-returns' ), 'ddwcwr-resolution', 'ddwcwr_configuration_tab' ),
-							'withdrawal'  => $tab( esc_html__( 'EU Withdrawal', 'devdiggers-returns' ), 'ddwcwr-eu', 'ddwcwr_configuration_tab' ),
-							'warranty'    => $tab( esc_html__( 'Warranty', 'devdiggers-returns' ), 'ddwcwr-warranty', 'ddwcwr_configuration_tab' ),
-							'labels'      => $tab( esc_html__( 'Shipping Labels', 'devdiggers-returns' ), 'ddwcwr-label', 'ddwcwr_configuration_tab' ),
-							'fraud'       => $tab( esc_html__( 'Fraud Protection', 'devdiggers-returns' ), 'ddwcwr-fraud', 'ddwcwr_configuration_tab' ),
-							'automation'  => $tab( esc_html__( 'Automation', 'devdiggers-returns' ), 'ddwcwr-automation', 'ddwcwr_configuration_tab' ),
-							'emails'      => $tab( esc_html__( 'Emails', 'devdiggers-returns' ), 'ddwcwr-emails', 'ddwcwr_configuration_tab' ),
-							'appearance'  => $tab( esc_html__( 'Appearance', 'devdiggers-returns' ), 'ddwcwr-appearance', 'ddwcwr_configuration_tab' ),
-							'advanced'    => $tab( esc_html__( 'Advanced', 'devdiggers-returns' ), 'ddwcwr-advanced', 'ddwcwr_configuration_tab' ),
-							'import'      => $tab( esc_html__( 'Import', 'devdiggers-returns' ), 'ddwcwr-import', 'ddwcwr_get_import_template' ),
+							'general'     => $tab( esc_html__( 'General', 'devdiggers-returns-for-woocommerce' ), 'general', 'ddwcwr_configuration_tab' ),
+							'policy'      => $tab( esc_html__( 'Return Policy', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-policy', 'ddwcwr_configuration_tab' ),
+							'reasons'     => $tab( esc_html__( 'Reasons', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-reasons', 'ddwcwr_configuration_tab' ),
+							'statuses'    => $tab( esc_html__( 'Statuses', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-statuses', 'ddwcwr_configuration_tab' ),
+							'resolutions' => $tab( esc_html__( 'Resolutions', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-resolution', 'ddwcwr_configuration_tab' ),
+							'withdrawal'  => $tab( esc_html__( 'EU Withdrawal', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-eu', 'ddwcwr_configuration_tab' ),
+							'warranty'    => $tab( esc_html__( 'Warranty', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-warranty', 'ddwcwr_configuration_tab' ),
+							'labels'      => $tab( esc_html__( 'Shipping Labels', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-label', 'ddwcwr_configuration_tab' ),
+							'fraud'       => $tab( esc_html__( 'Fraud Protection', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-fraud', 'ddwcwr_configuration_tab' ),
+							'automation'  => $tab( esc_html__( 'Automation', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-automation', 'ddwcwr_configuration_tab' ),
+							'emails'      => $tab( esc_html__( 'Emails', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-emails', 'ddwcwr_configuration_tab' ),
+							'appearance'  => $tab( esc_html__( 'Appearance', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-appearance', 'ddwcwr_configuration_tab' ),
+							'advanced'    => $tab( esc_html__( 'Advanced', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-advanced', 'ddwcwr_configuration_tab' ),
+							'import'      => $tab( esc_html__( 'Import', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-import', 'ddwcwr_get_import_template' ),
 						],
 					],
 				],
@@ -189,7 +189,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		public function ddwcwr_add_screen_options() {
 			$menu = ! empty( $_GET['menu'] ) ? sanitize_title( wp_unslash( $_GET['menu'] ) ) : 'dashboard'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$args = [
-				'label'    => esc_html__( 'Results per page', 'devdiggers-returns' ),
+				'label'    => esc_html__( 'Results per page', 'devdiggers-returns-for-woocommerce' ),
 				'default'  => 20,
 				'sanitize' => 'intval',
 			];
@@ -248,24 +248,24 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 			$page = 'ddwcwr-dashboard';
 			$menu = 'withdrawal' === $type ? 'withdrawals' : 'requests';
 			?>
-			<h1 class="wp-heading-inline"><?php echo 'withdrawal' === $type ? esc_html__( 'EU Withdrawals', 'devdiggers-returns' ) : esc_html__( 'Requests', 'devdiggers-returns' ); ?></h1>
+			<h1 class="wp-heading-inline"><?php echo 'withdrawal' === $type ? esc_html__( 'EU Withdrawals', 'devdiggers-returns-for-woocommerce' ) : esc_html__( 'Requests', 'devdiggers-returns-for-woocommerce' ); ?></h1>
 			<?php if ( 'withdrawal' === $type ) : ?>
-				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ddwcwr_export_withdrawals' ), 'ddwcwr_export_withdrawals', 'ddwcwr_nonce' ) ); ?>" class="page-title-action button"><?php esc_html_e( 'Export CSV', 'devdiggers-returns' ); ?></a>
+				<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ddwcwr_export_withdrawals' ), 'ddwcwr_export_withdrawals', 'ddwcwr_nonce' ) ); ?>" class="page-title-action button"><?php esc_html_e( 'Export CSV', 'devdiggers-returns-for-woocommerce' ); ?></a>
 			<?php else : ?>
 				<a href="<?php echo esc_url( admin_url( "admin.php?page={$page}&menu={$menu}&action=add" ) ); ?>" class="page-title-action button-primary button">
 					<?php
 					DDFW_SVG::get_svg_icon( 'plus', false, [ 'size' => 15 ] );
-					esc_html_e( 'Add New', 'devdiggers-returns' );
+					esc_html_e( 'Add New', 'devdiggers-returns-for-woocommerce' );
 					?>
 				</a>
 				<span class="ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
-					<button type="button" class="page-title-action button" disabled="disabled"><?php esc_html_e( 'Export CSV', 'devdiggers-returns' ); ?></button>
+					<button type="button" class="page-title-action button" disabled="disabled"><?php esc_html_e( 'Export CSV', 'devdiggers-returns-for-woocommerce' ); ?></button>
 					<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
 				</span>
 			<?php endif; ?>
 			<hr class="wp-header-end" />
 			<?php if ( 'withdrawal' === $type ) : ?>
-				<p class="description"><?php esc_html_e( 'Every withdrawal statement submitted through the "Withdraw from contract here" function, with the date and time it was received. Keep these as your record.', 'devdiggers-returns' ); ?></p>
+				<p class="description"><?php esc_html_e( 'Every withdrawal statement submitted through the "Withdraw from contract here" function, with the date and time it was received. Keep these as your record.', 'devdiggers-returns-for-woocommerce' ); ?></p>
 				<?php
 				if ( 'unmatched' === $status ) {
 					new Admin\Request\DDWCWR_Unmatched_Withdrawals_Template();
@@ -283,7 +283,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				wp_nonce_field( 'ddwcwr_nonce_action', 'ddwcwr_nonce' );
 				$obj->prepare_items();
 				$obj->views();
-				$obj->search_box( esc_html__( 'Search', 'devdiggers-returns' ), 'ddwcwr-search' );
+				$obj->search_box( esc_html__( 'Search', 'devdiggers-returns-for-woocommerce' ), 'ddwcwr-search' );
 				$obj->display();
 				?>
 			</form>
@@ -310,15 +310,15 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				ddwcwr_get_upgrade_card(
 					'rules',
 					[
-						'heading'       => esc_html__( 'Set different return rules for different products', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'One return window fits most stores to start with. Rules let you treat sale items, big-ticket products and loyal customers differently, and decide simple requests for you.', 'devdiggers-returns' ),
+						'heading'       => esc_html__( 'Set different return rules for different products', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'One return window fits most stores to start with. Rules let you treat sale items, big-ticket products and loyal customers differently, and decide simple requests for you.', 'devdiggers-returns-for-woocommerce' ),
 						'list_features' => [
-							esc_html__( 'Return windows per product, category, customer role or country', 'devdiggers-returns' ),
-							esc_html__( 'Final-sale rules by item price, order total or customer, with your own message', 'devdiggers-returns' ),
-							esc_html__( 'Auto-approve or auto-reject requests by reason, value or customer', 'devdiggers-returns' ),
-							esc_html__( 'Restocking fees, fixed or a percentage, never on store-fault reasons', 'devdiggers-returns' ),
-							esc_html__( 'Free return shipping above an order value, and photo rules per item value', 'devdiggers-returns' ),
-							esc_html__( 'Keep-it refunds: refund cheap items without asking for them back', 'devdiggers-returns' ),
+							esc_html__( 'Return windows per product, category, customer role or country', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Final-sale rules by item price, order total or customer, with your own message', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Auto-approve or auto-reject requests by reason, value or customer', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Restocking fees, fixed or a percentage, never on store-fault reasons', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Free return shipping above an order value, and photo rules per item value', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Keep-it refunds: refund cheap items without asking for them back', 'devdiggers-returns-for-woocommerce' ),
 						],
 					]
 				)
@@ -336,14 +336,14 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				ddwcwr_get_upgrade_card(
 					'customers',
 					[
-						'heading'       => esc_html__( 'Spot serial returners before you refund them', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'See every customer who has asked for a return, with their return rate by number of orders and by spend, and stop abuse without blocking honest customers.', 'devdiggers-returns' ),
+						'heading'       => esc_html__( 'Spot serial returners before you refund them', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'See every customer who has asked for a return, with their return rate by number of orders and by spend, and stop abuse without blocking honest customers.', 'devdiggers-returns-for-woocommerce' ),
 						'list_features' => [
-							esc_html__( 'Return rate by orders and by value for every customer', 'devdiggers-returns' ),
-							esc_html__( 'Serial returner, very quick return, late-in-window and high-value flags', 'devdiggers-returns' ),
-							esc_html__( 'Risk score on every request and in the list', 'devdiggers-returns' ),
-							esc_html__( 'Flag a customer to hold their requests for review, or block by email and domain', 'devdiggers-returns' ),
-							esc_html__( 'EU withdrawals are never refused, only flagged', 'devdiggers-returns' ),
+							esc_html__( 'Return rate by orders and by value for every customer', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Serial returner, very quick return, late-in-window and high-value flags', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Risk score on every request and in the list', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'Flag a customer to hold their requests for review, or block by email and domain', 'devdiggers-returns-for-woocommerce' ),
+							esc_html__( 'EU withdrawals are never refused, only flagged', 'devdiggers-returns-for-woocommerce' ),
 						],
 					]
 				)
@@ -411,23 +411,23 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 					'emailNonce'  => wp_create_nonce( 'ddwcwr_toggle_email' ),
 					'importNonce' => wp_create_nonce( 'ddwcwr_import_batch' ),
 					'i18n'        => [
-						'confirmDelete'  => esc_html__( 'Delete this permanently? This cannot be undone.', 'devdiggers-returns' ),
-						'confirmProcess' => esc_html__( 'Refund this request now? Refunds cannot be undone from here.', 'devdiggers-returns' ),
-						'chooseLabel'    => esc_html__( 'Choose a label file', 'devdiggers-returns' ),
-						'useFile'        => esc_html__( 'Use this file', 'devdiggers-returns' ),
-						'remove'         => esc_html__( 'Remove', 'devdiggers-returns' ),
+						'confirmDelete'  => esc_html__( 'Delete this permanently? This cannot be undone.', 'devdiggers-returns-for-woocommerce' ),
+						'confirmProcess' => esc_html__( 'Refund this request now? Refunds cannot be undone from here.', 'devdiggers-returns-for-woocommerce' ),
+						'chooseLabel'    => esc_html__( 'Choose a label file', 'devdiggers-returns-for-woocommerce' ),
+						'useFile'        => esc_html__( 'Use this file', 'devdiggers-returns-for-woocommerce' ),
+						'remove'         => esc_html__( 'Remove', 'devdiggers-returns-for-woocommerce' ),
 						/* translators: 1: requests done, 2: requests found */
-						'importing'      => esc_html__( 'Importing… %1$d of %2$d', 'devdiggers-returns' ),
+						'importing'      => esc_html__( 'Importing… %1$d of %2$d', 'devdiggers-returns-for-woocommerce' ),
 						/* translators: 1: requests checked, 2: requests found */
-						'checking'       => esc_html__( 'Checking… %1$d of %2$d', 'devdiggers-returns' ),
+						'checking'       => esc_html__( 'Checking… %1$d of %2$d', 'devdiggers-returns-for-woocommerce' ),
 						/* translators: 1: requests to import, 2: requests skipped */
-						'checked'        => esc_html__( '%1$d ready to import, %2$d already imported or without an order.', 'devdiggers-returns' ),
+						'checked'        => esc_html__( '%1$d ready to import, %2$d already imported or without an order.', 'devdiggers-returns-for-woocommerce' ),
 						/* translators: 1: requests imported, 2: requests skipped */
-						'imported'       => esc_html__( '%1$d imported, %2$d skipped.', 'devdiggers-returns' ),
-						'importedNone'   => esc_html__( 'Nothing new to import. You are up to date.', 'devdiggers-returns' ),
-						'importedBadge'  => esc_html__( 'Imported just now', 'devdiggers-returns' ),
-						'importNew'      => esc_html__( 'Import new requests', 'devdiggers-returns' ),
-						'importFailed'   => esc_html__( 'The import stopped. Run it again: requests already imported are skipped.', 'devdiggers-returns' ),
+						'imported'       => esc_html__( '%1$d imported, %2$d skipped.', 'devdiggers-returns-for-woocommerce' ),
+						'importedNone'   => esc_html__( 'Nothing new to import. You are up to date.', 'devdiggers-returns-for-woocommerce' ),
+						'importedBadge'  => esc_html__( 'Imported just now', 'devdiggers-returns-for-woocommerce' ),
+						'importNew'      => esc_html__( 'Import new requests', 'devdiggers-returns-for-woocommerce' ),
+						'importFailed'   => esc_html__( 'The import stopped. Run it again: requests already imported are skipped.', 'devdiggers-returns-for-woocommerce' ),
 					],
 				]
 			);
@@ -445,7 +445,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 			}
 
 			/* translators: %s: five-star link */
-			return sprintf( esc_html__( 'If you really like our plugin, please leave us a %s rating, we\'ll really appreciate it.', 'devdiggers-returns' ), \DDWCWR_Free_Init::ddwcwr_get_review_link() );
+			return sprintf( esc_html__( 'If you really like our plugin, please leave us a %s rating, we\'ll really appreciate it.', 'devdiggers-returns-for-woocommerce' ), \DDWCWR_Free_Init::ddwcwr_get_review_link() );
 		}
 	}
 }

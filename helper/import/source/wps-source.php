@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Return Refund and Exchange for WooCommerce', 'devdiggers-returns' );
+			return __( 'Return Refund and Exchange for WooCommerce', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -167,7 +167,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 
 				if ( $photos ) {
 					/* translators: %s: file names */
-					$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns' ), implode( ', ', $photos ) );
+					$note .= "\n" . sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns-for-woocommerce' ), implode( ', ', $photos ) );
 				}
 
 				$requests[] = $this->request(
@@ -210,7 +210,7 @@ if ( ! class_exists( 'DDWCWR_Wps_Source' ) ) {
 
 					if ( ! empty( $message['files'] ) ) {
 						/* translators: %s: file names */
-						$text .= "\n" . sprintf( __( 'Attached: %s', 'devdiggers-returns' ), implode( ', ', array_map( 'wp_basename', (array) $message['files'] ) ) );
+						$text .= "\n" . sprintf( __( 'Attached: %s', 'devdiggers-returns-for-woocommerce' ), implode( ', ', array_map( 'wp_basename', (array) $message['files'] ) ) );
 					}
 
 					$messages[] = $this->message( isset( $message['sender'] ) && 'Customer' === $message['sender'] ? 'customer' : 'staff', $text, (int) $time );

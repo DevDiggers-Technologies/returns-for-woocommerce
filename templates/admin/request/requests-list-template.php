@@ -136,34 +136,34 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 			$filters = $this->get_filters();
 			?>
 			<div class="alignleft actions ddfw-upgrade-to-pro-tag-wrapper ddwcwr-locked-action">
-				<label class="screen-reader-text" for="ddwcwr-locked-bulk"><?php esc_html_e( 'Bulk actions', 'devdiggers-returns' ); ?></label>
-				<select id="ddwcwr-locked-bulk" disabled="disabled"><option><?php esc_html_e( 'Bulk actions', 'devdiggers-returns' ); ?></option></select>
+				<label class="screen-reader-text" for="ddwcwr-locked-bulk"><?php esc_html_e( 'Bulk actions', 'devdiggers-returns-for-woocommerce' ); ?></label>
+				<select id="ddwcwr-locked-bulk" disabled="disabled"><option><?php esc_html_e( 'Bulk actions', 'devdiggers-returns-for-woocommerce' ); ?></option></select>
 				<?php echo wp_kses_post( ddfw_get_pro_tag() ); ?>
 			</div>
 			<div class="alignleft actions ddwcwr-filters">
 				<?php if ( ! $this->fixed_type ) : ?>
-					<label class="screen-reader-text" for="ddwcwr-filter-type"><?php esc_html_e( 'Filter by type', 'devdiggers-returns' ); ?></label>
-					<select name="type" id="ddwcwr-filter-type" data-placeholder="<?php esc_attr_e( 'All types', 'devdiggers-returns' ); ?>">
-						<option value=""><?php esc_html_e( 'All types', 'devdiggers-returns' ); ?></option>
+					<label class="screen-reader-text" for="ddwcwr-filter-type"><?php esc_html_e( 'Filter by type', 'devdiggers-returns-for-woocommerce' ); ?></label>
+					<select name="type" id="ddwcwr-filter-type" data-placeholder="<?php esc_attr_e( 'All types', 'devdiggers-returns-for-woocommerce' ); ?>">
+						<option value=""><?php esc_html_e( 'All types', 'devdiggers-returns-for-woocommerce' ); ?></option>
 						<?php foreach ( ddwcwr_get_request_types() as $slug => $label ) : ?>
 							<option value="<?php echo esc_attr( $slug ); ?>" <?php selected( $filters['type'], $slug ); ?>><?php echo esc_html( $label ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				<?php endif; ?>
 				<?php if ( ! $this->fixed_type ) : ?>
-				<label class="screen-reader-text" for="ddwcwr-filter-reason"><?php esc_html_e( 'Filter by reason', 'devdiggers-returns' ); ?></label>
-				<select name="reason" id="ddwcwr-filter-reason" data-placeholder="<?php esc_attr_e( 'All reasons', 'devdiggers-returns' ); ?>">
-					<option value=""><?php esc_html_e( 'All reasons', 'devdiggers-returns' ); ?></option>
+				<label class="screen-reader-text" for="ddwcwr-filter-reason"><?php esc_html_e( 'Filter by reason', 'devdiggers-returns-for-woocommerce' ); ?></label>
+				<select name="reason" id="ddwcwr-filter-reason" data-placeholder="<?php esc_attr_e( 'All reasons', 'devdiggers-returns-for-woocommerce' ); ?>">
+					<option value=""><?php esc_html_e( 'All reasons', 'devdiggers-returns-for-woocommerce' ); ?></option>
 					<?php foreach ( ddwcwr_get_reasons( false ) as $slug => $reason ) : ?>
 						<option value="<?php echo esc_attr( $slug ); ?>" <?php selected( $filters['reason'], $slug ); ?>><?php echo esc_html( $reason['label'] ); ?></option>
 					<?php endforeach; ?>
 				</select>
 				<?php endif; ?>
-				<label class="screen-reader-text" for="ddwcwr-filter-from"><?php esc_html_e( 'From date', 'devdiggers-returns' ); ?></label>
+				<label class="screen-reader-text" for="ddwcwr-filter-from"><?php esc_html_e( 'From date', 'devdiggers-returns-for-woocommerce' ); ?></label>
 				<input type="date" id="ddwcwr-filter-from" name="from" value="<?php echo esc_attr( substr( $filters['date_from'], 0, 10 ) ); ?>" />
-				<label class="screen-reader-text" for="ddwcwr-filter-to"><?php esc_html_e( 'To date', 'devdiggers-returns' ); ?></label>
+				<label class="screen-reader-text" for="ddwcwr-filter-to"><?php esc_html_e( 'To date', 'devdiggers-returns-for-woocommerce' ); ?></label>
 				<input type="date" id="ddwcwr-filter-to" name="to" value="<?php echo esc_attr( substr( $filters['date_to'], 0, 10 ) ); ?>" />
-				<?php submit_button( __( 'Filter', 'devdiggers-returns' ), '', 'filter_action', false ); ?>
+				<?php submit_button( __( 'Filter', 'devdiggers-returns-for-woocommerce' ), '', 'filter_action', false ); ?>
 				<?php
 				$active = $filters;
 				unset( $active['status'], $active['open'] );
@@ -174,7 +174,7 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 
 				if ( array_filter( $active, static fn( $value ) => '' !== $value && false !== $value ) ) :
 					?>
-					<button type="button" class="button ddwcwr-reset-filters"><?php esc_html_e( 'Reset filters', 'devdiggers-returns' ); ?></button>
+					<button type="button" class="button ddwcwr-reset-filters"><?php esc_html_e( 'Reset filters', 'devdiggers-returns-for-woocommerce' ); ?></button>
 				<?php endif; ?>
 			</div>
 			<?php
@@ -188,8 +188,8 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		public function no_items() {
 			ddfw_print_empty_state(
 				[
-					'title'       => $this->fixed_type ? esc_html__( 'No withdrawals yet', 'devdiggers-returns' ) : esc_html__( 'No requests found', 'devdiggers-returns' ),
-					'description' => $this->fixed_type ? esc_html__( 'Statements sent with the "Withdraw from contract here" button will appear here.', 'devdiggers-returns' ) : esc_html__( 'Returns and cancellations your customers submit will appear here.', 'devdiggers-returns' ),
+					'title'       => $this->fixed_type ? esc_html__( 'No withdrawals yet', 'devdiggers-returns-for-woocommerce' ) : esc_html__( 'No requests found', 'devdiggers-returns-for-woocommerce' ),
+					'description' => $this->fixed_type ? esc_html__( 'Statements sent with the "Withdraw from contract here" button will appear here.', 'devdiggers-returns-for-woocommerce' ) : esc_html__( 'Returns and cancellations your customers submit will appear here.', 'devdiggers-returns-for-woocommerce' ),
 				]
 			);
 		}
@@ -201,12 +201,12 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		 */
 		public function get_columns() {
 			$columns = [
-				'request'  => esc_html__( 'Request', 'devdiggers-returns' ),
-				'customer' => esc_html__( 'Customer', 'devdiggers-returns' ),
-				'items'    => esc_html__( 'Items', 'devdiggers-returns' ),
-				'value'    => esc_html__( 'Value', 'devdiggers-returns' ),
-				'status'   => esc_html__( 'Status', 'devdiggers-returns' ),
-				'created'  => 'withdrawal' === $this->fixed_type ? esc_html__( 'Received', 'devdiggers-returns' ) : esc_html__( 'Date', 'devdiggers-returns' ),
+				'request'  => esc_html__( 'Request', 'devdiggers-returns-for-woocommerce' ),
+				'customer' => esc_html__( 'Customer', 'devdiggers-returns-for-woocommerce' ),
+				'items'    => esc_html__( 'Items', 'devdiggers-returns-for-woocommerce' ),
+				'value'    => esc_html__( 'Value', 'devdiggers-returns-for-woocommerce' ),
+				'status'   => esc_html__( 'Status', 'devdiggers-returns-for-woocommerce' ),
+				'created'  => 'withdrawal' === $this->fixed_type ? esc_html__( 'Received', 'devdiggers-returns-for-woocommerce' ) : esc_html__( 'Date', 'devdiggers-returns-for-woocommerce' ),
 			];
 
 			return apply_filters( 'ddwcwr_requests_list_columns', $columns, $this->fixed_type );
@@ -237,11 +237,11 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 			$types   = ddwcwr_get_request_types();
 			$order   = ddwcwr_order_adapter()->get_order( $item['order_id'] );
 			$actions = [
-				'view' => sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Open', 'devdiggers-returns' ) ),
+				'view' => sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html__( 'Open', 'devdiggers-returns-for-woocommerce' ) ),
 			];
 
 			if ( $order ) {
-				$actions['order'] = sprintf( '<a href="%s">%s</a>', esc_url( $order->get_edit_order_url() ), esc_html__( 'Order', 'devdiggers-returns' ) );
+				$actions['order'] = sprintf( '<a href="%s">%s</a>', esc_url( $order->get_edit_order_url() ), esc_html__( 'Order', 'devdiggers-returns-for-woocommerce' ) );
 			}
 
 			return sprintf(
@@ -250,7 +250,7 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 				esc_html( $item['number'] ),
 				esc_html( isset( $types[ $item['type'] ] ) ? $types[ $item['type'] ] : $item['type'] ),
 				/* translators: %s: order number */
-				esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns' ), $order ? $order->get_order_number() : $item['order_id'] ) ),
+				esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns-for-woocommerce' ), $order ? $order->get_order_number() : $item['order_id'] ) ),
 				$this->row_actions( $actions )
 			);
 		}
@@ -264,7 +264,7 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		public function column_customer( $item ) {
 			return sprintf(
 				'<strong>%1$s</strong><span class="ddwcwr-list-meta">%2$s</span>',
-				esc_html( $item['customer_name'] ? $item['customer_name'] : __( 'Guest', 'devdiggers-returns' ) ),
+				esc_html( $item['customer_name'] ? $item['customer_name'] : __( 'Guest', 'devdiggers-returns-for-woocommerce' ) ),
 				esc_html( $item['customer_email'] )
 			);
 		}
@@ -292,7 +292,7 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		 * @return string
 		 */
 		public function column_value( $item ) {
-			return wp_kses_post( wc_price( $item['items_total'] ) ) . ( (float) $item['refunded_total'] > 0 ? '<span class="ddwcwr-list-meta">' . esc_html__( 'Paid back:', 'devdiggers-returns' ) . ' ' . wp_kses_post( wc_price( $item['refunded_total'] ) ) . '</span>' : '' );
+			return wp_kses_post( wc_price( $item['items_total'] ) ) . ( (float) $item['refunded_total'] > 0 ? '<span class="ddwcwr-list-meta">' . esc_html__( 'Paid back:', 'devdiggers-returns-for-woocommerce' ) . ' ' . wp_kses_post( wc_price( $item['refunded_total'] ) ) . '</span>' : '' );
 		}
 
 		/**
@@ -319,7 +319,7 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 				esc_attr( mysql_to_rfc3339( $item['created'] ) ),
 				esc_attr( date_i18n( wc_date_format() . ' ' . wc_time_format(), $time ) ),
 				/* translators: %s: human time difference */
-				esc_html( abs( current_time( 'timestamp' ) - $time ) < DAY_IN_SECONDS ? sprintf( __( '%s ago', 'devdiggers-returns' ), human_time_diff( $time, current_time( 'timestamp' ) ) ) : date_i18n( wc_date_format(), $time ) ) // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested -- Compared with a local mysql time.
+				esc_html( abs( current_time( 'timestamp' ) - $time ) < DAY_IN_SECONDS ? sprintf( __( '%s ago', 'devdiggers-returns-for-woocommerce' ), human_time_diff( $time, current_time( 'timestamp' ) ) ) : date_i18n( wc_date_format(), $time ) ) // phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested -- Compared with a local mysql time.
 			);
 		}
 

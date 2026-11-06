@@ -23,7 +23,7 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		 *
 		 * @var string
 		 */
-		const SLUG = 'devdiggers-returns';
+		const SLUG = 'devdiggers-returns-for-woocommerce';
 
 		/**
 		 * Options a wizard step may write.
@@ -78,39 +78,39 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 				'dashboard_page' => 'ddwcwr-dashboard',
 				'redirect_url'   => admin_url( 'admin.php?page=ddwcwr-dashboard' ),
 				'brand'          => [
-					'name'        => esc_html__( 'DevDiggers Returns', 'devdiggers-returns' ),
-					'description' => esc_html__( 'Returns, cancellations and the EU withdrawal button for WooCommerce. A few questions and your store is ready to take returns.', 'devdiggers-returns' ),
+					'name'        => esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ),
+					'description' => esc_html__( 'Returns, cancellations and the EU withdrawal button for WooCommerce. A few questions and your store is ready to take returns.', 'devdiggers-returns-for-woocommerce' ),
 				],
 				'steps'          => [
 					'welcome'     => [
-						'label'         => esc_html__( 'Welcome', 'devdiggers-returns' ),
+						'label'         => esc_html__( 'Welcome', 'devdiggers-returns-for-woocommerce' ),
 						'view_callback' => [ $this, 'welcome_view' ],
 					],
 					'returns'     => [
-						'label'         => esc_html__( 'Returns', 'devdiggers-returns' ),
-						'title'         => esc_html__( 'Your return policy', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'How long customers have to ask for a return.', 'devdiggers-returns' ),
+						'label'         => esc_html__( 'Returns', 'devdiggers-returns-for-woocommerce' ),
+						'title'         => esc_html__( 'Your return policy', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'How long customers have to ask for a return.', 'devdiggers-returns-for-woocommerce' ),
 						'view_callback' => [ $this, 'returns_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'resolutions' => [
-						'label'         => esc_html__( 'Refunds', 'devdiggers-returns' ),
-						'title'         => esc_html__( 'Refunds and cancellations', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'How refunds are paid and whether customers can cancel orders that have not shipped.', 'devdiggers-returns' ),
+						'label'         => esc_html__( 'Refunds', 'devdiggers-returns-for-woocommerce' ),
+						'title'         => esc_html__( 'Refunds and cancellations', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'How refunds are paid and whether customers can cancel orders that have not shipped.', 'devdiggers-returns-for-woocommerce' ),
 						'view_callback' => [ $this, 'resolutions_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'withdrawal'  => [
-						'label'         => esc_html__( 'EU withdrawal', 'devdiggers-returns' ),
-						'title'         => esc_html__( 'Withdrawal button', 'devdiggers-returns' ),
-						'description'   => esc_html__( 'From 19 June 2026, stores selling to EU consumers online must offer a "Withdraw from contract here" function.', 'devdiggers-returns' ),
+						'label'         => esc_html__( 'EU withdrawal', 'devdiggers-returns-for-woocommerce' ),
+						'title'         => esc_html__( 'Withdrawal button', 'devdiggers-returns-for-woocommerce' ),
+						'description'   => esc_html__( 'From 19 June 2026, stores selling to EU consumers online must offer a "Withdraw from contract here" function.', 'devdiggers-returns-for-woocommerce' ),
 						'view_callback' => [ $this, 'withdrawal_view' ],
 						'save_callback' => [ $this, 'save_fields' ],
 					],
 					'ready'       => [
-						'label'             => esc_html__( 'Ready!', 'devdiggers-returns' ),
-						'ready_title'       => esc_html__( 'You are ready to take returns.', 'devdiggers-returns' ),
-						'ready_description' => esc_html__( 'Customers can now start returns from My Account and the returns page. Reasons, statuses and emails are under Configuration.', 'devdiggers-returns' ),
+						'label'             => esc_html__( 'Ready!', 'devdiggers-returns-for-woocommerce' ),
+						'ready_title'       => esc_html__( 'You are ready to take returns.', 'devdiggers-returns-for-woocommerce' ),
+						'ready_description' => esc_html__( 'Customers can now start returns from My Account and the returns page. Reasons, statuses and emails are under Configuration.', 'devdiggers-returns-for-woocommerce' ),
 					],
 				],
 			];
@@ -135,8 +135,8 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 			?>
 			<div class="ddfw-setup-wizard-ready ddfw-setup-wizard-onboarding">
 				<div class="ddfw-success-icon-wrap"><?php echo $this->get_logo( 100 ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Static SVG. ?></div>
-				<h2 class="ddfw-setup-wizard-ready-title"><?php esc_html_e( 'Welcome to DevDiggers Returns!', 'devdiggers-returns' ); ?></h2>
-				<p class="ddfw-setup-wizard-ready-desc"><?php esc_html_e( 'Let\'s set your return window, how refunds work and the EU withdrawal button. It takes about two minutes and you can change everything later.', 'devdiggers-returns' ); ?></p>
+				<h2 class="ddfw-setup-wizard-ready-title"><?php esc_html_e( 'Welcome to DevDiggers Returns!', 'devdiggers-returns-for-woocommerce' ); ?></h2>
+				<p class="ddfw-setup-wizard-ready-desc"><?php esc_html_e( 'Let\'s set your return window, how refunds work and the EU withdrawal button. It takes about two minutes and you can change everything later.', 'devdiggers-returns-for-woocommerce' ); ?></p>
 			</div>
 			<?php
 		}
@@ -192,23 +192,23 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function returns_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'enabled', esc_html__( 'Customer requests', 'devdiggers-returns' ), esc_html__( 'Let customers request returns and cancellations', 'devdiggers-returns' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'enabled', esc_html__( 'Customer requests', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Let customers request returns and cancellations', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'When off, customers see nothing; you can still create requests yourself.', 'devdiggers-returns-for-woocommerce' ) ),
 					[
 						'type'              => 'number',
 						'id'                => 'ddwcwr-return-window-days',
-						'label'             => esc_html__( 'Days to request a return', 'devdiggers-returns' ),
-						'description'       => esc_html__( '30 is common. Under EU law consumers get at least 14 days to withdraw anyway.', 'devdiggers-returns' ),
+						'label'             => esc_html__( 'Days to request a return', 'devdiggers-returns-for-woocommerce' ),
+						'description'       => esc_html__( '30 is common. Under EU law consumers get at least 14 days to withdraw anyway.', 'devdiggers-returns-for-woocommerce' ),
 						'value'             => $this->configuration['return_window_days'],
 						'custom_attributes' => [ 'min' => 0 ],
 					],
 					[
 						'type'        => 'select',
 						'id'          => 'ddwcwr-window-from',
-						'label'       => esc_html__( 'Count days from', 'devdiggers-returns' ),
-						'description' => esc_html__( '"Completed" works best when you complete orders on delivery.', 'devdiggers-returns' ),
+						'label'       => esc_html__( 'Count days from', 'devdiggers-returns-for-woocommerce' ),
+						'description' => esc_html__( '"Completed" works best when you complete orders on delivery.', 'devdiggers-returns-for-woocommerce' ),
 						'options'     => [
-							'completed' => esc_html__( 'Order completed (delivered)', 'devdiggers-returns' ),
-							'created'   => esc_html__( 'Order placed', 'devdiggers-returns' ),
+							'completed' => esc_html__( 'Order completed (delivered)', 'devdiggers-returns-for-woocommerce' ),
+							'created'   => esc_html__( 'Order placed', 'devdiggers-returns-for-woocommerce' ),
 						],
 						'value'       => $this->configuration['window_from'],
 					],
@@ -224,10 +224,10 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function resolutions_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'allow_refund', esc_html__( 'Returns', 'devdiggers-returns' ), esc_html__( 'Let customers return items for a refund', 'devdiggers-returns' ), esc_html__( 'Money back to the card or method the customer paid with, once you approve it.', 'devdiggers-returns' ) ),
-					$this->checkbox( 'refund_via_gateway', esc_html__( 'Gateway refunds', 'devdiggers-returns' ), esc_html__( 'Send refunds through the payment gateway', 'devdiggers-returns' ), esc_html__( 'When off, refunds are only recorded and you pay them back yourself. You can still choose per request.', 'devdiggers-returns' ) ),
-					$this->checkbox( 'restock_on_receive', esc_html__( 'Restock', 'devdiggers-returns' ), esc_html__( 'Put returned items back in stock when they arrive', 'devdiggers-returns' ), esc_html__( 'Damaged and defective items are never restocked.', 'devdiggers-returns' ) ),
-					$this->checkbox( 'allow_cancellation', esc_html__( 'Cancellations', 'devdiggers-returns' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'devdiggers-returns' ), esc_html__( 'You approve each one; the order is canceled and refunded.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'allow_refund', esc_html__( 'Returns', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Let customers return items for a refund', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Money back to the card or method the customer paid with, once you approve it.', 'devdiggers-returns-for-woocommerce' ) ),
+					$this->checkbox( 'refund_via_gateway', esc_html__( 'Gateway refunds', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Send refunds through the payment gateway', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'When off, refunds are only recorded and you pay them back yourself. You can still choose per request.', 'devdiggers-returns-for-woocommerce' ) ),
+					$this->checkbox( 'restock_on_receive', esc_html__( 'Restock', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Put returned items back in stock when they arrive', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Damaged and defective items are never restocked.', 'devdiggers-returns-for-woocommerce' ) ),
+					$this->checkbox( 'allow_cancellation', esc_html__( 'Cancellations', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Let customers ask to cancel an order before it ships', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'You approve each one; the order is canceled and refunded.', 'devdiggers-returns-for-woocommerce' ) ),
 				]
 			);
 		}
@@ -240,19 +240,19 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		public function withdrawal_view() {
 			$this->fields(
 				[
-					$this->checkbox( 'withdrawal_enabled', esc_html__( 'Withdrawal function', 'devdiggers-returns' ), esc_html__( 'Show the "Withdraw from contract here" button', 'devdiggers-returns' ), esc_html__( 'Customers confirm in two steps and get an acknowledgement email with the date and time.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'withdrawal_enabled', esc_html__( 'Withdrawal function', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Show the "Withdraw from contract here" button', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Customers confirm in two steps and get an acknowledgement email with the date and time.', 'devdiggers-returns-for-woocommerce' ) ),
 					[
 						'type'        => 'select',
 						'id'          => 'ddwcwr-withdrawal-scope',
-						'label'       => esc_html__( 'Show it for', 'devdiggers-returns' ),
-						'description' => esc_html__( 'Based on the billing country of the order. You can pick individual countries on the EU Withdrawal tab.', 'devdiggers-returns' ),
+						'label'       => esc_html__( 'Show it for', 'devdiggers-returns-for-woocommerce' ),
+						'description' => esc_html__( 'Based on the billing country of the order. You can pick individual countries on the EU Withdrawal tab.', 'devdiggers-returns-for-woocommerce' ),
 						'options'     => [
-							'eu'  => esc_html__( 'EU and EEA countries', 'devdiggers-returns' ),
-							'all' => esc_html__( 'All countries', 'devdiggers-returns' ),
+							'eu'  => esc_html__( 'EU and EEA countries', 'devdiggers-returns-for-woocommerce' ),
+							'all' => esc_html__( 'All countries', 'devdiggers-returns-for-woocommerce' ),
 						],
 						'value'       => $this->configuration['withdrawal_scope'],
 					],
-					$this->checkbox( 'withdrawal_footer_link', esc_html__( 'Footer link', 'devdiggers-returns' ), esc_html__( 'Add a "Withdraw from contract here" link to every page', 'devdiggers-returns' ), esc_html__( 'The law asks for the function to be easy to find for the whole withdrawal period.', 'devdiggers-returns' ) ),
+					$this->checkbox( 'withdrawal_footer_link', esc_html__( 'Footer link', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'Add a "Withdraw from contract here" link to every page', 'devdiggers-returns-for-woocommerce' ), esc_html__( 'The law asks for the function to be easy to find for the whole withdrawal period.', 'devdiggers-returns-for-woocommerce' ) ),
 				]
 			);
 		}

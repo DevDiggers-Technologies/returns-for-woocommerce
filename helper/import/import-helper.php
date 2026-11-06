@@ -111,7 +111,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			$sources = $this->get_all_sources();
 
 			if ( ! isset( $sources[ $slug ] ) ) {
-				return new \WP_Error( 'ddwcwr_import_source', __( 'Unknown source.', 'devdiggers-returns' ) );
+				return new \WP_Error( 'ddwcwr_import_source', __( 'Unknown source.', 'devdiggers-returns-for-woocommerce' ) );
 			}
 
 			// One batch per source at a time, so two tabs cannot import the same request twice.
@@ -121,7 +121,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 				$locked = (int) get_option( $lock );
 
 				if ( ( $locked && $locked > time() - MINUTE_IN_SECONDS ) || ( ! $locked && ! add_option( $lock, time(), '', false ) ) ) {
-					return new \WP_Error( 'ddwcwr_import_running', __( 'This import is already running in another tab. Wait for it to finish, then run it again.', 'devdiggers-returns' ) );
+					return new \WP_Error( 'ddwcwr_import_running', __( 'This import is already running in another tab. Wait for it to finish, then run it again.', 'devdiggers-returns-for-woocommerce' ) );
 				}
 
 				update_option( $lock, time(), false );
@@ -229,7 +229,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			// A reason DevDiggers Returns has no match for (or a withdrawal or cancellation reason) stays readable in the note.
 			if ( in_array( $reason, [ 'other', 'withdrawal', 'cancellation' ], true ) && '' !== trim( $request['reason'] ) && false === stripos( (string) $request['note'], trim( $request['reason'] ) ) ) {
 				/* translators: %s: reason */
-				$notes[] = sprintf( __( 'Reason: %s', 'devdiggers-returns' ), trim( $request['reason'] ) );
+				$notes[] = sprintf( __( 'Reason: %s', 'devdiggers-returns-for-woocommerce' ), trim( $request['reason'] ) );
 			}
 
 			foreach ( $items as $item_id => $item ) {
@@ -340,7 +340,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 				'author_type' => 'system',
 				'kind'        => 'log',
 				/* translators: 1: plugin name, 2: plugin vendor, 3: order number */
-				'message'     => sprintf( __( 'Imported from %1$s by %2$s (order #%3$s).', 'devdiggers-returns' ), $source->get_label(), $source->get_vendor(), $order_data['number'] ),
+				'message'     => sprintf( __( 'Imported from %1$s by %2$s (order #%3$s).', 'devdiggers-returns-for-woocommerce' ), $source->get_label(), $source->get_vendor(), $order_data['number'] ),
 				'created'     => 0,
 			];
 
@@ -441,15 +441,15 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 
 			// The supported plugins' own names, for when the plugin was deactivated before the import.
 			$known      = [
-				'return-requested' => __( 'Refund Requested', 'devdiggers-returns' ),
-				'return-approved'  => __( 'Refund Approved', 'devdiggers-returns' ),
-				'return-cancelled' => __( 'Refund Cancelled', 'devdiggers-returns' ),
-				'refund-request'   => __( 'Refund Requested', 'devdiggers-returns' ),
-				'pending-wdraw'    => __( 'Pending Withdrawal', 'devdiggers-returns' ),
-				'cancel-request'   => __( 'Cancel Request', 'devdiggers-returns' ),
-				'request-cancel'   => __( 'Cancel Requested', 'devdiggers-returns' ),
-				'request-return'   => __( 'Return Requested', 'devdiggers-returns' ),
-				'withdrawal'       => __( 'Withdrawal', 'devdiggers-returns' ),
+				'return-requested' => __( 'Refund Requested', 'devdiggers-returns-for-woocommerce' ),
+				'return-approved'  => __( 'Refund Approved', 'devdiggers-returns-for-woocommerce' ),
+				'return-cancelled' => __( 'Refund Cancelled', 'devdiggers-returns-for-woocommerce' ),
+				'refund-request'   => __( 'Refund Requested', 'devdiggers-returns-for-woocommerce' ),
+				'pending-wdraw'    => __( 'Pending Withdrawal', 'devdiggers-returns-for-woocommerce' ),
+				'cancel-request'   => __( 'Cancel Request', 'devdiggers-returns-for-woocommerce' ),
+				'request-cancel'   => __( 'Cancel Requested', 'devdiggers-returns-for-woocommerce' ),
+				'request-return'   => __( 'Return Requested', 'devdiggers-returns-for-woocommerce' ),
+				'withdrawal'       => __( 'Withdrawal', 'devdiggers-returns-for-woocommerce' ),
 			];
 			$registered = wc_get_order_statuses();
 

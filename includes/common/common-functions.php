@@ -136,14 +136,14 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			$request = $this->request_helper->get_request( $request_id );
 
 			if ( ! $this->request_helper->can_view( $request, $access_key ) ) {
-				wp_die( esc_html__( 'You are not allowed to view this file.', 'devdiggers-returns' ), '', [ 'response' => 403 ] );
+				wp_die( esc_html__( 'You are not allowed to view this file.', 'devdiggers-returns-for-woocommerce' ), '', [ 'response' => 403 ] );
 			}
 
 			$file = $this->request_helper->find_attachment( $request_id, $file_key );
 
 			// Internal note attachments are staff only.
 			if ( ! $file || ( isset( $file['kind'] ) && 'note' === $file['kind'] && ! ddwcwr_current_user_can() ) ) {
-				wp_die( esc_html__( 'File not found.', 'devdiggers-returns' ), '', [ 'response' => 404 ] );
+				wp_die( esc_html__( 'File not found.', 'devdiggers-returns-for-woocommerce' ), '', [ 'response' => 404 ] );
 			}
 
 			( new DDWCWR_Upload_Helper() )->serve( $file['key'], $file['name'] );
@@ -157,7 +157,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		 */
 		public function ddwcwr_register_exporter( $exporters ) {
 			$exporters['ddwcwr-requests'] = [
-				'exporter_friendly_name' => __( 'Return and withdrawal requests', 'devdiggers-returns' ),
+				'exporter_friendly_name' => __( 'Return and withdrawal requests', 'devdiggers-returns-for-woocommerce' ),
 				'callback'               => [ $this, 'ddwcwr_export_personal_data' ],
 			];
 
@@ -172,7 +172,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		 */
 		public function ddwcwr_register_eraser( $erasers ) {
 			$erasers['ddwcwr-requests'] = [
-				'eraser_friendly_name' => __( 'Return and withdrawal requests', 'devdiggers-returns' ),
+				'eraser_friendly_name' => __( 'Return and withdrawal requests', 'devdiggers-returns-for-woocommerce' ),
 				'callback'             => [ $this, 'ddwcwr_erase_personal_data' ],
 			];
 
@@ -227,39 +227,39 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 
 				$data[] = [
 					'group_id'    => 'ddwcwr-requests',
-					'group_label' => __( 'Return and withdrawal requests', 'devdiggers-returns' ),
+					'group_label' => __( 'Return and withdrawal requests', 'devdiggers-returns-for-woocommerce' ),
 					'item_id'     => 'ddwcwr-request-' . $request['id'],
 					'data'        => [
 						[
-							'name'  => __( 'Request', 'devdiggers-returns' ),
+							'name'  => __( 'Request', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['number'],
 						],
 						[
-							'name'  => __( 'Order', 'devdiggers-returns' ),
+							'name'  => __( 'Order', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['order_id'],
 						],
 						[
-							'name'  => __( 'Type', 'devdiggers-returns' ),
+							'name'  => __( 'Type', 'devdiggers-returns-for-woocommerce' ),
 							'value' => isset( $types[ $request['type'] ] ) ? $types[ $request['type'] ] : $request['type'],
 						],
 						[
-							'name'  => __( 'Status', 'devdiggers-returns' ),
+							'name'  => __( 'Status', 'devdiggers-returns-for-woocommerce' ),
 							'value' => ddwcwr_get_status_label( $request['status'] ),
 						],
 						[
-							'name'  => __( 'Name', 'devdiggers-returns' ),
+							'name'  => __( 'Name', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['customer_name'],
 						],
 						[
-							'name'  => __( 'Email', 'devdiggers-returns' ),
+							'name'  => __( 'Email', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['customer_email'],
 						],
 						[
-							'name'  => __( 'Submitted', 'devdiggers-returns' ),
+							'name'  => __( 'Submitted', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['created'],
 						],
 						[
-							'name'  => __( 'Items', 'devdiggers-returns' ),
+							'name'  => __( 'Items', 'devdiggers-returns-for-woocommerce' ),
 							'value' => implode(
 								', ',
 								array_map(
@@ -271,11 +271,11 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 							),
 						],
 						[
-							'name'  => __( 'Messages', 'devdiggers-returns' ),
+							'name'  => __( 'Messages', 'devdiggers-returns-for-woocommerce' ),
 							'value' => implode( "\n", wp_list_pluck( $messages, 'message' ) ),
 						],
 						[
-							'name'  => __( 'Return tracking number', 'devdiggers-returns' ),
+							'name'  => __( 'Return tracking number', 'devdiggers-returns-for-woocommerce' ),
 							'value' => $request['tracking_number'],
 						],
 					],
@@ -344,7 +344,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			return [
 				'items_removed'  => $removed,
 				'items_retained' => false,
-				'messages'       => $removed ? [ __( 'Return requests were anonymized; their order and refund records are kept for accounting.', 'devdiggers-returns' ) ] : [],
+				'messages'       => $removed ? [ __( 'Return requests were anonymized; their order and refund records are kept for accounting.', 'devdiggers-returns-for-woocommerce' ) ] : [],
 				'done'           => true,
 			];
 		}
@@ -360,8 +360,8 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			}
 
 			wp_add_privacy_policy_content(
-				__( 'DevDiggers Returns', 'devdiggers-returns' ),
-				'<p>' . esc_html__( 'When you request a return or an order cancellation, or withdraw from a contract, we store your name, email address, order number, the items and reasons you choose, your messages, any photos or videos you upload, and the tracking number of your return package. We use this to handle your request and keep a record of it. Photos and videos are stored privately and are only visible to you and our staff.', 'devdiggers-returns' ) . '</p>'
+				__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ),
+				'<p>' . esc_html__( 'When you request a return or an order cancellation, or withdraw from a contract, we store your name, email address, order number, the items and reasons you choose, your messages, any photos or videos you upload, and the tracking number of your return package. We use this to handle your request and keep a record of it. Photos and videos are stored privately and are only visible to you and our staff.', 'devdiggers-returns-for-woocommerce' ) . '</p>'
 			);
 		}
 
@@ -376,13 +376,13 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			}
 
 			wp_register_script( 'ddwcwr-blocks', DDWCWR_PLUGIN_URL . 'assets/js/blocks.js', [ 'wp-blocks', 'wp-element', 'wp-i18n', 'wp-components', 'wp-server-side-render', 'wp-block-editor' ], filemtime( DDWCWR_PLUGIN_FILE . 'assets/js/blocks.js' ), true );
-			wp_set_script_translations( 'ddwcwr-blocks', 'devdiggers-returns', DDWCWR_PLUGIN_FILE . 'i18n' );
+			wp_set_script_translations( 'ddwcwr-blocks', 'devdiggers-returns-for-woocommerce', DDWCWR_PLUGIN_FILE . 'i18n' );
 
 			register_block_type(
 				'ddwcwr/returns-portal',
 				[
 					'api_version'     => 3,
-					'title'           => __( 'Returns portal', 'devdiggers-returns' ),
+					'title'           => __( 'Returns portal', 'devdiggers-returns-for-woocommerce' ),
 					'category'        => 'woocommerce',
 					'editor_script'   => 'ddwcwr-blocks',
 					'render_callback' => function () {
@@ -395,7 +395,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 				'ddwcwr/withdrawal-form',
 				[
 					'api_version'     => 3,
-					'title'           => __( 'Withdrawal form', 'devdiggers-returns' ),
+					'title'           => __( 'Withdrawal form', 'devdiggers-returns-for-woocommerce' ),
 					'category'        => 'woocommerce',
 					'editor_script'   => 'ddwcwr-blocks',
 					'render_callback' => function () {
@@ -436,7 +436,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		public function ddwcwr_validate_digital_consent( $data, $errors ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the checkout nonce.
 			if ( ddwcwr_cart_needs_digital_consent() && empty( $_POST['ddwcwr_digital_consent'] ) ) {
-				$errors->add( 'ddwcwr_digital_consent', esc_html__( 'Please agree to the immediate supply of the digital content to place your order.', 'devdiggers-returns' ) );
+				$errors->add( 'ddwcwr_digital_consent', esc_html__( 'Please agree to the immediate supply of the digital content to place your order.', 'devdiggers-returns-for-woocommerce' ) );
 			}
 		}
 
@@ -474,7 +474,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 					'schema_callback' => function () {
 						return [
 							'digital_consent' => [
-								'description' => __( 'Whether checkout asks for consent to supply digital content.', 'devdiggers-returns' ),
+								'description' => __( 'Whether checkout asks for consent to supply digital content.', 'devdiggers-returns-for-woocommerce' ),
 								'type'        => 'boolean',
 								'readonly'    => true,
 							],
@@ -516,7 +516,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 					]
 				);
 			} catch ( \Exception $e ) {
-				wc_get_logger()->warning( $e->getMessage(), [ 'source' => 'devdiggers-returns' ] );
+				wc_get_logger()->warning( $e->getMessage(), [ 'source' => 'devdiggers-returns-for-woocommerce' ] );
 			}
 		}
 
@@ -570,7 +570,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			}
 
 			/* translators: 1: date and time, 2: product names */
-			$text = sprintf( __( 'On %1$s you agreed that we start supplying the digital content (%2$s) before the withdrawal period ends, and you acknowledged that you lose your right of withdrawal once the supply has started.', 'devdiggers-returns' ), wc_format_datetime( ( new \WC_DateTime() )->setTimestamp( $time ), wc_date_format() . ' ' . wc_time_format() ), implode( ', ', $items ) );
+			$text = sprintf( __( 'On %1$s you agreed that we start supplying the digital content (%2$s) before the withdrawal period ends, and you acknowledged that you lose your right of withdrawal once the supply has started.', 'devdiggers-returns-for-woocommerce' ), wc_format_datetime( ( new \WC_DateTime() )->setTimestamp( $time ), wc_date_format() . ' ' . wc_time_format() ), implode( ', ', $items ) );
 
 			if ( $plain_text ) {
 				echo "\n" . esc_html( $text ) . "\n";
@@ -593,7 +593,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 			}
 
 			/* translators: %s: date and time */
-			echo '<p class="form-field form-field-wide">' . esc_html( sprintf( __( 'Digital content consent (Art. 16(m)) given on %s.', 'devdiggers-returns' ), wc_format_datetime( ( new \WC_DateTime() )->setTimestamp( $time ), wc_date_format() . ' ' . wc_time_format() ) ) ) . '</p>';
+			echo '<p class="form-field form-field-wide">' . esc_html( sprintf( __( 'Digital content consent (Art. 16(m)) given on %s.', 'devdiggers-returns-for-woocommerce' ), wc_format_datetime( ( new \WC_DateTime() )->setTimestamp( $time ), wc_date_format() . ' ' . wc_time_format() ) ) ) . '</p>';
 		}
 	}
 }

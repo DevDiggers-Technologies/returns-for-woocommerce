@@ -10,7 +10,7 @@ module.exports = function( api ) {
 					[
 						'@wordpress/babel-plugin-makepot',
 						{
-							output: 'i18n/devdiggers-returns.po',
+							output: 'i18n/devdiggers-returns-for-woocommerce.po',
 						},
 					],
 				],

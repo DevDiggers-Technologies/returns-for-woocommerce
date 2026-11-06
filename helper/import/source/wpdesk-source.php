@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Wpdesk_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Flexible Refund and Return Order', 'devdiggers-returns' );
+			return __( 'Flexible Refund and Return Order', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -223,7 +223,7 @@ if ( ! class_exists( 'DDWCWR_Wpdesk_Source' ) ) {
 
 				if ( $names ) {
 					/* translators: %s: file names */
-					$lines[] = sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns' ), implode( ', ', array_unique( $names ) ) );
+					$lines[] = sprintf( __( 'Photos sent with the request: %s', 'devdiggers-returns-for-woocommerce' ), implode( ', ', array_unique( $names ) ) );
 				}
 			}
 

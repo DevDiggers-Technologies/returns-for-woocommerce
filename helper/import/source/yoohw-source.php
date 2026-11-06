@@ -34,7 +34,7 @@ if ( ! class_exists( 'DDWCWR_Yoohw_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Order Cancellation & Returns', 'devdiggers-returns' );
+			return __( 'Order Cancellation & Returns', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

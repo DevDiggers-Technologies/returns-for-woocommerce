@@ -14,15 +14,15 @@ defined( 'ABSPATH' ) || exit(); // Exit if accessed directly.
 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only admin page routing parameter.
 $current_page = ! empty( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : '';
 $hub_tabs     = [
-	ddfw_get_parent_menu_slug() => esc_html__( 'Dashboard', 'devdiggers-returns' ),
-	'devdiggers-extensions'     => esc_html__( 'Extensions', 'devdiggers-returns' ),
+	ddfw_get_parent_menu_slug() => esc_html__( 'Dashboard', 'devdiggers-returns-for-woocommerce' ),
+	'devdiggers-extensions'     => esc_html__( 'Extensions', 'devdiggers-returns-for-woocommerce' ),
 ];
 ?>
 <nav class="ddfw-header-tab-wrapper ddfw-hub-header">
 	<div class="ddfw-header-tabs-list-wrapper">
 		<div class="ddfw-plugin-name">
 			<span class="ddfw-hub-logo" style="--ddfw-hub-logo: url('<?php echo esc_url( ddfw_get_devdiggers_plugin_menu_icon_src() ); ?>');" aria-hidden="true"></span>
-			<?php esc_html_e( 'DevDiggers', 'devdiggers-returns' ); ?>
+			<?php esc_html_e( 'DevDiggers', 'devdiggers-returns-for-woocommerce' ); ?>
 		</div>
 		<ul class="ddfw-header-tabs">
 			<?php foreach ( $hub_tabs as $slug => $label ) : ?>
@@ -32,8 +32,8 @@ $hub_tabs     = [
 			<?php endforeach; ?>
 		</ul>
 		<div class="ddfw-hub-header-actions">
-			<a href="<?php echo esc_url( 'https://docs.devdiggers.com/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Docs', 'devdiggers-returns' ); ?></a>
-			<a href="<?php echo esc_url( 'https://devdiggers.com/contact/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'devdiggers-returns' ); ?></a>
+			<a href="<?php echo esc_url( 'https://docs.devdiggers.com/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Docs', 'devdiggers-returns-for-woocommerce' ); ?></a>
+			<a href="<?php echo esc_url( 'https://devdiggers.com/contact/' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Support', 'devdiggers-returns-for-woocommerce' ); ?></a>
 		</div>
 	</div>
 </nav>

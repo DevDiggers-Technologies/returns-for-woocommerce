@@ -7,14 +7,14 @@
  * Author URI: https://devdiggers.com/
  * Version: 1.2.0
  * DDFW Build: free
- * Text Domain: devdiggers-returns
+ * Text Domain: devdiggers-returns-for-woocommerce
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-3.0.html
  * Requires at least: 5.0
  * Requires PHP: 7.0
  * Tested up to: 6.x.x
  * Stable tag: 1.2.0
- * Text Domain: devdiggers-returns
+ * Text Domain: devdiggers-returns-for-woocommerce
  * Framework Domain Path - /i18n
  *
  * @author  DevDiggers
@@ -110,4 +110,4 @@ if ( is_admin() ) {
 	require_once DDFW_FILE . 'includes/class-ddfw-review-notice.php';
 }
 
-load_textdomain( 'devdiggers-returns', dirname( __FILE__ ) . '/i18n/devdiggers-returns-' . apply_filters( 'plugin_locale', determine_locale(), 'devdiggers-returns' ) . '.mo' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core WordPress hook.
+load_textdomain( 'devdiggers-returns-for-woocommerce', dirname( __FILE__ ) . '/i18n/devdiggers-returns-for-woocommerce-' . apply_filters( 'plugin_locale', determine_locale(), 'devdiggers-returns-for-woocommerce' ) . '.mo' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core WordPress hook.

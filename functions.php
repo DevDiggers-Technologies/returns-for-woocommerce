@@ -6,7 +6,7 @@
  * Author: DevDiggers
  * Author URI: https://devdiggers.com/
  * Version: 1.0.0
- * Text Domain: devdiggers-returns
+ * Text Domain: devdiggers-returns-for-woocommerce
  * Domain Path: /i18n
  * Requires at least: 6.5
  * Requires PHP: 7.4
@@ -94,7 +94,7 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 							<p>
 								<?php
 								/* translators: %1$s: opening link tag, %2$s: closing link tag */
-								printf( esc_html__( 'DevDiggers Returns is activated but not effective. It requires %1$sWooCommerce%2$s in order to work.', 'devdiggers-returns' ), '<a href="' . esc_url( 'https://wordpress.org/plugins/woocommerce/' ) . '" target="_blank">', '</a>' );
+								printf( esc_html__( 'DevDiggers Returns is activated but not effective. It requires %1$sWooCommerce%2$s in order to work.', 'devdiggers-returns-for-woocommerce' ), '<a href="' . esc_url( 'https://wordpress.org/plugins/woocommerce/' ) . '" target="_blank">', '</a>' );
 								?>
 							</p>
 						</div>
@@ -125,9 +125,9 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 			if ( ( $on_plugin_page || wp_doing_ajax() ) && class_exists( '\DevDiggers\Framework\Includes\DDFW_Review_Notice' ) ) {
 				new \DevDiggers\Framework\Includes\DDFW_Review_Notice(
 					[
-						'plugin_name'   => esc_html__( 'DevDiggers Returns', 'devdiggers-returns' ),
+						'plugin_name'   => esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ),
 						'plugin_prefix' => 'ddwcwr',
-						'review_url'    => 'https://wordpress.org/support/plugin/devdiggers-returns/reviews/#new-post',
+						'review_url'    => 'https://wordpress.org/support/plugin/devdiggers-returns-for-woocommerce/reviews/#new-post',
 					]
 				);
 			}
@@ -141,10 +141,10 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 		 */
 		public function ddwcwr_plugin_settings_link( $links ) {
 			$action_links = [
-				'dashboard'     => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard' ) ) . '">' . esc_html__( 'Dashboard', 'devdiggers-returns' ) . '</a>',
-				'configuration' => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=configuration' ) ) . '">' . esc_html__( 'Configuration', 'devdiggers-returns' ) . '</a>',
-				'setup-wizard'  => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&setup-wizard=true' ) ) . '">' . esc_html__( 'Setup Wizard', 'devdiggers-returns' ) . '</a>',
-				'upgrade'       => '<a href="' . esc_url( 'https://wpreturns.com/' ) . '" style="color: #0256ff; font-weight: bold;" target="_blank">' . esc_html__( 'Upgrade to Pro', 'devdiggers-returns' ) . '</a>',
+				'dashboard'     => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard' ) ) . '">' . esc_html__( 'Dashboard', 'devdiggers-returns-for-woocommerce' ) . '</a>',
+				'configuration' => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=configuration' ) ) . '">' . esc_html__( 'Configuration', 'devdiggers-returns-for-woocommerce' ) . '</a>',
+				'setup-wizard'  => '<a href="' . esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&setup-wizard=true' ) ) . '">' . esc_html__( 'Setup Wizard', 'devdiggers-returns-for-woocommerce' ) . '</a>',
+				'upgrade'       => '<a href="' . esc_url( 'https://wpreturns.com/' ) . '" style="color: #0256ff; font-weight: bold;" target="_blank">' . esc_html__( 'Upgrade to Pro', 'devdiggers-returns-for-woocommerce' ) . '</a>',
 			];
 
 			return array_merge( $action_links, $links );
@@ -162,8 +162,8 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 				$links = array_merge(
 					$links,
 					[
-						'support'       => '<a href="https://wpreturns.com/support/" aria-label="' . esc_attr__( 'Support', 'devdiggers-returns' ) . '">' . esc_html__( 'Support', 'devdiggers-returns' ) . '</a>',
-						'documentation' => '<a href="https://wpreturns.com/docs/" target="_blank" aria-label="' . esc_attr__( 'Documentation', 'devdiggers-returns' ) . '">' . esc_html__( 'Documentation', 'devdiggers-returns' ) . '</a>',
+						'support'       => '<a href="https://wpreturns.com/support/" aria-label="' . esc_attr__( 'Support', 'devdiggers-returns-for-woocommerce' ) . '">' . esc_html__( 'Support', 'devdiggers-returns-for-woocommerce' ) . '</a>',
+						'documentation' => '<a href="https://wpreturns.com/docs/" target="_blank" aria-label="' . esc_attr__( 'Documentation', 'devdiggers-returns-for-woocommerce' ) . '">' . esc_html__( 'Documentation', 'devdiggers-returns-for-woocommerce' ) . '</a>',
 						'review'        => self::ddwcwr_get_review_link(),
 					]
 				);
@@ -178,7 +178,7 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 		 * @return string
 		 */
 		public static function ddwcwr_get_review_link() {
-			return '<a href="https://wordpress.org/support/plugin/devdiggers-returns/reviews/#new-post" target="_blank" rel="noopener noreferrer" title="' . esc_attr__( 'Review', 'devdiggers-returns' ) . '" aria-label="' . esc_attr__( 'Review on WordPress.org', 'devdiggers-returns' ) . '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 32" height="10"><path d="M16 26.534L6.111 32 8 20.422l-8-8.2 11.056-1.688L16 0l4.944 10.534L32 12.223l-8 8.2L25.889 32zm40 0L46.111 32 48 20.422l-8-8.2 11.056-1.688L56 0l4.944 10.534L72 12.223l-8 8.2L65.889 32zm40 0L86.111 32 88 20.422l-8-8.2 11.056-1.688L96 0l4.944 10.534L112 12.223l-8 8.2L105.889 32zm40 0L126.111 32 128 20.422l-8-8.2 11.056-1.688L136 0l4.944 10.534L152 12.223l-8 8.2L145.889 32zm40 0L166.111 32 168 20.422l-8-8.2 11.056-1.688L176 0l4.944 10.534L192 12.223l-8 8.2L185.889 32z" fill="#F5A623" fill-rule="evenodd"/></svg></a>';
+			return '<a href="https://wordpress.org/support/plugin/devdiggers-returns-for-woocommerce/reviews/#new-post" target="_blank" rel="noopener noreferrer" title="' . esc_attr__( 'Review', 'devdiggers-returns-for-woocommerce' ) . '" aria-label="' . esc_attr__( 'Review on WordPress.org', 'devdiggers-returns-for-woocommerce' ) . '"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 32" height="10"><path d="M16 26.534L6.111 32 8 20.422l-8-8.2 11.056-1.688L16 0l4.944 10.534L32 12.223l-8 8.2L25.889 32zm40 0L46.111 32 48 20.422l-8-8.2 11.056-1.688L56 0l4.944 10.534L72 12.223l-8 8.2L65.889 32zm40 0L86.111 32 88 20.422l-8-8.2 11.056-1.688L96 0l4.944 10.534L112 12.223l-8 8.2L105.889 32zm40 0L126.111 32 128 20.422l-8-8.2 11.056-1.688L136 0l4.944 10.534L152 12.223l-8 8.2L145.889 32zm40 0L166.111 32 168 20.422l-8-8.2 11.056-1.688L176 0l4.944 10.534L192 12.223l-8 8.2L185.889 32z" fill="#F5A623" fill-rule="evenodd"/></svg></a>';
 		}
 	}
 }

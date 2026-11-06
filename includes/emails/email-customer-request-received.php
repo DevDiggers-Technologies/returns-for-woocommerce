@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Received' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_customer_request_received';
 			$this->customer_email = true;
-			$this->title          = __( 'Return request received', 'devdiggers-returns' );
-			$this->description    = __( 'Sent to the customer when a return or cancellation request is submitted.', 'devdiggers-returns' );
+			$this->title          = __( 'Return request received', 'devdiggers-returns-for-woocommerce' );
+			$this->description    = __( 'Sent to the customer when a return or cancellation request is submitted.', 'devdiggers-returns-for-woocommerce' );
 
 			add_action( 'ddwcwr_request_created_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -35,7 +35,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Received' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] We received your request {request_number}', 'devdiggers-returns' );
+			return __( '[{site_title}] We received your request {request_number}', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -44,7 +44,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Received' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'Request {request_number} received', 'devdiggers-returns' );
+			return __( 'Request {request_number} received', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -59,7 +59,7 @@ if ( ! class_exists( 'DDWCWR_Email_Customer_Request_Received' ) ) {
 				return;
 			}
 
-			$this->intro = __( 'Thanks, we have your request and will review it shortly. Here is what you asked for:', 'devdiggers-returns' );
+			$this->intro = __( 'Thanks, we have your request and will review it shortly. Here is what you asked for:', 'devdiggers-returns-for-woocommerce' );
 			$this->dispatch();
 		}
 	}

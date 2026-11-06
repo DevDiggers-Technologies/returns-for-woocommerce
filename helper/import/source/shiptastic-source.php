@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Shiptastic_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Shiptastic for WooCommerce', 'devdiggers-returns' );
+			return __( 'Shiptastic for WooCommerce', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

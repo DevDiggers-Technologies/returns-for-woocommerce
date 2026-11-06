@@ -27,7 +27,7 @@ Everything runs inside WooCommerce on your own server. No account to sign up for
 
 = Quick links =
 
-* [Support](https://wordpress.org/support/plugin/devdiggers-returns/)
+* [Support](https://wordpress.org/support/plugin/devdiggers-returns-for-woocommerce/)
 * [Upgrade to Pro](https://wpreturns.com/)
 
 = How a return works =
@@ -119,7 +119,7 @@ Pro is for stores where returns are a cost worth managing: it turns refunds into
 == Installation ==
 
 1. Install and activate WooCommerce.
-2. Install DevDiggers Returns from Plugins > Add New, or upload the `devdiggers-returns` folder to `/wp-content/plugins/`.
+2. Install DevDiggers Returns from Plugins > Add New, or upload the `devdiggers-returns-for-woocommerce` folder to `/wp-content/plugins/`.
 3. Activate the plugin. The setup wizard opens and asks a few questions.
 4. The "Returns" and "Withdraw from contract" pages are created for you. Add them to your menus or footer.
 5. Check DevDiggers Plugins > DevDiggers Returns > Configuration, especially the Return Policy and EU Withdrawal tabs.

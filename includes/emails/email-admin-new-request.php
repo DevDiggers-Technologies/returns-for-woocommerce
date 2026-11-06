@@ -21,8 +21,8 @@ if ( ! class_exists( 'DDWCWR_Email_Admin_New_Request' ) ) {
 		public function __construct() {
 			$this->id             = 'ddwcwr_admin_new_request';
 			$this->customer_email = false;
-			$this->title          = __( 'New return request (admin)', 'devdiggers-returns' );
-			$this->description    = __( 'Sent to the store when a customer submits a request or withdrawal.', 'devdiggers-returns' );
+			$this->title          = __( 'New return request (admin)', 'devdiggers-returns-for-woocommerce' );
+			$this->description    = __( 'Sent to the store when a customer submits a request or withdrawal.', 'devdiggers-returns-for-woocommerce' );
 
 			add_action( 'ddwcwr_request_created_notification', [ $this, 'trigger' ], 10, 5 );
 
@@ -37,7 +37,7 @@ if ( ! class_exists( 'DDWCWR_Email_Admin_New_Request' ) ) {
 		 * @return string
 		 */
 		public function get_default_subject() {
-			return __( '[{site_title}] New request {request_number} for order #{order_number}', 'devdiggers-returns' );
+			return __( '[{site_title}] New request {request_number} for order #{order_number}', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -46,7 +46,7 @@ if ( ! class_exists( 'DDWCWR_Email_Admin_New_Request' ) ) {
 		 * @return string
 		 */
 		public function get_default_heading() {
-			return __( 'New request {request_number}', 'devdiggers-returns' );
+			return __( 'New request {request_number}', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -63,7 +63,7 @@ if ( ! class_exists( 'DDWCWR_Email_Admin_New_Request' ) ) {
 
 			$types = ddwcwr_get_request_types();
 			/* translators: 1: customer name, 2: request type */
-			$this->intro = sprintf( __( '%1$s submitted a new %2$s request.', 'devdiggers-returns' ), $this->request['customer_name'], strtolower( $types[ $this->request['type'] ] ) );
+			$this->intro = sprintf( __( '%1$s submitted a new %2$s request.', 'devdiggers-returns-for-woocommerce' ), $this->request['customer_name'], strtolower( $types[ $this->request['type'] ] ) );
 			$this->note  = $this->request['customer_note'];
 
 			$this->dispatch();
@@ -81,10 +81,10 @@ if ( ! class_exists( 'DDWCWR_Email_Admin_New_Request' ) ) {
 				[
 					'enabled'   => $this->form_fields['enabled'],
 					'recipient' => [
-						'title'       => __( 'Recipient(s)', 'devdiggers-returns' ),
+						'title'       => __( 'Recipient(s)', 'devdiggers-returns-for-woocommerce' ),
 						'type'        => 'text',
 						/* translators: %s: admin email */
-						'description' => sprintf( __( 'Comma separated. Defaults to %s.', 'devdiggers-returns' ), '<code>' . esc_html( get_option( 'admin_email' ) ) . '</code>' ),
+						'description' => sprintf( __( 'Comma separated. Defaults to %s.', 'devdiggers-returns-for-woocommerce' ), '<code>' . esc_html( get_option( 'admin_email' ) ) . '</code>' ),
 						'placeholder' => '',
 						'default'     => '',
 					],

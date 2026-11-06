@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Piweb_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Cancel Order Request for WooCommerce', 'devdiggers-returns' );
+			return __( 'Cancel Order Request for WooCommerce', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

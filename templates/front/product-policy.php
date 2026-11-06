@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit();
 			<span>
 			<?php echo esc_html( $ddwcwr_line[1] ); ?>
 			<?php if ( 'policy' === $ddwcwr_line[0] && $policy_url ) : ?>
-				<a href="<?php echo esc_url( $policy_url ); ?>"><?php esc_html_e( 'Details', 'devdiggers-returns' ); ?></a>
+				<a href="<?php echo esc_url( $policy_url ); ?>"><?php esc_html_e( 'Details', 'devdiggers-returns-for-woocommerce' ); ?></a>
 			<?php endif; ?>
 			</span>
 		</li>

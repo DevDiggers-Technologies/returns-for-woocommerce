@@ -26,7 +26,7 @@ if ( ! class_exists( 'DDWCWR_Buddypilot_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'BuddyPilot Withdrawal', 'devdiggers-returns' );
+			return __( 'BuddyPilot Withdrawal', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**
@@ -139,9 +139,9 @@ if ( ! class_exists( 'DDWCWR_Buddypilot_Source' ) ) {
 					$name      = isset( $entry['name'] ) ? $entry['name'] : '#' . $entry['item_id'];
 					$decided[] = 'accepted' === $entry['resolution']
 						/* translators: %s: item name */
-						? sprintf( __( '%s: accepted', 'devdiggers-returns' ), $name )
+						? sprintf( __( '%s: accepted', 'devdiggers-returns-for-woocommerce' ), $name )
 						/* translators: %s: item name */
-						: sprintf( __( '%s: rejected', 'devdiggers-returns' ), $name ) . ( empty( $entry['item_note'] ) ? '' : ' (' . $entry['item_note'] . ')' );
+						: sprintf( __( '%s: rejected', 'devdiggers-returns-for-woocommerce' ), $name ) . ( empty( $entry['item_note'] ) ? '' : ' (' . $entry['item_note'] . ')' );
 				}
 			}
 

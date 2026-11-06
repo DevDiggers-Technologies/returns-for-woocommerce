@@ -26,7 +26,7 @@ $screen_header = wp_parse_args(
 		'heading'         => '',
 		'description'     => '',
 		'back_button_url' => '',
-		'back_button_label' => __( 'Back', 'devdiggers-returns' ),
+		'back_button_label' => __( 'Back', 'devdiggers-returns-for-woocommerce' ),
 		'header_buttons'  => [],
 	]
 );

@@ -13,11 +13,11 @@
 defined( 'ABSPATH' ) || exit();
 ?>
 <div class="ddwcwr-card ddwcwr-portal-order">
-	<span class="ddwcwr-eyebrow"><?php esc_html_e( 'Your order', 'devdiggers-returns' ); ?></span>
+	<span class="ddwcwr-eyebrow"><?php esc_html_e( 'Your order', 'devdiggers-returns-for-woocommerce' ); ?></span>
 	<h2>
 		<?php
 		/* translators: %s: order number */
-		echo esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns' ), $order_data['number'] ) );
+		echo esc_html( sprintf( __( 'Order #%s', 'devdiggers-returns-for-woocommerce' ), $order_data['number'] ) );
 		?>
 	</h2>
 	<p class="ddwcwr-muted"><?php echo esc_html( date_i18n( wc_date_format(), $order_data['date_created'] ) ); ?> · <?php echo esc_html( wc_get_order_status_name( $order->get_status() ) ); ?></p>
@@ -28,7 +28,7 @@ defined( 'ABSPATH' ) || exit();
 				<span class="ddwcwr-list-body">
 					<strong><?php echo esc_html( $ddwcwr_item['name'] ); ?></strong>
 					<?php /* translators: %d: quantity */ ?>
-					<span class="ddwcwr-meta"><?php echo esc_html( sprintf( __( 'Qty %d', 'devdiggers-returns' ), $ddwcwr_item['qty'] ) ); ?></span>
+					<span class="ddwcwr-meta"><?php echo esc_html( sprintf( __( 'Qty %d', 'devdiggers-returns-for-woocommerce' ), $ddwcwr_item['qty'] ) ); ?></span>
 				</span>
 			</li>
 		<?php endforeach; ?>

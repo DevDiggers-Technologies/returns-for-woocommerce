@@ -27,7 +27,7 @@ if ( ! class_exists( 'DDWCWR_Germanized_Source' ) ) {
 		 * @return string
 		 */
 		public function get_label() {
-			return __( 'Germanized for WooCommerce', 'devdiggers-returns' );
+			return __( 'Germanized for WooCommerce', 'devdiggers-returns-for-woocommerce' );
 		}
 
 		/**

@@ -18,7 +18,7 @@ $defaults = [
 	'description'         => '',
 	'list_features'       => [],
 	'upgrade_url'         => 'https://devdiggers.com/woocommerce-extensions/',
-	'upgrade_button_text' => esc_html__( 'Upgrade to Pro', 'devdiggers-returns' ),
+	'upgrade_button_text' => esc_html__( 'Upgrade to Pro', 'devdiggers-returns-for-woocommerce' ),
 ];
 
 $args = wp_parse_args( $args, $defaults );
@@ -40,7 +40,7 @@ $upgrade_button_text = $args['upgrade_button_text'];
 	}
 	?>
 	<div class="ddfw-upgrade-to-pro-popup">
-		<span class="ddfw-upgrade-to-pro-eyebrow"><?php esc_html_e( 'Pro', 'devdiggers-returns' ); ?></span>
+		<span class="ddfw-upgrade-to-pro-eyebrow"><?php esc_html_e( 'Pro', 'devdiggers-returns-for-woocommerce' ); ?></span>
 		<h2><?php echo esc_html( $heading ); ?></h2>
 		<p><?php echo esc_html( $description ); ?></p>
 		<?php

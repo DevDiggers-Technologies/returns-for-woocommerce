@@ -35,7 +35,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="devdiggers-returns"/>
+				<element value="devdiggers-returns-for-woocommerce"/>
 			</property>
 		</properties>
 	</rule>

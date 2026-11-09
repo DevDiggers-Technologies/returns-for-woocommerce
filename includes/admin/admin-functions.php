@@ -67,11 +67,24 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 				wp_send_json_error( null, 400 );
 			}
 
-			$settings            = (array) get_option( 'woocommerce_' . $id . '_settings', [] );
-			$settings['enabled'] = ! empty( $_POST['enabled'] ) ? 'yes' : 'no';
+			$emails = WC()->mailer()->get_emails();
+			$email  = null;
 
-			update_option( 'woocommerce_' . $id . '_settings', $settings );
-			wp_send_json_success( [ 'enabled' => $settings['enabled'] ] );
+			foreach ( $emails as $candidate ) {
+				if ( $candidate->id === $id ) {
+					$email = $candidate;
+					break;
+				}
+			}
+
+			if ( ! $email ) {
+				wp_send_json_error( null, 400 );
+			}
+
+			// WooCommerce saves the email's own settings.
+			$enabled = ! empty( $_POST['enabled'] ) ? 'yes' : 'no';
+			$email->update_option( 'enabled', $enabled );
+			wp_send_json_success( [ 'enabled' => $enabled ] );
 		}
 
 		/**
@@ -116,7 +129,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 
 						register_setting(
 							$group,
-							'_' . str_replace( '-', '_', $field['id'] ),
+							str_replace( '-', '_', $field['id'] ),
 							[
 								'sanitize_callback' => function ( $value ) use ( $field ) {
 									return $this->ddwcwr_sanitize_field( $value, $field );
@@ -127,8 +140,8 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 				}
 			}
 
-			register_setting( 'ddwcwr-reasons-configuration-fields', '_ddwcwr_reasons', [ 'sanitize_callback' => [ $this, 'ddwcwr_sanitize_reasons' ] ] );
-			register_setting( 'ddwcwr-statuses-configuration-fields', '_ddwcwr_statuses', [ 'sanitize_callback' => [ $this, 'ddwcwr_sanitize_statuses' ] ] );
+			register_setting( 'ddwcwr-reasons-configuration-fields', 'ddwcwr_reasons', [ 'sanitize_callback' => [ $this, 'ddwcwr_sanitize_reasons' ] ] );
+			register_setting( 'ddwcwr-statuses-configuration-fields', 'ddwcwr_statuses', [ 'sanitize_callback' => [ $this, 'ddwcwr_sanitize_statuses' ] ] );
 		}
 
 		/**
@@ -191,7 +204,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			$reasons = [];
 			$seen    = [];
 			// Pro's "store's fault" flag has no column here: keep what is stored for each reason.
-			$stored = array_column( (array) get_option( '_ddwcwr_reasons', [] ), null, 'slug' );
+			$stored = array_column( (array) get_option( 'ddwcwr_reasons', [] ), null, 'slug' );
 
 			foreach ( (array) $value as $row ) {
 				$label = isset( $row['label'] ) ? sanitize_text_field( $row['label'] ) : '';
@@ -293,21 +306,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 		 * @return void
 		 */
 		protected function ddwcwr_back_to_request( $request_id, $message, $error = false ) {
-			wp_safe_redirect(
-				add_query_arg(
-					array_filter(
-						[
-							'page'           => 'ddwcwr-dashboard',
-							'menu'           => 'requests',
-							'request-id'     => absint( $request_id ),
-							'ddwcwr-message' => rawurlencode( $message ),
-							'ddwcwr-error'   => $error ? 1 : 0,
-						]
-					),
-					admin_url( 'admin.php' )
-				)
-			);
-			exit;
+			ddwcwr_admin_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&request-id=' . absint( $request_id ) ), $message, $error );
 		}
 
 		/**
@@ -431,8 +430,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 					}
 
 					$this->request_helper->delete_request( $request_id );
-					wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&ddwcwr-message=' . rawurlencode( __( 'Request deleted.', 'devdiggers-returns-for-woocommerce' ) ) ) );
-					exit;
+					ddwcwr_admin_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests' ), __( 'Request deleted.', 'devdiggers-returns-for-woocommerce' ) );
 			}
 
 			$this->ddwcwr_back_to_request( $request_id, __( 'Nothing changed.', 'devdiggers-returns-for-woocommerce' ), true );
@@ -481,8 +479,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			);
 
 			if ( is_wp_error( $request_id ) ) {
-				wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order_id . '&ddwcwr-error=1&ddwcwr-message=' . rawurlencode( $request_id->get_error_message() ) ) );
-				exit;
+				ddwcwr_admin_redirect( wp_nonce_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order_id ), 'ddwcwr_create_request', 'ddwcwr_nonce' ), $request_id->get_error_message(), true );
 			}
 
 			$this->ddwcwr_back_to_request( $request_id, __( 'Request created.', 'devdiggers-returns-for-woocommerce' ) );
@@ -572,9 +569,8 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 				wp_die( esc_html__( 'You are not allowed to do this.', 'devdiggers-returns-for-woocommerce' ), '', [ 'response' => 403 ] );
 			}
 
-			delete_option( '_ddwcwr_unmatched_withdrawals' );
-			wp_safe_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=withdrawals&ddwcwr-message=' . rawurlencode( __( 'Unmatched submissions cleared.', 'devdiggers-returns-for-woocommerce' ) ) ) );
-			exit;
+			delete_option( 'ddwcwr_unmatched_withdrawals' );
+			ddwcwr_admin_redirect( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=withdrawals' ), __( 'Unmatched submissions cleared.', 'devdiggers-returns-for-woocommerce' ) );
 		}
 
 		/**
@@ -682,7 +678,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Functions' ) ) {
 			}
 
 			if ( ddwcwr_current_user_can() ) {
-				printf( '<p><a class="button" href="%1$s">%2$s</a></p>', esc_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order->get_id() ) ), esc_html__( 'Create request', 'devdiggers-returns-for-woocommerce' ) );
+				printf( '<p><a class="button" href="%1$s">%2$s</a></p>', esc_url( wp_nonce_url( admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&action=add&order-id=' . $order->get_id() ), 'ddwcwr_create_request', 'ddwcwr_nonce' ) ), esc_html__( 'Create request', 'devdiggers-returns-for-woocommerce' ) );
 			}
 		}
 

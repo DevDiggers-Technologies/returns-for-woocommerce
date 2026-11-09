@@ -132,6 +132,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 						'ddwcwr-order'   => $order->get_id(),
 						'ddwcwr-expires' => $expires,
 						'ddwcwr-token'   => $this->ddwcwr_make_token( $order->get_id(), $order->get_billing_email(), $expires ),
+						'ddwcwr-nonce'   => wp_create_nonce( 'ddwcwr_portal_link' ),
 					],
 					$args
 				),
@@ -142,11 +143,12 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		/**
 		 * Order the visitor may act on: their own order, or a guest token for it.
 		 *
-		 * @param int  $order_id Order ID.
-		 * @param bool $from_post Read the token from the form post instead of the URL.
+		 * @param int    $order_id Order ID.
+		 * @param int    $expires Guest token expiry, from a request whose nonce the caller verified.
+		 * @param string $token Guest token, from a request whose nonce the caller verified.
 		 * @return object|false
 		 */
-		protected function ddwcwr_get_authorized_order( $order_id, $from_post = false ) {
+		protected function ddwcwr_get_authorized_order( $order_id, $expires = 0, $token = '' ) {
 			$order = ddwcwr_order_adapter()->get_order( $order_id );
 
 			if ( ! $order ) {
@@ -156,12 +158,6 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			if ( is_user_logged_in() && ddwcwr_order_adapter()->order_belongs_to( $order, get_current_user_id() ) ) {
 				return $order;
 			}
-
-			// phpcs:disable WordPress.Security.NonceVerification -- Token is an HMAC checked below; form posts verify their nonce before calling this.
-			$source  = $from_post ? $_POST : $_GET;
-			$expires = isset( $source['ddwcwr-expires'] ) ? absint( $source['ddwcwr-expires'] ) : 0;
-			$token   = isset( $source['ddwcwr-token'] ) ? sanitize_text_field( wp_unslash( $source['ddwcwr-token'] ) ) : '';
-			// phpcs:enable
 
 			if ( $expires < time() || '' === $token || ! hash_equals( $this->ddwcwr_make_token( $order->get_id(), $order->get_billing_email(), $expires ), $token ) ) {
 				return false;
@@ -211,15 +207,33 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_handle_forms() {
-			if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'POST' !== $_SERVER['REQUEST_METHOD'] || empty( $_POST['ddwcwr_action'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Router only; each action verifies its own nonce.
+			if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'POST' !== $_SERVER['REQUEST_METHOD'] || empty( $_POST['ddwcwr_nonce'] ) || empty( $_POST['ddwcwr_action'] ) ) {
 				return;
 			}
 
-			$action = sanitize_key( wp_unslash( $_POST['ddwcwr_action'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- Router only.
+			// The nonce action each form posts with; every handler checks it again before it changes anything.
+			$nonce_actions = [
+				'submit_request'     => 'ddwcwr_submit_request',
+				'send_message'       => 'ddwcwr_request_action',
+				'add_tracking'       => 'ddwcwr_request_action',
+				'cancel_request'     => 'ddwcwr_request_action',
+				'portal_lookup'      => 'ddwcwr_portal_lookup',
+				'withdrawal_confirm' => 'ddwcwr_withdrawal',
+			];
+			$action        = sanitize_key( wp_unslash( $_POST['ddwcwr_action'] ) );
+
+			if ( ! isset( $nonce_actions[ $action ] ) ) {
+				return;
+			}
 
 			// Guests need a session cookie so notices survive the redirect after a post.
 			if ( WC()->session && ! WC()->session->has_session() ) {
 				WC()->session->set_customer_session_cookie( true );
+			}
+
+			if ( ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), $nonce_actions[ $action ] ) ) {
+				wc_add_notice( __( 'Your session expired. Please try again.', 'devdiggers-returns-for-woocommerce' ), 'error' );
+				return;
 			}
 
 			switch ( $action ) {
@@ -256,7 +270,11 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			}
 
 			$order_id = isset( $_POST['ddwcwr_order_id'] ) ? absint( $_POST['ddwcwr_order_id'] ) : 0;
-			$order    = $this->ddwcwr_get_authorized_order( $order_id, true );
+			$order    = $this->ddwcwr_get_authorized_order(
+				$order_id,
+				isset( $_POST['ddwcwr-expires'] ) ? absint( $_POST['ddwcwr-expires'] ) : 0,
+				isset( $_POST['ddwcwr-token'] ) ? sanitize_text_field( wp_unslash( $_POST['ddwcwr-token'] ) ) : ''
+			);
 
 			if ( ! $order ) {
 				wc_add_notice( __( 'You do not have access to this order.', 'devdiggers-returns-for-woocommerce' ), 'error' );
@@ -318,11 +336,13 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 * @return array|null
 		 */
 		protected function ddwcwr_get_posted_request() {
-			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Callers verify the nonce first.
+			if ( ! isset( $_POST['ddwcwr_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_request_action' ) ) {
+				return null;
+			}
+
 			$request_id = isset( $_POST['ddwcwr_request_id'] ) ? absint( $_POST['ddwcwr_request_id'] ) : 0;
 			$key        = isset( $_POST['ddwcwr_key'] ) ? sanitize_text_field( wp_unslash( $_POST['ddwcwr_key'] ) ) : '';
-			// phpcs:enable
-			$request = $this->request_helper->get_request( $request_id );
+			$request    = $this->request_helper->get_request( $request_id );
 
 			return $this->request_helper->can_view( $request, $key ) ? $request : null;
 		}
@@ -511,7 +531,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			if ( ! $order ) {
 				// Keep the statement for staff, but send nothing to an unverified address.
-				$log   = (array) get_option( '_ddwcwr_unmatched_withdrawals', [] );
+				$log   = (array) get_option( 'ddwcwr_unmatched_withdrawals', [] );
 				$log[] = [
 					'name'    => $name,
 					'order'   => $number,
@@ -519,7 +539,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 					'date'    => current_time( 'mysql', true ),
 					'ip_hash' => ddwcwr_get_client_ip_hash(),
 				];
-				update_option( '_ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
+				update_option( 'ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
 
 				wc_add_notice( __( 'We could not match that order number and email address. We have recorded your statement and our team will contact you; please also check the details and try again.', 'devdiggers-returns-for-woocommerce' ), 'error' );
 				return;
@@ -563,8 +583,9 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			wp_safe_redirect(
 				add_query_arg(
 					[
-						'ddwcwr-done' => $request_id,
-						'ddwcwr-key'  => rawurlencode( $request['access_key'] ),
+						'ddwcwr-done'  => $request_id,
+						'ddwcwr-key'   => rawurlencode( $request['access_key'] ),
+						'ddwcwr-nonce' => wp_create_nonce( 'ddwcwr_withdrawal_done' ),
 					],
 					ddwcwr_get_withdrawal_url()
 				)
@@ -647,7 +668,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			if ( 0 === strpos( $value, 'new-' ) ) {
 				$order = $this->ddwcwr_get_authorized_order( absint( substr( $value, 4 ) ) );
-				$type  = isset( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'return'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display only.
+				$type  = isset( $_GET['type'], $_GET['ddwcwr-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr-nonce'] ) ), 'ddwcwr_portal_link' ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'return';
 
 				if ( ! $order ) {
 					wc_print_notice( __( 'Order not found.', 'devdiggers-returns-for-woocommerce' ), 'error' );
@@ -716,7 +737,13 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				if ( 'withdrawal' === $type ) {
 					$url = ddwcwr_get_withdrawal_url( $order->get_id() );
 				} elseif ( $is_owner ) {
-					$url = add_query_arg( 'type', $type, ddwcwr_get_account_url( 'new-' . $order->get_id() ) );
+					$url = add_query_arg(
+						[
+							'type'         => $type,
+							'ddwcwr-nonce' => wp_create_nonce( 'ddwcwr_portal_link' ),
+						],
+						ddwcwr_get_account_url( 'new-' . $order->get_id() )
+					);
 				} else {
 					$url = $this->ddwcwr_get_guest_order_url( $order, [ 'ddwcwr-type' => $type ] );
 				}
@@ -753,10 +780,14 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			$items = $this->request_helper->get_eligible_items( $order, $type );
 
-			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Re-filling the form after a failed, already verified post.
-			$posted = isset( $_POST['ddwcwr_items'] ) && is_array( $_POST['ddwcwr_items'] ) ? map_deep( wp_unslash( $_POST['ddwcwr_items'] ), 'sanitize_text_field' ) : [];
-			$note   = isset( $_POST['ddwcwr_note'] ) ? sanitize_textarea_field( wp_unslash( $_POST['ddwcwr_note'] ) ) : '';
-			// phpcs:enable
+			// Re-fill the form after a failed post, only from a post that carries a valid nonce.
+			$posted = [];
+			$note   = '';
+
+			if ( isset( $_POST['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_submit_request' ) ) {
+				$posted = isset( $_POST['ddwcwr_items'] ) && is_array( $_POST['ddwcwr_items'] ) ? map_deep( wp_unslash( $_POST['ddwcwr_items'] ), 'sanitize_text_field' ) : [];
+				$note   = isset( $_POST['ddwcwr_note'] ) ? sanitize_textarea_field( wp_unslash( $_POST['ddwcwr_note'] ) ) : '';
+			}
 
 			$this->template(
 				'request-form',
@@ -782,14 +813,19 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 		 * @return array
 		 */
 		protected function ddwcwr_get_token_fields() {
-			// phpcs:disable WordPress.Security.NonceVerification -- Values are re-validated as an HMAC on submit.
-			$source = ! empty( $_POST['ddwcwr-token'] ) ? $_POST : $_GET;
+			$source = [];
+
+			// A failed form post carries the token on; otherwise it comes from the portal link.
+			if ( isset( $_POST['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_submit_request' ) ) {
+				$source = $_POST;
+			} elseif ( isset( $_GET['ddwcwr-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr-nonce'] ) ), 'ddwcwr_portal_link' ) ) {
+				$source = $_GET;
+			}
 
 			return [
 				'ddwcwr-expires' => isset( $source['ddwcwr-expires'] ) ? absint( $source['ddwcwr-expires'] ) : 0,
 				'ddwcwr-token'   => isset( $source['ddwcwr-token'] ) ? sanitize_text_field( wp_unslash( $source['ddwcwr-token'] ) ) : '',
 			];
-			// phpcs:enable
 		}
 
 		/**
@@ -886,12 +922,27 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			wc_print_notices();
 
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only routing; access is checked by key or HMAC token.
+			// The request link is e-mailed, so it cannot carry a nonce (nonces expire and are tied to a
+			// session). It is read only and authorized by the request's secret key, compared with hash_equals().
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$request_id = isset( $_GET['ddwcwr-request'] ) ? absint( $_GET['ddwcwr-request'] ) : 0;
 			$key        = isset( $_GET['ddwcwr-key'] ) ? sanitize_text_field( wp_unslash( $_GET['ddwcwr-key'] ) ) : '';
-			$order_id   = isset( $_GET['ddwcwr-order'] ) ? absint( $_GET['ddwcwr-order'] ) : 0;
-			$type       = isset( $_GET['ddwcwr-type'] ) ? sanitize_key( wp_unslash( $_GET['ddwcwr-type'] ) ) : '';
 			// phpcs:enable
+
+			// Order links are only created on this site after a lookup, so they carry a nonce.
+			$order_id = 0;
+			$type     = '';
+			$expires  = 0;
+			$token    = '';
+
+			if ( isset( $_GET['ddwcwr-order'], $_GET['ddwcwr-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr-nonce'] ) ), 'ddwcwr_portal_link' ) ) {
+				$order_id = absint( $_GET['ddwcwr-order'] );
+				$type     = isset( $_GET['ddwcwr-type'] ) ? sanitize_key( wp_unslash( $_GET['ddwcwr-type'] ) ) : '';
+				$expires  = isset( $_GET['ddwcwr-expires'] ) ? absint( $_GET['ddwcwr-expires'] ) : 0;
+				$token    = isset( $_GET['ddwcwr-token'] ) ? sanitize_text_field( wp_unslash( $_GET['ddwcwr-token'] ) ) : '';
+			} elseif ( isset( $_GET['ddwcwr-order'] ) ) {
+				wc_print_notice( __( 'This link has expired. Look up your order again.', 'devdiggers-returns-for-woocommerce' ), 'notice' );
+			}
 
 			if ( $request_id ) {
 				$request = $this->request_helper->get_request( $request_id );
@@ -903,7 +954,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 					$this->template( 'portal-lookup' );
 				}
 			} elseif ( $order_id ) {
-				$order = $this->ddwcwr_get_authorized_order( $order_id );
+				$order = $this->ddwcwr_get_authorized_order( $order_id, $expires, $token );
 
 				if ( ! $order ) {
 					wc_print_notice( __( 'This link has expired. Look up your order again.', 'devdiggers-returns-for-woocommerce' ), 'notice' );
@@ -929,7 +980,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			echo '</div>';
 
-			return ob_get_clean();
+			return wp_kses( ob_get_clean(), ddwcwr_kses_allowed_html() );
 		}
 
 		/**
@@ -951,15 +1002,31 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				wc_print_notice( __( 'Online withdrawal is not available on this store. Please contact us.', 'devdiggers-returns-for-woocommerce' ), 'notice' );
 				echo '</div>';
 
-				return ob_get_clean();
+				return wp_kses( ob_get_clean(), ddwcwr_kses_allowed_html() );
 			}
 
-			// phpcs:disable WordPress.Security.NonceVerification -- Read-only routing; the confirmation is shown only with the secret key.
-			$done     = isset( $_GET['ddwcwr-done'] ) ? absint( $_GET['ddwcwr-done'] ) : 0;
-			$key      = isset( $_GET['ddwcwr-key'] ) ? sanitize_text_field( wp_unslash( $_GET['ddwcwr-key'] ) ) : '';
+			// The confirmation comes straight after the redirect that follows a submission.
+			$done = 0;
+			$key  = '';
+
+			if ( isset( $_GET['ddwcwr-done'], $_GET['ddwcwr-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr-nonce'] ) ), 'ddwcwr_withdrawal_done' ) ) {
+				$done = absint( $_GET['ddwcwr-done'] );
+				$key  = isset( $_GET['ddwcwr-key'] ) ? sanitize_text_field( wp_unslash( $_GET['ddwcwr-key'] ) ) : '';
+			}
+
+			// The order and step come from e-mail and footer links, which cannot carry a nonce. They only choose
+			// what to show: the order is used only when it belongs to the logged-in customer.
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$order_id = isset( $_GET['ddwcwr-order'] ) ? absint( $_GET['ddwcwr-order'] ) : 0;
-			$step     = isset( $_GET['ddwcwr-step'] ) || $order_id || isset( $_POST['ddwcwr_action'] ) ? 'form' : 'start';
+			$step     = isset( $_GET['ddwcwr-step'] ) || $order_id ? 'form' : 'start';
 			// phpcs:enable
+
+			// A failed confirmation post shows the form again, filled in with what was sent.
+			$posted = isset( $_POST['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_withdrawal' );
+
+			if ( $posted ) {
+				$step = 'form';
+			}
 
 			if ( $done ) {
 				$request = $this->request_helper->get_request( $done );
@@ -974,7 +1041,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 					);
 					echo '</div>';
 
-					return ob_get_clean();
+					return wp_kses( ob_get_clean(), ddwcwr_kses_allowed_html() );
 				}
 			}
 
@@ -1007,17 +1074,15 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 				$items             = $this->request_helper->get_eligible_items( $order, 'withdrawal' );
 			}
 
-			// phpcs:disable WordPress.Security.NonceVerification.Missing -- Re-filling after a failed, verified post.
 			foreach ( [
 				'name'   => 'ddwcwr_name',
 				'number' => 'ddwcwr_order_number',
 				'email'  => 'ddwcwr_email',
 			] as $field => $post_key ) {
-				if ( isset( $_POST[ $post_key ] ) ) {
+				if ( $posted && isset( $_POST[ $post_key ] ) ) {
 					$prefill[ $field ] = sanitize_text_field( wp_unslash( $_POST[ $post_key ] ) );
 				}
 			}
-			// phpcs:enable
 
 			$this->template(
 				'withdrawal-form',
@@ -1032,7 +1097,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 
 			echo '</div>';
 
-			return ob_get_clean();
+			return wp_kses( ob_get_clean(), ddwcwr_kses_allowed_html() );
 		}
 
 		/**
@@ -1088,7 +1153,7 @@ if ( ! class_exists( 'DDWCWR_Front_Functions' ) ) {
 			$text = sprintf( __( 'You can withdraw from this contract within %d days of receiving your goods without giving any reason.', 'devdiggers-returns-for-woocommerce' ), absint( $this->ddwcwr_configuration['withdrawal_days'] ) );
 
 			if ( $plain_text ) {
-				echo "\n" . esc_html( $text ) . ' ' . esc_html__( 'Withdraw from contract here', 'devdiggers-returns-for-woocommerce' ) . ': ' . esc_url_raw( $url ) . "\n";
+				echo "\n" . esc_html( $text ) . ' ' . esc_html__( 'Withdraw from contract here', 'devdiggers-returns-for-woocommerce' ) . ': ' . esc_url( $url ) . "\n";
 				return;
 			}
 

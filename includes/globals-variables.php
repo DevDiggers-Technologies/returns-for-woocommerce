@@ -60,7 +60,7 @@ $ddwcwr_defaults = [
 $ddwcwr_configuration = [];
 
 foreach ( $ddwcwr_defaults as $ddwcwr_key => $ddwcwr_default ) {
-	$ddwcwr_value = get_option( '_ddwcwr_' . $ddwcwr_key, null );
+	$ddwcwr_value = get_option( 'ddwcwr_' . $ddwcwr_key, null );
 
 	// Numbers and lists fall back to the default when saved empty; text and checkboxes keep what was saved.
 	if ( null === $ddwcwr_value || ( '' === $ddwcwr_value && ( is_int( $ddwcwr_default ) || is_array( $ddwcwr_default ) ) ) ) {
@@ -78,8 +78,8 @@ if ( empty( $ddwcwr_configuration['my_account_endpoint'] ) ) {
 	$ddwcwr_configuration['my_account_endpoint'] = 'returns';
 }
 
-$ddwcwr_configuration['statuses'] = array_values( (array) get_option( '_ddwcwr_statuses', DDWCWR_Install::ddwcwr_get_default_statuses() ) );
-$ddwcwr_configuration['reasons']  = get_option( '_ddwcwr_reasons', DDWCWR_Install::ddwcwr_get_default_reasons() );
+$ddwcwr_configuration['statuses'] = array_values( (array) get_option( 'ddwcwr_statuses', DDWCWR_Install::ddwcwr_get_default_statuses() ) );
+$ddwcwr_configuration['reasons']  = get_option( 'ddwcwr_reasons', DDWCWR_Install::ddwcwr_get_default_reasons() );
 
 $ddwcwr_configuration = apply_filters( 'ddwcwr_configuration', $ddwcwr_configuration );
 

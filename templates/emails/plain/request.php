@@ -43,7 +43,7 @@ foreach ( $extra as $ddwcwr_label => $ddwcwr_value ) {
 }
 
 if ( ! empty( $button[0] ) ) {
-	echo "\n" . esc_html( $button[1] ) . ': ' . esc_url_raw( $button[0] ) . "\n";
+	echo "\n" . esc_html( $button[1] ) . ': ' . esc_url( $button[0] ) . "\n";
 }
 
 /* translators: 1: request number, 2: order number */

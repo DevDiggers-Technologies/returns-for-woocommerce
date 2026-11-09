@@ -24,18 +24,20 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 * @return void
 		 */
 		public static function ddwcwr_on_plugin_activation() {
+			self::ddwcwr_migrate_option_names();
+
 			// Read by the review notice.
-			add_option( '_ddwcwr_installed_at', time() );
+			add_option( 'ddwcwr_installed_at', time() );
 
 			// First activation of a store that has not saved settings yet: open the setup wizard.
-			if ( false === get_option( '_ddwcwr_enabled', false ) ) {
+			if ( false === get_option( 'ddwcwr_enabled', false ) ) {
 				set_transient( 'ddfw_activation_redirect_devdiggers-returns-for-woocommerce', true, 30 );
 			}
 
 			self::ddwcwr_install();
 
 			// Endpoints are registered on init; flush on the next request.
-			update_option( '_ddwcwr_flush_rewrite_rules', 'yes' );
+			update_option( 'ddwcwr_flush_rewrite_rules', 'yes' );
 		}
 
 		/**
@@ -44,11 +46,34 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 * @return void
 		 */
 		public static function ddwcwr_install() {
+			self::ddwcwr_migrate_option_names();
 			self::ddwcwr_create_schema();
 			self::ddwcwr_add_default_options();
 			self::ddwcwr_create_pages();
 
-			update_option( '_ddwcwr_free_db_version', self::DB_VERSION );
+			update_option( 'ddwcwr_free_db_version', self::DB_VERSION );
+		}
+
+		/**
+		 * Settings saved by earlier builds under "_ddwcwr_<name>" move to "ddwcwr_<name>". Safe to repeat.
+		 *
+		 * @return void
+		 */
+		public static function ddwcwr_migrate_option_names() {
+			global $wpdb;
+
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- One-time rename of this plugin's own options.
+			$names = $wpdb->get_col( $wpdb->prepare( "SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s", $wpdb->esc_like( '_ddwcwr_' ) . '%' ) );
+
+			foreach ( $names as $old_name ) {
+				$new_name = substr( $old_name, 1 );
+
+				if ( false === get_option( $new_name, false ) ) {
+					update_option( $new_name, get_option( $old_name ) );
+				}
+
+				delete_option( $old_name );
+			}
 		}
 
 		/**
@@ -246,8 +271,8 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 * @return void
 		 */
 		public static function ddwcwr_add_default_options() {
-			add_option( '_ddwcwr_statuses', self::ddwcwr_get_default_statuses() );
-			add_option( '_ddwcwr_reasons', self::ddwcwr_get_default_reasons() );
+			add_option( 'ddwcwr_statuses', self::ddwcwr_get_default_statuses() );
+			add_option( 'ddwcwr_reasons', self::ddwcwr_get_default_reasons() );
 		}
 
 		/**
@@ -257,12 +282,12 @@ if ( ! class_exists( 'DDWCWR_Install' ) ) {
 		 */
 		public static function ddwcwr_create_pages() {
 			$pages = [
-				'_ddwcwr_portal_page_id'     => [
+				'ddwcwr_portal_page_id'     => [
 					'title'   => __( 'Returns', 'devdiggers-returns-for-woocommerce' ),
 					'slug'    => 'returns',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_returns_portal]<!-- /wp:shortcode -->',
 				],
-				'_ddwcwr_withdrawal_page_id' => [
+				'ddwcwr_withdrawal_page_id' => [
 					'title'   => __( 'Withdraw from contract', 'devdiggers-returns-for-woocommerce' ),
 					'slug'    => 'withdrawal',
 					'content' => '<!-- wp:shortcode -->[ddwcwr_withdrawal_form]<!-- /wp:shortcode -->',

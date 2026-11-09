@@ -2,23 +2,23 @@
 .distignore
 .git
 .gitignore
-build
-bin
+/build
+/bin
 node_modules
-src
-composer.json
-composer.lock
-Gruntfile.js
-package.json
-package-lock.json
-phpcs.xml
-config
-webpack.config.js
-babel.config.js
+/src
+/composer.json
+/composer.lock
+/Gruntfile.js
+/package.json
+/package-lock.json
+/phpcs.xml
+/config
+/webpack.config.js
+/babel.config.js
 *.tar.gz
 *.zip
 *.map
-tests
+/tests
 
 # Developer documents. readme.txt ships instead.
 MIGRATION.md

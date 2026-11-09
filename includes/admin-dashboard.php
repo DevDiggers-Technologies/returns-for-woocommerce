@@ -226,11 +226,18 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_get_requests_template( $type = '' ) {
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only routing.
+			// Screen routing on a page only staff can open; nothing is changed by these values.
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$request_id = ! empty( $_GET['request-id'] ) ? absint( $_GET['request-id'] ) : 0;
 			$action     = ! empty( $_GET['action'] ) ? sanitize_key( wp_unslash( $_GET['action'] ) ) : '';
-			$status     = ! empty( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : '';
 			// phpcs:enable
+
+			// The status filter comes from the status links and the list form, which carry a nonce.
+			$status = '';
+
+			if ( ! empty( $_GET['status'] ) && isset( $_GET['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr_nonce'] ) ), 'ddwcwr_nonce_action' ) ) {
+				$status = sanitize_key( wp_unslash( $_GET['status'] ) );
+			}
 
 			if ( $request_id ) {
 				new Admin\Request\DDWCWR_Request_View_Template( $request_id, $this->ddwcwr_configuration );
@@ -376,11 +383,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		 * @return void
 		 */
 		protected function ddwcwr_print_notices() {
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Display only.
-			if ( ! empty( $_GET['ddwcwr-message'] ) ) {
-				ddfw_print_notification( sanitize_text_field( wp_unslash( $_GET['ddwcwr-message'] ) ), ! empty( $_GET['ddwcwr-error'] ) ? 'error' : 'success' );
-			}
-			// phpcs:enable
+			ddwcwr_print_admin_notice();
 		}
 
 		/**

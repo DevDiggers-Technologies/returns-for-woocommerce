@@ -90,7 +90,7 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 			return [
 				'type'              => 'select',
 				'id'                => $id,
-				'name'              => '_' . str_replace( '-', '_', $id ) . '[]',
+				'name'              => str_replace( '-', '_', $id ) . '[]',
 				'label'             => $label,
 				'description'       => $description,
 				'options'           => $options,
@@ -107,7 +107,10 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		 * @return array
 		 */
 		protected static function locked( $field ) {
-			return ddfw_locked_field( $field + [ 'value' => '' ], 'ddwcwr' );
+			$field         = ddfw_locked_field( $field + [ 'value' => '' ], 'ddwcwr' );
+			$field['name'] = ddwcwr_option_name( $field['id'] );
+
+			return $field;
 		}
 
 		/**
@@ -137,6 +140,28 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		 * @return array
 		 */
 		public static function get_tab_sections( $tab, $c ) {
+			$sections = self::build_tab_sections( $tab, $c );
+
+			// Every field saves to the option named after its id ( ddwcwr_<key> ), set here so the form posts that name.
+			foreach ( $sections as $index => $section ) {
+				foreach ( isset( $section['fields'] ) ? $section['fields'] : [] as $field_index => $field ) {
+					if ( ! empty( $field['id'] ) && empty( $field['name'] ) ) {
+						$sections[ $index ]['fields'][ $field_index ]['name'] = ddwcwr_option_name( $field['id'] );
+					}
+				}
+			}
+
+			return $sections;
+		}
+
+		/**
+		 * Sections of a configuration tab, before the option names are set.
+		 *
+		 * @param string $tab Tab.
+		 * @param array  $c Configuration.
+		 * @return array
+		 */
+		protected static function build_tab_sections( $tab, $c ) {
 			$checkbox = function ( $id, $label, $checkbox_label, $description, $key ) use ( $c ) {
 				return [
 					'type'           => 'checkbox',
@@ -269,7 +294,7 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 								[
 									'type'              => 'categories',
 									'id'                => 'ddwcwr-final-sale-categories',
-									'name'              => '_ddwcwr_final_sale_categories[]',
+									'name'              => 'ddwcwr_final_sale_categories[]',
 									'label'             => esc_html__( 'Final-sale categories', 'devdiggers-returns-for-woocommerce' ),
 									'description'       => esc_html__( 'Products in these categories cannot be returned. Products also have their own "Final sale" box. The EU right of withdrawal is not affected.', 'devdiggers-returns-for-woocommerce' ),
 									'value'             => (array) $c['final_sale_categories'],
@@ -472,7 +497,7 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 								[
 									'type'              => 'categories',
 									'id'                => 'ddwcwr-withdrawal-excluded-categories',
-									'name'              => '_ddwcwr_withdrawal_excluded_categories[]',
+									'name'              => 'ddwcwr_withdrawal_excluded_categories[]',
 									'label'             => esc_html__( 'Exempt categories', 'devdiggers-returns-for-woocommerce' ),
 									'description'       => esc_html__( 'Goods exempt under Art. 16 (made to order, perishable, sealed hygiene goods…). Products also have their own "Exempt from withdrawal" box.', 'devdiggers-returns-for-woocommerce' ),
 									'value'             => (array) $c['withdrawal_excluded_categories'],
@@ -615,9 +640,9 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 		protected static function get_reasons_html( $reasons ) {
 			$row = function ( $index, $reason ) {
 				return '<tr class="ddwcwr-repeater-row">' . self::get_drag_handle_html()
-					. '<td><input type="hidden" name="_ddwcwr_reasons[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $reason['slug'] ) . '" /><input type="text" class="regular-text" name="_ddwcwr_reasons[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $reason['label'] ) . '" aria-label="' . esc_attr__( 'Reason', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
-					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="_ddwcwr_reasons[' . esc_attr( $index ) . '][require_photo]" value="yes" ' . checked( ! empty( $reason['require_photo'] ), true, false ) . ' aria-label="' . esc_attr__( 'Photo required', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
-					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="_ddwcwr_reasons[' . esc_attr( $index ) . '][status]" value="active" ' . checked( empty( $reason['status'] ) || 'active' === $reason['status'], true, false ) . ' aria-label="' . esc_attr__( 'Active', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
+					. '<td><input type="hidden" name="ddwcwr_reasons[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $reason['slug'] ) . '" /><input type="text" class="regular-text" name="ddwcwr_reasons[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $reason['label'] ) . '" aria-label="' . esc_attr__( 'Reason', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
+					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="ddwcwr_reasons[' . esc_attr( $index ) . '][require_photo]" value="yes" ' . checked( ! empty( $reason['require_photo'] ), true, false ) . ' aria-label="' . esc_attr__( 'Photo required', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
+					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="ddwcwr_reasons[' . esc_attr( $index ) . '][status]" value="active" ' . checked( empty( $reason['status'] ) || 'active' === $reason['status'], true, false ) . ' aria-label="' . esc_attr__( 'Active', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
 					. '<td class="ddwcwr-col-actions">' . self::get_remove_button_html() . '</td>'
 					. '</tr>';
 			};
@@ -657,9 +682,9 @@ if ( ! class_exists( 'DDWCWR_Configuration_Template' ) ) {
 					: self::get_remove_button_html();
 
 				return '<tr class="ddwcwr-repeater-row">' . self::get_drag_handle_html()
-					. '<td><input type="hidden" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $status['slug'] ) . '" /><input type="text" class="regular-text" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $status['label'] ) . '" aria-label="' . esc_attr__( 'Status name', 'devdiggers-returns-for-woocommerce' ) . '" />' . ( $status['slug'] ? '<span class="ddwcwr-list-meta">' . esc_html( $status['slug'] ) . '</span>' : '' ) . '</td>'
-					. '<td class="ddwcwr-col-color"><input type="colorpicker" class="ddfw-color-picker" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][color]" value="' . esc_attr( $status['color'] ) . '" data-default-value="' . esc_attr( $status['color'] ) . '" aria-label="' . esc_attr__( 'Color', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
-					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="_ddwcwr_statuses[' . esc_attr( $index ) . '][notify]" value="yes" ' . checked( ! empty( $status['notify'] ), true, false ) . ' aria-label="' . esc_attr__( 'Notify customer', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
+					. '<td><input type="hidden" name="ddwcwr_statuses[' . esc_attr( $index ) . '][slug]" value="' . esc_attr( $status['slug'] ) . '" /><input type="text" class="regular-text" name="ddwcwr_statuses[' . esc_attr( $index ) . '][label]" value="' . esc_attr( $status['label'] ) . '" aria-label="' . esc_attr__( 'Status name', 'devdiggers-returns-for-woocommerce' ) . '" />' . ( $status['slug'] ? '<span class="ddwcwr-list-meta">' . esc_html( $status['slug'] ) . '</span>' : '' ) . '</td>'
+					. '<td class="ddwcwr-col-color"><input type="colorpicker" class="ddfw-color-picker" name="ddwcwr_statuses[' . esc_attr( $index ) . '][color]" value="' . esc_attr( $status['color'] ) . '" data-default-value="' . esc_attr( $status['color'] ) . '" aria-label="' . esc_attr__( 'Color', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
+					. '<td class="ddwcwr-col-toggle"><input type="checkbox" name="ddwcwr_statuses[' . esc_attr( $index ) . '][notify]" value="yes" ' . checked( ! empty( $status['notify'] ), true, false ) . ' aria-label="' . esc_attr__( 'Notify customer', 'devdiggers-returns-for-woocommerce' ) . '" /></td>'
 					. '<td class="ddwcwr-col-actions">' . $actions . '</td>'
 					. '</tr>';
 			};

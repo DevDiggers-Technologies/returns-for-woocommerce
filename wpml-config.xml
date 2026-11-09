@@ -1,14 +1,14 @@
 <wpml-config>
 	<admin-texts>
-		<key name="_ddwcwr_my_account_endpoint_title" />
-		<key name="_ddwcwr_policy_text" />
-		<key name="_ddwcwr_withdrawal_digital_consent_text" />
-		<key name="_ddwcwr_reasons">
+		<key name="ddwcwr_my_account_endpoint_title" />
+		<key name="ddwcwr_policy_text" />
+		<key name="ddwcwr_withdrawal_digital_consent_text" />
+		<key name="ddwcwr_reasons">
 			<key name="*">
 				<key name="label" />
 			</key>
 		</key>
-		<key name="_ddwcwr_statuses">
+		<key name="ddwcwr_statuses">
 			<key name="*">
 				<key name="label" />
 			</key>

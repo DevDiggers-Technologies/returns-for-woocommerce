@@ -241,7 +241,11 @@ To build the assets from source:
 1. Run `npm install` to install the build dependencies listed in `package.json`.
 2. Run `npm run build` to compile the production assets into `assets/js` and `assets/css`.
 
-The build configuration is in `webpack.config.js` and `babel.config.js`. Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
+The build configuration is in `webpack.config.js` and `babel.config.js`.
+
+The admin screens share the bundled DevDiggers Framework. Its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard and review notice) are built from the human readable source that ships inside this plugin in `devdiggers-framework/src`, with `devdiggers-framework/webpack.config.js`, `devdiggers-framework/babel.config.js` and `devdiggers-framework/package.json`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
+
+Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 
 == Changelog ==
 

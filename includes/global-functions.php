@@ -250,6 +250,58 @@ if ( ! function_exists( 'ddwcwr_get_portal_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'ddwcwr_option_name' ) ) {
+	/**
+	 * Option a settings field saves to: its id with dashes as underscores ( ddwcwr-return-window-days → ddwcwr_return_window_days ).
+	 *
+	 * @param string $field_id Field id.
+	 * @return string
+	 */
+	function ddwcwr_option_name( $field_id ) {
+		return str_replace( '-', '_', $field_id );
+	}
+}
+
+if ( ! function_exists( 'ddwcwr_admin_redirect' ) ) {
+	/**
+	 * Redirect after an admin action, keeping the message for the next screen of this user only.
+	 *
+	 * @param string $url Admin URL to go to.
+	 * @param string $message Message to show there.
+	 * @param bool   $error Show it as an error.
+	 * @return void
+	 */
+	function ddwcwr_admin_redirect( $url, $message, $error = false ) {
+		set_transient(
+			'ddwcwr_admin_notice_' . get_current_user_id(),
+			[
+				'message' => $message,
+				'error'   => $error,
+			],
+			MINUTE_IN_SECONDS
+		);
+		wp_safe_redirect( $url );
+		exit;
+	}
+}
+
+if ( ! function_exists( 'ddwcwr_print_admin_notice' ) ) {
+	/**
+	 * Print, once, the message left by ddwcwr_admin_redirect().
+	 *
+	 * @return void
+	 */
+	function ddwcwr_print_admin_notice() {
+		$key    = 'ddwcwr_admin_notice_' . get_current_user_id();
+		$notice = get_transient( $key );
+
+		if ( is_array( $notice ) && ! empty( $notice['message'] ) ) {
+			delete_transient( $key );
+			ddfw_print_notification( esc_html( $notice['message'] ), empty( $notice['error'] ) ? 'success' : 'error' );
+		}
+	}
+}
+
 if ( ! function_exists( 'ddwcwr_get_withdrawal_url' ) ) {
 	/**
 	 * Withdrawal page URL, optionally for one order.
@@ -453,7 +505,7 @@ if ( ! function_exists( 'ddwcwr_get_list_views' ) ) {
 	 */
 	function ddwcwr_get_list_views( $menu, $current, $type = '' ) {
 		$counts = ( new \DDWCWPReturns\Helper\Request\DDWCWR_Request_Helper() )->get_status_counts( $type );
-		$base   = admin_url( 'admin.php?page=ddwcwr-dashboard&menu=' . $menu );
+		$base   = add_query_arg( 'ddwcwr_nonce', wp_create_nonce( 'ddwcwr_nonce_action' ), admin_url( 'admin.php?page=ddwcwr-dashboard&menu=' . $menu ) );
 		$open   = 0;
 		$link   = function ( $slug, $label, $count ) use ( $base, $current ) {
 			return sprintf( '<a href="%1$s"%2$s>%3$s <span class="count">(%4$d)</span></a>', esc_url( $slug ? add_query_arg( 'status', $slug, $base ) : $base ), $current === $slug ? ' class="current" aria-current="page"' : '', esc_html( $label ), $count );
@@ -475,7 +527,7 @@ if ( ! function_exists( 'ddwcwr_get_list_views' ) ) {
 		}
 
 		if ( 'withdrawals' === $menu ) {
-			$unmatched = count( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ) );
+			$unmatched = count( (array) get_option( 'ddwcwr_unmatched_withdrawals', [] ) );
 
 			if ( $unmatched ) {
 				$views['unmatched'] = $link( 'unmatched', __( 'Unmatched statements', 'devdiggers-returns-for-woocommerce' ), $unmatched );
@@ -576,6 +628,38 @@ if ( ! function_exists( 'ddwcwr_kses_icon' ) ) {
 			'path'   => $shape,
 			'circle' => $shape,
 		];
+	}
+}
+
+if ( ! function_exists( 'ddwcwr_kses_allowed_html' ) ) {
+	/**
+	 * Allowed HTML for escaping the returns portal and withdrawal form markup (shortcodes and blocks).
+	 *
+	 * @return array
+	 */
+	function ddwcwr_kses_allowed_html() {
+		$allowed = array_merge( ddfw_kses_allowed_form_html(), ddwcwr_kses_icon() );
+		$aria    = [
+			'aria-describedby' => true,
+			'aria-label'       => true,
+			'aria-labelledby'  => true,
+			'aria-hidden'      => true,
+			'aria-invalid'     => true,
+			'aria-required'    => true,
+			'aria-expanded'    => true,
+			'aria-controls'    => true,
+			'aria-current'     => true,
+			'aria-live'        => true,
+		];
+
+		foreach ( [ 'input', 'select', 'textarea', 'button', 'label', 'form', 'fieldset', 'a', 'div', 'span', 'p', 'ul', 'ol', 'li', 'section', 'nav' ] as $tag ) {
+			$allowed[ $tag ] = array_merge( isset( $allowed[ $tag ] ) ? $allowed[ $tag ] : [], $aria );
+		}
+
+		$allowed['form']  = array_merge( $allowed['form'], [ 'novalidate' => true ] );
+		$allowed['input'] = array_merge( $allowed['input'], [ 'inputmode' => true, 'capture' => true ] );
+
+		return $allowed;
 	}
 }
 

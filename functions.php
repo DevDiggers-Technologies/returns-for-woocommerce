@@ -108,11 +108,17 @@ if ( ! class_exists( 'DDWCWR_Free_Init' ) ) {
 			require_once DDWCWR_PLUGIN_FILE . 'autoload/autoload.php';
 			require_once DDWCWR_PLUGIN_FILE . 'includes/global-functions.php';
 			require_once DDWCWR_PLUGIN_FILE . 'includes/install.php';
+
+			// Settings saved by earlier builds under the old names move before they are read.
+			if ( DDWCWR_Install::DB_VERSION !== get_option( 'ddwcwr_free_db_version' ) ) {
+				DDWCWR_Install::ddwcwr_migrate_option_names();
+			}
+
 			require_once DDWCWR_PLUGIN_FILE . 'includes/globals-variables.php';
 
 			// The activation hook does not run on every site of a network, or after a manual upload over an older
 			// copy: install whenever this site has not been set up for this version. Every step is safe to repeat.
-			if ( DDWCWR_Install::DB_VERSION !== get_option( '_ddwcwr_free_db_version' ) ) {
+			if ( DDWCWR_Install::DB_VERSION !== get_option( 'ddwcwr_free_db_version' ) ) {
 				DDWCWR_Install::ddwcwr_install();
 			}
 

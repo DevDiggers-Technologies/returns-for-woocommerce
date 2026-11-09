@@ -127,11 +127,18 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_serve_file() {
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only download authorized by capability, ownership or the secret request key.
-			$request_id = isset( $_GET['request'] ) ? absint( $_GET['request'] ) : 0;
-			$file_key   = isset( $_GET['file'] ) ? sanitize_text_field( wp_unslash( $_GET['file'] ) ) : '';
+			// Links shown on the site carry a nonce. E-mailed links (the return label) cannot, because nonces
+			// expire and are tied to a session, so they carry the request's secret key instead.
+			// phpcs:disable WordPress.Security.NonceVerification.Recommended
 			$access_key = isset( $_GET['key'] ) ? sanitize_text_field( wp_unslash( $_GET['key'] ) ) : '';
 			// phpcs:enable
+
+			if ( '' === $access_key && ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'ddwcwr_file' ) ) ) {
+				wp_die( esc_html__( 'This link has expired. Please reload the page and try again.', 'devdiggers-returns-for-woocommerce' ), '', [ 'response' => 403 ] );
+			}
+
+			$request_id = isset( $_GET['request'] ) ? absint( $_GET['request'] ) : 0;
+			$file_key   = isset( $_GET['file'] ) ? sanitize_text_field( wp_unslash( $_GET['file'] ) ) : '';
 
 			$request = $this->request_helper->get_request( $request_id );
 
@@ -386,7 +393,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 					'category'        => 'woocommerce',
 					'editor_script'   => 'ddwcwr-blocks',
 					'render_callback' => function () {
-						return do_shortcode( '[ddwcwr_returns_portal]' );
+						return wp_kses( do_shortcode( '[ddwcwr_returns_portal]' ), ddwcwr_kses_allowed_html() );
 					},
 				]
 			);
@@ -399,7 +406,7 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 					'category'        => 'woocommerce',
 					'editor_script'   => 'ddwcwr-blocks',
 					'render_callback' => function () {
-						return do_shortcode( '[ddwcwr_withdrawal_form]' );
+						return wp_kses( do_shortcode( '[ddwcwr_withdrawal_form]' ), ddwcwr_kses_allowed_html() );
 					},
 				]
 			);
@@ -434,7 +441,11 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_validate_digital_consent( $data, $errors ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the checkout nonce.
+			// WooCommerce verified this nonce before running the hook; checked again here before reading the post.
+			if ( ! isset( $_POST['woocommerce-process-checkout-nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['woocommerce-process-checkout-nonce'] ) ), 'woocommerce-process_checkout' ) ) {
+				return;
+			}
+
 			if ( ddwcwr_cart_needs_digital_consent() && empty( $_POST['ddwcwr_digital_consent'] ) ) {
 				$errors->add( 'ddwcwr_digital_consent', esc_html__( 'Please agree to the immediate supply of the digital content to place your order.', 'devdiggers-returns-for-woocommerce' ) );
 			}
@@ -447,7 +458,11 @@ if ( ! class_exists( 'DDWCWR_Common_Functions' ) ) {
 		 * @return void
 		 */
 		public function ddwcwr_save_digital_consent( $order ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Missing -- WooCommerce verified the checkout nonce.
+			// WooCommerce verified this nonce before running the hook; checked again here before reading the post.
+			if ( ! isset( $_POST['woocommerce-process-checkout-nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['woocommerce-process-checkout-nonce'] ) ), 'woocommerce-process_checkout' ) ) {
+				return;
+			}
+
 			if ( ddwcwr_cart_needs_digital_consent() && ! empty( $_POST['ddwcwr_digital_consent'] ) ) {
 				$order->update_meta_data( '_ddwcwr_digital_consent', time() );
 			}

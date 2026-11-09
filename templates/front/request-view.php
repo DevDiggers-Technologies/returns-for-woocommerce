@@ -215,7 +215,8 @@ if ( 'rejected' === $request['status'] ) {
 											[
 												'action'  => 'ddwcwr_file',
 												'request' => $request['id'],
-												'file'    => $ddwcwr_file['key'],
+												'file'     => $ddwcwr_file['key'],
+												'_wpnonce' => wp_create_nonce( 'ddwcwr_file' ),
 											],
 											$ddwcwr_url_args
 										),

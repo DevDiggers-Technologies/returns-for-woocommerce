@@ -100,7 +100,7 @@ foreach ( [
 }
 
 // 2. No licensing, updater, remote calls or REST API.
-ddwcwr_forbid( $php, [ 'ddfw_register_plugin_for_updates', 'get_license_layout', '_ddwcwr_purchase_code', '_ddwcwr_license_activated', 'DDFW_Plugin_Updater', 'wp_remote_', 'register_rest_route', 'rest_api_init' ], 'Licensing or remote reference', $errors );
+ddwcwr_forbid( $php, [ 'ddfw_register_plugin_for_updates', 'get_license_layout', 'ddwcwr_purchase_code', 'ddwcwr_license_activated', 'DDFW_Plugin_Updater', 'wp_remote_', 'register_rest_route', 'rest_api_init' ], 'Licensing or remote reference', $errors );
 
 foreach ( [ 'includes/class-ddfw-plugin-updater.php', 'includes/class-devdiggers-notifications.php', 'templates/layout/license.php' ] as $file ) {
 	if ( file_exists( $root . 'devdiggers-framework/' . $file ) ) {
@@ -254,7 +254,7 @@ foreach ( [
 	'helper/request/request-helper.php'  => [ 'ddwcwr_is_final_sale( $item )' ],
 	'templates/front/order-panel.php'    => [ 'ddwcwr-order-deadline' ],
 	'templates/front/withdrawal-form.php' => [ 'ddwcwr-model-form' ],
-	'wpml-config.xml'                    => [ '_ddwcwr_reasons' ],
+	'wpml-config.xml'                    => [ 'ddwcwr_reasons' ],
 ] as $file => $needles ) {
 	foreach ( $needles as $needle ) {
 		if ( false === strpos( ddwcwr_read( $root . $file ), $needle ) ) {
@@ -264,7 +264,7 @@ foreach ( [
 }
 
 // 11. No constants or upgrade routine a first release has no use for.
-ddwcwr_forbid( $php, [ 'DDWCWR_VERSION', 'DDWCWR_DB_VERSION', '_ddwcwr_db_version', 'wp_unschedule_hook', 'as_unschedule_all_actions' ], 'Unneeded', $errors );
+ddwcwr_forbid( $php, [ 'DDWCWR_VERSION', 'DDWCWR_DB_VERSION', 'ddwcwr_db_version', 'wp_unschedule_hook', 'as_unschedule_all_actions' ], 'Unneeded', $errors );
 
 if ( $errors ) {
 	echo "Free/Pro boundary check FAILED:\n";

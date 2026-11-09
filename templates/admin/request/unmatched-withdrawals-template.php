@@ -19,7 +19,7 @@ if ( ! class_exists( 'DDWCWR_Unmatched_Withdrawals_Template' ) ) {
 		 * Construct
 		 */
 		public function __construct() {
-			$log = array_reverse( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ) );
+			$log = array_reverse( (array) get_option( 'ddwcwr_unmatched_withdrawals', [] ) );
 			?>
 			<div class="ddwcwr-list-form">
 				<ul class="subsubsub">

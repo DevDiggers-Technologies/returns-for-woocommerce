@@ -21,14 +21,16 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 		 * Construct
 		 */
 		public function __construct() {
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only routing.
-			$order_id = ! empty( $_GET['order-id'] ) ? absint( ltrim( sanitize_text_field( wp_unslash( $_GET['order-id'] ) ), '#' ) ) : 0;
-			$type     = ! empty( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'return';
+			$order_id = 0;
+			$type     = 'return';
 
-			if ( ! empty( $_GET['ddwcwr-message'] ) ) {
-				ddfw_print_notification( sanitize_text_field( wp_unslash( $_GET['ddwcwr-message'] ) ), ! empty( $_GET['ddwcwr-error'] ) ? 'error' : 'success' );
+			// The order comes from the order screen button or the order search form, which carry a nonce.
+			if ( isset( $_GET['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr_nonce'] ) ), 'ddwcwr_create_request' ) ) {
+				$order_id = ! empty( $_GET['order-id'] ) ? absint( ltrim( sanitize_text_field( wp_unslash( $_GET['order-id'] ) ), '#' ) ) : 0;
+				$type     = ! empty( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'return';
 			}
-			// phpcs:enable
+
+			ddwcwr_print_admin_notice();
 
 			$order = $order_id ? ddwcwr_order_adapter()->get_order( $order_id ) : false;
 			?>
@@ -59,6 +61,7 @@ if ( ! class_exists( 'DDWCWR_Request_Create_Template' ) ) {
 						<input type="hidden" name="page" value="ddwcwr-dashboard" />
 						<input type="hidden" name="menu" value="requests" />
 						<input type="hidden" name="action" value="add" />
+						<?php wp_nonce_field( 'ddwcwr_create_request', 'ddwcwr_nonce', false ); ?>
 						<table class="form-table" role="presentation">
 							<tr>
 								<th scope="row"><label for="ddwcwr-order-id"><?php esc_html_e( 'Order number', 'devdiggers-returns-for-woocommerce' ); ?></label></th>

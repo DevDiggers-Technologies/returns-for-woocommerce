@@ -61,7 +61,7 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Template' ) ) {
 						'actions'  => [
 							[
 								'label'   => esc_html__( 'Open requests', 'devdiggers-returns-for-woocommerce' ),
-								'url'     => admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&status=open' ),
+								'url'     => add_query_arg( 'ddwcwr_nonce', wp_create_nonce( 'ddwcwr_nonce_action' ), admin_url( 'admin.php?page=ddwcwr-dashboard&menu=requests&status=open' ) ),
 								'primary' => true,
 							],
 						],

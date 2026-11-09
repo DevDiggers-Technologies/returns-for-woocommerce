@@ -86,7 +86,8 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 				[
 					'action'  => 'ddwcwr_file',
 					'request' => $this->request['id'],
-					'file'    => $key,
+					'file'     => $key,
+					'_wpnonce' => wp_create_nonce( 'ddwcwr_file' ),
 				],
 				admin_url( 'admin-post.php' )
 			);
@@ -270,11 +271,7 @@ if ( ! class_exists( 'DDWCWR_Request_View_Template' ) ) {
 				}
 			}
 
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Display only.
-			if ( ! empty( $_GET['ddwcwr-message'] ) ) {
-				ddfw_print_notification( sanitize_text_field( wp_unslash( $_GET['ddwcwr-message'] ) ), ! empty( $_GET['ddwcwr-error'] ) ? 'error' : 'success' );
-			}
-			// phpcs:enable
+			ddwcwr_print_admin_notice();
 			?>
 			<div class="ddwcwr-request-screen">
 				<div class="ddfw-edit-screen-bar">

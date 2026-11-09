@@ -28,15 +28,18 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 		 * rendered date filter (handled by DDFW_Dashboard) and the SQL scoping done inside
 		 * each plugin's dashboard helper, guaranteeing they always match.
 		 *
-		 * Routing/read-only parameters; no state change, so nonce verification is not required.
+		 * The range is read from the date filter form, which carries a nonce.
 		 *
 		 * @param string $default        Default range key when none is provided in the request.
 		 * @param string $all_time_start Start date used for the "all_time" range.
 		 * @return array{from:string,to:string,label:string,key:string}
 		 */
 		public static function get_date_range( $default = '30_days', $all_time_start = '2020-01-01' ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only dashboard filter parameter.
-			$range = ! empty( $_GET['date_range'] ) ? sanitize_text_field( wp_unslash( $_GET['date_range'] ) ) : $default;
+			$range = $default;
+
+			if ( ! empty( $_GET['date_range'] ) && isset( $_GET['ddfw_dash_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddfw_dash_nonce'] ) ), 'ddfw_dashboard_filter' ) ) {
+				$range = sanitize_text_field( wp_unslash( $_GET['date_range'] ) );
+			}
 
 			return self::resolve_range( $range, $all_time_start );
 		}
@@ -126,10 +129,18 @@ if ( ! class_exists( 'DDFW_Dashboard_Data' ) ) {
 					];
 					break;
 				case 'custom':
-					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only dashboard filter parameter.
-					$from = ! empty( $_GET['from_date'] ) ? sanitize_text_field( wp_unslash( $_GET['from_date'] ) ) : gmdate( 'Y-m-d', strtotime( '-30 days', $now ) );
-					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only dashboard filter parameter.
-					$to   = ! empty( $_GET['to_date'] ) ? sanitize_text_field( wp_unslash( $_GET['to_date'] ) ) : current_time( 'Y-m-d' );
+					$from = gmdate( 'Y-m-d', strtotime( '-30 days', $now ) );
+					$to   = current_time( 'Y-m-d' );
+
+					// The custom dates come from the date filter form, which carries a nonce.
+					if ( isset( $_GET['ddfw_dash_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddfw_dash_nonce'] ) ), 'ddfw_dashboard_filter' ) ) {
+						$from = ! empty( $_GET['from_date'] ) ? sanitize_text_field( wp_unslash( $_GET['from_date'] ) ) : $from;
+						$to   = ! empty( $_GET['to_date'] ) ? sanitize_text_field( wp_unslash( $_GET['to_date'] ) ) : $to;
+					}
+
+					// Only real dates reach the queries.
+					$from = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $from ) ? $from : gmdate( 'Y-m-d', strtotime( '-30 days', $now ) );
+					$to   = preg_match( '/^\d{4}-\d{2}-\d{2}$/', $to ) ? $to : current_time( 'Y-m-d' );
 					$data = [
 						'from'  => $from,
 						'to'    => $to,

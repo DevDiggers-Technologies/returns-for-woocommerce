@@ -209,6 +209,7 @@ if ( ! class_exists( 'DDFW_Dashboard' ) ) {
 			?>
 			<div class="ddfw-dash-filters">
 				<form method="get" class="ddfw-dash-date-filter-form">
+					<?php wp_nonce_field( 'ddfw_dashboard_filter', 'ddfw_dash_nonce', false ); ?>
 					<input type="hidden" name="page" value="<?php echo esc_attr( $page ); ?>" />
 					<input type="hidden" name="menu" value="<?php echo esc_attr( $menu ); ?>" />
 					<?php foreach ( $extra as $extra_key => $extra_value ) : ?>

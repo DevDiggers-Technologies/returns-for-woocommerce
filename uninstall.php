@@ -9,7 +9,7 @@
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 
-if ( 'yes' !== get_option( '_ddwcwr_delete_data_on_uninstall' ) ) {
+if ( 'yes' !== get_option( 'ddwcwr_delete_data_on_uninstall' ) ) {
 	return;
 }
 
@@ -20,7 +20,7 @@ foreach ( [ 'ddwcwr_requests', 'ddwcwr_request_items', 'ddwcwr_messages' ] as $d
 	$wpdb->query( $wpdb->prepare( 'DROP TABLE IF EXISTS %i', $wpdb->prefix . $ddwcwr_table ) );
 }
 
-foreach ( [ '_ddwcwr_portal_page_id', '_ddwcwr_withdrawal_page_id' ] as $ddwcwr_page_option ) {
+foreach ( [ 'ddwcwr_portal_page_id', 'ddwcwr_withdrawal_page_id' ] as $ddwcwr_page_option ) {
 	$ddwcwr_page_id = absint( get_option( $ddwcwr_page_option ) );
 
 	if ( $ddwcwr_page_id ) {
@@ -28,7 +28,7 @@ foreach ( [ '_ddwcwr_portal_page_id', '_ddwcwr_withdrawal_page_id' ] as $ddwcwr_
 	}
 }
 
-$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s", $wpdb->esc_like( '_ddwcwr_' ) . '%', $wpdb->esc_like( '_transient_ddwcwr_' ) . '%' ) );
+$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s", $wpdb->esc_like( 'ddwcwr_' ) . '%', $wpdb->esc_like( '_transient_ddwcwr_' ) . '%' ) );
 $wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->postmeta} WHERE meta_key LIKE %s", $wpdb->esc_like( '_ddwcwr_' ) . '%' ) );
 // phpcs:enable
 

@@ -29,8 +29,8 @@ if ( ! class_exists( 'DDWCWR_File_Handler' ) ) {
 			// Pages only: on EP_ROOT the endpoint would swallow a root-level page with the same slug (the portal page "returns").
 			add_rewrite_endpoint( $ddwcwr_configuration['my_account_endpoint'], EP_PAGES );
 
-			if ( 'yes' === get_option( '_ddwcwr_flush_rewrite_rules' ) ) {
-				delete_option( '_ddwcwr_flush_rewrite_rules' );
+			if ( 'yes' === get_option( 'ddwcwr_flush_rewrite_rules' ) ) {
+				delete_option( 'ddwcwr_flush_rewrite_rules' );
 				flush_rewrite_rules();
 			}
 

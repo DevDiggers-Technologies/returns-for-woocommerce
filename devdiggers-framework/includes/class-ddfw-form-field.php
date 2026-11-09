@@ -135,6 +135,11 @@ if ( ! class_exists( 'DDFW_Form_Field' ) ) {
 
 			if ( ! empty( $args['custom_attributes'] ) && is_array( $args['custom_attributes'] ) ) {
 				foreach ( $args['custom_attributes'] as $attribute => $attribute_value ) {
+					// Event handlers (onclick, onfocus...) are never output, so an attribute cannot run script.
+					if ( ! is_string( $attribute ) || 0 === stripos( $attribute, 'on' ) ) {
+						continue;
+					}
+
 					$custom_attributes[] = esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
 				}
 			}
@@ -488,7 +493,14 @@ if ( ! class_exists( 'DDFW_Form_Field' ) ) {
 										<?php echo ! empty( $column['class'] ) ? 'class="' . esc_attr( implode( ' ', (array) $column['class'] ) ) . '"' : ''; ?>
 										<?php echo ! empty( $column['placeholder'] ) ? 'placeholder="' . esc_attr( $column['placeholder'] ) . '"' : ''; ?>
 										<?php echo isset( $column['min'] ) ? 'min="' . esc_attr( $column['min'] ) . '"' : ''; ?>
-										<?php echo ! empty( $column['custom_attributes'] ) ? implode( ' ', array_map( fn( $k, $v ) => esc_attr( $k ) . '="' . esc_attr( $v ) . '"', array_keys( $column['custom_attributes'] ), $column['custom_attributes'] ) ) : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Each name and value is escaped above. ?>
+										<?php
+										foreach ( ! empty( $column['custom_attributes'] ) ? (array) $column['custom_attributes'] : [] as $attribute => $attribute_value ) {
+											// Event handlers (onclick, onfocus...) are never output, so an attribute cannot run script.
+											if ( is_string( $attribute ) && 0 !== stripos( $attribute, 'on' ) ) {
+												echo ' ' . esc_attr( $attribute ) . '="' . esc_attr( $attribute_value ) . '"';
+											}
+										}
+										?>
 									/>
 									<?php echo wp_kses_post( isset( $column['suffix'] ) ? $column['suffix'] : '' ); ?>
 								</<?php echo esc_attr( $wrapper ); ?>>

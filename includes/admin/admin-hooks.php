@@ -34,7 +34,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Hooks' ) ) {
 			add_action(
 				'update_option__ddwcwr_my_account_endpoint',
 				function () {
-					update_option( '_ddwcwr_flush_rewrite_rules', 'yes' );
+					update_option( 'ddwcwr_flush_rewrite_rules', 'yes' );
 				}
 			);
 			add_action( 'admin_init', [ $this, 'ddwcwr_strip_list_referer' ] );

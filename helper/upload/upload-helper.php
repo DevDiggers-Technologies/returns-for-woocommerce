@@ -37,7 +37,7 @@ if ( ! class_exists( 'DDWCWR_Upload_Helper' ) ) {
 				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Small protection files written once.
 				file_put_contents( $dir . '/.htaccess', "Require all denied\nDeny from all\n" );
 				// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
-				file_put_contents( $dir . '/index.php', "<?php\n// Silence is golden.\n" );
+				file_put_contents( $dir . '/index.php', '' );
 			}
 
 			return $dir;

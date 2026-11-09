@@ -2,11 +2,10 @@
 # This file is distributed under the GPL-3.0-or-later.
 msgid ""
 msgstr ""
-"Project-Id-Version: DevDiggers Returns – Returns, Refunds, Exchanges & RMA "
-"for WooCommerce 1.0.0\n"
+"Project-Id-Version: DevDiggers Returns for WooCommerce 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/devdiggers-returns-for-woocommerce\n"
-"POT-Creation-Date: 2026-11-06 14:17:05+00:00\n"
+"POT-Creation-Date: 2026-11-09 07:20:42+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -33,41 +32,41 @@ msgid ""
 "%1$sWooCommerce%2$s in order to work."
 msgstr ""
 
-#: functions.php:128 includes/admin/setup-wizard.php:81
+#: functions.php:134 includes/admin/setup-wizard.php:81
 #: includes/admin-dashboard.php:106 includes/admin-dashboard.php:126
-#: includes/common/common-functions.php:363
+#: includes/common/common-functions.php:370
 msgid "DevDiggers Returns"
 msgstr ""
 
-#: functions.php:144 includes/admin-dashboard.php:134
+#: functions.php:150 includes/admin-dashboard.php:134
 msgid "Dashboard"
 msgstr ""
 
-#: functions.php:145 includes/admin-dashboard.php:159
+#: functions.php:151 includes/admin-dashboard.php:159
 msgid "Configuration"
 msgstr ""
 
-#: functions.php:146
+#: functions.php:152
 msgid "Setup Wizard"
 msgstr ""
 
-#: functions.php:147
+#: functions.php:153
 msgid "Upgrade to Pro"
 msgstr ""
 
-#: functions.php:165
+#: functions.php:171
 msgid "Support"
 msgstr ""
 
-#: functions.php:166
+#: functions.php:172
 msgid "Documentation"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:187
 msgid "Review"
 msgstr ""
 
-#: functions.php:181
+#: functions.php:187
 msgid "Review on WordPress.org"
 msgstr ""
 
@@ -192,8 +191,8 @@ msgstr ""
 #: helper/label/label-helper.php:46 helper/request/request-helper.php:578
 #: helper/resolution/resolution-helper.php:57
 #: helper/resolution/resolution-helper.php:90
-#: includes/admin/admin-functions.php:334
-#: includes/front/front-functions.php:640
+#: includes/admin/admin-functions.php:333
+#: includes/front/front-functions.php:661
 msgid "Request not found."
 msgstr ""
 
@@ -242,7 +241,7 @@ msgstr ""
 msgid "We could not find that order."
 msgstr ""
 
-#: helper/request/request-helper.php:375 includes/front/front-functions.php:750
+#: helper/request/request-helper.php:375 includes/front/front-functions.php:777
 msgid "This order cannot get this kind of request right now."
 msgstr ""
 
@@ -389,141 +388,141 @@ msgstr ""
 msgid "The file could not be saved. Please try again."
 msgstr ""
 
-#: helper/upload/upload-helper.php:297 includes/common/common-functions.php:146
+#: helper/upload/upload-helper.php:297 includes/common/common-functions.php:153
 msgid "File not found."
 msgstr ""
 
-#: includes/admin/admin-functions.php:322
-#: includes/admin/admin-functions.php:448
-#: includes/admin/admin-functions.php:498
-#: includes/admin/admin-functions.php:568
+#: includes/admin/admin-functions.php:321
+#: includes/admin/admin-functions.php:446
+#: includes/admin/admin-functions.php:495
+#: includes/admin/admin-functions.php:565
 msgid "The link has expired. Go back and try again."
 msgstr ""
 
-#: includes/admin/admin-functions.php:326
-#: includes/admin/admin-functions.php:452
+#: includes/admin/admin-functions.php:325
+#: includes/admin/admin-functions.php:450
 msgid "You are not allowed to manage return requests."
 msgstr ""
 
-#: includes/admin/admin-functions.php:353
+#: includes/admin/admin-functions.php:352
 msgid "Status updated."
 msgstr ""
 
-#: includes/admin/admin-functions.php:365
+#: includes/admin/admin-functions.php:364
 msgid "Write a message first."
 msgstr ""
 
-#: includes/admin/admin-functions.php:371
+#: includes/admin/admin-functions.php:370
 msgid "Note added."
 msgstr ""
 
-#: includes/admin/admin-functions.php:371
+#: includes/admin/admin-functions.php:370
 msgid "Message sent to the customer."
 msgstr ""
 
-#: includes/admin/admin-functions.php:392
+#: includes/admin/admin-functions.php:391
 msgid "Choose a label file to upload."
 msgstr ""
 
-#: includes/admin/admin-functions.php:402
+#: includes/admin/admin-functions.php:401
 msgid "Label uploaded and sent to the customer."
 msgstr ""
 
-#: includes/admin/admin-functions.php:417
+#: includes/admin/admin-functions.php:416
 #. translators: 1: carrier, 2: tracking
 msgid "Tracking saved: %1$s %2$s"
 msgstr ""
 
-#: includes/admin/admin-functions.php:418
+#: includes/admin/admin-functions.php:417
 msgid "Tracking saved."
 msgstr ""
 
-#: includes/admin/admin-functions.php:424
+#: includes/admin/admin-functions.php:423
 msgid "Marked as received."
 msgstr ""
 
-#: includes/admin/admin-functions.php:430
+#: includes/admin/admin-functions.php:429
 msgid ""
 "Withdrawal statements cannot be deleted. They are the record that the "
 "customer withdrew."
 msgstr ""
 
-#: includes/admin/admin-functions.php:434
+#: includes/admin/admin-functions.php:433
 msgid "Request deleted."
 msgstr ""
 
-#: includes/admin/admin-functions.php:438
+#: includes/admin/admin-functions.php:436
 msgid "Nothing changed."
 msgstr ""
 
-#: includes/admin/admin-functions.php:488
+#: includes/admin/admin-functions.php:485
 msgid "Request created."
 msgstr ""
 
-#: includes/admin/admin-functions.php:502
+#: includes/admin/admin-functions.php:499
 msgid "You are not allowed to export requests."
 msgstr ""
 
-#: includes/admin/admin-functions.php:572
+#: includes/admin/admin-functions.php:569
 msgid "You are not allowed to do this."
 msgstr ""
 
-#: includes/admin/admin-functions.php:576
+#: includes/admin/admin-functions.php:573
 msgid "Unmatched submissions cleared."
 msgstr ""
 
-#: includes/admin/admin-functions.php:593
+#: includes/admin/admin-functions.php:589
 msgid "Final sale"
 msgstr ""
 
-#: includes/admin/admin-functions.php:596
+#: includes/admin/admin-functions.php:592
 msgid ""
 "Customers cannot request a return for this product. The EU right of "
 "withdrawal is not affected."
 msgstr ""
 
-#: includes/admin/admin-functions.php:603
+#: includes/admin/admin-functions.php:599
 msgid "Exempt from withdrawal"
 msgstr ""
 
-#: includes/admin/admin-functions.php:606
+#: includes/admin/admin-functions.php:602
 msgid ""
 "Exempt under Art. 16 of the EU Consumer Rights Directive (made to order, "
 "perishable, sealed hygiene goods, etc.)."
 msgstr ""
 
-#: includes/admin/admin-functions.php:649
-#: includes/admin/admin-functions.php:696 includes/admin/setup-wizard.php:90
+#: includes/admin/admin-functions.php:645
+#: includes/admin/admin-functions.php:692 includes/admin/setup-wizard.php:90
 #: includes/admin/setup-wizard.php:227 includes/globals-variables.php:26
-#: includes/install.php:261
-#: templates/admin/configuration/configuration-template.php:175
+#: includes/install.php:286
+#: templates/admin/configuration/configuration-template.php:200
 #: templates/admin/configuration/import-template.php:136
-#: templates/front/account-requests.php:33
-#: templates/front/account-requests.php:46 templates/front/order-panel.php:22
+#: templates/front/account-requests.php:37
+#: templates/front/account-requests.php:50 templates/front/order-panel.php:22
 msgid "Returns"
 msgstr ""
 
-#: includes/admin/admin-functions.php:681
+#: includes/admin/admin-functions.php:677
 msgid "No return requests for this order."
 msgstr ""
 
-#: includes/admin/admin-functions.php:685
-#: templates/admin/request/request-create-template.php:159
+#: includes/admin/admin-functions.php:681
+#: templates/admin/request/request-create-template.php:162
 msgid "Create request"
 msgstr ""
 
-#: includes/admin/admin-functions.php:739
+#: includes/admin/admin-functions.php:735
 msgid ""
 "WooCommerce's own order withdrawal form is on, and the DevDiggers Returns "
 "withdrawal button is on too. Customers would see two withdrawal forms. Keep "
 "one of them."
 msgstr ""
 
-#: includes/admin/admin-functions.php:741
+#: includes/admin/admin-functions.php:737
 msgid "Turn off the WooCommerce form"
 msgstr ""
 
-#: includes/admin/admin-functions.php:743
+#: includes/admin/admin-functions.php:739
 msgid "Open the DevDiggers Returns withdrawal settings"
 msgstr ""
 
@@ -598,12 +597,12 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:195
-#: templates/admin/configuration/configuration-template.php:173
+#: templates/admin/configuration/configuration-template.php:198
 msgid "Customer requests"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:195
-#: templates/admin/configuration/configuration-template.php:173
+#: templates/admin/configuration/configuration-template.php:198
 msgid "Let customers request returns and cancellations"
 msgstr ""
 
@@ -612,7 +611,7 @@ msgid "When off, customers see nothing; you can still create requests yourself."
 msgstr ""
 
 #: includes/admin/setup-wizard.php:199
-#: templates/admin/configuration/configuration-template.php:256
+#: templates/admin/configuration/configuration-template.php:281
 msgid "Days to request a return"
 msgstr ""
 
@@ -623,7 +622,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:207
-#: templates/admin/configuration/configuration-template.php:260
+#: templates/admin/configuration/configuration-template.php:285
 msgid "Count days from"
 msgstr ""
 
@@ -632,17 +631,17 @@ msgid "\"Completed\" works best when you complete orders on delivery."
 msgstr ""
 
 #: includes/admin/setup-wizard.php:210
-#: templates/admin/configuration/configuration-template.php:263
+#: templates/admin/configuration/configuration-template.php:288
 msgid "Order completed (delivered)"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:211
-#: templates/admin/configuration/configuration-template.php:264
+#: templates/admin/configuration/configuration-template.php:289
 msgid "Order placed"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:227
-#: templates/admin/configuration/configuration-template.php:175
+#: templates/admin/configuration/configuration-template.php:200
 msgid "Let customers return items for a refund"
 msgstr ""
 
@@ -653,7 +652,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:228
-#: templates/admin/configuration/configuration-template.php:365
+#: templates/admin/configuration/configuration-template.php:390
 msgid "Gateway refunds"
 msgstr ""
 
@@ -668,7 +667,7 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:229
-#: templates/admin/configuration/configuration-template.php:366
+#: templates/admin/configuration/configuration-template.php:391
 msgid "Restock"
 msgstr ""
 
@@ -677,7 +676,7 @@ msgid "Put returned items back in stock when they arrive"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:229
-#: templates/admin/configuration/configuration-template.php:366
+#: templates/admin/configuration/configuration-template.php:391
 msgid "Damaged and defective items are never restocked."
 msgstr ""
 
@@ -687,7 +686,7 @@ msgid "Cancellations"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:230
-#: templates/admin/configuration/configuration-template.php:203
+#: templates/admin/configuration/configuration-template.php:228
 msgid "Let customers ask to cancel an order before it ships"
 msgstr ""
 
@@ -696,7 +695,7 @@ msgid "You approve each one; the order is canceled and refunded."
 msgstr ""
 
 #: includes/admin/setup-wizard.php:243
-#: templates/admin/configuration/configuration-template.php:423
+#: templates/admin/configuration/configuration-template.php:448
 msgid "Withdrawal function"
 msgstr ""
 
@@ -721,17 +720,17 @@ msgid ""
 msgstr ""
 
 #: includes/admin/setup-wizard.php:250
-#: templates/admin/configuration/configuration-template.php:430
+#: templates/admin/configuration/configuration-template.php:455
 msgid "EU and EEA countries"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:251
-#: templates/admin/configuration/configuration-template.php:431
+#: templates/admin/configuration/configuration-template.php:456
 msgid "All countries"
 msgstr ""
 
 #: includes/admin/setup-wizard.php:255
-#: templates/admin/configuration/configuration-template.php:459
+#: templates/admin/configuration/configuration-template.php:484
 msgid "Footer link"
 msgstr ""
 
@@ -749,16 +748,16 @@ msgstr ""
 msgid "DevDiggers Returns – Returns & EU Withdrawal"
 msgstr ""
 
-#: includes/admin-dashboard.php:139 includes/admin-dashboard.php:251
+#: includes/admin-dashboard.php:139 includes/admin-dashboard.php:258
 #: templates/admin/dashboard/dashboard-template.php:71
 #: templates/admin/dashboard/dashboard-template.php:126
-#: templates/admin/request/request-create-template.php:41
-#: templates/admin/request/request-view-template.php:286
+#: templates/admin/request/request-create-template.php:43
+#: templates/admin/request/request-view-template.php:283
 msgid "Requests"
 msgstr ""
 
 #: includes/admin-dashboard.php:144
-#: templates/admin/request/request-view-template.php:286
+#: templates/admin/request/request-view-template.php:283
 msgid "Withdrawals"
 msgstr ""
 
@@ -771,7 +770,7 @@ msgid "Customers"
 msgstr ""
 
 #: includes/admin-dashboard.php:162
-#: templates/admin/configuration/configuration-template.php:169
+#: templates/admin/configuration/configuration-template.php:194
 msgid "General"
 msgstr ""
 
@@ -784,7 +783,7 @@ msgid "Reasons"
 msgstr ""
 
 #: includes/admin-dashboard.php:165
-#: templates/admin/configuration/configuration-template.php:336
+#: templates/admin/configuration/configuration-template.php:361
 msgid "Statuses"
 msgstr ""
 
@@ -797,7 +796,7 @@ msgid "EU Withdrawal"
 msgstr ""
 
 #: includes/admin-dashboard.php:168
-#: templates/admin/configuration/configuration-template.php:489
+#: templates/admin/configuration/configuration-template.php:514
 msgid "Warranty"
 msgstr ""
 
@@ -810,12 +809,12 @@ msgid "Fraud Protection"
 msgstr ""
 
 #: includes/admin-dashboard.php:171
-#: templates/admin/configuration/configuration-template.php:547
+#: templates/admin/configuration/configuration-template.php:572
 msgid "Automation"
 msgstr ""
 
 #: includes/admin-dashboard.php:172
-#: templates/admin/configuration/configuration-template.php:567
+#: templates/admin/configuration/configuration-template.php:592
 msgid "Emails"
 msgstr ""
 
@@ -824,7 +823,7 @@ msgid "Appearance"
 msgstr ""
 
 #: includes/admin-dashboard.php:174
-#: templates/admin/configuration/configuration-template.php:596
+#: templates/admin/configuration/configuration-template.php:621
 msgid "Advanced"
 msgstr ""
 
@@ -836,240 +835,244 @@ msgstr ""
 msgid "Results per page"
 msgstr ""
 
-#: includes/admin-dashboard.php:251
+#: includes/admin-dashboard.php:258
 msgid "EU Withdrawals"
 msgstr ""
 
-#: includes/admin-dashboard.php:253 includes/admin-dashboard.php:262
+#: includes/admin-dashboard.php:260 includes/admin-dashboard.php:269
 msgid "Export CSV"
 msgstr ""
 
-#: includes/admin-dashboard.php:258
+#: includes/admin-dashboard.php:265
 msgid "Add New"
 msgstr ""
 
-#: includes/admin-dashboard.php:268
+#: includes/admin-dashboard.php:275
 msgid ""
 "Every withdrawal statement submitted through the \"Withdraw from contract "
 "here\" function, with the date and time it was received. Keep these as your "
 "record."
 msgstr ""
 
-#: includes/admin-dashboard.php:286
+#: includes/admin-dashboard.php:293
 msgid "Search"
 msgstr ""
 
-#: includes/admin-dashboard.php:313
+#: includes/admin-dashboard.php:320
 msgid "Set different return rules for different products"
 msgstr ""
 
-#: includes/admin-dashboard.php:314
+#: includes/admin-dashboard.php:321
 msgid ""
 "One return window fits most stores to start with. Rules let you treat sale "
 "items, big-ticket products and loyal customers differently, and decide "
 "simple requests for you."
 msgstr ""
 
-#: includes/admin-dashboard.php:316
+#: includes/admin-dashboard.php:323
 msgid "Return windows per product, category, customer role or country"
 msgstr ""
 
-#: includes/admin-dashboard.php:317
+#: includes/admin-dashboard.php:324
 msgid ""
 "Final-sale rules by item price, order total or customer, with your own "
 "message"
 msgstr ""
 
-#: includes/admin-dashboard.php:318
+#: includes/admin-dashboard.php:325
 msgid "Auto-approve or auto-reject requests by reason, value or customer"
 msgstr ""
 
-#: includes/admin-dashboard.php:319
+#: includes/admin-dashboard.php:326
 msgid "Restocking fees, fixed or a percentage, never on store-fault reasons"
 msgstr ""
 
-#: includes/admin-dashboard.php:320
+#: includes/admin-dashboard.php:327
 msgid "Free return shipping above an order value, and photo rules per item value"
 msgstr ""
 
-#: includes/admin-dashboard.php:321
+#: includes/admin-dashboard.php:328
 msgid "Keep-it refunds: refund cheap items without asking for them back"
 msgstr ""
 
-#: includes/admin-dashboard.php:339
+#: includes/admin-dashboard.php:346
 msgid "Spot serial returners before you refund them"
 msgstr ""
 
-#: includes/admin-dashboard.php:340
+#: includes/admin-dashboard.php:347
 msgid ""
 "See every customer who has asked for a return, with their return rate by "
 "number of orders and by spend, and stop abuse without blocking honest "
 "customers."
 msgstr ""
 
-#: includes/admin-dashboard.php:342
+#: includes/admin-dashboard.php:349
 msgid "Return rate by orders and by value for every customer"
 msgstr ""
 
-#: includes/admin-dashboard.php:343
-#: templates/admin/configuration/configuration-template.php:535
+#: includes/admin-dashboard.php:350
+#: templates/admin/configuration/configuration-template.php:560
 msgid "Serial returner, very quick return, late-in-window and high-value flags"
 msgstr ""
 
-#: includes/admin-dashboard.php:344
+#: includes/admin-dashboard.php:351
 msgid "Risk score on every request and in the list"
 msgstr ""
 
-#: includes/admin-dashboard.php:345
+#: includes/admin-dashboard.php:352
 msgid ""
 "Flag a customer to hold their requests for review, or block by email and "
 "domain"
 msgstr ""
 
-#: includes/admin-dashboard.php:346
+#: includes/admin-dashboard.php:353
 msgid "EU withdrawals are never refused, only flagged"
 msgstr ""
 
-#: includes/admin-dashboard.php:414
+#: includes/admin-dashboard.php:417
 msgid "Delete this permanently? This cannot be undone."
 msgstr ""
 
-#: includes/admin-dashboard.php:415
+#: includes/admin-dashboard.php:418
 msgid "Refund this request now? Refunds cannot be undone from here."
 msgstr ""
 
-#: includes/admin-dashboard.php:416
+#: includes/admin-dashboard.php:419
 msgid "Choose a label file"
 msgstr ""
 
-#: includes/admin-dashboard.php:417
+#: includes/admin-dashboard.php:420
 msgid "Use this file"
 msgstr ""
 
-#: includes/admin-dashboard.php:418
-#: templates/admin/configuration/configuration-template.php:705
+#: includes/admin-dashboard.php:421
+#: templates/admin/configuration/configuration-template.php:730
 msgid "Remove"
 msgstr ""
 
-#: includes/admin-dashboard.php:420
+#: includes/admin-dashboard.php:423
 #. translators: 1: requests done, 2: requests found
 msgid "Importing… %1$d of %2$d"
 msgstr ""
 
-#: includes/admin-dashboard.php:422
+#: includes/admin-dashboard.php:425
 #. translators: 1: requests checked, 2: requests found
 msgid "Checking… %1$d of %2$d"
 msgstr ""
 
-#: includes/admin-dashboard.php:424
+#: includes/admin-dashboard.php:427
 #. translators: 1: requests to import, 2: requests skipped
 msgid "%1$d ready to import, %2$d already imported or without an order."
 msgstr ""
 
-#: includes/admin-dashboard.php:426
+#: includes/admin-dashboard.php:429
 #. translators: 1: requests imported, 2: requests skipped
 msgid "%1$d imported, %2$d skipped."
 msgstr ""
 
-#: includes/admin-dashboard.php:427
+#: includes/admin-dashboard.php:430
 msgid "Nothing new to import. You are up to date."
 msgstr ""
 
-#: includes/admin-dashboard.php:428
+#: includes/admin-dashboard.php:431
 msgid "Imported just now"
 msgstr ""
 
-#: includes/admin-dashboard.php:429
+#: includes/admin-dashboard.php:432
 #: templates/admin/configuration/import-template.php:157
 msgid "Import new requests"
 msgstr ""
 
-#: includes/admin-dashboard.php:430
+#: includes/admin-dashboard.php:433
 msgid "The import stopped. Run it again: requests already imported are skipped."
 msgstr ""
 
-#: includes/admin-dashboard.php:448
+#: includes/admin-dashboard.php:451
 #. translators: %s: five-star link
 msgid ""
 "If you really like our plugin, please leave us a %s rating, we'll really "
 "appreciate it."
 msgstr ""
 
-#: includes/common/common-functions.php:139
+#: includes/common/common-functions.php:137
+msgid "This link has expired. Please reload the page and try again."
+msgstr ""
+
+#: includes/common/common-functions.php:146
 msgid "You are not allowed to view this file."
 msgstr ""
 
-#: includes/common/common-functions.php:160
-#: includes/common/common-functions.php:175
-#: includes/common/common-functions.php:230
+#: includes/common/common-functions.php:167
+#: includes/common/common-functions.php:182
+#: includes/common/common-functions.php:237
 msgid "Return and withdrawal requests"
 msgstr ""
 
-#: includes/common/common-functions.php:234
-#: templates/admin/request/requests-list-template.php:204
+#: includes/common/common-functions.php:241
+#: templates/admin/request/requests-list-template.php:219
 msgid "Request"
 msgstr ""
 
-#: includes/common/common-functions.php:238
+#: includes/common/common-functions.php:245
 #: includes/emails/email-customer-withdrawal-acknowledgement.php:81
-#: templates/admin/configuration/configuration-template.php:626
-#: templates/admin/configuration/configuration-template.php:668
-#: templates/admin/request/requests-list-template.php:244
+#: templates/admin/configuration/configuration-template.php:651
+#: templates/admin/configuration/configuration-template.php:693
+#: templates/admin/request/requests-list-template.php:259
 msgid "Order"
 msgstr ""
 
-#: includes/common/common-functions.php:242
+#: includes/common/common-functions.php:249
 msgid "Type"
 msgstr ""
 
-#: includes/common/common-functions.php:246
-#: templates/admin/configuration/configuration-template.php:668
-#: templates/admin/request/requests-list-template.php:208
+#: includes/common/common-functions.php:253
+#: templates/admin/configuration/configuration-template.php:693
+#: templates/admin/request/requests-list-template.php:223
 #: templates/emails/plain/request.php:56 templates/emails/request.php:86
 msgid "Status"
 msgstr ""
 
-#: includes/common/common-functions.php:250
+#: includes/common/common-functions.php:257
 #: includes/emails/email-customer-withdrawal-acknowledgement.php:79
 #: templates/admin/request/unmatched-withdrawals-template.php:49
 msgid "Name"
 msgstr ""
 
-#: includes/common/common-functions.php:254
-#: templates/admin/configuration/configuration-template.php:714
+#: includes/common/common-functions.php:261
+#: templates/admin/configuration/configuration-template.php:739
 msgid "Email"
 msgstr ""
 
-#: includes/common/common-functions.php:258
+#: includes/common/common-functions.php:265
 #: includes/emails/email-customer-withdrawal-acknowledgement.php:82
 #: templates/front/request-view.php:27
 msgid "Submitted"
 msgstr ""
 
-#: includes/common/common-functions.php:262
-#: templates/admin/request/request-view-template.php:340
-#: templates/admin/request/request-view-template.php:496
-#: templates/admin/request/requests-list-template.php:206
+#: includes/common/common-functions.php:269
+#: templates/admin/request/request-view-template.php:337
+#: templates/admin/request/request-view-template.php:493
+#: templates/admin/request/requests-list-template.php:221
 #: templates/front/request-view.php:169
 msgid "Items"
 msgstr ""
 
-#: includes/common/common-functions.php:274
+#: includes/common/common-functions.php:281
 #: templates/front/request-view.php:195
 msgid "Messages"
 msgstr ""
 
-#: includes/common/common-functions.php:278
+#: includes/common/common-functions.php:285
 msgid "Return tracking number"
 msgstr ""
 
-#: includes/common/common-functions.php:347
+#: includes/common/common-functions.php:354
 msgid ""
 "Return requests were anonymized; their order and refund records are kept "
 "for accounting."
 msgstr ""
 
-#: includes/common/common-functions.php:364
+#: includes/common/common-functions.php:371
 msgid ""
 "When you request a return or an order cancellation, or withdraw from a "
 "contract, we store your name, email address, order number, the items and "
@@ -1079,27 +1082,27 @@ msgid ""
 "only visible to you and our staff."
 msgstr ""
 
-#: includes/common/common-functions.php:385
+#: includes/common/common-functions.php:392
 #: assets/js/blocks.js:12
 msgid "Returns portal"
 msgstr ""
 
-#: includes/common/common-functions.php:398
+#: includes/common/common-functions.php:405
 #: assets/js/blocks.js:17
 msgid "Withdrawal form"
 msgstr ""
 
-#: includes/common/common-functions.php:439
+#: includes/common/common-functions.php:450
 msgid ""
 "Please agree to the immediate supply of the digital content to place your "
 "order."
 msgstr ""
 
-#: includes/common/common-functions.php:477
+#: includes/common/common-functions.php:492
 msgid "Whether checkout asks for consent to supply digital content."
 msgstr ""
 
-#: includes/common/common-functions.php:573
+#: includes/common/common-functions.php:588
 #. translators: 1: date and time, 2: product names
 msgid ""
 "On %1$s you agreed that we start supplying the digital content (%2$s) "
@@ -1107,7 +1110,7 @@ msgid ""
 "right of withdrawal once the supply has started."
 msgstr ""
 
-#: includes/common/common-functions.php:596
+#: includes/common/common-functions.php:611
 #. translators: %s: date and time
 msgid "Digital content consent (Art. 16(m)) given on %s."
 msgstr ""
@@ -1173,7 +1176,7 @@ msgid "View your request"
 msgstr ""
 
 #: includes/emails/email-base.php:183
-#: templates/admin/request/request-view-template.php:458
+#: templates/admin/request/request-view-template.php:455
 msgid "Message"
 msgstr ""
 
@@ -1228,7 +1231,7 @@ msgid "Print the label, attach it to your package and drop it off with the carri
 msgstr ""
 
 #: includes/emails/email-customer-label-ready.php:66
-#: templates/admin/request/request-view-template.php:560
+#: templates/admin/request/request-view-template.php:557
 #: templates/front/request-view.php:155
 msgid "Tracking number"
 msgstr ""
@@ -1442,145 +1445,147 @@ msgstr ""
 msgid "Cancel this request?"
 msgstr ""
 
-#: includes/front/front-functions.php:254
-#: includes/front/front-functions.php:337
-#: includes/front/front-functions.php:375
-#: includes/front/front-functions.php:420
-#: includes/front/front-functions.php:444
-#: includes/front/front-functions.php:481
+#: includes/front/front-functions.php:235
+#: includes/front/front-functions.php:268
+#: includes/front/front-functions.php:357
+#: includes/front/front-functions.php:395
+#: includes/front/front-functions.php:440
+#: includes/front/front-functions.php:464
+#: includes/front/front-functions.php:501
 msgid "Your session expired. Please try again."
 msgstr ""
 
-#: includes/front/front-functions.php:262
+#: includes/front/front-functions.php:280
 msgid "You do not have access to this order."
 msgstr ""
 
-#: includes/front/front-functions.php:310
+#: includes/front/front-functions.php:328
 #. translators: %s: request number
 msgid "Thanks! Your request %s has been submitted. We have emailed you a copy."
 msgstr ""
 
-#: includes/front/front-functions.php:344
+#: includes/front/front-functions.php:364
 msgid "You do not have access to this request."
 msgstr ""
 
-#: includes/front/front-functions.php:358
+#: includes/front/front-functions.php:378
 msgid "Please write a message."
 msgstr ""
 
-#: includes/front/front-functions.php:363
+#: includes/front/front-functions.php:383
 msgid "Message sent."
 msgstr ""
 
-#: includes/front/front-functions.php:382
+#: includes/front/front-functions.php:402
 msgid "You cannot change this request."
 msgstr ""
 
-#: includes/front/front-functions.php:390
+#: includes/front/front-functions.php:410
 msgid "Please enter the tracking number."
 msgstr ""
 
-#: includes/front/front-functions.php:402
+#: includes/front/front-functions.php:422
 #. translators: 1: carrier, 2: tracking number
 msgid "Customer added return tracking: %1$s %2$s"
 msgstr ""
 
-#: includes/front/front-functions.php:408
+#: includes/front/front-functions.php:428
 msgid "Thanks, we saved your tracking number."
 msgstr ""
 
-#: includes/front/front-functions.php:427
+#: includes/front/front-functions.php:447
 msgid "Only requests that are still waiting for review can be canceled."
 msgstr ""
 
-#: includes/front/front-functions.php:431
+#: includes/front/front-functions.php:451
 msgid "Canceled by the customer."
 msgstr ""
 
-#: includes/front/front-functions.php:432
+#: includes/front/front-functions.php:452
 msgid "Your request was canceled."
 msgstr ""
 
-#: includes/front/front-functions.php:454
+#: includes/front/front-functions.php:474
 msgid "Too many attempts. Please wait an hour and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:463
+#: includes/front/front-functions.php:483
 msgid ""
 "We could not find an order with that number and email address. Please check "
 "both and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:495
+#: includes/front/front-functions.php:515
 msgid "Please fill in your name, the order number and your email address."
 msgstr ""
 
-#: includes/front/front-functions.php:500
+#: includes/front/front-functions.php:520
 msgid ""
 "Too many attempts. Please wait an hour and try again, or contact us "
 "directly."
 msgstr ""
 
-#: includes/front/front-functions.php:524
+#: includes/front/front-functions.php:544
 msgid ""
 "We could not match that order number and email address. We have recorded "
 "your statement and our team will contact you; please also check the details "
 "and try again."
 msgstr ""
 
-#: includes/front/front-functions.php:653
-#: templates/admin/request/request-create-template.php:89
+#: includes/front/front-functions.php:674
+#: templates/admin/request/request-create-template.php:92
 msgid "Order not found."
 msgstr ""
 
-#: includes/front/front-functions.php:700
+#: includes/front/front-functions.php:721
 msgid "Request a return"
 msgstr ""
 
-#: includes/front/front-functions.php:701 templates/front/request-form.php:161
+#: includes/front/front-functions.php:722 templates/front/request-form.php:161
 msgid "Request cancellation"
 msgstr ""
 
-#: includes/front/front-functions.php:702
-#: includes/front/front-functions.php:1051
-#: includes/front/front-functions.php:1091
-#: includes/front/front-functions.php:1095
+#: includes/front/front-functions.php:723
+#: includes/front/front-functions.php:1116
+#: includes/front/front-functions.php:1156
+#: includes/front/front-functions.php:1160
 #: templates/front/withdrawal-form.php:34
 msgid "Withdraw from contract here"
 msgstr ""
 
-#: includes/front/front-functions.php:902
-msgid "This link is not valid. Look up your order below."
-msgstr ""
-
-#: includes/front/front-functions.php:909
+#: includes/front/front-functions.php:944
+#: includes/front/front-functions.php:960
 msgid "This link has expired. Look up your order again."
 msgstr ""
 
-#: includes/front/front-functions.php:951
+#: includes/front/front-functions.php:953
+msgid "This link is not valid. Look up your order below."
+msgstr ""
+
+#: includes/front/front-functions.php:1002
 msgid "Online withdrawal is not available on this store. Please contact us."
 msgstr ""
 
-#: includes/front/front-functions.php:1088
+#: includes/front/front-functions.php:1153
 #. translators: %d: number of days
 msgid ""
 "You can withdraw from this contract within %d days of receiving your goods "
 "without giving any reason."
 msgstr ""
 
-#: includes/front/front-functions.php:1113
+#: includes/front/front-functions.php:1178
 msgid "Final sale: this item cannot be returned."
 msgstr ""
 
-#: includes/front/front-functions.php:1117
+#: includes/front/front-functions.php:1182
 msgid "This item is exempt from the statutory right of withdrawal."
 msgstr ""
 
-#: includes/front/front-functions.php:1146
+#: includes/front/front-functions.php:1211
 msgid "Return policy"
 msgstr ""
 
-#: includes/front/front-functions.php:1151
+#: includes/front/front-functions.php:1216
 #. translators: 1: days, 2: link open, 3: link close
 msgid ""
 "You can withdraw from this contract within %1$d days of delivery using our "
@@ -1628,108 +1633,108 @@ msgstr ""
 msgid "Defective"
 msgstr ""
 
-#: includes/global-functions.php:368
+#: includes/global-functions.php:420
 msgid ""
 "I agree that you start supplying the digital content before the withdrawal "
 "period ends. I understand that I lose my right of withdrawal once the "
 "supply has started."
 msgstr ""
 
-#: includes/global-functions.php:467
+#: includes/global-functions.php:519
 msgid "All"
 msgstr ""
 
-#: includes/global-functions.php:468
-#: templates/admin/request/requests-list-template.php:240
+#: includes/global-functions.php:520
+#: templates/admin/request/requests-list-template.php:255
 msgid "Open"
 msgstr ""
 
-#: includes/global-functions.php:481
+#: includes/global-functions.php:533
 msgid "Unmatched statements"
 msgstr ""
 
-#: includes/global-functions.php:509
+#: includes/global-functions.php:561
 #. translators: %d: days
 msgid "Returns accepted within %d day of purchase."
 msgid_plural "Returns accepted within %d days of purchase."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/global-functions.php:511
+#: includes/global-functions.php:563
 #. translators: %d: days
 msgid "Returns accepted within %d day of delivery."
 msgid_plural "Returns accepted within %d days of delivery."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/install.php:161
-#: templates/admin/request/request-view-template.php:104
+#: includes/install.php:186
+#: templates/admin/request/request-view-template.php:105
 msgid "Requested"
 msgstr ""
 
-#: includes/install.php:168
-#: templates/admin/request/request-view-template.php:105
+#: includes/install.php:193
+#: templates/admin/request/request-view-template.php:106
 #: templates/front/request-view.php:28 templates/front/request-view.php:70
 msgid "Approved"
 msgstr ""
 
-#: includes/install.php:175
+#: includes/install.php:200
 msgid "Awaiting return"
 msgstr ""
 
-#: includes/install.php:182
-#: templates/admin/request/request-view-template.php:110
-#: templates/admin/request/requests-list-template.php:209
+#: includes/install.php:207
+#: templates/admin/request/request-view-template.php:111
+#: templates/admin/request/requests-list-template.php:224
 #: templates/front/request-view.php:31
 msgid "Received"
 msgstr ""
 
-#: includes/install.php:189 templates/front/account-requests.php:41
+#: includes/install.php:214 templates/front/account-requests.php:45
 #: templates/front/request-view.php:33
 msgid "Completed"
 msgstr ""
 
-#: includes/install.php:196
+#: includes/install.php:221
 msgid "Rejected"
 msgstr ""
 
-#: includes/install.php:203
+#: includes/install.php:228
 msgid "Canceled"
 msgstr ""
 
-#: includes/install.php:218
+#: includes/install.php:243
 msgid "Wrong size or fit"
 msgstr ""
 
-#: includes/install.php:219
+#: includes/install.php:244
 msgid "Not as described"
 msgstr ""
 
-#: includes/install.php:220
+#: includes/install.php:245
 msgid "Arrived damaged"
 msgstr ""
 
-#: includes/install.php:221
+#: includes/install.php:246
 msgid "Defective or stopped working"
 msgstr ""
 
-#: includes/install.php:222
+#: includes/install.php:247
 msgid "Wrong item sent"
 msgstr ""
 
-#: includes/install.php:223
+#: includes/install.php:248
 msgid "Changed my mind"
 msgstr ""
 
-#: includes/install.php:224
+#: includes/install.php:249
 msgid "Found a better price"
 msgstr ""
 
-#: includes/install.php:225
+#: includes/install.php:250
 msgid "Other"
 msgstr ""
 
-#: includes/install.php:266
+#: includes/install.php:291
 msgid "Withdraw from contract"
 msgstr ""
 
@@ -1741,422 +1746,422 @@ msgstr ""
 msgid "Choose…"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:170
+#: templates/admin/configuration/configuration-template.php:195
 msgid ""
 "Turn the customer side on, choose which requests customers can make, and "
 "where they make them."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:173
+#: templates/admin/configuration/configuration-template.php:198
 msgid ""
 "When off, customers see nothing; you can still create requests yourself. "
 "The EU withdrawal button has its own switch."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:174
+#: templates/admin/configuration/configuration-template.php:199
 msgid "Orders that can be returned"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:174
+#: templates/admin/configuration/configuration-template.php:199
 msgid "Order statuses that show the \"Request a return\" button."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:175
+#: templates/admin/configuration/configuration-template.php:200
 msgid ""
 "Money goes back to the card or method they paid with, once you approve the "
 "return."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:180
-#: templates/admin/configuration/configuration-template.php:383
+#: templates/admin/configuration/configuration-template.php:205
+#: templates/admin/configuration/configuration-template.php:408
 msgid "Store credit"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:181
+#: templates/admin/configuration/configuration-template.php:206
 msgid "Offer store credit, with an optional bonus"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:182
+#: templates/admin/configuration/configuration-template.php:207
 msgid ""
 "Keep the money in your shop: customers pick a coupon or DevDiggers Wallet "
 "credit instead of a refund."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:189
-#: templates/admin/configuration/configuration-template.php:398
+#: templates/admin/configuration/configuration-template.php:214
+#: templates/admin/configuration/configuration-template.php:423
 msgid "Exchanges"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:190
+#: templates/admin/configuration/configuration-template.php:215
 msgid "Offer exchanges for another size, color or any product"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:191
+#: templates/admin/configuration/configuration-template.php:216
 msgid ""
 "A linked exchange order is created for you; the price difference is charged "
 "or refunded."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:198
+#: templates/admin/configuration/configuration-template.php:223
 #: templates/admin/configuration/import-template.php:139
 msgid "Warranty claims"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:199
+#: templates/admin/configuration/configuration-template.php:224
 msgid "Let customers file warranty claims for repair or replacement"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:200
+#: templates/admin/configuration/configuration-template.php:225
 msgid "Warranty per product, checked automatically when a claim comes in."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:203
+#: templates/admin/configuration/configuration-template.php:228
 msgid "Cancellation requests"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:203
+#: templates/admin/configuration/configuration-template.php:228
 msgid ""
 "Adds a \"Request cancellation\" button to orders that have not shipped yet. "
 "Approving one cancels and refunds the order."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:204
+#: templates/admin/configuration/configuration-template.php:229
 msgid "Cancellable order statuses"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:204
+#: templates/admin/configuration/configuration-template.php:229
 msgid "Orders in these statuses can get a cancellation request."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:209
+#: templates/admin/configuration/configuration-template.php:234
 msgid "Instant cancellations"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:210
+#: templates/admin/configuration/configuration-template.php:235
 msgid "Approve, cancel and refund cancellation requests automatically"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:211
+#: templates/admin/configuration/configuration-template.php:236
 msgid "Unshipped orders are canceled and refunded the moment the customer asks."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:218
+#: templates/admin/configuration/configuration-template.php:243
 msgid "Where customers make requests"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:219
+#: templates/admin/configuration/configuration-template.php:244
 msgid ""
 "Logged-in customers use My Account; guests use the returns portal page "
 "(shortcode [ddwcwr_returns_portal] or the Returns portal block)."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:225
+#: templates/admin/configuration/configuration-template.php:250
 msgid "My Account endpoint"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:226
+#: templates/admin/configuration/configuration-template.php:251
 msgid "URL part of the My Account returns page, e.g. \"returns\"."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:232
+#: templates/admin/configuration/configuration-template.php:257
 msgid "My Account menu label"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:233
+#: templates/admin/configuration/configuration-template.php:258
 msgid "The name of the returns page in the customer's My Account menu."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:239
+#: templates/admin/configuration/configuration-template.php:264
 msgid "Guest returns portal page"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:240
+#: templates/admin/configuration/configuration-template.php:265
 msgid "Created on activation. Emails link guests here."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:252
+#: templates/admin/configuration/configuration-template.php:277
 msgid "Return window"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:253
+#: templates/admin/configuration/configuration-template.php:278
 msgid "How long customers have to ask for a return, for every product."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:256
+#: templates/admin/configuration/configuration-template.php:281
 msgid "Items outside the window can no longer be selected on the return form."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:261
+#: templates/admin/configuration/configuration-template.php:286
 msgid "Completed works best when you complete orders on delivery."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:273
+#: templates/admin/configuration/configuration-template.php:298
 msgid "Final-sale categories"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:274
+#: templates/admin/configuration/configuration-template.php:299
 msgid ""
 "Products in these categories cannot be returned. Products also have their "
 "own \"Final sale\" box. The EU right of withdrawal is not affected."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:278
+#: templates/admin/configuration/configuration-template.php:303
 msgid "Customer note"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:278
+#: templates/admin/configuration/configuration-template.php:303
 msgid "Require a note with every return"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:278
+#: templates/admin/configuration/configuration-template.php:303
 msgid ""
 "Customers must explain the problem in a few words before they can send the "
 "request."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:283
+#: templates/admin/configuration/configuration-template.php:308
 msgid "Photos and videos"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:284
+#: templates/admin/configuration/configuration-template.php:309
 msgid "Files are stored privately and only shown to the customer and your team."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:287
+#: templates/admin/configuration/configuration-template.php:312
 msgid "Uploads"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:287
+#: templates/admin/configuration/configuration-template.php:312
 msgid "Let customers attach photos and videos"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:287
+#: templates/admin/configuration/configuration-template.php:312
 msgid "Reasons marked \"Photo required\" ask for at least one."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:288
+#: templates/admin/configuration/configuration-template.php:313
 msgid "Maximum files"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:288
+#: templates/admin/configuration/configuration-template.php:313
 msgid "How many photos or videos a customer can attach to one request."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:289
+#: templates/admin/configuration/configuration-template.php:314
 msgid "Maximum size per file (MB)"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:289
+#: templates/admin/configuration/configuration-template.php:314
 msgid ""
 "Larger files are refused with a message. Your server's upload limit still "
 "applies."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:290
+#: templates/admin/configuration/configuration-template.php:315
 msgid "Allowed file types"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:290
+#: templates/admin/configuration/configuration-template.php:315
 msgid "Only these file types can be uploaded with a request or a message."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:295
+#: templates/admin/configuration/configuration-template.php:320
 msgid "Show the policy"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:296
+#: templates/admin/configuration/configuration-template.php:321
 msgid "Tell shoppers how returns work before they buy."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:299
+#: templates/admin/configuration/configuration-template.php:324
 msgid "Product page"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:299
+#: templates/admin/configuration/configuration-template.php:324
 msgid "Show the return window on product pages"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:299
+#: templates/admin/configuration/configuration-template.php:324
 msgid "Shoppers see it under the Add to cart button."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:300
+#: templates/admin/configuration/configuration-template.php:325
 msgid "Checkout"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:300
+#: templates/admin/configuration/configuration-template.php:325
 msgid "Show the policy and withdrawal notice above the Place order button"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:300
+#: templates/admin/configuration/configuration-template.php:325
 msgid "Works with classic and block checkout."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:304
+#: templates/admin/configuration/configuration-template.php:329
 msgid "Policy line"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:305
+#: templates/admin/configuration/configuration-template.php:330
 msgid ""
 "Leave empty to build it from your return window, as shown. Your own text "
 "can use {days} for the return window."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:312
+#: templates/admin/configuration/configuration-template.php:337
 msgid "Return policy page"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:313
+#: templates/admin/configuration/configuration-template.php:338
 msgid "Linked from the product page and checkout."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:325
+#: templates/admin/configuration/configuration-template.php:350
 msgid "Return reasons"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:326
+#: templates/admin/configuration/configuration-template.php:351
 msgid ""
 "Customers pick one reason per item. Add as many as you need, drag to "
 "reorder, and ask for a photo where it helps."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:337
+#: templates/admin/configuration/configuration-template.php:362
 msgid ""
 "Rename, recolor and add your own statuses, such as \"Inspecting\" or \"Sent "
 "to repair\". Customers get an email when a request enters a status with "
 "\"Notify\" on."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:343
+#: templates/admin/configuration/configuration-template.php:368
 msgid "Permissions"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:344
+#: templates/admin/configuration/configuration-template.php:369
 msgid "Choose who on your team can refund and close requests."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:346
+#: templates/admin/configuration/configuration-template.php:371
 msgid "Let your whole team work on returns"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:347
+#: templates/admin/configuration/configuration-template.php:372
 msgid ""
 "Give support staff access to requests without giving them the power to "
 "refund, and share the work."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:349
+#: templates/admin/configuration/configuration-template.php:374
 msgid ""
 "Separate permissions to manage requests, refund, change settings and see "
 "reports"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:350
+#: templates/admin/configuration/configuration-template.php:375
 msgid "Statuses only refund-permitted staff can set"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:351
+#: templates/admin/configuration/configuration-template.php:376
 msgid "Assign requests to a team member and filter by assignee"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:361
+#: templates/admin/configuration/configuration-template.php:386
 msgid "Refunds and stock"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:362
+#: templates/admin/configuration/configuration-template.php:387
 msgid "What happens when you refund a return and when the items come back."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:365
+#: templates/admin/configuration/configuration-template.php:390
 msgid "Refund through the payment gateway by default"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:365
+#: templates/admin/configuration/configuration-template.php:390
 msgid ""
 "Gateways without refund support always record a manual refund. You can "
 "choose per request."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:366
+#: templates/admin/configuration/configuration-template.php:391
 msgid "Tick \"Put items back in stock\" when marking a return received"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:371
+#: templates/admin/configuration/configuration-template.php:396
 msgid "Return shipping fee"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:372
+#: templates/admin/configuration/configuration-template.php:397
 msgid ""
 "Deducted from refunds, with its own amount for store credit and exchanges. "
 "Never charged for store-fault reasons or EU withdrawals."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:384
+#: templates/admin/configuration/configuration-template.php:409
 msgid "Credit keeps the revenue in your store."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:386
+#: templates/admin/configuration/configuration-template.php:411
 msgid "Turn refunds into repeat sales"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:387
+#: templates/admin/configuration/configuration-template.php:412
 msgid ""
 "Most customers take store credit when it is offered first and comes with a "
 "small bonus. That money stays in your shop."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:389
+#: templates/admin/configuration/configuration-template.php:414
 msgid "Store credit as a single-use coupon or DevDiggers Wallet balance"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:390
+#: templates/admin/configuration/configuration-template.php:415
 msgid "Bonus credit, e.g. 10% extra on top of the item value"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:391
+#: templates/admin/configuration/configuration-template.php:416
 msgid "Credit shown before refund on the return form"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:392
+#: templates/admin/configuration/configuration-template.php:417
 msgid "Coupon expiry and refunds to the wallet"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:399
+#: templates/admin/configuration/configuration-template.php:424
 msgid "Swap instead of refund."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:401
+#: templates/admin/configuration/configuration-template.php:426
 msgid "Exchanges that keep the sale"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:402
+#: templates/admin/configuration/configuration-template.php:427
 msgid ""
 "Customers pick another size, color or any product on the return form. The "
 "exchange order is created for you with the credit and the price difference "
 "on it."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:404
+#: templates/admin/configuration/configuration-template.php:429
 msgid "Exchange for another variation of the same product"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:405
+#: templates/admin/configuration/configuration-template.php:430
 msgid "Exchange for any product in the store, with live search"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:406
+#: templates/admin/configuration/configuration-template.php:431
 msgid "Higher price paid through a payment link, lower price refunded"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:407
+#: templates/admin/configuration/configuration-template.php:432
 msgid "Keep-it refunds and repair or replacement for warranty claims"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:419
+#: templates/admin/configuration/configuration-template.php:444
 msgid "EU withdrawal button"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:420
+#: templates/admin/configuration/configuration-template.php:445
 msgid ""
 "Directive (EU) 2023/2673 (Art. 11a of Directive 2011/83/EU, in force since "
 "19 June 2026): a \"Withdraw from contract here\" function, a statement "
@@ -2164,115 +2169,115 @@ msgid ""
 "medium."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:423
+#: templates/admin/configuration/configuration-template.php:448
 msgid "Offer the online withdrawal function"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:423
+#: templates/admin/configuration/configuration-template.php:448
 msgid "On by default. Required when you sell to consumers in the EU."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:427
+#: templates/admin/configuration/configuration-template.php:452
 msgid "Offer it for orders from"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:428
+#: templates/admin/configuration/configuration-template.php:453
 msgid "Based on the billing country of the order."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:432
+#: templates/admin/configuration/configuration-template.php:457
 msgid "Countries I choose"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:437
+#: templates/admin/configuration/configuration-template.php:462
 msgid "Countries"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:437
+#: templates/admin/configuration/configuration-template.php:462
 msgid "Used when \"Countries I choose\" is selected."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:438
+#: templates/admin/configuration/configuration-template.php:463
 msgid "Withdrawal period (days)"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:438
+#: templates/admin/configuration/configuration-template.php:463
 msgid "At least 14. Customers can always withdraw before the goods arrive."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:442
+#: templates/admin/configuration/configuration-template.php:467
 msgid "Period starts"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:443
+#: templates/admin/configuration/configuration-template.php:468
 msgid ""
 "Under EU law the 14 days start when the customer receives the goods, so "
 "\"completed\" is right if you complete orders on delivery."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:445
+#: templates/admin/configuration/configuration-template.php:470
 msgid "When the order is completed (delivered)"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:446
+#: templates/admin/configuration/configuration-template.php:471
 msgid "When the order is placed"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:454
+#: templates/admin/configuration/configuration-template.php:479
 msgid "Withdrawal page"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:455
+#: templates/admin/configuration/configuration-template.php:480
 msgid "Holds [ddwcwr_withdrawal_form]. Created on activation."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:459
+#: templates/admin/configuration/configuration-template.php:484
 msgid "Show \"Withdraw from contract here\" in the site footer"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:459
+#: templates/admin/configuration/configuration-template.php:484
 msgid ""
 "The function must be easy to find for the whole withdrawal period. It also "
 "shows on eligible orders in My Account."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:460
+#: templates/admin/configuration/configuration-template.php:485
 msgid "Order emails"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:460
+#: templates/admin/configuration/configuration-template.php:485
 msgid "Add the withdrawal link to customer order emails"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:460
+#: templates/admin/configuration/configuration-template.php:485
 msgid ""
 "Adds a \"Withdraw from contract here\" link to the processing and completed "
 "order emails."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:461
+#: templates/admin/configuration/configuration-template.php:486
 msgid "Model form"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:461
+#: templates/admin/configuration/configuration-template.php:486
 msgid "Show the model withdrawal form on the withdrawal page"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:461
+#: templates/admin/configuration/configuration-template.php:486
 msgid ""
 "The Annex I(B) form, addressed to your store name, address and email from "
 "WooCommerce > Settings. For customers who prefer to write."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:462
+#: templates/admin/configuration/configuration-template.php:487
 msgid "Digital content"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:462
+#: templates/admin/configuration/configuration-template.php:487
 msgid "Ask for consent at checkout when the cart has downloadable products"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:462
+#: templates/admin/configuration/configuration-template.php:487
 msgid ""
 "A required checkbox (Art. 16(m)): the customer agrees to immediate supply "
 "and loses the right of withdrawal for those downloads. The order emails "
@@ -2280,319 +2285,319 @@ msgid ""
 "with conditional checkout fields."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:466
+#: templates/admin/configuration/configuration-template.php:491
 msgid "Consent text"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:467
+#: templates/admin/configuration/configuration-template.php:492
 msgid "Label of the checkout checkbox. Leave empty for the default."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:471
+#: templates/admin/configuration/configuration-template.php:496
 msgid "Attempts per hour"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:471
+#: templates/admin/configuration/configuration-template.php:496
 msgid ""
 "Per visitor, for the withdrawal form and the guest order lookup. Stops "
 "people using the form to send email to strangers."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:476
+#: templates/admin/configuration/configuration-template.php:501
 msgid "Exempt categories"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:477
+#: templates/admin/configuration/configuration-template.php:502
 msgid ""
 "Goods exempt under Art. 16 (made to order, perishable, sealed hygiene "
 "goods…). Products also have their own \"Exempt from withdrawal\" box."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:490
+#: templates/admin/configuration/configuration-template.php:515
 msgid ""
 "Warranty terms per product, claims from My Account and the returns portal, "
 "and extended warranties sold at checkout."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:492
+#: templates/admin/configuration/configuration-template.php:517
 msgid "Handle warranty claims and sell extended warranties"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:493
+#: templates/admin/configuration/configuration-template.php:518
 msgid ""
 "Customers file a claim long after the return window has closed, and the "
 "plugin checks the warranty for you. Extended warranties add revenue to "
 "every order."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:495
+#: templates/admin/configuration/configuration-template.php:520
 msgid "Warranty per product or variation: none, limited or lifetime, with bulk edit"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:496
+#: templates/admin/configuration/configuration-template.php:521
 msgid "Warranty shown on product pages, even when the product is out of stock"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:497
+#: templates/admin/configuration/configuration-template.php:522
 msgid ""
 "Warranty claims checked against the purchase date, resolved by repair or "
 "replacement"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:498
+#: templates/admin/configuration/configuration-template.php:523
 msgid "Paid extended warranties on the product page, in classic and block checkout"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:499
+#: templates/admin/configuration/configuration-template.php:524
 msgid "Terms saved with each order, so later changes never affect past purchases"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:509
+#: templates/admin/configuration/configuration-template.php:534
 msgid "Return shipping labels"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:510
+#: templates/admin/configuration/configuration-template.php:535
 msgid ""
 "You can already upload a label on any request and the customer gets it by "
 "email."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:512
+#: templates/admin/configuration/configuration-template.php:537
 msgid "Buy prepaid return labels in one click"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:513
+#: templates/admin/configuration/configuration-template.php:538
 msgid ""
 "Connect your own EasyPost or Shippo account and buy the return label from "
 "the request screen, or automatically the moment you approve a return."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:515
+#: templates/admin/configuration/configuration-template.php:540
 msgid "EasyPost and Shippo return labels at your own rates"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:516
+#: templates/admin/configuration/configuration-template.php:541
 msgid "Automatic labels on approval, emailed with the tracking number"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:517
+#: templates/admin/configuration/configuration-template.php:542
 msgid "One label per request, however many items come back"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:518
+#: templates/admin/configuration/configuration-template.php:543
 msgid "Printable return slip with a QR code for your warehouse"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:528
+#: templates/admin/configuration/configuration-template.php:553
 msgid "Fraud protection"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:529
+#: templates/admin/configuration/configuration-template.php:554
 msgid ""
 "Signals on every request so you can stop return abuse without hurting "
 "honest customers."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:531
+#: templates/admin/configuration/configuration-template.php:556
 msgid "Stop serial returners and wardrobing"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:532
+#: templates/admin/configuration/configuration-template.php:557
 msgid ""
 "Every request gets a risk score. Flagged customers wait for a person, and "
 "blocked ones are asked to contact you. EU withdrawals are never refused, "
 "only flagged."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:534
+#: templates/admin/configuration/configuration-template.php:559
 msgid "Return rate per customer, by number of orders and by spend"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:536
+#: templates/admin/configuration/configuration-template.php:561
 msgid "Hold or automatically reject serial returners"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:537
+#: templates/admin/configuration/configuration-template.php:562
 msgid "Blocklist by email address or @domain"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:548
+#: templates/admin/configuration/configuration-template.php:573
 msgid "Let returns run themselves."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:550
+#: templates/admin/configuration/configuration-template.php:575
 msgid "Spend less time chasing returns"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:551
+#: templates/admin/configuration/configuration-template.php:576
 msgid ""
 "Daily jobs remind customers, close stale requests and refund received "
 "returns for you. They only act on requests submitted after you switch them "
 "on."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:553
+#: templates/admin/configuration/configuration-template.php:578
 msgid "Reminder when a label was sent but nothing was shipped"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:554
+#: templates/admin/configuration/configuration-template.php:579
 msgid "Ship-by reminder before a request is closed"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:555
+#: templates/admin/configuration/configuration-template.php:580
 msgid "Close stale requests after a number of days"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:556
+#: templates/admin/configuration/configuration-template.php:581
 msgid ""
 "Refund, credit or exchange automatically a few hours after the parcel "
 "arrives"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:557
+#: templates/admin/configuration/configuration-template.php:582
 msgid "REST API and WooCommerce webhooks for your other tools"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:568
+#: templates/admin/configuration/configuration-template.php:593
 msgid ""
 "Every DevDiggers Returns email is a WooCommerce email: edit the subject, "
 "heading, text and recipients, or turn it off, in WooCommerce > Settings > "
 "Emails."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:578
+#: templates/admin/configuration/configuration-template.php:603
 msgid "Customer screens"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:579
+#: templates/admin/configuration/configuration-template.php:604
 msgid "The returns pages use a clean default design that sits well in most themes."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:581
+#: templates/admin/configuration/configuration-template.php:606
 msgid "Make the returns pages look like your store"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:582
+#: templates/admin/configuration/configuration-template.php:607
 msgid ""
 "Match My Account > Returns, the return form, the guest portal and the "
 "withdrawal pages to your brand without writing CSS."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:584
+#: templates/admin/configuration/configuration-template.php:609
 msgid "Your accent and button text colors"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:585
+#: templates/admin/configuration/configuration-template.php:610
 msgid "Card background for dark themes"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:586
+#: templates/admin/configuration/configuration-template.php:611
 msgid "Sharp, soft or round corners"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:597
+#: templates/admin/configuration/configuration-template.php:622
 msgid "Settings you rarely need to change."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:600
+#: templates/admin/configuration/configuration-template.php:625
 msgid "Uninstall"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:600
+#: templates/admin/configuration/configuration-template.php:625
 msgid "Delete all DevDiggers Returns data when the plugin is deleted"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:600
+#: templates/admin/configuration/configuration-template.php:625
 msgid "Requests, settings and uploaded files. Leave off to keep your records."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:618
-#: templates/admin/configuration/configuration-template.php:626
-#: templates/admin/request/request-create-template.php:111
-#: templates/admin/request/request-create-template.php:127
-#: templates/admin/request/request-view-template.php:347
+#: templates/admin/configuration/configuration-template.php:643
+#: templates/admin/configuration/configuration-template.php:651
+#: templates/admin/request/request-create-template.php:114
+#: templates/admin/request/request-create-template.php:130
+#: templates/admin/request/request-view-template.php:344
 #: templates/emails/request.php:70 templates/front/request-form.php:98
 msgid "Reason"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:619
-#: templates/admin/configuration/configuration-template.php:626
+#: templates/admin/configuration/configuration-template.php:644
+#: templates/admin/configuration/configuration-template.php:651
 msgid "Photo required"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:620
-#: templates/admin/configuration/configuration-template.php:626
+#: templates/admin/configuration/configuration-template.php:645
+#: templates/admin/configuration/configuration-template.php:651
 #: templates/admin/configuration/import-template.php:191
 msgid "Active"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:626
-#: templates/admin/configuration/configuration-template.php:668
-#: templates/admin/configuration/configuration-template.php:714
+#: templates/admin/configuration/configuration-template.php:651
+#: templates/admin/configuration/configuration-template.php:693
+#: templates/admin/configuration/configuration-template.php:739
 msgid "Actions"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:642
+#: templates/admin/configuration/configuration-template.php:667
 msgid "Add reason"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:656
+#: templates/admin/configuration/configuration-template.php:681
 msgid "Built-in statuses cannot be removed"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:656
+#: templates/admin/configuration/configuration-template.php:681
 msgid "Built in"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:660
+#: templates/admin/configuration/configuration-template.php:685
 msgid "Status name"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:661
-#: templates/admin/configuration/configuration-template.php:668
+#: templates/admin/configuration/configuration-template.php:686
+#: templates/admin/configuration/configuration-template.php:693
 msgid "Color"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:662
-#: templates/admin/configuration/configuration-template.php:668
+#: templates/admin/configuration/configuration-template.php:687
+#: templates/admin/configuration/configuration-template.php:693
 msgid "Notify customer"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:685
+#: templates/admin/configuration/configuration-template.php:710
 msgid "Add status"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:696
+#: templates/admin/configuration/configuration-template.php:721
 msgid "Reorder. Drag, or use the up and down arrow keys."
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:696
+#: templates/admin/configuration/configuration-template.php:721
 msgid "Drag to reorder"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:714
+#: templates/admin/configuration/configuration-template.php:739
 msgid "Sent to"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:714
-#: templates/admin/request/request-view-template.php:467
+#: templates/admin/configuration/configuration-template.php:739
+#: templates/admin/request/request-view-template.php:464
 msgid "Send"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:722
-#: templates/admin/request/request-view-template.php:437
-#: templates/admin/request/request-view-template.php:505
-#: templates/admin/request/requests-list-template.php:205
+#: templates/admin/configuration/configuration-template.php:747
+#: templates/admin/request/request-view-template.php:434
+#: templates/admin/request/request-view-template.php:502
+#: templates/admin/request/requests-list-template.php:220
 msgid "Customer"
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:723
+#: templates/admin/configuration/configuration-template.php:748
 #. translators: %s: email title
 msgid "Send \"%s\""
 msgstr ""
 
-#: templates/admin/configuration/configuration-template.php:724
-#: templates/admin/request/request-view-template.php:572
+#: templates/admin/configuration/configuration-template.php:749
+#: templates/admin/request/request-view-template.php:569
 msgid "Manage"
 msgstr ""
 
@@ -2805,7 +2810,7 @@ msgid "Requests over time"
 msgstr ""
 
 #: templates/admin/dashboard/dashboard-template.php:131
-#: templates/front/account-requests.php:62
+#: templates/front/account-requests.php:66
 msgid "No requests yet"
 msgstr ""
 
@@ -2870,7 +2875,7 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: templates/admin/dashboard/dashboard-template.php:217
-#: templates/admin/request/requests-list-template.php:322
+#: templates/admin/request/requests-list-template.php:337
 #. translators: %s: human time difference
 msgid "%s ago"
 msgstr ""
@@ -2879,85 +2884,85 @@ msgstr ""
 msgid "No requests yet."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:38
+#: templates/admin/request/request-create-template.php:40
 msgid "New request"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:44
+#: templates/admin/request/request-create-template.php:46
 msgid ""
 "Create a request for a customer who called, emailed or came to the store. "
 "Return windows and rules do not block requests you create."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:54
+#: templates/admin/request/request-create-template.php:56
 msgid "1. Find the order"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:55
+#: templates/admin/request/request-create-template.php:57
 msgid "Load the order first, then choose the items below."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:64
-#: templates/front/portal-lookup.php:25 templates/front/withdrawal-form.php:67
+#: templates/admin/request/request-create-template.php:67
+#: templates/front/portal-lookup.php:29 templates/front/withdrawal-form.php:67
 msgid "Order number"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:67
+#: templates/admin/request/request-create-template.php:70
 msgid "The WooCommerce order number, with or without #."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:71
+#: templates/admin/request/request-create-template.php:74
 msgid "Request type"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:80
+#: templates/admin/request/request-create-template.php:83
 msgid "Return or cancellation. EU withdrawals can only come from the customer."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:84
+#: templates/admin/request/request-create-template.php:87
 msgid "Load order"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:100
+#: templates/admin/request/request-create-template.php:103
 #. translators: 1: order number, 2: customer
 msgid "2. Items of order #%1$s (%2$s)"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:101
+#: templates/admin/request/request-create-template.php:104
 msgid ""
 "Set a quantity for each item the customer is sending back. Leave 0 for "
 "items that stay with the customer."
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:109
-#: templates/admin/request/request-view-template.php:345
+#: templates/admin/request/request-create-template.php:112
+#: templates/admin/request/request-view-template.php:342
 #: templates/emails/request.php:68
 msgid "Item"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:110
-#: templates/admin/request/request-create-template.php:120
+#: templates/admin/request/request-create-template.php:113
+#: templates/admin/request/request-create-template.php:123
 #: templates/front/request-form.php:87
 msgid "Quantity"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:112
-#: templates/admin/request/request-create-template.php:134
-#: templates/admin/request/request-view-template.php:348
+#: templates/admin/request/request-create-template.php:115
+#: templates/admin/request/request-create-template.php:137
+#: templates/admin/request/request-view-template.php:345
 #: templates/front/request-form.php:107
 msgid "Condition"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:135
+#: templates/admin/request/request-create-template.php:138
 msgid "Not checked"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:148
+#: templates/admin/request/request-create-template.php:151
 #: templates/front/request-form.php:128
 msgid "Note"
 msgstr ""
 
-#: templates/admin/request/request-create-template.php:151
+#: templates/admin/request/request-create-template.php:154
 msgid ""
 "Saved as the customer's note on the request, for example what they told you "
 "on the phone."
@@ -2971,446 +2976,446 @@ msgstr ""
 msgid "It may have been deleted."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:109
+#: templates/admin/request/request-view-template.php:110
 #: templates/front/request-view.php:30
 msgid "On its way back"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:113
-#: templates/admin/request/request-view-template.php:196
+#: templates/admin/request/request-view-template.php:114
+#: templates/admin/request/request-view-template.php:197
 msgid "Resolved"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:140
+#: templates/admin/request/request-view-template.php:141
 msgid "Refund amount"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:142
+#: templates/admin/request/request-view-template.php:143
 msgid "The value of the returned items. Change it for a partial refund."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:145
+#: templates/admin/request/request-view-template.php:146
 msgid "Refund goes to"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:147
+#: templates/admin/request/request-view-template.php:148
 msgid "The original payment method"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:148
+#: templates/admin/request/request-view-template.php:149
 msgid "Record only (I pay it back myself)"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:150
+#: templates/admin/request/request-view-template.php:151
 msgid "Gateways without refund support record the refund only."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:153
+#: templates/admin/request/request-view-template.php:154
 msgid "Resolve with"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:155
+#: templates/admin/request/request-view-template.php:156
 msgid "Store credit, exchange or keep-it refund"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:157
+#: templates/admin/request/request-view-template.php:158
 msgid ""
 "Keep the revenue: pay store credit with a bonus, or send a replacement "
 "instead."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:161
+#: templates/admin/request/request-view-template.php:162
 msgid ""
 "For withdrawals you may wait until the goods arrive, or until the customer "
 "shows proof of sending, before refunding (Art. 13(3))."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:163
+#: templates/admin/request/request-view-template.php:164
 msgid "Refund and resolve"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:192
+#: templates/admin/request/request-view-template.php:193
 msgid "This request was rejected"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:192
+#: templates/admin/request/request-view-template.php:193
 #: templates/front/request-view.php:52
 msgid "This request was canceled"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:193
+#: templates/admin/request/request-view-template.php:194
 msgid "Nothing else to do. You can reopen it from \"Change status\" in the sidebar."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:196
+#: templates/admin/request/request-view-template.php:197
 msgid "Resolved, ready to close"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:197
+#: templates/admin/request/request-view-template.php:198
 msgid "Resolved."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:201
+#: templates/admin/request/request-view-template.php:202
 msgid "Mark as completed"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:206
+#: templates/admin/request/request-view-template.php:207
 msgid "Review the request"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:207
+#: templates/admin/request/request-view-template.php:208
 msgid ""
 "Check the items, reasons and photos below, then approve or reject. The "
 "customer gets an email either way."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:209
-#: templates/admin/request/request-view-template.php:584
+#: templates/admin/request/request-view-template.php:210
+#: templates/admin/request/request-view-template.php:581
 msgid "Message to the customer"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:210
+#: templates/admin/request/request-view-template.php:211
 msgid ""
 "Message to the customer (optional), e.g. how to pack the items or why you "
 "rejected it"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:212
+#: templates/admin/request/request-view-template.php:213
 msgid "Approve"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:213
+#: templates/admin/request/request-view-template.php:214
 msgid "Reject"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:218
+#: templates/admin/request/request-view-template.php:219
 msgid "Wait for the items to come back"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:222
+#: templates/admin/request/request-view-template.php:223
 msgid ""
 "The customer has a return label. When the package arrives, check the items "
 "and mark them as received."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:224
+#: templates/admin/request/request-view-template.php:225
 msgid ""
 "The customer has no return label yet. Send one from \"Return shipping\" in "
 "the sidebar, or let them use their own carrier. When the package arrives, "
 "mark it as received."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:229
+#: templates/admin/request/request-view-template.php:230
 msgid "Put the items back in stock (damaged and defective items are skipped)"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:230
+#: templates/admin/request/request-view-template.php:231
 msgid "Mark as received"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:233
+#: templates/admin/request/request-view-template.php:234
 msgid "Resolve without waiting for the items"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:238
+#: templates/admin/request/request-view-template.php:239
 msgid "Items received: resolve the request"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:238
+#: templates/admin/request/request-view-template.php:239
 msgid "Resolve the request"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:239
+#: templates/admin/request/request-view-template.php:240
 msgid "Refund the items. The customer is emailed and the request is completed."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:292
+#: templates/admin/request/request-view-template.php:289
 #. translators: 1: type, 2: source, 3: date
 msgid "%1$s · via %2$s · %3$s"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:301
-#: templates/admin/request/requests-list-template.php:253
-#: templates/front/account-requests.php:115 templates/front/portal-order.php:20
+#: templates/admin/request/request-view-template.php:298
+#: templates/admin/request/requests-list-template.php:268
+#: templates/front/account-requests.php:119 templates/front/portal-order.php:20
 #. translators: %s: order number
 msgid "Order #%s"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:307
+#: templates/admin/request/request-view-template.php:304
 msgid "Print return slip"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:323
+#: templates/admin/request/request-view-template.php:320
 #: templates/front/withdrawal-form.php:58
 msgid "Withdrawal statement"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:324
+#: templates/admin/request/request-view-template.php:321
 msgid ""
 "Received through the \"Withdraw from contract here\" function. The customer "
 "got the acknowledgement email automatically."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:329
+#: templates/admin/request/request-view-template.php:326
 msgid "Name given"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:331
+#: templates/admin/request/request-view-template.php:328
 msgid "Confirmation email"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:333
+#: templates/admin/request/request-view-template.php:330
 #: templates/admin/request/unmatched-withdrawals-template.php:48
 msgid "Received (UTC)"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:346
+#: templates/admin/request/request-view-template.php:343
 #: templates/emails/request.php:69
 msgid "Qty"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:349
-#: templates/admin/request/requests-list-template.php:207
+#: templates/admin/request/request-view-template.php:346
+#: templates/admin/request/requests-list-template.php:222
 msgid "Value"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:368
+#: templates/admin/request/request-view-template.php:365
 #. translators: %d: quantity
 msgid "Restocked: %d"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:392
+#: templates/admin/request/request-view-template.php:389
 #. translators: %s: customer name
 msgid "%s wrote"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:392
+#: templates/admin/request/request-view-template.php:389
 msgid "The customer"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:401
+#: templates/admin/request/request-view-template.php:398
 msgid "Photos and files"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:422
+#: templates/admin/request/request-view-template.php:419
 msgid "Conversation"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:423
+#: templates/admin/request/request-view-template.php:420
 msgid ""
 "Messages are emailed to the customer. Internal notes are only visible to "
 "your team."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:437
+#: templates/admin/request/request-view-template.php:434
 msgid "System"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:443
+#: templates/admin/request/request-view-template.php:440
 msgid "Internal note"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:459
+#: templates/admin/request/request-view-template.php:456
 msgid "Write to the customer or add an internal note…"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:464
-#: templates/front/request-view.php:243
+#: templates/admin/request/request-view-template.php:461
+#: templates/front/request-view.php:244
 msgid "Attach files"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:466
+#: templates/admin/request/request-view-template.php:463
 msgid "Internal note (not sent to the customer)"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:473
+#: templates/admin/request/request-view-template.php:470
 msgid "History"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:473
+#: templates/admin/request/request-view-template.php:470
 msgid "Every status change, label and refund, with who did it."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:494
+#: templates/admin/request/request-view-template.php:491
 msgid "Summary"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:497
+#: templates/admin/request/request-view-template.php:494
 msgid "To pay back"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:499
+#: templates/admin/request/request-view-template.php:496
 #: templates/front/request-view.php:190
 msgid "Paid back"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:509
-#: templates/admin/request/requests-list-template.php:267
+#: templates/admin/request/request-view-template.php:506
+#: templates/admin/request/requests-list-template.php:282
 msgid "Guest"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:514
+#: templates/admin/request/request-view-template.php:511
 msgid "All their requests"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:517
+#: templates/admin/request/request-view-template.php:514
 msgid "Return rate and risk flags"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:518
+#: templates/admin/request/request-view-template.php:515
 msgid ""
 "See how often this customer returns, flag serial returners and hold their "
 "requests for review."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:527
+#: templates/admin/request/request-view-template.php:524
 #: templates/front/request-view.php:135
 msgid "Return shipping"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:528
+#: templates/admin/request/request-view-template.php:525
 msgid "The label is emailed to the customer and shown on their request page."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:535
+#: templates/admin/request/request-view-template.php:532
 msgid "Download label"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:541
+#: templates/admin/request/request-view-template.php:538
 msgid "Buy return label"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:543
+#: templates/admin/request/request-view-template.php:540
 msgid "EasyPost or Shippo, emailed automatically"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:546
+#: templates/admin/request/request-view-template.php:543
 msgid "Upload a label"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:550
+#: templates/admin/request/request-view-template.php:547
 msgid "Choose a PDF or image"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:552
+#: templates/admin/request/request-view-template.php:549
 msgid "PDF or image from your carrier."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:553
+#: templates/admin/request/request-view-template.php:550
 msgid "Upload label"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:558
+#: templates/admin/request/request-view-template.php:555
 #: templates/front/request-view.php:151
 msgid "Carrier"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:562
+#: templates/admin/request/request-view-template.php:559
 msgid "Customers can add this themselves too."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:563
+#: templates/admin/request/request-view-template.php:560
 #: templates/front/request-view.php:162
 msgid "Save tracking"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:573
+#: templates/admin/request/request-view-template.php:570
 msgid ""
 "Most requests only need the \"Next step\" card. Use this to set any status "
 "yourself."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:578
+#: templates/admin/request/request-view-template.php:575
 msgid "Change status"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:586
+#: templates/admin/request/request-view-template.php:583
 msgid "Optional. Sent with the status email."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:587
+#: templates/admin/request/request-view-template.php:584
 msgid "Update status"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:591
+#: templates/admin/request/request-view-template.php:588
 msgid "Assigned to"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:592
+#: templates/admin/request/request-view-template.php:589
 msgid "Unassigned"
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:593
+#: templates/admin/request/request-view-template.php:590
 msgid "Share the work: assign requests to your team and filter by assignee."
 msgstr ""
 
-#: templates/admin/request/request-view-template.php:598
+#: templates/admin/request/request-view-template.php:595
 msgid "Delete request"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:139
-#: templates/admin/request/requests-list-template.php:140
+#: templates/admin/request/requests-list-template.php:154
+#: templates/admin/request/requests-list-template.php:155
 msgid "Bulk actions"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:145
+#: templates/admin/request/requests-list-template.php:160
 msgid "Filter by type"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:146
-#: templates/admin/request/requests-list-template.php:147
+#: templates/admin/request/requests-list-template.php:161
+#: templates/admin/request/requests-list-template.php:162
 msgid "All types"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:154
+#: templates/admin/request/requests-list-template.php:169
 msgid "Filter by reason"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:155
-#: templates/admin/request/requests-list-template.php:156
+#: templates/admin/request/requests-list-template.php:170
+#: templates/admin/request/requests-list-template.php:171
 msgid "All reasons"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:162
+#: templates/admin/request/requests-list-template.php:177
 msgid "From date"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:164
+#: templates/admin/request/requests-list-template.php:179
 msgid "To date"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:166
+#: templates/admin/request/requests-list-template.php:181
 msgid "Filter"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:177
+#: templates/admin/request/requests-list-template.php:192
 msgid "Reset filters"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:191
+#: templates/admin/request/requests-list-template.php:206
 msgid "No withdrawals yet"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:191
+#: templates/admin/request/requests-list-template.php:206
 msgid "No requests found"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:192
+#: templates/admin/request/requests-list-template.php:207
 msgid ""
 "Statements sent with the \"Withdraw from contract here\" button will appear "
 "here."
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:192
+#: templates/admin/request/requests-list-template.php:207
 msgid "Returns and cancellations your customers submit will appear here."
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:209
+#: templates/admin/request/requests-list-template.php:224
 #: templates/front/withdrawal-form.php:50
 msgid "Date"
 msgstr ""
 
-#: templates/admin/request/requests-list-template.php:295
+#: templates/admin/request/requests-list-template.php:310
 msgid "Paid back:"
 msgstr ""
 
@@ -3456,55 +3461,55 @@ msgstr ""
 msgid "%1$s – %2$s for order #%3$s"
 msgstr ""
 
-#: templates/front/account-requests.php:34
+#: templates/front/account-requests.php:38
 msgid "Send something back"
 msgstr ""
 
-#: templates/front/account-requests.php:35
+#: templates/front/account-requests.php:39
 msgid "Return items from your orders and follow every request in one place."
 msgstr ""
 
-#: templates/front/account-requests.php:40
+#: templates/front/account-requests.php:44
 msgid "In progress"
 msgstr ""
 
-#: templates/front/account-requests.php:42
+#: templates/front/account-requests.php:46
 msgid "Paid back to you"
 msgstr ""
 
-#: templates/front/account-requests.php:48
+#: templates/front/account-requests.php:52
 msgid "Your requests"
 msgstr ""
 
-#: templates/front/account-requests.php:54
-#: templates/front/account-requests.php:64 templates/front/portal-lookup.php:20
+#: templates/front/account-requests.php:58
+#: templates/front/account-requests.php:68 templates/front/portal-lookup.php:24
 msgid "Start a return"
 msgstr ""
 
-#: templates/front/account-requests.php:63
+#: templates/front/account-requests.php:67
 msgid "When you return something, you can follow it here."
 msgstr ""
 
-#: templates/front/account-requests.php:81
+#: templates/front/account-requests.php:85
 #. translators: 1: request type, 2: order number
 msgid "%1$s · Order #%2$s"
 msgstr ""
 
-#: templates/front/account-requests.php:97
+#: templates/front/account-requests.php:101
 msgid "Nothing to return right now"
 msgstr ""
 
-#: templates/front/account-requests.php:98
+#: templates/front/account-requests.php:102
 msgid "Orders appear here while they can still be returned or canceled."
 msgstr ""
 
-#: templates/front/account-requests.php:101
+#: templates/front/account-requests.php:105
 msgid ""
 "Pick the order and what you would like to do. You choose the items on the "
 "next screen."
 msgstr ""
 
-#: templates/front/account-requests.php:121
+#: templates/front/account-requests.php:125
 #. translators: %d: number of items
 msgid "%d item"
 msgid_plural "%d items"
@@ -3538,33 +3543,33 @@ msgstr[1] ""
 msgid "%1$s · %2$s"
 msgstr ""
 
-#: templates/front/portal-lookup.php:21
+#: templates/front/portal-lookup.php:25
 msgid ""
 "Enter your order number and the email address you used at checkout. No "
 "account needed."
 msgstr ""
 
-#: templates/front/portal-lookup.php:26
+#: templates/front/portal-lookup.php:30
 msgid "e.g. 1042"
 msgstr ""
 
-#: templates/front/portal-lookup.php:29
+#: templates/front/portal-lookup.php:33
 msgid "Billing email"
 msgstr ""
 
-#: templates/front/portal-lookup.php:30
+#: templates/front/portal-lookup.php:34
 msgid "you@example.com"
 msgstr ""
 
-#: templates/front/portal-lookup.php:33 templates/front/withdrawal-form.php:105
+#: templates/front/portal-lookup.php:37 templates/front/withdrawal-form.php:105
 msgid "Leave this field empty"
 msgstr ""
 
-#: templates/front/portal-lookup.php:38
+#: templates/front/portal-lookup.php:42
 msgid "Find my order"
 msgstr ""
 
-#: templates/front/portal-lookup.php:45
+#: templates/front/portal-lookup.php:49
 #. translators: %1$s: link open, %2$s: link close
 msgid "Signed in? %1$sSee your orders in My Account%2$s."
 msgstr ""
@@ -3771,19 +3776,19 @@ msgstr ""
 msgid "You"
 msgstr ""
 
-#: templates/front/request-view.php:237
+#: templates/front/request-view.php:238
 msgid "Your message"
 msgstr ""
 
-#: templates/front/request-view.php:238
+#: templates/front/request-view.php:239
 msgid "Ask us anything about this request…"
 msgstr ""
 
-#: templates/front/request-view.php:251
+#: templates/front/request-view.php:252
 msgid "Send message"
 msgstr ""
 
-#: templates/front/request-view.php:262
+#: templates/front/request-view.php:263
 msgid "Cancel this request"
 msgstr ""
 
@@ -3915,7 +3920,7 @@ msgid "Confirm withdrawal"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
-msgid "DevDiggers Returns – Returns, Refunds, Exchanges & RMA for WooCommerce"
+msgid "DevDiggers Returns for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

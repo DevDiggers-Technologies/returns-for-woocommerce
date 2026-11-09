@@ -59,17 +59,31 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		 * @return array
 		 */
 		protected function get_filters() {
-			// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Read-only list filters.
 			$filters = [
-				'status'    => ! empty( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : '',
-				'type'      => $this->fixed_type ? $this->fixed_type : ( ! empty( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : '' ),
-				'search'    => ! empty( $_GET['s'] ) ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '',
-				'order_id'  => ! empty( $_GET['order-id'] ) ? absint( $_GET['order-id'] ) : '',
-				'reason'    => ! empty( $_GET['reason'] ) ? sanitize_key( wp_unslash( $_GET['reason'] ) ) : '',
-				'date_from' => ! empty( $_GET['from'] ) && preg_match( '/^\d{4}-\d{2}-\d{2}$/', sanitize_text_field( wp_unslash( $_GET['from'] ) ) ) ? sanitize_text_field( wp_unslash( $_GET['from'] ) ) . ' 00:00:00' : '',
-				'date_to'   => ! empty( $_GET['to'] ) && preg_match( '/^\d{4}-\d{2}-\d{2}$/', sanitize_text_field( wp_unslash( $_GET['to'] ) ) ) ? sanitize_text_field( wp_unslash( $_GET['to'] ) ) . ' 23:59:59' : '',
+				'status'    => '',
+				'type'      => $this->fixed_type,
+				'search'    => '',
+				'order_id'  => '',
+				'reason'    => '',
+				'date_from' => '',
+				'date_to'   => '',
 			];
-			// phpcs:enable
+
+			// Filters come from the list form and the status links, which carry a nonce.
+			if ( isset( $_GET['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr_nonce'] ) ), 'ddwcwr_nonce_action' ) ) {
+				$from = ! empty( $_GET['from'] ) ? sanitize_text_field( wp_unslash( $_GET['from'] ) ) : '';
+				$to   = ! empty( $_GET['to'] ) ? sanitize_text_field( wp_unslash( $_GET['to'] ) ) : '';
+
+				$filters = [
+					'status'    => ! empty( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : '',
+					'type'      => $this->fixed_type ? $this->fixed_type : ( ! empty( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : '' ),
+					'search'    => ! empty( $_GET['s'] ) ? sanitize_text_field( wp_unslash( $_GET['s'] ) ) : '',
+					'order_id'  => ! empty( $_GET['order-id'] ) ? absint( $_GET['order-id'] ) : '',
+					'reason'    => ! empty( $_GET['reason'] ) ? sanitize_key( wp_unslash( $_GET['reason'] ) ) : '',
+					'date_from' => preg_match( '/^\d{4}-\d{2}-\d{2}$/', $from ) ? $from . ' 00:00:00' : '',
+					'date_to'   => preg_match( '/^\d{4}-\d{2}-\d{2}$/', $to ) ? $to . ' 23:59:59' : '',
+				];
+			}
 
 			if ( 'open' === $filters['status'] ) {
 				$filters['status'] = '';
@@ -116,7 +130,8 @@ if ( ! class_exists( 'DDWCWR_Requests_List_Template' ) ) {
 		 * @return array
 		 */
 		protected function get_views() {
-			$current = ! empty( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$filters = $this->get_filters();
+			$current = $filters['status'];
 			$menu    = $this->fixed_type ? 'withdrawals' : 'requests';
 
 			return ddwcwr_get_list_views( $menu, $current, $this->fixed_type );

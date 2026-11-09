@@ -31,16 +31,16 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 		 * @var array
 		 */
 		protected $allowed = [
-			'_ddwcwr_enabled',
-			'_ddwcwr_return_window_days',
-			'_ddwcwr_window_from',
-			'_ddwcwr_allow_refund',
-			'_ddwcwr_allow_cancellation',
-			'_ddwcwr_refund_via_gateway',
-			'_ddwcwr_restock_on_receive',
-			'_ddwcwr_withdrawal_enabled',
-			'_ddwcwr_withdrawal_scope',
-			'_ddwcwr_withdrawal_footer_link',
+			'ddwcwr_enabled',
+			'ddwcwr_return_window_days',
+			'ddwcwr_window_from',
+			'ddwcwr_allow_refund',
+			'ddwcwr_allow_cancellation',
+			'ddwcwr_refund_via_gateway',
+			'ddwcwr_restock_on_receive',
+			'ddwcwr_withdrawal_enabled',
+			'ddwcwr_withdrawal_scope',
+			'ddwcwr_withdrawal_footer_link',
 		];
 
 		/**
@@ -59,7 +59,7 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 			$this->configuration = $ddwcwr_configuration;
 
 			// Stores that already saved settings don't need the wizard.
-			if ( ! get_option( 'ddfw_setup_wizard_completed_' . self::SLUG ) && false !== get_option( '_ddwcwr_enabled', false ) ) {
+			if ( ! get_option( 'ddfw_setup_wizard_completed_' . self::SLUG ) && false !== get_option( 'ddwcwr_enabled', false ) ) {
 				update_option( 'ddfw_setup_wizard_completed_' . self::SLUG, true );
 			}
 
@@ -154,7 +154,7 @@ if ( ! class_exists( 'DDWCWR_Setup_Wizard' ) ) {
 					<tbody>
 						<?php
 						foreach ( $fields as $field ) {
-							$field['name'] = '_' . str_replace( '-', '_', $field['id'] );
+							$field['name'] = str_replace( '-', '_', $field['id'] );
 							DDFW_Form_Field::display_form_field( $field );
 						}
 						?>

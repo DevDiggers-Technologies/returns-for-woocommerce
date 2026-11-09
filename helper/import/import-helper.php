@@ -28,7 +28,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 		/**
 		 * Option with order statuses of other plugins that imported orders still carry: slug => label.
 		 */
-		const KEPT_STATUSES_OPTION = '_ddwcwr_imported_order_statuses';
+		const KEPT_STATUSES_OPTION = 'ddwcwr_imported_order_statuses';
 
 		/**
 		 * Every source DevDiggers Returns can import from.
@@ -59,7 +59,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 		 * @return array slug => label, vendor, types, active, count, imported, last_run.
 		 */
 		public function get_sources() {
-			$runs    = (array) get_option( '_ddwcwr_import_last_run', [] );
+			$runs    = (array) get_option( 'ddwcwr_import_last_run', [] );
 			$sources = [];
 
 			foreach ( $this->get_all_sources() as $slug => $source ) {
@@ -115,7 +115,7 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			}
 
 			// One batch per source at a time, so two tabs cannot import the same request twice.
-			$lock = '_ddwcwr_import_lock_' . $slug;
+			$lock = 'ddwcwr_import_lock_' . $slug;
 
 			if ( ! $dry_run ) {
 				$locked = (int) get_option( $lock );
@@ -150,9 +150,9 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 				delete_option( $lock );
 
 				if ( $result['done'] ) {
-					$runs          = (array) get_option( '_ddwcwr_import_last_run', [] );
+					$runs          = (array) get_option( 'ddwcwr_import_last_run', [] );
 					$runs[ $slug ] = time();
-					update_option( '_ddwcwr_import_last_run', $runs, false );
+					update_option( 'ddwcwr_import_last_run', $runs, false );
 				}
 			}
 
@@ -192,15 +192,15 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 					return false;
 				}
 
-				$log   = (array) get_option( '_ddwcwr_unmatched_withdrawals', [] );
+				$log   = (array) get_option( 'ddwcwr_unmatched_withdrawals', [] );
 				$log[] = $request['unmatched'] + [
 					'ip_hash'    => '',
 					'import_key' => $request['key'],
 				];
-				update_option( '_ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
+				update_option( 'ddwcwr_unmatched_withdrawals', array_slice( $log, -200 ), false );
 
 				// The log keeps the last 200 statements; the keys are kept apart so a trimmed one is never imported again.
-				update_option( '_ddwcwr_imported_unmatched_keys', array_merge( self::unmatched_keys(), [ $request['key'] ] ), false );
+				update_option( 'ddwcwr_imported_unmatched_keys', array_merge( self::unmatched_keys(), [ $request['key'] ] ), false );
 
 				return true;
 			}
@@ -378,8 +378,8 @@ if ( ! class_exists( 'DDWCWR_Import_Helper' ) ) {
 			return array_values(
 				array_unique(
 					array_merge(
-						(array) get_option( '_ddwcwr_imported_unmatched_keys', [] ),
-						array_filter( array_column( (array) get_option( '_ddwcwr_unmatched_withdrawals', [] ), 'import_key' ) )
+						(array) get_option( 'ddwcwr_imported_unmatched_keys', [] ),
+						array_filter( array_column( (array) get_option( 'ddwcwr_unmatched_withdrawals', [] ), 'import_key' ) )
 					)
 				)
 			);

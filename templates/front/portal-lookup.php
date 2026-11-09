@@ -10,10 +10,14 @@
 
 defined( 'ABSPATH' ) || exit();
 
-// phpcs:disable WordPress.Security.NonceVerification.Missing -- Re-filling after a verified post.
-$ddwcwr_number = isset( $_POST['ddwcwr_order_number'] ) ? sanitize_text_field( wp_unslash( $_POST['ddwcwr_order_number'] ) ) : '';
-$ddwcwr_email  = isset( $_POST['ddwcwr_email'] ) ? sanitize_email( wp_unslash( $_POST['ddwcwr_email'] ) ) : '';
-// phpcs:enable
+// Re-fill the fields after a failed lookup, only from a post that carries a valid nonce.
+$ddwcwr_number = '';
+$ddwcwr_email  = '';
+
+if ( isset( $_POST['ddwcwr_nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['ddwcwr_nonce'] ) ), 'ddwcwr_portal_lookup' ) ) {
+	$ddwcwr_number = isset( $_POST['ddwcwr_order_number'] ) ? sanitize_text_field( wp_unslash( $_POST['ddwcwr_order_number'] ) ) : '';
+	$ddwcwr_email  = isset( $_POST['ddwcwr_email'] ) ? sanitize_email( wp_unslash( $_POST['ddwcwr_email'] ) ) : '';
+}
 ?>
 <div class="ddwcwr-card ddwcwr-lookup">
 	<span class="ddwcwr-icon-tile"><?php echo wp_kses( ddwcwr_icon( 'return', 24 ), ddwcwr_kses_icon() ); ?></span>

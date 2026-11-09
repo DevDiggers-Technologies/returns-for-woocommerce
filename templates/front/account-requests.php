@@ -15,8 +15,12 @@ $ddwcwr_types    = ddwcwr_get_request_types();
 $ddwcwr_open     = 0;
 $ddwcwr_done     = 0;
 $ddwcwr_paid     = 0;
-$ddwcwr_view     = isset( $_GET['ddwcwr-view'] ) ? sanitize_key( wp_unslash( $_GET['ddwcwr-view'] ) ) : ( $requests ? 'requests' : 'new' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Display only.
-$ddwcwr_base_url = ddwcwr_get_account_url();
+$ddwcwr_view     = $requests ? 'requests' : 'new';
+$ddwcwr_base_url = add_query_arg( 'ddwcwr-nonce', wp_create_nonce( 'ddwcwr_portal_link' ), ddwcwr_get_account_url() );
+
+if ( isset( $_GET['ddwcwr-view'], $_GET['ddwcwr-nonce'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['ddwcwr-nonce'] ) ), 'ddwcwr_portal_link' ) ) {
+	$ddwcwr_view = sanitize_key( wp_unslash( $_GET['ddwcwr-view'] ) );
+}
 
 foreach ( $requests as $ddwcwr_request ) {
 	if ( in_array( $ddwcwr_request['status'], ddwcwr_get_final_statuses(), true ) ) {

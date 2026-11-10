@@ -61,7 +61,6 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Helper' ) ) {
 					"SELECT SUM(CASE WHEN type <> 'withdrawal' THEN 1 ELSE 0 END) AS requests,
 						SUM(CASE WHEN type = 'withdrawal' THEN 1 ELSE 0 END) AS withdrawals,
 						COALESCE(SUM(refunded_total),0) AS refunded,
-						COALESCE(AVG(CASE WHEN closed IS NOT NULL AND status = 'completed' THEN TIMESTAMPDIFF(MINUTE, created, closed) END),0) / 60 AS hours,
 						SUM(CASE WHEN closed IS NOT NULL AND status = 'completed' THEN 1 ELSE 0 END) AS resolved
 					FROM {$wpdb->prefix}ddwcwr_requests WHERE created BETWEEN %s AND %s",
 					$from . ' 00:00:00',
@@ -70,7 +69,19 @@ if ( ! class_exists( 'DDWCWR_Dashboard_Helper' ) ) {
 				ARRAY_A
 			);
 
-			return array_map( 'floatval', (array) $row );
+			// Time to resolve is averaged here: TIMESTAMPDIFF is MySQL only (SQLite, e.g. WordPress Playground, has no such function).
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+			$spans = $wpdb->get_results( $wpdb->prepare( "SELECT created, closed FROM {$wpdb->prefix}ddwcwr_requests WHERE closed IS NOT NULL AND status = 'completed' AND created BETWEEN %s AND %s", $from . ' 00:00:00', $to . ' 23:59:59' ), ARRAY_A );
+			$hours = 0;
+
+			foreach ( (array) $spans as $span ) {
+				$hours += max( 0, strtotime( $span['closed'] ) - strtotime( $span['created'] ) ) / HOUR_IN_SECONDS;
+			}
+
+			$row          = array_map( 'floatval', (array) $row );
+			$row['hours'] = $spans ? $hours / count( $spans ) : 0;
+
+			return $row;
 		}
 
 		/**

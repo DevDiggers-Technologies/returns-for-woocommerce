@@ -465,6 +465,166 @@ body:has(.devdiggers-wrap) {
         }
     }
 
+    // Extensions page before the list is loaded: one consent card, then a faded preview of the grid.
+    .ddfw-extensions-consent {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+        padding: 28px;
+        background: #fff;
+        border: 1px solid transparent;
+        box-shadow: 0 1px 2px rgba(16, 24, 40, .05), 0 1px 3px rgba(16, 24, 40, .06);
+        border-radius: @hub-radius;
+
+        @media @tablet-down {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .ddfw-stat-icon {
+            background: var(--ddfw-tab-background-color);
+            color: var(--ddfw-primary-color);
+        }
+
+        h2 {
+            margin: 0 0 4px;
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 1.4;
+            color: @hub-text;
+        }
+
+        p {
+            margin: 0;
+            color: @hub-muted;
+        }
+    }
+
+    .ddfw-extensions-consent-main {
+        display: flex;
+        align-items: flex-start;
+        gap: 16px;
+        min-width: 0;
+    }
+
+    .ddfw-extensions-consent-points {
+        display: grid;
+        gap: 8px;
+        margin: 16px 0 0;
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin: 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #374151;
+        }
+
+        svg {
+            flex-shrink: 0;
+            margin-top: 2px;
+            color: #15803d;
+        }
+    }
+
+    .ddfw-extensions-consent-actions {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        gap: 8px;
+        min-width: 220px;
+
+        .ddfw-button {
+            justify-content: center;
+            gap: 6px;
+            height: 40px;
+            padding: 0 18px;
+        }
+
+        svg {
+            color: @hub-subtle;
+        }
+
+        @media @tablet-down {
+            min-width: 0;
+        }
+    }
+
+    .ddfw-extensions-skeleton {
+        margin-top: 16px;
+        opacity: .8;
+        -webkit-mask-image: linear-gradient(#000 40%, transparent);
+        mask-image: linear-gradient(#000 40%, transparent);
+        pointer-events: none;
+
+        .ddfw-plugin-card {
+            gap: 10px;
+            padding-bottom: 20px;
+        }
+
+        .ddfw-skeleton-image {
+            display: block;
+            height: 120px;
+            background: #eef0f3;
+        }
+
+        .ddfw-skeleton-line {
+            display: block;
+            width: 60%;
+            height: 10px;
+            margin: 0 20px;
+            background: #e5e7eb;
+            border-radius: 999px;
+
+            &.ddfw-skeleton-line-short {
+                width: 85%;
+                height: 8px;
+            }
+        }
+    }
+
+    .ddfw-extensions-revoke {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 40px;
+        padding-top: 16px;
+        font-size: 13px;
+        color: @hub-muted;
+        border-top: 1px solid @hub-border;
+
+        svg {
+            color: @hub-subtle;
+        }
+
+        button {
+            padding: 0;
+            font: inherit;
+            font-weight: 500;
+            color: var(--ddfw-primary-color);
+            background: none;
+            border: 0;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }
+
+            &:focus-visible {
+                outline: 2px solid var(--ddfw-primary-color);
+                outline-offset: 2px;
+            }
+        }
+    }
+
     // System information + resources.
     .ddfw-hub-columns {
         display: grid;

@@ -89,11 +89,11 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 		}
 
 		/**
-		 * Add Admin menu function
+		 * The plugin logo (SVG), shown in the dashboard header and the AI & MCP hub.
 		 *
-		 * @return void
+		 * @return string
 		 */
-		public function ddwcwr_add_dashboard_menu() {
+		public static function ddwcwr_get_logo() {
 			ob_start();
 			?>
 			<svg width="32" height="32" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,9 +103,17 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 				<path d="M52 20.5 32 32v24l20-11.5Z" fill="#7b8cf0" stroke="#7b8cf0" stroke-width="3" stroke-linejoin="round"/>
 				<path d="M22 14.75 42 26.25v8" fill="none" stroke="#2f4be8" stroke-opacity=".35" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 			</svg>
-			<?php esc_html_e( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ); ?>
 			<?php
-			$plugin_name = ob_get_clean();
+			return ob_get_clean();
+		}
+
+		/**
+		 * Add Admin menu function
+		 *
+		 * @return void
+		 */
+		public function ddwcwr_add_dashboard_menu() {
+			$plugin_name = self::ddwcwr_get_logo() . ' ' . esc_html__( 'Returns', 'devdiggers-returns-for-woocommerce' );
 
 			$tab = function ( $label, $icon, $callback ) {
 				return [
@@ -123,7 +131,7 @@ if ( ! class_exists( 'DDWCWR_Admin_Dashboard' ) ) {
 
 			$args = [
 				'page_title'              => esc_html__( 'DevDiggers Returns – Returns & EU Withdrawal', 'devdiggers-returns-for-woocommerce' ),
-				'menu_title'              => $pending ? esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ) . ' <span class="awaiting-mod">' . absint( $pending ) . '</span>' : esc_html__( 'DevDiggers Returns', 'devdiggers-returns-for-woocommerce' ),
+				'menu_title'              => $pending ? esc_html__( 'Returns', 'devdiggers-returns-for-woocommerce' ) . ' <span class="awaiting-mod">' . absint( $pending ) . '</span>' : esc_html__( 'Returns', 'devdiggers-returns-for-woocommerce' ),
 				'slug'                    => 'ddwcwr-dashboard',
 				'plugin_name'             => $plugin_name,
 				'capability'              => 'manage_woocommerce',

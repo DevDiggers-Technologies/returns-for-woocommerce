@@ -68,6 +68,7 @@ const webpackConfig = {
 		'setup-wizard'        : './src/setup-wizard/index.js',
 		'review-notice' : './src/review-notice/index.js',
 		'notifications' : './src/notifications/index.js',
+		'mcp'           : './src/mcp/index.js',
 	},
 	output: {
 		filename     : './assets/js/[name].js',
@@ -164,6 +165,7 @@ const webpackConfig = {
                     woocommerce_excluded_report_order_statuses: [],
                 },
             }),
+            DDFW_FREE_BUILD: process.env.DDFW_FREE_BUILD === 'true'
         }),
 		new CustomTemplatedPathPlugin( {
 			modulename( outputPath, data ) {

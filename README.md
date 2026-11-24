@@ -10,7 +10,7 @@ Free WooCommerce returns plugin by [DevDiggers](https://devdiggers.com/): a retu
 | Prefix / namespace | `ddwcwr` / `DDWCWPReturns` |
 | Requires | WordPress 6.5, PHP 7.4, WooCommerce 9.0 |
 | Tested up to | WordPress 7.1, WooCommerce 11.2 |
-| Stable tag | 1.0.0 |
+| Stable tag | 1.1.0 |
 | License | GPL-3.0-or-later |
 
 ## What it does
@@ -27,7 +27,7 @@ Everything stays on the store's own server. No customer or order data leaves the
 
 1. Activate WooCommerce, then this plugin. The setup wizard opens.
 2. The Returns portal and Withdraw from contract pages are created on activation. Add them to a menu or the footer.
-3. Review **DevDiggers Plugins > DevDiggers Returns > Configuration**, mainly the Return Policy and EU Withdrawal tabs.
+3. Review **DevDiggers Plugins > Returns > Configuration**, mainly the Return Policy and EU Withdrawal tabs.
 
 Configuration tabs in the free build: General, Return Policy, Reasons, Statuses, Resolutions, EU Withdrawal, Emails, Advanced and Import. Warranty, Shipping Labels, Fraud Protection, Automation and Appearance show a Pro upgrade card.
 
@@ -37,6 +37,17 @@ Configuration tabs in the free build: General, Return Policy, Reasons, Statuses,
 |---|---|---|
 | `[ddwcwr_returns_portal]` | `ddwcwr/returns-portal` | Guest returns portal (order number and billing email lookup) |
 | `[ddwcwr_withdrawal_form]` | `ddwcwr/withdrawal-form` | EU withdrawal statement and model withdrawal form |
+
+## AI assistants (MCP)
+
+Ask Claude, ChatGPT, Cursor, VS Code or any MCP client about your returns in plain words: "What is waiting for me?", "Why are customers returning this month?", "Can order 1234 still be returned?", "Show me Ben's return history".
+
+- Tools for a returns overview (the dashboard totals for any period against the previous one, requests by status, type and resolution, top reasons and products, the open queue), the requests list with filters, one request in full (items, reasons, conversation, notes, history), an order's returns and what is still returnable, a customer's return history, the most returned products, reasons and categories, and the return policy settings
+- Triage pending returns and Returns review prompts
+- Optional: let the assistant approve, reject or change the status of a request with a note to the customer, add an internal note or message the customer, and mark returned items received with restock. Every change goes through the request screen's own logic (emails, history) and is logged under WooCommerce > Status > Logs. Refunds and approving cancellations stay with you in wp-admin
+- Same access as the Requests screen: store managers only
+- Managed in DevDiggers Plugins > AI & MCP: one MCP server for every DevDiggers plugin (`/wp-json/devdiggers/v1/mcp`), sign-in with OAuth (you click Allow in WordPress, nothing to copy), an on / off switch per plugin and per write tool, a Try panel on every tool and an activity log
+- Built on the WordPress Abilities API (WordPress 6.9+) and the MCP Adapter bundled with WooCommerce 10.3+
 
 ## Import from other plugins
 
@@ -95,6 +106,7 @@ wpml-config.xml               reasons, statuses, policy line and menu label for 
 | `ddwcwr_withdrawal_item_excluded` | Mark more order items as exempt from withdrawal. |
 | `ddwcwr_trader_address` | Lines of the store address on the model withdrawal form. |
 | `ddwcwr_private_upload_dir` | Move the private uploads folder. |
+| `ddwcwr_mcp_abilities` | Add, change or remove AI assistant (MCP) tools. They live in `includes/integrations/mcp-integration.php` under the `returns/` namespace. |
 
 ## Build
 

@@ -777,6 +777,18 @@ export const boot = ( initView ) => {
 
 	// Window listeners run after document level handlers, so plugin and framework handlers
 	// (delete confirmations, AJAX forms) can still prevent the default action.
+	// Some admin widgets (the Hostinger AI Assistant chatbot, for one) call stopImmediatePropagation()
+	// on every document click, so the listener below never runs and each tab click is a full page load.
+	// Neutralise that for dashboard links only, on this event only: handlers still run in their normal
+	// order, so a plugin that prevents the default action (a delete confirmation) still wins.
+	window.addEventListener( 'click', ( event ) => {
+		const link = event.target.closest && event.target.closest( 'a[href]' );
+
+		if ( link && isDashboardUrl( toUrl( link.href ) ) ) {
+			event.stopPropagation          = () => {};
+			event.stopImmediatePropagation = () => {};
+		}
+	}, true );
 	window.addEventListener( 'click', onClick );
 	window.addEventListener( 'submit', onSubmit );
 

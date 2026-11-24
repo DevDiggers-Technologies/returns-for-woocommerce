@@ -12,6 +12,7 @@ namespace DDWCWPReturns\Includes;
 use DDWCWPReturns\Includes\Admin;
 use DDWCWPReturns\Includes\Common;
 use DDWCWPReturns\Includes\Front;
+use DDWCWPReturns\Includes\Integrations;
 
 defined( 'ABSPATH' ) || exit();
 
@@ -35,6 +36,7 @@ if ( ! class_exists( 'DDWCWR_File_Handler' ) ) {
 			}
 
 			new Common\DDWCWR_Common_Hooks( $ddwcwr_configuration );
+			new Integrations\DDWCWR_MCP_Integration( $ddwcwr_configuration );
 
 			if ( is_admin() ) {
 				new DDWCWR_Admin_Dashboard( $ddwcwr_configuration );

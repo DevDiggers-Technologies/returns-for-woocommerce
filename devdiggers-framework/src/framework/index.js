@@ -12,6 +12,184 @@ const ddfw = jQuery.noConflict();
 // Must run while framework.js is evaluated: plugin scripts depend on it and execute right after.
 turbo.prepare();
 
+/**
+ * Validate the license of the current DevDiggers plugin page.
+ *
+ * Runs on every view (full or soft load). The remote check is throttled per plugin for the
+ * current browser session; the server side license gates are not affected.
+ */
+const ddfwCheckLicense = () => {
+    if (DDFW_FREE_BUILD) {
+        return;
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentPage = urlParams.get('page');
+    const currentTab = urlParams.get('tab');
+
+    // Security check: Validate that ddfwFrameworkObject.site_url matches current domain
+    if (ddfwFrameworkObject && ddfwFrameworkObject.site_url) {
+        try {
+            const providedDomain = new URL(ddfwFrameworkObject.site_url).hostname;
+            const currentDomain = window.location.hostname;
+
+            if (providedDomain !== currentDomain) {
+                window.location.href = `${ddfwFrameworkObject.site_url}/wp-admin/admin.php?page=devdiggers-plugins`;
+                return;
+            }
+        } catch (error) {
+            window.location.href = `${ddfwFrameworkObject.site_url}/wp-admin/admin.php?page=devdiggers-plugins`;
+            return;
+        }
+    }
+
+    // Check if this is a DevDiggers plugin page (not framework's own pages)
+    const isSetupWizard = urlParams.has('setup-wizard');
+    const isDevDiggersPluginPage = currentPage &&
+        currentPage.includes('dd') &&
+        currentPage !== 'devdiggers-plugins' &&
+        !isSetupWizard &&
+        currentTab !== 'license';
+
+    if (!isDevDiggersPluginPage) {
+        return;
+    }
+
+    // Find the current plugin configuration from dynamically detected plugins
+    let currentPlugin = null;
+    if (ddfwFrameworkObject.devdiggers_plugin && Object.keys(ddfwFrameworkObject.devdiggers_plugin).length > 0) {
+        currentPlugin = ddfwFrameworkObject.devdiggers_plugin;
+    }
+
+    // Security check: Validate plugin object integrity to prevent PHP tampering
+    if (!currentPlugin || !currentPlugin.plugin_prefix || !currentPlugin.page_slug) {
+        // Plugin object is missing or corrupted - likely tampering
+        window.location.href = `${ddfwFrameworkObject.site_url}/wp-admin/plugins.php`;
+        return;
+    }
+
+    // `ddfw-license` makes the license page explain why the redirect happened, instead of
+    // a blocking alert() that fires on every transient failure.
+    const licensePageUrl = `${ddfwFrameworkObject.site_url}/wp-admin/admin.php?page=${currentPlugin.page_slug}&menu=${currentPlugin.configuration_menu}&tab=license&ddfw-license=inactive`;
+
+    // Empty/null purchase_code means first-time installation - allow access for activation
+    if (!currentPlugin.purchase_code) {
+        window.location.href = licensePageUrl;
+        return;
+    }
+
+    const throttleKey = `ddfwLicenseCheck:${currentPlugin.plugin_prefix}`;
+    const throttleMs = Math.max(0, parseInt(turboConfig.licenseInterval, 10) || 0) * 60000;
+
+    try {
+        const lastCheck = parseInt(window.sessionStorage.getItem(throttleKey), 10) || 0;
+        if (throttleMs && Date.now() - lastCheck < throttleMs) {
+            return;
+        }
+    } catch (e) {
+        // Storage unavailable: check every view.
+    }
+
+    // `verified` marks a status the server checked the signature of. The direct browser
+    // call cannot verify anything (JS holds no key, and DNS can be pointed anywhere), so
+    // a failure it reports is confirmed through the AJAX route before acting on it.
+    const onLicenseStatus = (status, verified) => {
+        if (['deactivated', 'deleted', 'expired'].includes(status)) {
+            try {
+                window.sessionStorage.removeItem(throttleKey);
+            } catch (e) {
+                // Storage unavailable.
+            }
+
+            if (!verified) {
+                _performAjaxCheck();
+                return;
+            }
+
+            window.location.href = licensePageUrl;
+            return;
+        }
+
+        try {
+            window.sessionStorage.setItem(throttleKey, String(Date.now()));
+        } catch (e) {
+            // Storage unavailable.
+        }
+    };
+
+    // === PRIMARY DEFENSE: Direct API call using untampered fetch from iframe ===
+    // Nullifiers replace window.fetch on the main page via admin_head script injection.
+    // However, a dynamically created iframe has its own fresh window with the original
+    // native fetch that hasn't been monkey-patched. We grab that reference and use it.
+    const _getLicenseCheckUrl = () => {
+        // Build the URL from parts to avoid string matching in compiled output.
+        const _p = [100,101,118,100,105,103,103,101,114,115]; // devdiggers
+        const _d = String.fromCharCode(..._p);
+        return `https://${_d}.com/wp-json/ddelv/v1/check-license`;
+    };
+
+    // === SECONDARY DEFENSE: WP-AJAX route (server-side cURL + HMAC) ===
+    const _performAjaxCheck = () => {
+        fetch(ddfwFrameworkObject.ajax.ajaxUrl, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json',
+            }),
+            body: `action=ddfw_license_heartbeat_check&nonce=${ddfwFrameworkObject.ajax.ajaxNonce}&purchase_code=${encodeURIComponent(currentPlugin.purchase_code)}&prefix=${encodeURIComponent(currentPlugin.plugin_prefix)}`,
+        })
+            .then(response => response.json())
+            .then(response => {
+                if (response && response.success !== false) {
+                    // The AJAX route verifies the response signature server side.
+                    onLicenseStatus(response.status, true);
+                }
+            })
+            .catch(() => {});
+    };
+
+    const _performDirectCheck = (cleanFetch, iframeElement) => {
+        cleanFetch(_getLicenseCheckUrl(), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify({
+                'purchase_code': currentPlugin.purchase_code,
+                'user_agent': ddfwFrameworkObject.site_url,
+                'plugin_prefix': currentPlugin.plugin_prefix,
+            })
+        })
+        .then(r => r.json())
+        .then(r => {
+            if (r && r.success) {
+                onLicenseStatus(r.status, false);
+            }
+        })
+        .catch(() => {
+            // If direct check fails (network), fall back to AJAX route.
+            _performAjaxCheck();
+        })
+        .finally(() => {
+            // Remove the iframe after the fetch is complete
+            if (iframeElement && iframeElement.parentNode) {
+                iframeElement.parentNode.removeChild(iframeElement);
+            }
+        });
+    };
+
+    // Get an untampered fetch from a fresh iframe context.
+    try {
+        const _f = document.createElement('iframe');
+        _f.style.display = 'none';
+        document.body.appendChild(_f);
+        const _cleanFetch = _f.contentWindow.fetch.bind(_f.contentWindow);
+        // Do not remove the iframe immediately! The fetch needs its global scope.
+        _performDirectCheck(_cleanFetch, _f);
+    } catch (e) {
+        // Iframe approach failed, fall back to AJAX route.
+        _performAjaxCheck();
+    }
+};
+
 // ===== MOBILE SIDEBAR TOGGLE =====
 
 // Function to close header drawer
@@ -131,6 +309,10 @@ const SHOW_FIELDS_SELECTOR = '[data-show-fields]:not([data-show-fields="false"])
  * @param {HTMLElement} container - The container element (defaults to document)
  */
 window.ddfwInitializeSelect2 = function(container = document) {
+    if (!ddfw.fn.select2) {
+        return;
+    }
+
     const selectElements = container.querySelectorAll('select');
     if (selectElements.length) {
         selectElements.forEach(select => {
@@ -157,6 +339,10 @@ window.ddfwInitializeSelect2 = function(container = document) {
  * @param {HTMLElement} container - The container element (defaults to document)
  */
 window.ddfwInitializeProductsSelect2 = function(container = document) {
+    if (!ddfw.fn.select2) {
+        return;
+    }
+
     const productSelects = container.querySelectorAll('.ddfw-products');
     if (productSelects.length) {
         productSelects.forEach(select => {
@@ -207,6 +393,10 @@ window.ddfwInitializeProductsSelect2 = function(container = document) {
  * @param {HTMLElement} container - The container element (defaults to document)
  */
 window.ddfwInitializeCategoriesSelect2 = function(container = document) {
+    if (!ddfw.fn.select2) {
+        return;
+    }
+
     const categorySelects = container.querySelectorAll('.ddfw-categories');
     if (categorySelects.length) {
         categorySelects.forEach(select => {
@@ -261,6 +451,10 @@ window.ddfwInitializeCategoriesSelect2 = function(container = document) {
  * @param {HTMLElement} container - The container element (defaults to document)
  */
 window.ddfwInitializeUsersSelect2 = function(container = document) {
+    if (!ddfw.fn.select2) {
+        return;
+    }
+
     const userSelects = container.querySelectorAll('.ddfw-users');
     if (userSelects.length) {
         userSelects.forEach(select => {
@@ -415,7 +609,8 @@ const ddfwInitView = (container = document) => {
 
     // Initialize the color picker
     container.querySelectorAll('.ddfw-color-picker').forEach(element => {
-        if (element.closest('.wp-picker-container')) {
+        // The color picker script can be missing ( another plugin removed it ): leave the plain input usable.
+        if (!ddfw.fn.wpColorPicker || element.closest('.wp-picker-container')) {
             return;
         }
 
@@ -466,13 +661,91 @@ window.ddfw = Object.assign(window.ddfw || {}, {
     visit: turbo.visit,
 });
 
+/**
+ * Activate or deactivate a license from the license tab.
+ *
+ * @param {MouseEvent} e Click event.
+ */
+const ddfwVerifyLicense = e => {
+    e.preventDefault();
+    const buttonElement = e.target.closest('.button');
+
+    const licenseStatusElement = document.querySelector('.ddfw-license-status');
+    const purchaseCodeElement = document.querySelector('#ddfw-purchase-code');
+    const purchaseEmailElement = document.querySelector('#ddfw-purchase-email');
+    const purchaseCode = purchaseCodeElement.value;
+    const purchaseEmail = purchaseEmailElement.value;
+    const status = buttonElement.getAttribute('data-action');
+    const prefix = buttonElement.getAttribute('data-prefix');
+    const productId = buttonElement.getAttribute('data-product-id');
+    const buttonLabel = buttonElement.innerHTML;
+
+    if (purchaseCode && ('deactivate' === status || (purchaseEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(purchaseEmail)))) {
+        buttonElement.disabled = true;
+        buttonElement.innerHTML = buttonElement.getAttribute('data-fetching');
+
+        fetch(ddfwFrameworkObject.ajax.ajaxUrl, {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json',
+            }),
+            body: `action=ddfw_verify_license&nonce=${ddfwFrameworkObject.ajax.ajaxNonce}&purchase_code=${purchaseCode}&purchase_email=${purchaseEmail}&status=${status}&prefix=${prefix}&product_id=${productId}`,
+        })
+            .then(response => response.json())
+            .then(response => {
+                buttonElement.innerHTML = buttonLabel;
+                buttonElement.disabled = false;
+                const licenseStatusParentElement = licenseStatusElement.closest('.notice');
+
+                if (response.success) {
+                    try {
+                        // License state changed: the next view must validate it again.
+                        window.sessionStorage.removeItem(`ddfwLicenseCheck:${prefix}`);
+                    } catch (storageError) {
+                        // Storage unavailable.
+                    }
+
+                    document.querySelectorAll('.ddfw-verify-license').forEach(btn => btn.classList.remove('ddfw-hide'));
+                    buttonElement.classList.add('ddfw-hide');
+                    licenseStatusParentElement.classList.add('notice-success');
+                    licenseStatusParentElement.classList.remove('notice-error');
+
+                    if ('activate' === status) {
+                        document.querySelector('.ddfw-license-input-section').classList.add('ddfw-hide');
+                        document.querySelector('.ddfw-license-status-card').classList.remove('ddfw-hide');
+                    } else {
+                        document.querySelector('.ddfw-license-input-section').classList.remove('ddfw-hide');
+                        document.querySelector('.ddfw-license-status-card').classList.add('ddfw-hide');
+                    }
+                } else {
+                    licenseStatusParentElement.classList.add('notice-error');
+                    licenseStatusParentElement.classList.remove('notice-success');
+                }
+
+                licenseStatusElement.innerHTML = response.message;
+                licenseStatusParentElement.classList.remove('ddfw-hide');
+            })
+            .catch(err => {
+                buttonElement.disabled = false;
+                console.log(err);
+            });
+    } else {
+        alert('Purchase code or email is not valid.');
+    }
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     // Consolidated click event handler for better performance
     document.addEventListener('click', e => {
         const uploadImageButton = e.target.closest && e.target.closest('.ddfw-upload-image-button');
 
+        // License activation/deactivation (delegated, so soft-loaded license tabs work too)
+        if (!DDFW_FREE_BUILD && e.target.closest && e.target.closest('.ddfw-verify-license')) {
+            ddfwVerifyLicense(e);
+        }
         // Image upload button
-        if (uploadImageButton) {
+        else if (uploadImageButton) {
             e.preventDefault();
             ddfwOpenImageUploader(uploadImageButton);
         }
@@ -573,5 +846,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     ddfwInitView(document);
-    turbo.boot(ddfwInitView);
+    ddfwCheckLicense();
+
+    if (turbo.boot(ddfwInitView)) {
+        document.addEventListener('ddfw:view:load', ddfwCheckLicense);
+    }
 });

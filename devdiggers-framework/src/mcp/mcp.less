@@ -1,0 +1,1012 @@
+// DevDiggers AI & MCP hub page. Loaded after dashboard.css, so it only adds what the page needs, in the
+// hub's language, kept flat: white cards with a hairline border, no gradients or glows, 6px badges.
+@hub-text: #111827;
+@hub-muted: #6b7280;
+@hub-subtle: #9ca3af;
+@hub-border: #ebebeb;
+@hub-radius: 12px;
+@card-border: 1px solid #ebebeb;
+@mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+@mobile-down: ~"(max-width: 767px)";
+@tablet-down: ~"(max-width: 1023px)";
+
+.ddfw-mcp {
+    .ddfw-mcp-muted {
+        color: @hub-muted;
+        font-size: 12px;
+    }
+
+    // ---- Server card ------------------------------------------------------------------------------
+
+    .ddfw-mcp-hero {
+        padding: 24px;
+        background: #fff;
+        border: @card-border;
+        border-radius: @hub-radius;
+    }
+
+    .ddfw-mcp-hero-top {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+
+        @media @mobile-down {
+            flex-wrap: wrap;
+
+            > .ddfw-button {
+                width: 100%;
+            }
+        }
+    }
+
+    .ddfw-mcp-hero-icon {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        // The tint plugin logos sit on ( MultiPOS draws its circle in it ).
+        background: var(--ddfw-tab-background-color, #eef3ff);
+        color: var(--ddfw-primary-color);
+    }
+
+    .ddfw-mcp-hero-text {
+        flex: 1;
+        min-width: 0;
+
+        h1 {
+            margin: 0 0 2px;
+            padding: 0;
+            font-size: 21px;
+            font-weight: 600;
+            line-height: 1.3;
+            color: @hub-text;
+        }
+
+        p {
+            margin: 0;
+            color: @hub-muted;
+        }
+    }
+
+    .ddfw-mcp-hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px 16px;
+        margin-top: 20px;
+        padding-top: 16px;
+        border-top: 1px solid @hub-border;
+    }
+
+    // The MultiPOS status badge ( .ddwcpos-status ): same size, weight and colours.
+    .ddfw-mcp-badge {
+        display: inline-block;
+        padding: 2px 10px;
+        border-radius: 6px;
+        background: #e1e4ea;
+        color: #222530;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1.5;
+
+        &.is-on {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        &.is-warn,
+        &.is-error {
+            background: rgba(255, 72, 0, .07);
+            color: var(--ddfw-error-color, #ff4800);
+        }
+    }
+
+    .ddfw-mcp-url {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+        min-width: 260px;
+        max-width: 520px;
+        margin-left: auto;
+        padding: 4px 4px 4px 12px;
+        background: #f9fafb;
+        border: 1px solid #ebebeb;
+        border-radius: 8px;
+
+        code {
+            flex: 1;
+            min-width: 0;
+            padding: 0;
+            overflow: hidden;
+            background: none;
+            color: #374151;
+            font-family: @mono;
+            font-size: 12px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        @media @mobile-down {
+            margin-left: 0;
+            min-width: 100%;
+        }
+    }
+
+    // Copy: icon and word, quiet until hovered.
+    .ddfw-mcp-copy {
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: 6px;
+        height: 28px;
+        padding: 0 10px;
+        border: 1px solid #e5e7eb;
+        border-radius: 6px;
+        background: #fff;
+        color: #374151;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color .15s ease, color .15s ease;
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--ddfw-primary-color);
+            color: var(--ddfw-primary-color);
+            outline: none;
+        }
+
+        &.is-copied {
+            border-color: #bbf7d0;
+            color: #15803d;
+        }
+    }
+
+    .ddfw-mcp-notice {
+        margin: 14px 0 0;
+        padding: 10px 12px;
+        background: #fffbeb;
+        border-radius: 6px;
+        color: #92400e;
+        font-size: 13px;
+    }
+
+    .ddfw-mcp-connections {
+        margin-top: 20px;
+
+        h3 {
+            margin: 0 0 8px;
+            color: @hub-muted;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        ul {
+            margin: 0;
+            border: @card-border;
+            border-radius: 8px;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px 12px;
+            margin: 0;
+            padding: 10px 14px;
+            font-size: 13px;
+
+            & + li {
+                border-top: 1px solid #f1f2f4;
+            }
+
+            strong {
+                color: @hub-text;
+            }
+
+            .ddfw-mcp-link-danger {
+                margin-left: auto;
+            }
+        }
+    }
+
+    .ddfw-mcp-link-danger,
+    .ddfw-mcp-link {
+        padding: 0;
+        border: 0;
+        background: none;
+        color: #dc2626;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .ddfw-mcp-link {
+        color: var(--ddfw-primary-color);
+    }
+
+    // ---- Tools ------------------------------------------------------------------------------------
+
+    .ddfw-mcp-plugin {
+        margin-bottom: 16px;
+        background: #fff;
+        border: @card-border;
+        border-radius: @hub-radius;
+        overflow: hidden;
+
+        &.is-off .ddfw-mcp-tools {
+            opacity: .45;
+        }
+    }
+
+    .ddfw-mcp-plugin-head {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 20px;
+        border-bottom: 1px solid @hub-border;
+
+        @media @mobile-down {
+            flex-wrap: wrap;
+        }
+    }
+
+    .ddfw-mcp-plugin-logo {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        color: var(--ddfw-primary-color);
+
+        svg {
+            width: 36px;
+            height: 36px;
+        }
+    }
+
+    .ddfw-mcp-plugin-title {
+        flex: 1;
+        min-width: 0;
+
+        // Phones: name and description get the row; Open and the switch drop below.
+        @media @mobile-down {
+            flex-basis: calc(100% - 60px);
+        }
+
+        h3 {
+            margin: 0;
+            font-size: 15px;
+            font-weight: 600;
+            color: @hub-text;
+        }
+
+        p {
+            margin: 2px 0 0;
+            color: @hub-muted;
+            font-size: 13px;
+        }
+    }
+
+    .ddfw-mcp-tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        margin: 0;
+        padding: 8px;
+
+        @media @mobile-down {
+            grid-template-columns: 1fr;
+        }
+
+        li {
+            margin: 0;
+            border-radius: 8px;
+            transition: background-color .15s ease;
+
+            &:hover {
+                background: #f7f8fa;
+            }
+        }
+    }
+
+    .ddfw-mcp-tool {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        width: 100%;
+        padding: 12px;
+        border: 0;
+        background: none;
+        color: inherit;
+        text-align: left;
+        cursor: pointer;
+
+        &:focus-visible {
+            outline: 2px solid var(--ddfw-primary-color);
+            outline-offset: -2px;
+            border-radius: 8px;
+        }
+
+        &:hover .ddfw-mcp-try {
+            opacity: 1;
+        }
+    }
+
+    .ddfw-mcp-tool-text {
+        flex: 1;
+        min-width: 0;
+
+        strong {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: @hub-text;
+        }
+
+        span {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
+            color: @hub-muted;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+    }
+
+    .ddfw-mcp-try {
+        flex-shrink: 0;
+        color: var(--ddfw-primary-color);
+        font-size: 12px;
+        font-weight: 600;
+        opacity: .55;
+        transition: opacity .15s ease;
+    }
+
+    .ddfw-mcp-allow {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin: -4px 12px 10px 58px;
+        color: #374151;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+    }
+
+    // ---- Shared bits ------------------------------------------------------------------------------
+
+    .ddfw-mcp-chip {
+        flex-shrink: 0;
+        margin-top: 1px;
+        padding: 1px 8px;
+        border-radius: 6px;
+        background: #e1e4ea;
+        color: #222530;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.6;
+
+        &.ddfw-mcp-chip-write {
+            background: rgba(255, 72, 0, .07);
+            color: var(--ddfw-error-color, #ff4800);
+        }
+
+        &.ddfw-mcp-chip-prompt {
+            background: #eef3ff;
+            color: var(--ddfw-primary-color);
+        }
+    }
+
+    .ddfw-mcp-switch {
+        position: relative;
+        display: inline-flex;
+        flex-shrink: 0;
+        width: 38px;
+        height: 22px;
+
+        input {
+            position: absolute;
+            inset: 0;
+            width: 100% !important;
+            height: 100%;
+            margin: 0;
+            opacity: 0;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        span {
+            position: absolute;
+            inset: 0;
+            background: #e5e7eb;
+            border-radius: 999px;
+            transition: background-color .2s ease;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 18px;
+                height: 18px;
+                background: #fff;
+                border-radius: 50%;
+                box-shadow: 0 1px 3px rgba(17, 24, 39, .2);
+                transition: transform .2s ease;
+            }
+        }
+
+        input:checked + span {
+            background: var(--ddfw-primary-color);
+
+            &::before {
+                transform: translateX(16px);
+            }
+        }
+
+        input:focus-visible + span {
+            outline: 2px solid var(--ddfw-primary-color);
+            outline-offset: 2px;
+        }
+
+        input:disabled {
+            cursor: default;
+
+            + span {
+                opacity: .5;
+            }
+        }
+
+        &.ddfw-mcp-switch-small {
+            width: 30px;
+            height: 18px;
+
+            span::before {
+                width: 14px;
+                height: 14px;
+            }
+
+            input:checked + span {
+
+                &::before {
+                    transform: translateX(12px);
+                }
+            }
+        }
+    }
+
+    .ddfw-mcp-code {
+        margin-top: 8px;
+        overflow: hidden;
+        background: #f9fafb;
+        border: @card-border;
+        border-radius: 8px;
+
+        pre {
+            margin: 0;
+            padding: 12px 14px;
+            max-height: 240px;
+            overflow: auto;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+        code {
+            padding: 0;
+            background: none;
+            color: @hub-text;
+            font-family: @mono;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+    }
+
+    .ddfw-mcp-code-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 6px 6px 6px 14px;
+        background: #fff;
+        border-bottom: 1px solid #ebebeb;
+        color: @hub-muted;
+        font-family: @mono;
+        font-size: 11px;
+    }
+
+    // ---- Activity ---------------------------------------------------------------------------------
+
+    .ddfw-mcp-section-header {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .ddfw-mcp-log {
+        overflow-x: auto;
+        background: #fff;
+        border: @card-border;
+        border-radius: @hub-radius;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        th {
+            padding: 12px 16px;
+            border-bottom: 1px solid @hub-border;
+            color: @hub-muted;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 11px 16px;
+            border-bottom: 1px solid #f5f6f8;
+            white-space: nowrap;
+
+            .ddfw-mcp-muted {
+                margin-left: 6px;
+            }
+        }
+
+        .ddfw-mcp-log-plugin {
+            display: block;
+            color: @hub-subtle;
+            font-size: 11px;
+        }
+
+        .ddfw-mcp-log-error {
+            display: block;
+            max-width: 420px;
+            margin-top: 4px;
+            color: @hub-muted;
+            font-size: 12px;
+            white-space: normal;
+        }
+
+        tr:last-child td {
+            border-bottom: 0;
+        }
+    }
+
+    .ddfw-mcp-filters {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+        margin: 0 0 12px;
+
+        select {
+            min-width: 150px;
+            height: 34px;
+            padding: 0 28px 0 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: #fff;
+            color: @hub-text;
+            font-size: 13px;
+            box-shadow: none;
+
+            &:focus {
+                border-color: var(--ddfw-primary-color);
+                box-shadow: none;
+                outline: none;
+            }
+        }
+
+        @media @mobile-down {
+            select {
+                flex: 1 1 140px;
+            }
+        }
+    }
+
+    .ddfw-mcp-tablenav {
+        display: flex;
+        justify-content: flex-end;
+        padding-top: 12px;
+
+        .tablenav-pages {
+            float: none;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .displaying-num {
+            color: @hub-muted;
+            font-size: 12px;
+        }
+    }
+
+    // ---- Dialogs ----------------------------------------------------------------------------------
+
+    .ddfw-mcp-dialog {
+        width: ~"min(560px, calc(100vw - 32px))";
+        max-height: calc(100vh - 64px);
+        padding: 24px;
+        border: 0;
+        border-radius: @hub-radius;
+        box-shadow: 0 12px 32px rgba(16, 24, 40, .12);
+        color: @hub-text;
+        box-sizing: border-box;
+
+        &::backdrop {
+            background: rgba(17, 24, 39, .4);
+        }
+
+        &[open] {
+            animation: ddfw-mcp-pop .18s ease-out;
+        }
+
+        p {
+            font-size: 13px;
+        }
+    }
+
+    .ddfw-mcp-dialog-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 8px;
+
+        h2 {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .ddfw-mcp-chip {
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+    }
+
+    .ddfw-mcp-close {
+        display: flex;
+        padding: 6px;
+        border: 0;
+        border-radius: 8px;
+        background: none;
+        color: @hub-muted;
+        cursor: pointer;
+
+        &:hover {
+            background: #f3f4f6;
+            color: @hub-text;
+        }
+    }
+
+    .ddfw-mcp-clients {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+        margin: 12px 0 16px;
+
+        @media @mobile-down {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .ddfw-mcp-client {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 14px;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        background: #fff;
+        color: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: border-color .15s ease;
+
+        &:hover,
+        &:focus-visible {
+            border-color: var(--ddfw-primary-color);
+            outline: none;
+        }
+    }
+
+    .ddfw-mcp-client-icon {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: #f6f7f9;
+        color: @hub-muted;
+    }
+
+    .ddfw-mcp-client-text {
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+        min-width: 0;
+
+        strong {
+            font-size: 14px;
+        }
+
+        span {
+            color: @hub-muted;
+            font-size: 12px;
+        }
+    }
+
+    .ddfw-mcp-back {
+        padding: 0;
+        border: 0;
+        background: none;
+        color: @hub-muted;
+        font-size: 12px;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            color: var(--ddfw-primary-color);
+        }
+    }
+
+    .ddfw-mcp-setup-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 12px 0 4px;
+
+        strong {
+            font-size: 15px;
+        }
+    }
+
+    .ddfw-mcp-steps {
+        margin: 12px 0 0;
+        padding: 0;
+        list-style: none;
+        counter-reset: ddfw-mcp-step;
+
+        > li {
+            position: relative;
+            margin: 0 0 14px;
+            padding-left: 32px;
+            font-size: 13px;
+            line-height: 1.55;
+            counter-increment: ddfw-mcp-step;
+
+            &::before {
+                content: counter(ddfw-mcp-step);
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 20px;
+                height: 20px;
+                border-radius: 6px;
+                background: #f3f4f6;
+                color: #374151;
+                font-size: 11px;
+                font-weight: 600;
+                line-height: 20px;
+                text-align: center;
+            }
+        }
+    }
+
+    .ddfw-mcp-prompt {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        padding-top: 12px;
+        border-top: 1px solid #f1f2f4;
+        color: @hub-muted;
+        font-size: 12px;
+    }
+
+    .ddfw-mcp-fineprint {
+        margin: 16px 0 0;
+        color: @hub-subtle;
+        font-size: 12px !important;
+    }
+
+    // Try: a panel on the right.
+    .ddfw-mcp-drawer {
+        position: fixed;
+        inset: 0 0 0 auto;
+        width: ~"min(520px, 100vw)";
+        height: 100vh;
+        max-height: none;
+        margin: 0;
+        border-radius: 0;
+        overflow-y: auto;
+
+        &[open] {
+            animation: ddfw-mcp-slide .2s ease-out;
+        }
+
+        #ddfw-mcp-run > .ddfw-button {
+            width: 100%;
+            margin-top: 16px;
+        }
+    }
+
+    .ddfw-mcp-inputs > p {
+        margin: 8px 0 0;
+    }
+
+    .ddfw-mcp-input {
+        margin-top: 14px;
+
+        label {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+
+        select,
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
+            width: 100%;
+            max-width: 100%;
+            height: 36px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 13px;
+            box-shadow: none;
+        }
+
+        small {
+            display: block;
+            margin-top: 4px;
+            color: @hub-muted;
+            font-size: 11px;
+            line-height: 1.45;
+        }
+    }
+
+    .ddfw-mcp-checks {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+
+        label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            padding: 4px 8px;
+            background: #f3f4f6;
+            border-radius: 6px;
+            font-weight: 500;
+            text-transform: none;
+            cursor: pointer;
+
+            &:has(input:checked) {
+                background: #eef3ff;
+                color: var(--ddfw-primary-color);
+            }
+        }
+
+        input {
+            margin: 0;
+        }
+    }
+
+    .ddfw-mcp-output {
+        margin-top: 20px;
+        overflow: hidden;
+        background: #0f172a;
+        border-radius: 8px;
+
+        pre {
+            margin: 0;
+            padding: 14px 16px;
+            max-height: 50vh;
+            overflow: auto;
+            color: #e2e8f0;
+            font-size: 12px;
+            line-height: 1.55;
+        }
+
+        code {
+            padding: 0;
+            background: none;
+            color: inherit;
+            font-family: @mono;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+    }
+
+    .ddfw-mcp-output-head {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 16px;
+        border-bottom: 1px solid #1e293b;
+        color: #94a3b8;
+        font-size: 12px;
+        font-weight: 600;
+
+        .is-success {
+            color: #4ade80;
+        }
+
+        .is-error {
+            color: #f87171;
+        }
+    }
+}
+
+@keyframes ddfw-mcp-pop {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(.98);
+    }
+}
+
+@keyframes ddfw-mcp-slide {
+    from {
+        transform: translateX(24px);
+        opacity: 0;
+    }
+}
+
+// Toast lives on <body>, outside the page wrapper.
+.ddfw-mcp-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 100001;
+    padding: 10px 16px;
+    background: #111827;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    transform: translate(-50%, 8px);
+    transition: opacity .2s ease, transform .2s ease;
+
+    &.is-visible {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    &.is-error {
+        background: #b91c1c;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ddfw-mcp-dialog[open] {
+        animation: none;
+    }
+}

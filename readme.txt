@@ -9,7 +9,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -109,6 +109,16 @@ Supported: Return Refund and Exchange for WooCommerce, Flexible Refund and Retur
 * GDPR export and erase for every request. Withdrawal records are anonymized, not deleted.
 * HPOS, block and classic checkout, RTL and translation ready, with a `wpml-config.xml` so WPML and Polylang can translate your reasons, statuses and policy line.
 
+=== AI assistants (MCP) ===
+
+Ask Claude, ChatGPT, Cursor or VS Code about your returns in plain words: "What is waiting for me?", "Why are customers returning this month?", "Can order 1234 still be returned?"
+
+* Tools for a returns overview, the requests list with filters, one request in full, an order's returns, a customer's return history, the most returned products, reasons and categories, and your return policy settings.
+* Triage pending returns and Returns review prompts.
+* Optional: let the assistant approve or reject requests with a note to the customer, add notes and messages, and mark returned items received. Refunds stay with you.
+* Only store managers can connect. Managed in DevDiggers Plugins > AI & MCP, with an on and off switch per tool and an activity log.
+* Needs WordPress 6.9 or later and the MCP Adapter (bundled with WooCommerce 10.3 and later). Nothing is sent anywhere until you connect an assistant yourself.
+
 = Free vs Pro =
 
 The free plugin covers the full return, refund, cancel order and EU withdrawal workflow with no limits on requests. [Pro](https://wpreturns.com/pricing/) is for stores where returns are a cost worth managing: it turns refunds into store credit and exchanges, decides routine requests for you and shows where returns come from.
@@ -183,7 +193,7 @@ To build the assets from source:
 
 The build configuration is in `webpack.config.js` and `babel.config.js`.
 
-The admin screens share the bundled DevDiggers Framework. The human readable source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard and review notice) is in the same GitHub repository under `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
+The admin screens share the bundled DevDiggers Framework. The human readable source of its compiled files in `devdiggers-framework/assets/js` and `devdiggers-framework/assets/css` (framework, dashboard, dashboard analytics, setup wizard, review notice and the AI & MCP page) is in the same GitHub repository under `devdiggers-framework/src`, with its own `package.json`, `webpack.config.js` and `babel.config.js`. To rebuild them, run `npm install` and then `npm run build` inside the `devdiggers-framework` folder.
 
 Two third party libraries used by the admin screens ship unmodified under the MIT licence inside `devdiggers-framework/assets/js/`: Chart.js (https://www.chartjs.org) and Select2 (https://select2.org).
 
@@ -193,7 +203,7 @@ Two third party libraries used by the admin screens ship unmodified under the MI
 2. Go to Plugins > Add New Plugin, search for "returns portal withdrawal button", then install and activate this plugin. Or upload the `devdiggers-returns-for-woocommerce` folder to `/wp-content/plugins/` and activate it.
 3. The setup wizard opens and asks a few questions.
 4. The "Returns" and "Withdraw from contract" pages are created for you. Add them to your menus or footer.
-5. Check DevDiggers Plugins > DevDiggers Returns > Configuration, especially the Return Policy and EU Withdrawal tabs.
+5. Check DevDiggers Plugins > Returns > Configuration, especially the Return Policy and EU Withdrawal tabs.
 
 == Frequently Asked Questions ==
 
@@ -280,6 +290,13 @@ Free version questions go to the support forum here on WordPress.org. The develo
 
 == Changelog ==
 
+= 1.1.0 - 2026-11-24 =
+* New: AI assistants (MCP). Ask Claude, ChatGPT, Cursor, VS Code or any MCP client about your returns: an overview, the requests list, one request in full, an order's returns and what is still returnable, a customer's return history, the most returned products and reasons, and your return policy settings, plus Triage pending returns and Returns review prompts.
+* New: Optional AI tools to approve, reject or change the status of a request with a note to the customer, add a note or message the customer, and mark returned items received. They stay off until you allow them, every change is logged under WooCommerce > Status > Logs, and refunds stay with you.
+* New: DevDiggers Plugins > AI & MCP page. Connect Claude, ChatGPT, Claude Code, Codex, Cursor, VS Code or any MCP client by signing in and clicking Allow, with an on and off switch per plugin and per write tool, a Try panel and an activity log.
+* Improved: The admin menu, the admin header and the AI & MCP entry now say "Returns" instead of "DevDiggers Returns".
+* Improved: Updated the DevDiggers framework to 1.3.0. The title bar with Save stays visible on edit screens while you scroll on desktop, and admin charts and pickers keep working when a theme or plugin replaces the shared Select2 script.
+
 = 1.0.0 - 2026-10-31 =
 * Initial free release.
 * Returns and cancellations from My Account and from a guest returns portal (page, shortcode and block), with partial returns and a quantity per item.
@@ -294,6 +311,9 @@ Free version questions go to the support forum here on WordPress.org. The develo
 * WooCommerce emails, GDPR export and erase, HPOS, classic and block checkout, translation ready with WPML and Polylang support for your own texts.
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+Adds AI assistant (MCP) tools for your returns and the DevDiggers AI & MCP page. The admin menu is now called Returns.
 
 = 1.0.0 =
 First release. After activating, run the setup wizard and check the Return Policy and EU Withdrawal tabs.

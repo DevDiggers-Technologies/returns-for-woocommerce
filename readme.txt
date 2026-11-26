@@ -4,7 +4,7 @@ Plugin URI: https://wpreturns.com/
 Author: DevDiggers
 Author URI: https://devdiggers.com/
 Tags: rma, woocommerce returns, withdrawal button, refund request, cancel order
-Requires at least: 6.5
+Requires at least: 6.9
 Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 9.0
